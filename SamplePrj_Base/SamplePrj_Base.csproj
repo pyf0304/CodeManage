@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E3F941F2-A2E5-446D-B07A-DB7817EABD61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SamplePrj_Base</RootNamespace>
+    <AssemblyName>SamplePrj_Base</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PubDataBase">
+      <HintPath>..\..\..\..\..\PublicLib\PubDataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TzPubFunction">
+      <HintPath>..\..\..\..\PublicLib\TzPubFunction.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL_Class\BaseInfo\clsAllDataTypeBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsClassRoomBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsCollegeBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsDepartmentInfoBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsExamTypeBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsStudentBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsStudentInfoBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsStuTypeBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsUsersBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsvClassRoomBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsvStudentBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsvUsersBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsvXzMajorBL.cs" />
+    <Compile Include="BLL_Class\BaseInfo\clsXzMajorBL.cs" />
+    <Compile Include="BLL_Class\BaseParameter\clsUserStateBL.cs" />
+    <Compile Include="BLL_Class\BaseParameter\clsXzGradeBaseBL.cs" />
+    <Compile Include="BLL_Class\GeneCode\clsAppCodeTypeRelaBL.cs" />
+    <Compile Include="BLL_Class\GeneCode\clsApplicationTypeBL.cs" />
+    <Compile Include="BLL_Class\GeneCode\clsCodeTypeBL.cs" />
+    <Compile Include="BLL_Class\LogManage\clsErrorInformationBL.cs" />
+    <Compile Include="BLL_Class\UserManage\clsUserIdentityBL.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="clsSysParaEN.cs" />
+    <Compile Include="clsSysParaEN_Local.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsAllDataTypeDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsClassRoomDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsCollegeDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsDepartmentInfoDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsExamTypeDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsStudentDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsStudentInfoDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsStuTypeDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsUsersDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsvClassRoomDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsvStudentDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsvUsersDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsvXzMajorDA.cs" />
+    <Compile Include="DAL_Class\BaseInfo\clsXzMajorDA.cs" />
+    <Compile Include="DAL_Class\BaseParameter\clsUserStateDA.cs" />
+    <Compile Include="DAL_Class\BaseParameter\clsXzGradeBaseDA.cs" />
+    <Compile Include="DAL_Class\GeneCode\clsAppCodeTypeRelaDA.cs" />
+    <Compile Include="DAL_Class\GeneCode\clsApplicationTypeDA.cs" />
+    <Compile Include="DAL_Class\GeneCode\clsCodeTypeDA.cs" />
+    <Compile Include="DAL_Class\LogManage\clsErrorInformationDA.cs" />
+    <Compile Include="DAL_Class\UserManage\clsUserIdentityDA.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsAllDataTypeEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsClassRoomEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsCollegeEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsDepartmentInfoEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsExamTypeEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsStudentEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsStudentInfoEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsStuTypeEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsUsersEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsvClassRoomEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsvStudentEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsvUsersEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsvXzMajorEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\clsXzMajorEN.cs" />
+    <Compile Include="Entity_Class\BaseInfo\TT1.cs" />
+    <Compile Include="Entity_Class\BaseParameter\clsUserStateEN.cs" />
+    <Compile Include="Entity_Class\BaseParameter\clsXzGradeBaseEN.cs" />
+    <Compile Include="Entity_Class\GeneCode\clsAppCodeTypeRelaEN.cs" />
+    <Compile Include="Entity_Class\GeneCode\clsApplicationTypeEN.cs" />
+    <Compile Include="Entity_Class\GeneCode\clsCodeTypeEN.cs" />
+    <Compile Include="Entity_Class\LogManage\clsErrorInformationEN.cs" />
+    <Compile Include="Entity_Class\UserManage\clsUserIdentityEN.cs" />
+    <Compile Include="ErrorInformationBL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

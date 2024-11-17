@@ -1,0 +1,13 @@
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\bin\Release\SamplePrj_Base.dll
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\bin\Release\SamplePrj_Base.pdb
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\bin\Release\PubDataBase.dll
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\bin\Release\TzPubFunction.dll
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\bin\Release\PubDataBase.xml
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\bin\Release\TzPubFunction.xml
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\obj\Release\SamplePrj_Base.csprojAssemblyReference.cache
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\obj\Release\SamplePrj_Base.csproj.CoreCompileInputs.cache
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\obj\Release\SamplePrj_Base.csproj.CopyComplete
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\obj\Release\SamplePrj_Base.dll
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\obj\Release\SamplePrj_Base.pdb
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\bin\Release\Newtonsoft.Json.dll
+E:\ASPNETJX\SamplePrj2017\SamplePrj_Base\bin\Release\Newtonsoft.Json.xml
