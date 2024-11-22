@@ -1,0 +1,483 @@
+2024-10-27 00:26:43.813 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-27 00:26:52.104 +08:00 [DBG] Hosting starting
+2024-10-27 00:26:53.320 +08:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-27 00:26:53.372 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-36a6ad2a-467d-4dd0-9ec4-fec33560db3e.xml'.
+2024-10-27 00:26:55.937 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-53d09a45-cf17-4796-a1ad-2be8b609d0d0.xml'.
+2024-10-27 00:26:55.974 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-5e0a1508-ecff-41ef-a58d-adc93ff578fe.xml'.
+2024-10-27 00:26:56.054 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6b596c79-0a0a-4cf8-840a-bcaff7354266.xml'.
+2024-10-27 00:26:56.104 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6bc2db21-233b-48b6-8335-89f4f72dfa34.xml'.
+2024-10-27 00:26:56.189 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-93a5d8ff-b524-4a30-b6ce-8b68b3aea500.xml'.
+2024-10-27 00:26:56.233 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-f55988e9-9861-4e5c-b561-edfcd94c5242.xml'.
+2024-10-27 00:26:56.348 +08:00 [DBG] Found key {36a6ad2a-467d-4dd0-9ec4-fec33560db3e}.
+2024-10-27 00:26:56.383 +08:00 [DBG] Found key {53d09a45-cf17-4796-a1ad-2be8b609d0d0}.
+2024-10-27 00:26:56.384 +08:00 [DBG] Found key {5e0a1508-ecff-41ef-a58d-adc93ff578fe}.
+2024-10-27 00:26:56.386 +08:00 [DBG] Found key {6b596c79-0a0a-4cf8-840a-bcaff7354266}.
+2024-10-27 00:26:56.388 +08:00 [DBG] Found key {6bc2db21-233b-48b6-8335-89f4f72dfa34}.
+2024-10-27 00:26:56.389 +08:00 [DBG] Found key {93a5d8ff-b524-4a30-b6ce-8b68b3aea500}.
+2024-10-27 00:26:56.392 +08:00 [DBG] Found key {f55988e9-9861-4e5c-b561-edfcd94c5242}.
+2024-10-27 00:26:56.403 +08:00 [DBG] Considering key {6bc2db21-233b-48b6-8335-89f4f72dfa34} with expiration date 2024-12-09 17:37:48Z as default key.
+2024-10-27 00:26:56.412 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-27 00:26:56.417 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-27 00:26:56.420 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-27 00:26:56.426 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-27 00:26:56.428 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-27 00:26:56.431 +08:00 [DBG] Using key {6bc2db21-233b-48b6-8335-89f4f72dfa34} as the default key.
+2024-10-27 00:26:56.433 +08:00 [DBG] Key ring with default key {6bc2db21-233b-48b6-8335-89f4f72dfa34} was loaded during application startup.
+2024-10-27 00:26:59.038 +08:00 [INF] Now listening on: http://localhost:7109
+2024-10-27 00:26:59.039 +08:00 [INF] Now listening on: http://192.168.1.15:7109
+2024-10-27 00:26:59.041 +08:00 [DBG] Loaded hosting startup assembly AgcWAV3
+2024-10-27 00:26:59.042 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-27 00:26:59.043 +08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-27 00:26:59.044 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-27 00:26:59.044 +08:00 [INF] Hosting environment: Development
+2024-10-27 00:26:59.045 +08:00 [INF] Content root path: E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3
+2024-10-27 00:26:59.046 +08:00 [DBG] Hosting started
+2024-10-27 00:26:59.222 +08:00 [DBG] Connection id "0HN7LRC1UO71E" received FIN.
+2024-10-27 00:26:59.222 +08:00 [DBG] Connection id "0HN7LRC1UO71D" received FIN.
+2024-10-27 00:26:59.264 +08:00 [DBG] Connection id "0HN7LRC1UO71E" accepted.
+2024-10-27 00:26:59.264 +08:00 [DBG] Connection id "0HN7LRC1UO71D" accepted.
+2024-10-27 00:26:59.268 +08:00 [DBG] Connection id "0HN7LRC1UO71E" started.
+2024-10-27 00:26:59.268 +08:00 [DBG] Connection id "0HN7LRC1UO71D" started.
+2024-10-27 00:26:59.302 +08:00 [DBG] Connection id "0HN7LRC1UO71E" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:26:59.302 +08:00 [DBG] Connection id "0HN7LRC1UO71D" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:26:59.309 +08:00 [DBG] Connection id "0HN7LRC1UO71E" disconnecting.
+2024-10-27 00:26:59.312 +08:00 [DBG] Connection id "0HN7LRC1UO71D" disconnecting.
+2024-10-27 00:26:59.325 +08:00 [DBG] Connection id "0HN7LRC1UO71D" stopped.
+2024-10-27 00:26:59.325 +08:00 [DBG] Connection id "0HN7LRC1UO71E" stopped.
+2024-10-27 00:27:00.646 +08:00 [DBG] Connection id "0HN7LRC1UO71F" accepted.
+2024-10-27 00:27:00.647 +08:00 [DBG] Connection id "0HN7LRC1UO71F" started.
+2024-10-27 00:27:00.651 +08:00 [DBG] Connection id "0HN7LRC1UO71G" accepted.
+2024-10-27 00:27:00.652 +08:00 [DBG] Connection id "0HN7LRC1UO71G" received FIN.
+2024-10-27 00:27:00.653 +08:00 [DBG] Connection id "0HN7LRC1UO71G" started.
+2024-10-27 00:27:00.656 +08:00 [DBG] Connection id "0HN7LRC1UO71G" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:27:00.659 +08:00 [DBG] Connection id "0HN7LRC1UO71G" disconnecting.
+2024-10-27 00:27:00.661 +08:00 [DBG] Connection id "0HN7LRC1UO71G" stopped.
+2024-10-27 00:27:01.095 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-27 00:27:02.168 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-27 00:27:02.601 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-27 00:27:02.604 +08:00 [DBG] Request did not match any endpoints
+2024-10-27 00:27:02.634 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-27 00:27:02.989 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-27 00:27:02.991 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-27 00:27:03.109 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-27 00:27:03.111 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-27 00:27:03.113 +08:00 [DBG] Connection id "0HN7LRC1UO71F" completed keep alive response.
+2024-10-27 00:27:03.115 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 2068.9066ms
+2024-10-27 00:27:03.768 +08:00 [DBG] Connection id "0HN7LRC1UO71H" accepted.
+2024-10-27 00:27:03.770 +08:00 [DBG] Connection id "0HN7LRC1UO71H" started.
+2024-10-27 00:27:03.772 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-27 00:27:03.815 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-27 00:27:03.888 +08:00 [DBG] Connection id "0HN7LRC1UO71F" completed keep alive response.
+2024-10-27 00:27:03.892 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 78.6983ms
+2024-10-27 00:27:03.969 +08:00 [DBG] Connection id "0HN7LRC1UO71H" completed keep alive response.
+2024-10-27 00:27:03.970 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 198.2646ms
+2024-10-27 00:27:04.552 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-27 00:27:04.555 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-27 00:27:04.555 +08:00 [DBG] Request did not match any endpoints
+2024-10-27 00:27:04.557 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-27 00:27:05.563 +08:00 [DBG] Connection id "0HN7LRC1UO71H" completed keep alive response.
+2024-10-27 00:27:05.565 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1012.8543ms
+2024-10-27 00:27:10.653 +08:00 [DBG] Connection id "0HN7LRC1UO71H" received FIN.
+2024-10-27 00:27:10.653 +08:00 [DBG] Connection id "0HN7LRC1UO71F" received FIN.
+2024-10-27 00:27:10.656 +08:00 [DBG] Connection id "0HN7LRC1UO71H" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:27:10.657 +08:00 [DBG] Connection id "0HN7LRC1UO71F" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:27:10.659 +08:00 [DBG] Connection id "0HN7LRC1UO71H" disconnecting.
+2024-10-27 00:27:10.660 +08:00 [DBG] Connection id "0HN7LRC1UO71F" disconnecting.
+2024-10-27 00:27:10.663 +08:00 [DBG] Connection id "0HN7LRC1UO71H" stopped.
+2024-10-27 00:27:10.665 +08:00 [DBG] Connection id "0HN7LRC1UO71F" stopped.
+2024-10-27 00:27:34.516 +08:00 [DBG] Connection id "0HN7LRC1UO71I" accepted.
+2024-10-27 00:27:34.535 +08:00 [DBG] Connection id "0HN7LRC1UO71I" started.
+2024-10-27 00:27:34.539 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0112 - null null
+2024-10-27 00:27:34.559 +08:00 [DBG] 1 candidate(s) found for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:27:34.578 +08:00 [DBG] Endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)' with route pattern 'DataNodeExApi/SetAllStandardDataNodeName' is valid for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:27:34.584 +08:00 [DBG] Request matched endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:27:34.595 +08:00 [INF] 申请服务:Request GET /DataNodeExApi/SetAllStandardDataNodeName
+2024-10-27 00:27:34.614 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-27 00:27:34.616 +08:00 [WRN] Failed to determine the https port for redirect.
+2024-10-27 00:27:39.336 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-27 00:27:39.350 +08:00 [INF] Executing endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:27:39.476 +08:00 [INF] Route matched with {action = "SetAllStandardDataNodeName", controller = "DataNodeExApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SetAllStandardDataNodeName(System.String) on controller AGC.WebApi.DataNodeExApiController (AgcWAV3).
+2024-10-27 00:27:39.481 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-27 00:27:39.484 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-27 00:27:39.486 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-27 00:27:39.489 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-27 00:27:39.490 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-27 00:27:39.503 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:27:39.506 +08:00 [INF] 可匿名访问: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:27:39.509 +08:00 [DBG] Executing controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:27:39.511 +08:00 [DBG] Executed controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:27:39.544 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:27:39.551 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' using the name 'strPrjId' in request data ...
+2024-10-27 00:27:39.563 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:27:39.565 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:27:39.568 +08:00 [DBG] Attempting to validate the bound parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:27:39.586 +08:00 [DBG] Done attempting to validate the bound parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:27:39.737 +08:00 [INF] Executing action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) - Validation state: "Valid"
+2024-10-27 00:27:46.983 +08:00 [INF] Executed action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 7218.7512ms.
+2024-10-27 00:27:46.989 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-27 00:27:46.993 +08:00 [DBG] No information found on request to perform content negotiation.
+2024-10-27 00:27:46.994 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-27 00:27:46.996 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-27 00:27:46.998 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-27 00:27:47.005 +08:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType14`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-27 00:27:47.031 +08:00 [INF] Executed action AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) in 7533.7834ms
+2024-10-27 00:27:47.033 +08:00 [INF] Executed endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:27:47.034 +08:00 [DBG] Connection id "0HN7LRC1UO71I" completed keep alive response.
+2024-10-27 00:27:47.036 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0112 - 200 null application/json; charset=utf-8 12496.5745ms
+2024-10-27 00:27:50.685 +08:00 [DBG] Connection id "0HN7LRC1UO71I" received FIN.
+2024-10-27 00:27:50.687 +08:00 [DBG] Connection id "0HN7LRC1UO71I" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:27:50.690 +08:00 [DBG] Connection id "0HN7LRC1UO71I" disconnecting.
+2024-10-27 00:27:50.693 +08:00 [DBG] Connection id "0HN7LRC1UO71I" stopped.
+2024-10-27 00:28:57.629 +08:00 [DBG] Connection id "0HN7LRC1UO71J" accepted.
+2024-10-27 00:28:57.815 +08:00 [DBG] Connection id "0HN7LRC1UO71J" started.
+2024-10-27 00:28:57.823 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0112 - null null
+2024-10-27 00:28:57.837 +08:00 [DBG] 1 candidate(s) found for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:28:57.838 +08:00 [DBG] Endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)' with route pattern 'DataNodeExApi/SetAllStandardDataNodeName' is valid for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:28:57.851 +08:00 [DBG] Request matched endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:28:57.857 +08:00 [INF] 申请服务:Request GET /DataNodeExApi/SetAllStandardDataNodeName
+2024-10-27 00:28:57.863 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-27 00:28:57.870 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-27 00:28:57.887 +08:00 [INF] Executing endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:28:57.893 +08:00 [INF] Route matched with {action = "SetAllStandardDataNodeName", controller = "DataNodeExApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SetAllStandardDataNodeName(System.String) on controller AGC.WebApi.DataNodeExApiController (AgcWAV3).
+2024-10-27 00:28:57.907 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-27 00:28:57.913 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-27 00:28:57.918 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-27 00:28:57.927 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-27 00:28:57.932 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-27 00:28:57.938 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:28:57.940 +08:00 [INF] 可匿名访问: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:28:57.941 +08:00 [DBG] Executing controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:28:57.943 +08:00 [DBG] Executed controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:28:57.944 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:28:57.946 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' using the name 'strPrjId' in request data ...
+2024-10-27 00:28:57.948 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:28:57.949 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:28:57.950 +08:00 [DBG] Attempting to validate the bound parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:28:57.952 +08:00 [DBG] Done attempting to validate the bound parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:28:57.979 +08:00 [INF] Executing action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) - Validation state: "Valid"
+2024-10-27 00:32:01.779 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-27 00:32:07.490 +08:00 [DBG] Hosting starting
+2024-10-27 00:32:08.288 +08:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-27 00:32:08.463 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-36a6ad2a-467d-4dd0-9ec4-fec33560db3e.xml'.
+2024-10-27 00:32:09.245 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-53d09a45-cf17-4796-a1ad-2be8b609d0d0.xml'.
+2024-10-27 00:32:09.297 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-5e0a1508-ecff-41ef-a58d-adc93ff578fe.xml'.
+2024-10-27 00:32:09.319 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6b596c79-0a0a-4cf8-840a-bcaff7354266.xml'.
+2024-10-27 00:32:09.354 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6bc2db21-233b-48b6-8335-89f4f72dfa34.xml'.
+2024-10-27 00:32:09.390 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-93a5d8ff-b524-4a30-b6ce-8b68b3aea500.xml'.
+2024-10-27 00:32:09.414 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-f55988e9-9861-4e5c-b561-edfcd94c5242.xml'.
+2024-10-27 00:32:09.664 +08:00 [DBG] Found key {36a6ad2a-467d-4dd0-9ec4-fec33560db3e}.
+2024-10-27 00:32:09.889 +08:00 [DBG] Found key {53d09a45-cf17-4796-a1ad-2be8b609d0d0}.
+2024-10-27 00:32:09.891 +08:00 [DBG] Found key {5e0a1508-ecff-41ef-a58d-adc93ff578fe}.
+2024-10-27 00:32:09.893 +08:00 [DBG] Found key {6b596c79-0a0a-4cf8-840a-bcaff7354266}.
+2024-10-27 00:32:09.894 +08:00 [DBG] Found key {6bc2db21-233b-48b6-8335-89f4f72dfa34}.
+2024-10-27 00:32:09.895 +08:00 [DBG] Found key {93a5d8ff-b524-4a30-b6ce-8b68b3aea500}.
+2024-10-27 00:32:09.896 +08:00 [DBG] Found key {f55988e9-9861-4e5c-b561-edfcd94c5242}.
+2024-10-27 00:32:09.942 +08:00 [DBG] Considering key {6bc2db21-233b-48b6-8335-89f4f72dfa34} with expiration date 2024-12-09 17:37:48Z as default key.
+2024-10-27 00:32:09.953 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-27 00:32:09.956 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-27 00:32:09.958 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-27 00:32:09.964 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-27 00:32:09.966 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-27 00:32:09.969 +08:00 [DBG] Using key {6bc2db21-233b-48b6-8335-89f4f72dfa34} as the default key.
+2024-10-27 00:32:09.989 +08:00 [DBG] Key ring with default key {6bc2db21-233b-48b6-8335-89f4f72dfa34} was loaded during application startup.
+2024-10-27 00:32:16.771 +08:00 [DBG] Connection id "0HN7LRF0J4DBF" received FIN.
+2024-10-27 00:32:16.782 +08:00 [DBG] Connection id "0HN7LRF0J4DBF" accepted.
+2024-10-27 00:32:17.866 +08:00 [DBG] Connection id "0HN7LRF0J4DBF" started.
+2024-10-27 00:32:18.029 +08:00 [INF] Now listening on: http://localhost:7109
+2024-10-27 00:32:18.031 +08:00 [INF] Now listening on: http://192.168.1.15:7109
+2024-10-27 00:32:18.032 +08:00 [DBG] Loaded hosting startup assembly AgcWAV3
+2024-10-27 00:32:18.033 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-27 00:32:18.033 +08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-27 00:32:18.034 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-27 00:32:18.035 +08:00 [INF] Hosting environment: Development
+2024-10-27 00:32:18.036 +08:00 [INF] Content root path: E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3
+2024-10-27 00:32:18.037 +08:00 [DBG] Hosting started
+2024-10-27 00:32:18.153 +08:00 [DBG] Connection id "0HN7LRF0J4DBF" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:32:18.161 +08:00 [DBG] Connection id "0HN7LRF0J4DBF" disconnecting.
+2024-10-27 00:32:18.197 +08:00 [DBG] Connection id "0HN7LRF0J4DBF" stopped.
+2024-10-27 00:32:18.834 +08:00 [DBG] Connection id "0HN7LRF0J4DBG" accepted.
+2024-10-27 00:32:18.836 +08:00 [DBG] Connection id "0HN7LRF0J4DBG" started.
+2024-10-27 00:32:18.851 +08:00 [DBG] Connection id "0HN7LRF0J4DBH" accepted.
+2024-10-27 00:32:18.852 +08:00 [DBG] Connection id "0HN7LRF0J4DBH" started.
+2024-10-27 00:32:20.641 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-27 00:32:20.824 +08:00 [DBG] Connection id "0HN7LRF0J4DBH" received FIN.
+2024-10-27 00:32:20.825 +08:00 [DBG] Connection id "0HN7LRF0J4DBH" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:32:20.829 +08:00 [DBG] Connection id "0HN7LRF0J4DBH" disconnecting.
+2024-10-27 00:32:20.831 +08:00 [DBG] Connection id "0HN7LRF0J4DBH" stopped.
+2024-10-27 00:32:23.633 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-27 00:32:24.594 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-27 00:32:24.596 +08:00 [DBG] Request did not match any endpoints
+2024-10-27 00:32:24.600 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-27 00:32:24.960 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-27 00:32:24.963 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-27 00:32:25.092 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-27 00:32:25.094 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-27 00:32:25.096 +08:00 [DBG] Connection id "0HN7LRF0J4DBG" completed keep alive response.
+2024-10-27 00:32:25.098 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 4580.5192ms
+2024-10-27 00:32:25.147 +08:00 [DBG] Connection id "0HN7LRF0J4DBI" accepted.
+2024-10-27 00:32:25.148 +08:00 [DBG] Connection id "0HN7LRF0J4DBI" started.
+2024-10-27 00:32:25.150 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-27 00:32:25.211 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-27 00:32:25.217 +08:00 [DBG] Connection id "0HN7LRF0J4DBG" completed keep alive response.
+2024-10-27 00:32:25.218 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 7.1635ms
+2024-10-27 00:32:25.372 +08:00 [DBG] Connection id "0HN7LRF0J4DBI" completed keep alive response.
+2024-10-27 00:32:25.373 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 223.2619ms
+2024-10-27 00:32:25.685 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-27 00:32:25.688 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-27 00:32:25.689 +08:00 [DBG] Request did not match any endpoints
+2024-10-27 00:32:25.691 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-27 00:32:26.750 +08:00 [DBG] Connection id "0HN7LRF0J4DBI" completed keep alive response.
+2024-10-27 00:32:26.752 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 1067.5047ms
+2024-10-27 00:32:30.767 +08:00 [DBG] Connection id "0HN7LRF0J4DBI" received FIN.
+2024-10-27 00:32:30.767 +08:00 [DBG] Connection id "0HN7LRF0J4DBG" received FIN.
+2024-10-27 00:32:30.769 +08:00 [DBG] Connection id "0HN7LRF0J4DBI" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:32:30.770 +08:00 [DBG] Connection id "0HN7LRF0J4DBG" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:32:30.773 +08:00 [DBG] Connection id "0HN7LRF0J4DBI" disconnecting.
+2024-10-27 00:32:30.774 +08:00 [DBG] Connection id "0HN7LRF0J4DBG" disconnecting.
+2024-10-27 00:32:30.775 +08:00 [DBG] Connection id "0HN7LRF0J4DBI" stopped.
+2024-10-27 00:32:30.778 +08:00 [DBG] Connection id "0HN7LRF0J4DBG" stopped.
+2024-10-27 00:32:56.420 +08:00 [DBG] Connection id "0HN7LRF0J4DBJ" accepted.
+2024-10-27 00:32:56.431 +08:00 [DBG] Connection id "0HN7LRF0J4DBJ" started.
+2024-10-27 00:32:56.433 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0112 - null null
+2024-10-27 00:32:56.442 +08:00 [DBG] 1 candidate(s) found for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:32:56.460 +08:00 [DBG] Endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)' with route pattern 'DataNodeExApi/SetAllStandardDataNodeName' is valid for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:32:56.464 +08:00 [DBG] Request matched endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:32:56.466 +08:00 [INF] 申请服务:Request GET /DataNodeExApi/SetAllStandardDataNodeName
+2024-10-27 00:32:56.497 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-27 00:32:56.501 +08:00 [WRN] Failed to determine the https port for redirect.
+2024-10-27 00:32:56.727 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-27 00:32:56.789 +08:00 [INF] Executing endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:32:57.773 +08:00 [INF] Route matched with {action = "SetAllStandardDataNodeName", controller = "DataNodeExApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SetAllStandardDataNodeName(System.String) on controller AGC.WebApi.DataNodeExApiController (AgcWAV3).
+2024-10-27 00:32:57.782 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-27 00:32:57.785 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-27 00:32:57.788 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-27 00:32:57.790 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-27 00:32:57.793 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-27 00:32:57.811 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:32:57.814 +08:00 [INF] 可匿名访问: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:32:57.818 +08:00 [DBG] Executing controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:32:57.820 +08:00 [DBG] Executed controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:32:58.032 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:32:58.040 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' using the name 'strPrjId' in request data ...
+2024-10-27 00:32:58.062 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:32:58.065 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:32:58.068 +08:00 [DBG] Attempting to validate the bound parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:32:58.096 +08:00 [DBG] Done attempting to validate the bound parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:32:58.570 +08:00 [INF] Executing action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) - Validation state: "Valid"
+2024-10-27 00:33:09.448 +08:00 [INF] Executed action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 10850.5562ms.
+2024-10-27 00:33:09.455 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-27 00:33:09.461 +08:00 [DBG] No information found on request to perform content negotiation.
+2024-10-27 00:33:09.461 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-27 00:33:09.462 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-27 00:33:09.465 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-27 00:33:09.467 +08:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType14`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-27 00:33:09.630 +08:00 [INF] Executed action AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) in 11830.4203ms
+2024-10-27 00:33:09.632 +08:00 [INF] Executed endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:33:09.633 +08:00 [DBG] Connection id "0HN7LRF0J4DBJ" completed keep alive response.
+2024-10-27 00:33:09.635 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0112 - 200 null application/json; charset=utf-8 13201.8747ms
+2024-10-27 00:33:10.777 +08:00 [DBG] Connection id "0HN7LRF0J4DBJ" received FIN.
+2024-10-27 00:33:10.778 +08:00 [DBG] Connection id "0HN7LRF0J4DBJ" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:33:10.780 +08:00 [DBG] Connection id "0HN7LRF0J4DBJ" disconnecting.
+2024-10-27 00:33:10.781 +08:00 [DBG] Connection id "0HN7LRF0J4DBJ" stopped.
+2024-10-27 00:35:20.032 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-27 00:35:26.505 +08:00 [DBG] Hosting starting
+2024-10-27 00:35:28.063 +08:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-27 00:35:28.115 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-36a6ad2a-467d-4dd0-9ec4-fec33560db3e.xml'.
+2024-10-27 00:35:28.226 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-53d09a45-cf17-4796-a1ad-2be8b609d0d0.xml'.
+2024-10-27 00:35:28.250 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-5e0a1508-ecff-41ef-a58d-adc93ff578fe.xml'.
+2024-10-27 00:35:28.263 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6b596c79-0a0a-4cf8-840a-bcaff7354266.xml'.
+2024-10-27 00:35:28.273 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6bc2db21-233b-48b6-8335-89f4f72dfa34.xml'.
+2024-10-27 00:35:28.284 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-93a5d8ff-b524-4a30-b6ce-8b68b3aea500.xml'.
+2024-10-27 00:35:28.300 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-f55988e9-9861-4e5c-b561-edfcd94c5242.xml'.
+2024-10-27 00:35:28.337 +08:00 [DBG] Found key {36a6ad2a-467d-4dd0-9ec4-fec33560db3e}.
+2024-10-27 00:35:28.349 +08:00 [DBG] Found key {53d09a45-cf17-4796-a1ad-2be8b609d0d0}.
+2024-10-27 00:35:28.350 +08:00 [DBG] Found key {5e0a1508-ecff-41ef-a58d-adc93ff578fe}.
+2024-10-27 00:35:28.352 +08:00 [DBG] Found key {6b596c79-0a0a-4cf8-840a-bcaff7354266}.
+2024-10-27 00:35:28.353 +08:00 [DBG] Found key {6bc2db21-233b-48b6-8335-89f4f72dfa34}.
+2024-10-27 00:35:28.354 +08:00 [DBG] Found key {93a5d8ff-b524-4a30-b6ce-8b68b3aea500}.
+2024-10-27 00:35:28.355 +08:00 [DBG] Found key {f55988e9-9861-4e5c-b561-edfcd94c5242}.
+2024-10-27 00:35:28.377 +08:00 [DBG] Considering key {6bc2db21-233b-48b6-8335-89f4f72dfa34} with expiration date 2024-12-09 17:37:48Z as default key.
+2024-10-27 00:35:28.383 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-27 00:35:28.390 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-27 00:35:28.392 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-27 00:35:28.399 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-27 00:35:28.402 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-27 00:35:28.405 +08:00 [DBG] Using key {6bc2db21-233b-48b6-8335-89f4f72dfa34} as the default key.
+2024-10-27 00:35:28.406 +08:00 [DBG] Key ring with default key {6bc2db21-233b-48b6-8335-89f4f72dfa34} was loaded during application startup.
+2024-10-27 00:35:33.593 +08:00 [INF] Now listening on: http://localhost:7109
+2024-10-27 00:35:33.595 +08:00 [INF] Now listening on: http://192.168.1.15:7109
+2024-10-27 00:35:33.596 +08:00 [DBG] Loaded hosting startup assembly AgcWAV3
+2024-10-27 00:35:33.597 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-27 00:35:33.598 +08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-27 00:35:33.599 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-27 00:35:33.600 +08:00 [INF] Hosting environment: Development
+2024-10-27 00:35:33.601 +08:00 [INF] Content root path: E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3
+2024-10-27 00:35:33.603 +08:00 [DBG] Hosting started
+2024-10-27 00:35:33.690 +08:00 [DBG] Connection id "0HN7LRGR93FOP" received FIN.
+2024-10-27 00:35:33.690 +08:00 [DBG] Connection id "0HN7LRGR93FOO" received FIN.
+2024-10-27 00:35:33.724 +08:00 [DBG] Connection id "0HN7LRGR93FOP" accepted.
+2024-10-27 00:35:33.724 +08:00 [DBG] Connection id "0HN7LRGR93FOO" accepted.
+2024-10-27 00:35:33.728 +08:00 [DBG] Connection id "0HN7LRGR93FOP" started.
+2024-10-27 00:35:33.729 +08:00 [DBG] Connection id "0HN7LRGR93FOO" started.
+2024-10-27 00:35:33.752 +08:00 [DBG] Connection id "0HN7LRGR93FOO" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:35:33.752 +08:00 [DBG] Connection id "0HN7LRGR93FOP" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:35:33.756 +08:00 [DBG] Connection id "0HN7LRGR93FOO" disconnecting.
+2024-10-27 00:35:33.757 +08:00 [DBG] Connection id "0HN7LRGR93FOP" disconnecting.
+2024-10-27 00:35:33.762 +08:00 [DBG] Connection id "0HN7LRGR93FOP" stopped.
+2024-10-27 00:35:33.762 +08:00 [DBG] Connection id "0HN7LRGR93FOO" stopped.
+2024-10-27 00:35:35.605 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" accepted.
+2024-10-27 00:35:35.606 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" started.
+2024-10-27 00:35:35.611 +08:00 [DBG] Connection id "0HN7LRGR93FOR" accepted.
+2024-10-27 00:35:35.612 +08:00 [DBG] Connection id "0HN7LRGR93FOR" started.
+2024-10-27 00:35:36.696 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-27 00:35:38.635 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-27 00:35:39.054 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-27 00:35:39.056 +08:00 [DBG] Request did not match any endpoints
+2024-10-27 00:35:39.129 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-27 00:35:39.390 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-27 00:35:39.395 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-27 00:35:39.466 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-27 00:35:39.468 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-27 00:35:39.470 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" completed keep alive response.
+2024-10-27 00:35:39.542 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 2984.6314ms
+2024-10-27 00:35:39.630 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-27 00:35:39.638 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" completed keep alive response.
+2024-10-27 00:35:39.640 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 10.1126ms
+2024-10-27 00:35:39.645 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-27 00:35:39.730 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" completed keep alive response.
+2024-10-27 00:35:39.731 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 86.4113ms
+2024-10-27 00:35:39.876 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-27 00:35:39.877 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-27 00:35:39.878 +08:00 [DBG] Request did not match any endpoints
+2024-10-27 00:35:39.879 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-27 00:35:40.741 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" completed keep alive response.
+2024-10-27 00:35:40.743 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 867.2437ms
+2024-10-27 00:35:40.814 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" received FIN.
+2024-10-27 00:35:40.814 +08:00 [DBG] Connection id "0HN7LRGR93FOR" received FIN.
+2024-10-27 00:35:40.816 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:35:40.817 +08:00 [DBG] Connection id "0HN7LRGR93FOR" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:35:40.818 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" disconnecting.
+2024-10-27 00:35:40.832 +08:00 [DBG] Connection id "0HN7LRGR93FOR" disconnecting.
+2024-10-27 00:35:40.835 +08:00 [DBG] Connection id "0HN7LRGR93FOR" stopped.
+2024-10-27 00:35:40.835 +08:00 [DBG] Connection id "0HN7LRGR93FOQ" stopped.
+2024-10-27 00:35:57.474 +08:00 [DBG] Connection id "0HN7LRGR93FOS" accepted.
+2024-10-27 00:35:57.475 +08:00 [DBG] Connection id "0HN7LRGR93FOS" started.
+2024-10-27 00:35:57.477 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0112 - null null
+2024-10-27 00:35:57.487 +08:00 [DBG] 1 candidate(s) found for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:35:57.496 +08:00 [DBG] Endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)' with route pattern 'DataNodeExApi/SetAllStandardDataNodeName' is valid for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:35:57.498 +08:00 [DBG] Request matched endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:35:57.500 +08:00 [INF] 申请服务:Request GET /DataNodeExApi/SetAllStandardDataNodeName
+2024-10-27 00:35:57.508 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-27 00:35:57.509 +08:00 [WRN] Failed to determine the https port for redirect.
+2024-10-27 00:35:58.068 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-27 00:35:58.077 +08:00 [INF] Executing endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:35:58.194 +08:00 [INF] Route matched with {action = "SetAllStandardDataNodeName", controller = "DataNodeExApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SetAllStandardDataNodeName(System.String) on controller AGC.WebApi.DataNodeExApiController (AgcWAV3).
+2024-10-27 00:35:58.200 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-27 00:35:58.202 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-27 00:35:58.204 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-27 00:35:58.206 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-27 00:35:58.208 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-27 00:35:58.222 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:35:58.224 +08:00 [INF] 可匿名访问: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:35:58.227 +08:00 [DBG] Executing controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:35:58.228 +08:00 [DBG] Executed controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:35:58.253 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:35:58.258 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' using the name 'strPrjId' in request data ...
+2024-10-27 00:35:58.264 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:35:58.266 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:35:58.268 +08:00 [DBG] Attempting to validate the bound parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:35:58.289 +08:00 [DBG] Done attempting to validate the bound parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:35:58.413 +08:00 [INF] Executing action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) - Validation state: "Valid"
+2024-10-27 00:36:59.861 +08:00 [INF] Executed action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 61427.3004ms.
+2024-10-27 00:36:59.882 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-27 00:36:59.897 +08:00 [DBG] No information found on request to perform content negotiation.
+2024-10-27 00:36:59.898 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-27 00:36:59.899 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-27 00:36:59.902 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-27 00:36:59.904 +08:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType15`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-27 00:36:59.930 +08:00 [INF] Executed action AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) in 61714.645ms
+2024-10-27 00:36:59.931 +08:00 [INF] Executed endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:36:59.932 +08:00 [DBG] Connection id "0HN7LRGR93FOS" completed keep alive response.
+2024-10-27 00:36:59.933 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0112 - 200 null application/json; charset=utf-8 62456.0539ms
+2024-10-27 00:37:05.850 +08:00 [DBG] Connection id "0HN7LRGR93FOS" received FIN.
+2024-10-27 00:37:05.853 +08:00 [DBG] Connection id "0HN7LRGR93FOS" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:37:05.854 +08:00 [DBG] Connection id "0HN7LRGR93FOS" disconnecting.
+2024-10-27 00:37:05.855 +08:00 [DBG] Connection id "0HN7LRGR93FOS" stopped.
+2024-10-27 00:48:14.201 +08:00 [DBG] Connection id "0HN7LRGR93FOT" accepted.
+2024-10-27 00:48:14.204 +08:00 [DBG] Connection id "0HN7LRGR93FOT" started.
+2024-10-27 00:48:14.206 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0005 - null null
+2024-10-27 00:48:14.213 +08:00 [DBG] 1 candidate(s) found for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:48:14.215 +08:00 [DBG] Endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)' with route pattern 'DataNodeExApi/SetAllStandardDataNodeName' is valid for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:48:14.217 +08:00 [DBG] Request matched endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:48:14.220 +08:00 [INF] 申请服务:Request GET /DataNodeExApi/SetAllStandardDataNodeName
+2024-10-27 00:48:14.221 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-27 00:48:14.223 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-27 00:48:14.240 +08:00 [INF] Executing endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:48:14.245 +08:00 [INF] Route matched with {action = "SetAllStandardDataNodeName", controller = "DataNodeExApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SetAllStandardDataNodeName(System.String) on controller AGC.WebApi.DataNodeExApiController (AgcWAV3).
+2024-10-27 00:48:14.247 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-27 00:48:14.248 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-27 00:48:14.249 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-27 00:48:14.256 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-27 00:48:14.261 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-27 00:48:14.266 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:48:14.270 +08:00 [INF] 可匿名访问: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:48:14.276 +08:00 [DBG] Executing controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:48:14.281 +08:00 [DBG] Executed controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:48:14.286 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:48:14.291 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' using the name 'strPrjId' in request data ...
+2024-10-27 00:48:14.296 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:48:14.301 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:48:14.305 +08:00 [DBG] Attempting to validate the bound parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:48:14.311 +08:00 [DBG] Done attempting to validate the bound parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:48:14.338 +08:00 [INF] Executing action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) - Validation state: "Valid"
+2024-10-27 00:48:51.922 +08:00 [INF] Executed action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 37578.1074ms.
+2024-10-27 00:48:51.924 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-27 00:48:51.927 +08:00 [DBG] No information found on request to perform content negotiation.
+2024-10-27 00:48:51.928 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-27 00:48:51.929 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-27 00:48:51.930 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-27 00:48:51.931 +08:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType15`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-27 00:48:51.933 +08:00 [INF] Executed action AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) in 37667.1991ms
+2024-10-27 00:48:51.935 +08:00 [INF] Executed endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:48:51.936 +08:00 [DBG] Connection id "0HN7LRGR93FOT" completed keep alive response.
+2024-10-27 00:48:51.937 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0005 - 200 null application/json; charset=utf-8 37731.2544ms
+2024-10-27 00:51:16.164 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0169 - null null
+2024-10-27 00:51:16.170 +08:00 [DBG] 1 candidate(s) found for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:51:16.171 +08:00 [DBG] Endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)' with route pattern 'DataNodeExApi/SetAllStandardDataNodeName' is valid for the request path '/DataNodeExApi/SetAllStandardDataNodeName'
+2024-10-27 00:51:16.172 +08:00 [DBG] Request matched endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:51:16.173 +08:00 [INF] 申请服务:Request GET /DataNodeExApi/SetAllStandardDataNodeName
+2024-10-27 00:51:16.174 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-27 00:51:16.177 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-27 00:51:16.178 +08:00 [INF] Executing endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:51:16.179 +08:00 [INF] Route matched with {action = "SetAllStandardDataNodeName", controller = "DataNodeExApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult SetAllStandardDataNodeName(System.String) on controller AGC.WebApi.DataNodeExApiController (AgcWAV3).
+2024-10-27 00:51:16.182 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-27 00:51:16.183 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-27 00:51:16.185 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-27 00:51:16.188 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-27 00:51:16.190 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-27 00:51:16.191 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:51:16.192 +08:00 [INF] 可匿名访问: AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)
+2024-10-27 00:51:16.193 +08:00 [DBG] Executing controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:51:16.194 +08:00 [DBG] Executed controller factory for controller AGC.WebApi.DataNodeExApiController (AgcWAV3)
+2024-10-27 00:51:16.195 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:51:16.196 +08:00 [DBG] Attempting to bind parameter 'strPrjId' of type 'System.String' using the name 'strPrjId' in request data ...
+2024-10-27 00:51:16.197 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:51:16.200 +08:00 [DBG] Done attempting to bind parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:51:16.201 +08:00 [DBG] Attempting to validate the bound parameter 'strPrjId' of type 'System.String' ...
+2024-10-27 00:51:16.202 +08:00 [DBG] Done attempting to validate the bound parameter 'strPrjId' of type 'System.String'.
+2024-10-27 00:51:16.234 +08:00 [INF] Executing action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) - Validation state: "Valid"
+2024-10-27 00:51:38.876 +08:00 [INF] Executed action method AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 22640.479ms.
+2024-10-27 00:51:38.878 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-27 00:51:38.882 +08:00 [DBG] No information found on request to perform content negotiation.
+2024-10-27 00:51:38.884 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-27 00:51:38.885 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-27 00:51:38.886 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-27 00:51:38.889 +08:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType15`3[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-27 00:51:38.890 +08:00 [INF] Executed action AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3) in 22698.9489ms
+2024-10-27 00:51:38.891 +08:00 [INF] Executed endpoint 'AGC.WebApi.DataNodeExApiController.SetAllStandardDataNodeName (AgcWAV3)'
+2024-10-27 00:51:38.892 +08:00 [DBG] Connection id "0HN7LRGR93FOT" completed keep alive response.
+2024-10-27 00:51:38.893 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/DataNodeExApi/SetAllStandardDataNodeName?strPrjId=0169 - 200 null application/json; charset=utf-8 22736.1313ms
+2024-10-27 00:57:12.841 +08:00 [DBG] Connection id "0HN7LRGR93FOT" received FIN.
+2024-10-27 00:57:12.859 +08:00 [DBG] Connection id "0HN7LRGR93FOT" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-27 00:57:12.861 +08:00 [DBG] Connection id "0HN7LRGR93FOT" disconnecting.
+2024-10-27 00:57:12.872 +08:00 [DBG] Connection id "0HN7LRGR93FOT" stopped.

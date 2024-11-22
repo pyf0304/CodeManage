@@ -1,0 +1,1141 @@
+2024-10-07 01:33:00.772 +08:00 [DBG] Connection id "0HN75S0CH3TH7" accepted.
+2024-10-07 01:33:00.822 +08:00 [DBG] Connection id "0HN75S0CH3TH7" started.
+2024-10-07 01:33:00.825 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 01:33:00.833 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:33:00.837 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:33:00.840 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:33:00.841 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 01:33:00.845 +08:00 [DBG] Connection id "0HN75S0CH3TH7", Request id "0HN75S0CH3TH7:00000001": started reading request body.
+2024-10-07 01:33:00.846 +08:00 [DBG] Connection id "0HN75S0CH3TH7", Request id "0HN75S0CH3TH7:00000001": done reading request body.
+2024-10-07 01:33:00.848 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0264",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 01:33:00.851 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 01:33:00.851 +08:00 [INF] CORS policy execution failed.
+2024-10-07 01:33:00.852 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 01:33:00.855 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 01:33:00.857 +08:00 [WRN] Failed to determine the https port for redirect.
+2024-10-07 01:33:03.036 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 01:33:03.041 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:33:03.078 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 01:33:03.081 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 01:33:03.083 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 01:33:03.085 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 01:33:03.086 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 01:33:03.088 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 01:33:03.092 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:33:03.094 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:33:03.096 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:33:03.097 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:33:03.110 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:33:03.115 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 01:33:03.117 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 01:33:03.192 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 01:33:03.194 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:33:03.195 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:33:03.196 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:33:03.225 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:33:03.307 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 01:48:04.837 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-07 01:48:09.876 +08:00 [DBG] Hosting starting
+2024-10-07 01:48:09.958 +08:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 01:48:09.969 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-36a6ad2a-467d-4dd0-9ec4-fec33560db3e.xml'.
+2024-10-07 01:48:10.017 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-53d09a45-cf17-4796-a1ad-2be8b609d0d0.xml'.
+2024-10-07 01:48:10.029 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-5e0a1508-ecff-41ef-a58d-adc93ff578fe.xml'.
+2024-10-07 01:48:10.042 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6b596c79-0a0a-4cf8-840a-bcaff7354266.xml'.
+2024-10-07 01:48:10.061 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6bc2db21-233b-48b6-8335-89f4f72dfa34.xml'.
+2024-10-07 01:48:10.093 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-93a5d8ff-b524-4a30-b6ce-8b68b3aea500.xml'.
+2024-10-07 01:48:10.116 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-f55988e9-9861-4e5c-b561-edfcd94c5242.xml'.
+2024-10-07 01:48:10.155 +08:00 [DBG] Found key {36a6ad2a-467d-4dd0-9ec4-fec33560db3e}.
+2024-10-07 01:48:10.161 +08:00 [DBG] Found key {53d09a45-cf17-4796-a1ad-2be8b609d0d0}.
+2024-10-07 01:48:10.163 +08:00 [DBG] Found key {5e0a1508-ecff-41ef-a58d-adc93ff578fe}.
+2024-10-07 01:48:10.164 +08:00 [DBG] Found key {6b596c79-0a0a-4cf8-840a-bcaff7354266}.
+2024-10-07 01:48:10.165 +08:00 [DBG] Found key {6bc2db21-233b-48b6-8335-89f4f72dfa34}.
+2024-10-07 01:48:10.168 +08:00 [DBG] Found key {93a5d8ff-b524-4a30-b6ce-8b68b3aea500}.
+2024-10-07 01:48:10.169 +08:00 [DBG] Found key {f55988e9-9861-4e5c-b561-edfcd94c5242}.
+2024-10-07 01:48:10.177 +08:00 [DBG] Considering key {6bc2db21-233b-48b6-8335-89f4f72dfa34} with expiration date 2024-12-09 17:37:48Z as default key.
+2024-10-07 01:48:10.183 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-07 01:48:10.189 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-07 01:48:10.192 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-07 01:48:10.200 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-07 01:48:10.203 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-07 01:48:10.206 +08:00 [DBG] Using key {6bc2db21-233b-48b6-8335-89f4f72dfa34} as the default key.
+2024-10-07 01:48:10.208 +08:00 [DBG] Key ring with default key {6bc2db21-233b-48b6-8335-89f4f72dfa34} was loaded during application startup.
+2024-10-07 01:48:10.989 +08:00 [DBG] Connection id "0HN765S5NBI4R" accepted.
+2024-10-07 01:48:10.997 +08:00 [DBG] Connection id "0HN765S5NBI4R" received FIN.
+2024-10-07 01:48:11.018 +08:00 [DBG] Connection id "0HN765S5NBI4R" started.
+2024-10-07 01:48:11.028 +08:00 [DBG] Connection id "0HN765S5NBI4R" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 01:48:11.032 +08:00 [DBG] Connection id "0HN765S5NBI4R" disconnecting.
+2024-10-07 01:48:11.033 +08:00 [INF] Now listening on: http://localhost:7109
+2024-10-07 01:48:11.035 +08:00 [INF] Now listening on: http://192.168.1.15:7109
+2024-10-07 01:48:11.036 +08:00 [DBG] Loaded hosting startup assembly AgcWAV3
+2024-10-07 01:48:11.036 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-07 01:48:11.036 +08:00 [DBG] Connection id "0HN765S5NBI4R" stopped.
+2024-10-07 01:48:11.037 +08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-07 01:48:11.039 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 01:48:11.039 +08:00 [INF] Hosting environment: Development
+2024-10-07 01:48:11.040 +08:00 [INF] Content root path: E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3
+2024-10-07 01:48:11.041 +08:00 [DBG] Hosting started
+2024-10-07 01:48:11.298 +08:00 [DBG] Connection id "0HN765S5NBI4S" accepted.
+2024-10-07 01:48:11.300 +08:00 [DBG] Connection id "0HN765S5NBI4S" started.
+2024-10-07 01:48:11.309 +08:00 [DBG] Connection id "0HN765S5NBI4T" accepted.
+2024-10-07 01:48:11.310 +08:00 [DBG] Connection id "0HN765S5NBI4T" started.
+2024-10-07 01:48:11.350 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-07 01:48:11.647 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-07 01:48:11.986 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-07 01:48:11.988 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 01:48:11.992 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-07 01:48:12.089 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-07 01:48:12.092 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-07 01:48:12.128 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-07 01:48:12.131 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-07 01:48:12.133 +08:00 [DBG] Connection id "0HN765S5NBI4S" completed keep alive response.
+2024-10-07 01:48:12.137 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 793.6018ms
+2024-10-07 01:48:12.170 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-07 01:48:12.175 +08:00 [DBG] Connection id "0HN765S5NBI4S" completed keep alive response.
+2024-10-07 01:48:12.177 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 6.9859ms
+2024-10-07 01:48:12.292 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-07 01:48:12.350 +08:00 [DBG] Connection id "0HN765S5NBI4S" completed keep alive response.
+2024-10-07 01:48:12.351 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 59.3006ms
+2024-10-07 01:48:12.506 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-07 01:48:12.509 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-07 01:48:12.510 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 01:48:12.511 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-07 01:48:13.177 +08:00 [DBG] Connection id "0HN765S5NBI4S" completed keep alive response.
+2024-10-07 01:48:13.180 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 673.6657ms
+2024-10-07 01:49:12.038 +08:00 [DBG] Connection id "0HN765S5NBI4T" received FIN.
+2024-10-07 01:49:12.059 +08:00 [DBG] Connection id "0HN765S5NBI4T" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 01:49:12.061 +08:00 [DBG] Connection id "0HN765S5NBI4T" disconnecting.
+2024-10-07 01:49:12.079 +08:00 [DBG] Connection id "0HN765S5NBI4T" stopped.
+2024-10-07 01:49:49.002 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 01:49:49.011 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:49:49.017 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:49:49.020 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:49:49.021 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 01:49:49.025 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000005": started reading request body.
+2024-10-07 01:49:49.026 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000005": done reading request body.
+2024-10-07 01:49:49.029 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0264",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 01:49:49.031 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 01:49:49.033 +08:00 [INF] CORS policy execution failed.
+2024-10-07 01:49:49.034 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 01:49:49.037 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 01:49:49.039 +08:00 [WRN] Failed to determine the https port for redirect.
+2024-10-07 01:49:49.110 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 01:49:49.114 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:49:49.138 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 01:49:49.140 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 01:49:49.142 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 01:49:49.143 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 01:49:49.145 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 01:49:49.146 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 01:49:49.150 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:49:49.151 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:49:49.153 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:49:49.154 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:49:49.159 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:49:49.162 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 01:49:49.164 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 01:49:49.178 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 01:49:49.179 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:49:49.180 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:49:49.181 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:49:49.192 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:49:49.261 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 01:54:56.901 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 307632.5439ms.
+2024-10-07 01:54:56.911 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 01:54:56.917 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 01:54:56.920 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 01:54:56.921 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 01:54:56.922 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 01:54:56.924 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 01:54:56.926 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 01:54:56.964 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 307812.3124ms
+2024-10-07 01:54:56.966 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:54:56.967 +08:00 [DBG] Connection id "0HN765S5NBI4S" completed keep alive response.
+2024-10-07 01:54:56.968 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 307966.7272ms
+2024-10-07 01:55:00.268 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 01:55:00.273 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:55:00.274 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:55:00.276 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:55:00.278 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 01:55:00.279 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000006": started reading request body.
+2024-10-07 01:55:00.281 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000006": done reading request body.
+2024-10-07 01:55:00.282 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0264",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 01:55:00.284 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 01:55:00.286 +08:00 [INF] CORS policy execution failed.
+2024-10-07 01:55:00.286 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 01:55:00.287 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 01:55:00.289 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 01:55:00.291 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:55:00.295 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 01:55:00.300 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 01:55:00.302 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 01:55:00.303 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 01:55:00.305 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 01:55:00.307 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 01:55:00.309 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:55:00.310 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:55:00.311 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:55:00.312 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:55:00.314 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:55:00.315 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 01:55:00.316 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 01:55:00.321 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 01:55:00.322 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:55:00.325 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:55:00.326 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:55:00.328 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:55:00.364 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 01:55:18.669 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 18302.7457ms.
+2024-10-07 01:55:18.672 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 01:55:18.677 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 01:55:18.679 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 01:55:18.681 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 01:55:18.682 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 01:55:18.684 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 01:55:18.685 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 01:55:18.692 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 18383.2013ms
+2024-10-07 01:55:18.694 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:55:18.695 +08:00 [DBG] Connection id "0HN765S5NBI4S" completed keep alive response.
+2024-10-07 01:55:18.696 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 18428.7632ms
+2024-10-07 01:57:24.104 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 01:57:24.128 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:57:24.141 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:57:24.144 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:57:24.145 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 01:57:24.147 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000007": started reading request body.
+2024-10-07 01:57:24.148 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000007": done reading request body.
+2024-10-07 01:57:24.150 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0264",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 01:57:24.151 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 01:57:24.152 +08:00 [INF] CORS policy execution failed.
+2024-10-07 01:57:24.153 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 01:57:24.153 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 01:57:24.158 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 01:57:24.159 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:57:24.163 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 01:57:24.166 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 01:57:24.169 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 01:57:24.171 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 01:57:24.174 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 01:57:24.176 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 01:57:24.179 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:57:24.180 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:57:24.181 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:57:24.183 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:57:24.184 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:57:24.186 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 01:57:24.189 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 01:57:24.194 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 01:57:24.196 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:57:24.197 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:57:24.199 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:57:24.202 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:57:24.238 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 01:58:03.409 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 39168.9509ms.
+2024-10-07 01:58:03.413 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 01:58:03.416 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 01:58:03.418 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 01:58:03.419 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 01:58:03.422 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 01:58:03.423 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 01:58:03.425 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 01:58:03.434 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 39255.5517ms
+2024-10-07 01:58:03.436 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:58:03.438 +08:00 [DBG] Connection id "0HN765S5NBI4S" completed keep alive response.
+2024-10-07 01:58:03.440 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 39335.3303ms
+2024-10-07 01:58:39.812 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 01:58:39.830 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:58:39.831 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 01:58:39.832 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:58:39.833 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 01:58:39.834 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000008": started reading request body.
+2024-10-07 01:58:39.835 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000008": done reading request body.
+2024-10-07 01:58:39.837 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0264",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 01:58:39.839 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 01:58:39.840 +08:00 [INF] CORS policy execution failed.
+2024-10-07 01:58:39.841 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 01:58:39.842 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 01:58:39.843 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 01:58:39.844 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:58:39.845 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 01:58:39.846 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 01:58:39.847 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 01:58:39.848 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 01:58:39.850 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 01:58:39.850 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 01:58:39.852 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:58:39.853 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 01:58:39.854 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:58:39.855 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 01:58:39.856 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:58:39.857 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 01:58:39.858 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 01:58:39.859 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 01:58:39.859 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:58:39.860 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:58:39.861 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 01:58:39.862 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 01:58:39.895 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 01:59:25.236 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 45338.3731ms.
+2024-10-07 01:59:25.239 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 01:59:25.242 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 01:59:25.243 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 01:59:25.245 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 01:59:25.246 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 01:59:25.247 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 01:59:25.249 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 01:59:25.251 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 45399.0351ms
+2024-10-07 01:59:25.253 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 01:59:25.254 +08:00 [DBG] Connection id "0HN765S5NBI4S" completed keep alive response.
+2024-10-07 01:59:25.256 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 45444.5123ms
+2024-10-07 02:03:36.099 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 02:03:36.114 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 02:03:36.115 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 02:03:36.116 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 02:03:36.117 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 02:03:36.118 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000009": started reading request body.
+2024-10-07 02:03:36.119 +08:00 [DBG] Connection id "0HN765S5NBI4S", Request id "0HN765S5NBI4S:00000009": done reading request body.
+2024-10-07 02:03:36.120 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0264",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 02:03:36.121 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 02:03:36.122 +08:00 [INF] CORS policy execution failed.
+2024-10-07 02:03:36.123 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 02:03:36.125 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 02:03:36.126 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 02:03:36.127 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 02:03:36.129 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 02:03:36.131 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 02:03:36.133 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 02:03:36.134 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 02:03:36.136 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 02:03:36.137 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 02:03:36.138 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 02:03:36.139 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 02:03:36.140 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 02:03:36.140 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 02:03:36.141 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 02:03:36.142 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 02:03:36.143 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 02:03:36.144 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 02:03:36.145 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 02:03:36.146 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 02:03:36.148 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 02:03:36.149 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 02:03:36.181 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 02:12:13.167 +08:00 [DBG] Connection id "0HN765S5NBI4U" accepted.
+2024-10-07 02:12:13.168 +08:00 [DBG] Connection id "0HN765S5NBI4U" started.
+2024-10-07 02:12:13.170 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-07 02:12:13.497 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-07 02:12:13.547 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 02:12:13.548 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-07 02:12:13.614 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-07 02:12:13.661 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-07 02:12:13.663 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-07 02:12:13.664 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-07 02:12:13.665 +08:00 [DBG] Connection id "0HN765S5NBI4U" completed keep alive response.
+2024-10-07 02:12:13.669 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 496.1719ms
+2024-10-07 02:12:13.714 +08:00 [DBG] Connection id "0HN765S5NBI4S" received FIN.
+2024-10-07 02:12:13.723 +08:00 [DBG] Connection id "0HN765S5NBI4S" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 02:12:13.774 +08:00 [DBG] Connection id "0HN765S5NBI4S" disconnecting.
+2024-10-07 02:12:14.094 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-07 02:12:14.094 +08:00 [DBG] Connection id "0HN765S5NBI4V" accepted.
+2024-10-07 02:12:14.097 +08:00 [DBG] Connection id "0HN765S5NBI4U" completed keep alive response.
+2024-10-07 02:12:14.098 +08:00 [DBG] Connection id "0HN765S5NBI4V" started.
+2024-10-07 02:12:14.099 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 5.6341ms
+2024-10-07 02:12:14.101 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-07 02:12:14.343 +08:00 [DBG] Connection id "0HN765S5NBI4V" completed keep alive response.
+2024-10-07 02:12:14.345 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 244.4293ms
+2024-10-07 02:12:14.412 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-07 02:12:14.415 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-07 02:12:14.467 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 02:12:14.469 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-07 02:12:14.850 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 518666.4634ms.
+2024-10-07 02:12:14.853 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 02:12:14.857 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 02:12:14.859 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 02:12:14.861 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 02:12:14.862 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 02:12:14.863 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 02:12:14.865 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 02:12:14.878 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 518739.6984ms
+2024-10-07 02:12:14.879 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 02:12:14.881 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 499 null application/json; charset=utf-8 518781.7868ms
+2024-10-07 02:12:14.885 +08:00 [DBG] Connection id "0HN765S5NBI4S" stopped.
+2024-10-07 02:12:15.055 +08:00 [DBG] Connection id "0HN765S5NBI4V" completed keep alive response.
+2024-10-07 02:12:15.057 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 644.8136ms
+2024-10-07 02:12:33.090 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 02:12:33.094 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 02:12:33.094 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 02:12:33.096 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 02:12:33.097 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 02:12:33.097 +08:00 [DBG] Connection id "0HN765S5NBI4V", Request id "0HN765S5NBI4V:00000003": started reading request body.
+2024-10-07 02:12:33.098 +08:00 [DBG] Connection id "0HN765S5NBI4V", Request id "0HN765S5NBI4V:00000003": done reading request body.
+2024-10-07 02:12:33.099 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0264",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 02:12:33.101 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 02:12:33.102 +08:00 [INF] CORS policy execution failed.
+2024-10-07 02:12:33.103 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 02:12:33.104 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 02:12:33.105 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 02:12:33.106 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 02:12:33.108 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 02:12:33.110 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 02:12:33.111 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 02:12:33.112 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 02:12:33.116 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 02:12:33.118 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 02:12:33.120 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 02:12:33.124 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 02:12:33.127 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 02:12:33.128 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 02:12:33.130 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 02:12:33.132 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 02:12:33.134 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 02:12:33.139 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 02:12:33.140 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 02:12:33.141 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 02:12:33.142 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 02:12:33.145 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 02:12:33.188 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 02:12:49.342 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 16152.6957ms.
+2024-10-07 02:12:49.346 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 02:12:49.349 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 02:12:49.352 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 02:12:49.353 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 02:12:49.355 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 02:12:49.356 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 02:12:49.357 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 02:12:49.365 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 16245.0623ms
+2024-10-07 02:12:49.368 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 02:12:49.369 +08:00 [DBG] Connection id "0HN765S5NBI4V" completed keep alive response.
+2024-10-07 02:12:49.371 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 16280.4161ms
+2024-10-07 02:17:14.442 +08:00 [DBG] Connection id "0HN765S5NBI4U" received FIN.
+2024-10-07 02:17:14.463 +08:00 [DBG] Connection id "0HN765S5NBI4U" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 02:17:14.465 +08:00 [DBG] Connection id "0HN765S5NBI4U" disconnecting.
+2024-10-07 02:17:14.479 +08:00 [DBG] Connection id "0HN765S5NBI4U" stopped.
+2024-10-07 02:18:42.429 +08:00 [DBG] Connection id "0HN765S5NBI4V" received FIN.
+2024-10-07 02:18:42.451 +08:00 [DBG] Connection id "0HN765S5NBI4V" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 02:18:42.453 +08:00 [DBG] Connection id "0HN765S5NBI4V" disconnecting.
+2024-10-07 02:18:42.468 +08:00 [DBG] Connection id "0HN765S5NBI4V" stopped.
+2024-10-07 03:11:18.734 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-07 03:11:22.781 +08:00 [DBG] Hosting starting
+2024-10-07 03:11:22.813 +08:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 03:11:22.821 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-36a6ad2a-467d-4dd0-9ec4-fec33560db3e.xml'.
+2024-10-07 03:11:22.829 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-53d09a45-cf17-4796-a1ad-2be8b609d0d0.xml'.
+2024-10-07 03:11:22.830 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-5e0a1508-ecff-41ef-a58d-adc93ff578fe.xml'.
+2024-10-07 03:11:22.831 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6b596c79-0a0a-4cf8-840a-bcaff7354266.xml'.
+2024-10-07 03:11:22.832 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6bc2db21-233b-48b6-8335-89f4f72dfa34.xml'.
+2024-10-07 03:11:22.833 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-93a5d8ff-b524-4a30-b6ce-8b68b3aea500.xml'.
+2024-10-07 03:11:22.835 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-f55988e9-9861-4e5c-b561-edfcd94c5242.xml'.
+2024-10-07 03:11:22.840 +08:00 [DBG] Found key {36a6ad2a-467d-4dd0-9ec4-fec33560db3e}.
+2024-10-07 03:11:22.845 +08:00 [DBG] Found key {53d09a45-cf17-4796-a1ad-2be8b609d0d0}.
+2024-10-07 03:11:22.846 +08:00 [DBG] Found key {5e0a1508-ecff-41ef-a58d-adc93ff578fe}.
+2024-10-07 03:11:22.847 +08:00 [DBG] Found key {6b596c79-0a0a-4cf8-840a-bcaff7354266}.
+2024-10-07 03:11:22.848 +08:00 [DBG] Found key {6bc2db21-233b-48b6-8335-89f4f72dfa34}.
+2024-10-07 03:11:22.849 +08:00 [DBG] Found key {93a5d8ff-b524-4a30-b6ce-8b68b3aea500}.
+2024-10-07 03:11:22.849 +08:00 [DBG] Found key {f55988e9-9861-4e5c-b561-edfcd94c5242}.
+2024-10-07 03:11:22.857 +08:00 [DBG] Considering key {6bc2db21-233b-48b6-8335-89f4f72dfa34} with expiration date 2024-12-09 17:37:48Z as default key.
+2024-10-07 03:11:22.861 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-07 03:11:22.865 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-07 03:11:22.868 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-07 03:11:22.875 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-07 03:11:22.878 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-07 03:11:22.881 +08:00 [DBG] Using key {6bc2db21-233b-48b6-8335-89f4f72dfa34} as the default key.
+2024-10-07 03:11:22.882 +08:00 [DBG] Key ring with default key {6bc2db21-233b-48b6-8335-89f4f72dfa34} was loaded during application startup.
+2024-10-07 03:11:23.431 +08:00 [INF] Now listening on: http://localhost:7109
+2024-10-07 03:11:23.432 +08:00 [INF] Now listening on: http://192.168.1.15:7109
+2024-10-07 03:11:23.433 +08:00 [DBG] Loaded hosting startup assembly AgcWAV3
+2024-10-07 03:11:23.434 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-07 03:11:23.435 +08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-07 03:11:23.436 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 03:11:23.437 +08:00 [INF] Hosting environment: Development
+2024-10-07 03:11:23.438 +08:00 [INF] Content root path: E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3
+2024-10-07 03:11:23.439 +08:00 [DBG] Hosting started
+2024-10-07 03:11:23.736 +08:00 [DBG] Connection id "0HN767ALLT2SC" accepted.
+2024-10-07 03:11:23.738 +08:00 [DBG] Connection id "0HN767ALLT2SC" started.
+2024-10-07 03:11:23.739 +08:00 [DBG] Connection id "0HN767ALLT2SC" received FIN.
+2024-10-07 03:11:23.749 +08:00 [DBG] Connection id "0HN767ALLT2SC" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 03:11:23.753 +08:00 [DBG] Connection id "0HN767ALLT2SC" disconnecting.
+2024-10-07 03:11:23.757 +08:00 [DBG] Connection id "0HN767ALLT2SC" stopped.
+2024-10-07 03:11:23.957 +08:00 [DBG] Connection id "0HN767ALLT2SD" accepted.
+2024-10-07 03:11:23.958 +08:00 [DBG] Connection id "0HN767ALLT2SD" started.
+2024-10-07 03:11:23.963 +08:00 [DBG] Connection id "0HN767ALLT2SE" accepted.
+2024-10-07 03:11:23.964 +08:00 [DBG] Connection id "0HN767ALLT2SE" started.
+2024-10-07 03:11:23.995 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-07 03:11:24.182 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-07 03:11:24.455 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-07 03:11:24.458 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 03:11:24.461 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-07 03:11:24.584 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-07 03:11:24.588 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-07 03:11:24.614 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-07 03:11:24.617 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-07 03:11:24.619 +08:00 [DBG] Connection id "0HN767ALLT2SD" completed keep alive response.
+2024-10-07 03:11:24.622 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 633.1981ms
+2024-10-07 03:11:24.639 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-07 03:11:24.641 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-07 03:11:24.645 +08:00 [DBG] Connection id "0HN767ALLT2SD" completed keep alive response.
+2024-10-07 03:11:24.647 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 7.6426ms
+2024-10-07 03:11:24.690 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:11:24.691 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 50.1425ms
+2024-10-07 03:11:24.769 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-07 03:11:24.772 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-07 03:11:24.774 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 03:11:24.777 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-07 03:11:25.500 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:11:25.502 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 733.233ms
+2024-10-07 03:12:18.736 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 03:12:18.746 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:12:18.752 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:12:18.757 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:12:18.759 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 03:12:18.764 +08:00 [DBG] Connection id "0HN767ALLT2SE", Request id "0HN767ALLT2SE:00000003": started reading request body.
+2024-10-07 03:12:18.765 +08:00 [DBG] Connection id "0HN767ALLT2SE", Request id "0HN767ALLT2SE:00000003": done reading request body.
+2024-10-07 03:12:18.769 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0263",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 03:12:18.773 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 03:12:18.775 +08:00 [INF] CORS policy execution failed.
+2024-10-07 03:12:18.775 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 03:12:18.779 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 03:12:18.781 +08:00 [WRN] Failed to determine the https port for redirect.
+2024-10-07 03:12:18.972 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 03:12:18.977 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:12:19.002 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 03:12:19.007 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 03:12:19.010 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 03:12:19.012 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 03:12:19.015 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 03:12:19.017 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 03:12:19.022 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:12:19.025 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:12:19.027 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:12:19.029 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:12:19.035 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:12:19.039 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 03:12:19.043 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 03:12:19.057 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 03:12:19.059 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:12:19.061 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:12:19.062 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:12:19.075 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:12:19.159 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 03:12:37.134 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 17968.0123ms.
+2024-10-07 03:12:37.140 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 03:12:37.146 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 03:12:37.148 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 03:12:37.149 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 03:12:37.150 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 03:12:37.152 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 03:12:37.154 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 03:12:37.169 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 18146.0506ms
+2024-10-07 03:12:37.170 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:12:37.171 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:12:37.173 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 18439.357ms
+2024-10-07 03:16:24.655 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 03:16:24.664 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:16:24.666 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:16:24.669 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:16:24.670 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 03:16:24.672 +08:00 [DBG] Connection id "0HN767ALLT2SE", Request id "0HN767ALLT2SE:00000004": started reading request body.
+2024-10-07 03:16:24.675 +08:00 [DBG] Connection id "0HN767ALLT2SE", Request id "0HN767ALLT2SE:00000004": done reading request body.
+2024-10-07 03:16:24.678 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0263",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 03:16:24.681 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 03:16:24.682 +08:00 [INF] CORS policy execution failed.
+2024-10-07 03:16:24.683 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 03:16:24.686 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 03:16:24.689 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 03:16:24.708 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:16:24.710 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 03:16:24.712 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 03:16:24.714 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 03:16:24.716 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 03:16:24.721 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 03:16:24.723 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 03:16:24.725 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:16:24.726 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:16:24.727 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:16:24.729 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:16:24.732 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:16:24.734 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 03:16:24.737 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 03:16:24.739 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 03:16:24.740 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:16:24.741 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:16:24.743 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:16:24.745 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:16:24.771 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 03:16:27.967 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3193.901ms.
+2024-10-07 03:16:27.969 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 03:16:27.971 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 03:16:27.972 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 03:16:27.973 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 03:16:27.974 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 03:16:27.975 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 03:16:27.976 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 03:16:27.977 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 3252.4633ms
+2024-10-07 03:16:27.978 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:16:27.979 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:16:27.981 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 3327.0665ms
+2024-10-07 03:16:32.187 +08:00 [DBG] Connection id "0HN767ALLT2SD" received FIN.
+2024-10-07 03:16:32.188 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 03:16:32.189 +08:00 [DBG] Connection id "0HN767ALLT2SD" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 03:16:32.193 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:16:32.194 +08:00 [DBG] Connection id "0HN767ALLT2SD" disconnecting.
+2024-10-07 03:16:32.196 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:16:32.198 +08:00 [DBG] Connection id "0HN767ALLT2SD" stopped.
+2024-10-07 03:16:32.198 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:16:32.200 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 03:16:32.201 +08:00 [DBG] Connection id "0HN767ALLT2SE", Request id "0HN767ALLT2SE:00000005": started reading request body.
+2024-10-07 03:16:32.203 +08:00 [DBG] Connection id "0HN767ALLT2SE", Request id "0HN767ALLT2SE:00000005": done reading request body.
+2024-10-07 03:16:32.204 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0263",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 03:16:32.206 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 03:16:32.207 +08:00 [INF] CORS policy execution failed.
+2024-10-07 03:16:32.208 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 03:16:32.209 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 03:16:32.212 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 03:16:32.214 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:16:32.216 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 03:16:32.218 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 03:16:32.220 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 03:16:32.221 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 03:16:32.223 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 03:16:32.225 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 03:16:32.227 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:16:32.228 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:16:32.229 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:16:32.231 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:16:32.232 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:16:32.235 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 03:16:32.237 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 03:16:32.239 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 03:16:32.240 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:16:32.242 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:16:32.243 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:16:32.245 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:16:32.271 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 03:17:45.503 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 73228.8365ms.
+2024-10-07 03:17:45.505 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 03:17:45.507 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 03:17:45.508 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 03:17:45.509 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 03:17:45.510 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 03:17:45.511 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 03:17:45.513 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 03:17:45.514 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 73287.428ms
+2024-10-07 03:17:45.516 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:17:45.517 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:17:45.518 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 73330.5594ms
+2024-10-07 03:17:46.308 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-07 03:17:46.330 +08:00 [DBG] Connection id "0HN767ALLT2SF" accepted.
+2024-10-07 03:17:46.339 +08:00 [DBG] Connection id "0HN767ALLT2SF" started.
+2024-10-07 03:17:46.371 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-07 03:17:46.372 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 03:17:46.373 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-07 03:17:46.375 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-07 03:17:46.376 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-07 03:17:46.377 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-07 03:17:46.378 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-07 03:17:46.378 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:17:46.379 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 71.5898ms
+2024-10-07 03:17:46.429 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-07 03:17:46.432 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:17:46.434 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 4.7854ms
+2024-10-07 03:17:46.438 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-07 03:17:46.453 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:17:46.454 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.2ms
+2024-10-07 03:17:46.696 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-07 03:17:46.699 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-07 03:17:46.700 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 03:17:46.701 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-07 03:17:47.071 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:17:47.072 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 376.0077ms
+2024-10-07 03:18:11.578 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 03:18:11.581 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:18:11.583 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:18:11.584 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:18:11.585 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 03:18:11.586 +08:00 [DBG] Connection id "0HN767ALLT2SE", Request id "0HN767ALLT2SE:0000000A": started reading request body.
+2024-10-07 03:18:11.587 +08:00 [DBG] Connection id "0HN767ALLT2SE", Request id "0HN767ALLT2SE:0000000A": done reading request body.
+2024-10-07 03:18:11.588 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0263",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 03:18:11.589 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 03:18:11.590 +08:00 [INF] CORS policy execution failed.
+2024-10-07 03:18:11.591 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 03:18:11.592 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 03:18:11.593 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 03:18:11.594 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:18:11.596 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 03:18:11.598 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 03:18:11.601 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 03:18:11.603 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 03:18:11.607 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 03:18:11.611 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 03:18:11.613 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:18:11.615 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:18:11.616 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:18:11.618 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:18:11.619 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:18:11.621 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 03:18:11.623 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 03:18:11.627 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 03:18:11.629 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:18:11.630 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:18:11.632 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:18:11.636 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:18:11.661 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 03:18:59.201 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 47537.5896ms.
+2024-10-07 03:18:59.203 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 03:18:59.207 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 03:18:59.208 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 03:18:59.210 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 03:18:59.212 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 03:18:59.213 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 03:18:59.215 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 03:18:59.220 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 47607.0428ms
+2024-10-07 03:18:59.223 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:18:59.225 +08:00 [DBG] Connection id "0HN767ALLT2SE" completed keep alive response.
+2024-10-07 03:18:59.227 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 47649.6254ms
+2024-10-07 03:19:16.898 +08:00 [DBG] Connection id "0HN767ALLT2SF" received FIN.
+2024-10-07 03:19:16.900 +08:00 [DBG] Connection id "0HN767ALLT2SF" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 03:19:16.903 +08:00 [DBG] Connection id "0HN767ALLT2SF" disconnecting.
+2024-10-07 03:19:16.904 +08:00 [DBG] Connection id "0HN767ALLT2SF" stopped.
+2024-10-07 03:24:42.419 +08:00 [DBG] Connection id "0HN767ALLT2SE" received FIN.
+2024-10-07 03:24:42.421 +08:00 [DBG] Connection id "0HN767ALLT2SE" disconnecting.
+2024-10-07 03:24:42.435 +08:00 [DBG] Connection id "0HN767ALLT2SE" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 03:24:42.444 +08:00 [DBG] Connection id "0HN767ALLT2SE" stopped.
+2024-10-07 03:34:23.669 +08:00 [DBG] Connection id "0HN767ALLT2SG" accepted.
+2024-10-07 03:34:23.670 +08:00 [DBG] Connection id "0HN767ALLT2SG" started.
+2024-10-07 03:34:23.672 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 03:34:23.675 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:34:23.677 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:34:23.678 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:34:23.679 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 03:34:23.680 +08:00 [DBG] Connection id "0HN767ALLT2SG", Request id "0HN767ALLT2SG:00000001": started reading request body.
+2024-10-07 03:34:23.681 +08:00 [DBG] Connection id "0HN767ALLT2SG", Request id "0HN767ALLT2SG:00000001": done reading request body.
+2024-10-07 03:34:23.682 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0263",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 03:34:23.683 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 03:34:23.684 +08:00 [INF] CORS policy execution failed.
+2024-10-07 03:34:23.685 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 03:34:23.686 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 03:34:23.687 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 03:34:23.688 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:34:23.689 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 03:34:23.691 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 03:34:23.693 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 03:34:23.694 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 03:34:23.697 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 03:34:23.698 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 03:34:23.700 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:34:23.701 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:34:23.702 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:34:23.703 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:34:23.704 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:34:23.705 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 03:34:23.706 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 03:34:23.707 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 03:34:23.708 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:34:23.709 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:34:23.710 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:34:23.711 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:34:23.743 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 03:49:06.290 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 882545.348ms.
+2024-10-07 03:49:06.315 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 03:49:06.320 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 03:49:06.321 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 03:49:06.322 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 03:49:06.323 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 03:49:06.324 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 03:49:06.325 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 03:49:06.327 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 882627.0605ms
+2024-10-07 03:49:06.328 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:49:06.329 +08:00 [DBG] Connection id "0HN767ALLT2SG" completed keep alive response.
+2024-10-07 03:49:06.330 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 882658.3547ms
+2024-10-07 03:49:07.222 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-07 03:49:07.245 +08:00 [DBG] Connection id "0HN767ALLT2SH" accepted.
+2024-10-07 03:49:07.248 +08:00 [DBG] Connection id "0HN767ALLT2SH" started.
+2024-10-07 03:49:07.333 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-07 03:49:07.335 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 03:49:07.337 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-07 03:49:07.347 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-07 03:49:07.348 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-07 03:49:07.350 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-07 03:49:07.351 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-07 03:49:07.352 +08:00 [DBG] Connection id "0HN767ALLT2SG" completed keep alive response.
+2024-10-07 03:49:07.354 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 132.1852ms
+2024-10-07 03:49:07.413 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-07 03:49:07.415 +08:00 [DBG] Connection id "0HN767ALLT2SG" completed keep alive response.
+2024-10-07 03:49:07.417 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 4.3633ms
+2024-10-07 03:49:07.420 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-07 03:49:07.438 +08:00 [DBG] Connection id "0HN767ALLT2SG" completed keep alive response.
+2024-10-07 03:49:07.440 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 19.9073ms
+2024-10-07 03:49:07.616 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-07 03:49:07.619 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-07 03:49:07.620 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 03:49:07.621 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-07 03:49:08.024 +08:00 [DBG] Connection id "0HN767ALLT2SG" completed keep alive response.
+2024-10-07 03:49:08.033 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 416.3526ms
+2024-10-07 03:49:32.687 +08:00 [INF] Request starting HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - application/json 290
+2024-10-07 03:49:32.690 +08:00 [DBG] 1 candidate(s) found for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:49:32.691 +08:00 [DBG] Endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)' with route pattern 'AutoGeneCodeApi/GeneCode' is valid for the request path '/AutoGeneCodeApi/GeneCode'
+2024-10-07 03:49:32.692 +08:00 [DBG] Request matched endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:49:32.694 +08:00 [INF] 申请服务:Request POST /AutoGeneCodeApi/GeneCode
+2024-10-07 03:49:32.694 +08:00 [DBG] Connection id "0HN767ALLT2SG", Request id "0HN767ALLT2SG:00000006": started reading request body.
+2024-10-07 03:49:32.697 +08:00 [DBG] Connection id "0HN767ALLT2SG", Request id "0HN767ALLT2SG:00000006": done reading request body.
+2024-10-07 03:49:32.698 +08:00 [INF] 申请主体:Request Body: {
+  "codeTypeId": "0263",
+  "featureId": "",
+  "dataBaseType": "02",
+  "tabId": "",
+  "viewId": "01690085",
+  "prjId": "0169",
+  "cmPrjId": "000048",
+  "prjDataBaseId": "0199",
+  "applicationTypeId": 30,
+  "gcUserId": "pyf",
+  "typeParas": "",
+  "webSrvClassId": "",
+  "isRecordLog": true
+}
+2024-10-07 03:49:32.700 +08:00 [DBG] The request has an origin header: 'http://localhost:7109'.
+2024-10-07 03:49:32.701 +08:00 [INF] CORS policy execution failed.
+2024-10-07 03:49:32.701 +08:00 [INF] Request origin http://localhost:7109 does not have permission to access the resource.
+2024-10-07 03:49:32.702 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-07 03:49:32.703 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-07 03:49:32.705 +08:00 [INF] Executing endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:49:32.708 +08:00 [INF] Route matched with {action = "GeneCode", controller = "AutoGeneCodeApi"}. Executing controller action with signature AgcCommBase.clsGCResult GeneCode(AgcCommBase.clsGCPara) on controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3).
+2024-10-07 03:49:32.710 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-07 03:49:32.711 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-07 03:49:32.713 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-07 03:49:32.716 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-07 03:49:32.717 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-07 03:49:32.719 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:49:32.720 +08:00 [INF] 可匿名访问: AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)
+2024-10-07 03:49:32.721 +08:00 [DBG] Executing controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:49:32.722 +08:00 [DBG] Executed controller factory for controller AGC.WebApiEx.AutoGeneCodeApiController (AgcWAV3)
+2024-10-07 03:49:32.724 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:49:32.725 +08:00 [DBG] Attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' using the name '' in request data ...
+2024-10-07 03:49:32.727 +08:00 [DBG] Selected input formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter' for content type 'application/json'.
+2024-10-07 03:49:32.732 +08:00 [DBG] JSON input formatter succeeded, deserializing to type 'AgcCommBase.clsGCPara'
+2024-10-07 03:49:32.733 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:49:32.734 +08:00 [DBG] Done attempting to bind parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:49:32.736 +08:00 [DBG] Attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara' ...
+2024-10-07 03:49:32.739 +08:00 [DBG] Done attempting to validate the bound parameter 'objGCPara' of type 'AgcCommBase.clsGCPara'.
+2024-10-07 03:49:32.767 +08:00 [INF] Executing action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) - Validation state: "Valid"
+2024-10-07 03:49:36.352 +08:00 [INF] Executed action method AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.ObjectResult in 3582.9058ms.
+2024-10-07 03:49:36.357 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-07 03:49:36.360 +08:00 [DBG] Attempting to select an output formatter based on Accept header '["text/plain"]'.
+2024-10-07 03:49:36.361 +08:00 [DBG] Could not find an output formatter based on content negotiation. Accepted types were (["text/plain"])
+2024-10-07 03:49:36.363 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-07 03:49:36.364 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-07 03:49:36.365 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-07 03:49:36.367 +08:00 [INF] Executing ObjectResult, writing value of type 'AgcCommBase.clsGCResult'.
+2024-10-07 03:49:36.372 +08:00 [INF] Executed action AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3) in 3653.399ms
+2024-10-07 03:49:36.374 +08:00 [INF] Executed endpoint 'AGC.WebApiEx.AutoGeneCodeApiController.GeneCode (AgcWAV3)'
+2024-10-07 03:49:36.376 +08:00 [DBG] Connection id "0HN767ALLT2SG" completed keep alive response.
+2024-10-07 03:49:36.378 +08:00 [INF] Request finished HTTP/1.1 POST http://localhost:7109/AutoGeneCodeApi/GeneCode - 200 null application/json; charset=utf-8 3690.8051ms
+2024-10-07 03:50:18.638 +08:00 [DBG] Connection id "0HN767ALLT2SH" received FIN.
+2024-10-07 03:50:18.649 +08:00 [DBG] Connection id "0HN767ALLT2SH" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 03:50:18.655 +08:00 [DBG] Connection id "0HN767ALLT2SH" disconnecting.
+2024-10-07 03:50:18.667 +08:00 [DBG] Connection id "0HN767ALLT2SH" stopped.
+2024-10-07 03:52:05.446 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-07 03:52:09.542 +08:00 [DBG] Hosting starting
+2024-10-07 03:52:09.614 +08:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 03:52:09.624 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-36a6ad2a-467d-4dd0-9ec4-fec33560db3e.xml'.
+2024-10-07 03:52:09.634 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-53d09a45-cf17-4796-a1ad-2be8b609d0d0.xml'.
+2024-10-07 03:52:09.636 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-5e0a1508-ecff-41ef-a58d-adc93ff578fe.xml'.
+2024-10-07 03:52:09.639 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6b596c79-0a0a-4cf8-840a-bcaff7354266.xml'.
+2024-10-07 03:52:09.640 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6bc2db21-233b-48b6-8335-89f4f72dfa34.xml'.
+2024-10-07 03:52:09.642 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-93a5d8ff-b524-4a30-b6ce-8b68b3aea500.xml'.
+2024-10-07 03:52:09.644 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-f55988e9-9861-4e5c-b561-edfcd94c5242.xml'.
+2024-10-07 03:52:09.651 +08:00 [DBG] Found key {36a6ad2a-467d-4dd0-9ec4-fec33560db3e}.
+2024-10-07 03:52:09.658 +08:00 [DBG] Found key {53d09a45-cf17-4796-a1ad-2be8b609d0d0}.
+2024-10-07 03:52:09.659 +08:00 [DBG] Found key {5e0a1508-ecff-41ef-a58d-adc93ff578fe}.
+2024-10-07 03:52:09.661 +08:00 [DBG] Found key {6b596c79-0a0a-4cf8-840a-bcaff7354266}.
+2024-10-07 03:52:09.662 +08:00 [DBG] Found key {6bc2db21-233b-48b6-8335-89f4f72dfa34}.
+2024-10-07 03:52:09.663 +08:00 [DBG] Found key {93a5d8ff-b524-4a30-b6ce-8b68b3aea500}.
+2024-10-07 03:52:09.665 +08:00 [DBG] Found key {f55988e9-9861-4e5c-b561-edfcd94c5242}.
+2024-10-07 03:52:09.677 +08:00 [DBG] Considering key {6bc2db21-233b-48b6-8335-89f4f72dfa34} with expiration date 2024-12-09 17:37:48Z as default key.
+2024-10-07 03:52:09.684 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-07 03:52:09.690 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-07 03:52:09.693 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-07 03:52:09.699 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-07 03:52:09.702 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-07 03:52:09.704 +08:00 [DBG] Using key {6bc2db21-233b-48b6-8335-89f4f72dfa34} as the default key.
+2024-10-07 03:52:09.706 +08:00 [DBG] Key ring with default key {6bc2db21-233b-48b6-8335-89f4f72dfa34} was loaded during application startup.
+2024-10-07 03:52:10.379 +08:00 [INF] Now listening on: http://localhost:7109
+2024-10-07 03:52:10.381 +08:00 [INF] Now listening on: http://192.168.1.15:7109
+2024-10-07 03:52:10.382 +08:00 [DBG] Loaded hosting startup assembly AgcWAV3
+2024-10-07 03:52:10.382 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-07 03:52:10.383 +08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-07 03:52:10.384 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 03:52:10.385 +08:00 [INF] Hosting environment: Development
+2024-10-07 03:52:10.386 +08:00 [INF] Content root path: E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3
+2024-10-07 03:52:10.387 +08:00 [DBG] Hosting started
+2024-10-07 03:52:10.528 +08:00 [DBG] Connection id "0HN7681ESARHB" accepted.
+2024-10-07 03:52:10.528 +08:00 [DBG] Connection id "0HN7681ESARHA" accepted.
+2024-10-07 03:52:10.530 +08:00 [DBG] Connection id "0HN7681ESARHB" started.
+2024-10-07 03:52:10.530 +08:00 [DBG] Connection id "0HN7681ESARHA" started.
+2024-10-07 03:52:10.577 +08:00 [DBG] Connection id "0HN7681ESARHA" received FIN.
+2024-10-07 03:52:10.577 +08:00 [DBG] Connection id "0HN7681ESARHB" received FIN.
+2024-10-07 03:52:10.580 +08:00 [DBG] Connection id "0HN7681ESARHA" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 03:52:10.580 +08:00 [DBG] Connection id "0HN7681ESARHB" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 03:52:10.583 +08:00 [DBG] Connection id "0HN7681ESARHA" disconnecting.
+2024-10-07 03:52:10.583 +08:00 [DBG] Connection id "0HN7681ESARHB" disconnecting.
+2024-10-07 03:52:10.588 +08:00 [DBG] Connection id "0HN7681ESARHA" stopped.
+2024-10-07 03:52:10.588 +08:00 [DBG] Connection id "0HN7681ESARHB" stopped.
+2024-10-07 03:52:10.749 +08:00 [DBG] Connection id "0HN7681ESARHC" accepted.
+2024-10-07 03:52:10.751 +08:00 [DBG] Connection id "0HN7681ESARHC" started.
+2024-10-07 03:52:10.754 +08:00 [DBG] Connection id "0HN7681ESARHD" accepted.
+2024-10-07 03:52:10.755 +08:00 [DBG] Connection id "0HN7681ESARHD" started.
+2024-10-07 03:52:10.797 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-07 03:52:11.016 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-07 03:52:11.347 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-07 03:52:11.350 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 03:52:11.355 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-07 03:52:11.451 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-07 03:52:11.455 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-07 03:52:11.565 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-07 03:52:11.567 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-07 03:52:11.570 +08:00 [DBG] Connection id "0HN7681ESARHC" completed keep alive response.
+2024-10-07 03:52:11.574 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 781.9604ms
+2024-10-07 03:52:11.588 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-07 03:52:11.594 +08:00 [DBG] Connection id "0HN7681ESARHC" completed keep alive response.
+2024-10-07 03:52:11.596 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 8.0928ms
+2024-10-07 03:52:11.601 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-07 03:52:11.653 +08:00 [DBG] Connection id "0HN7681ESARHC" completed keep alive response.
+2024-10-07 03:52:11.656 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 55.0596ms
+2024-10-07 03:52:11.733 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-07 03:52:11.738 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-07 03:52:11.739 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 03:52:11.741 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-07 03:52:12.552 +08:00 [DBG] Connection id "0HN7681ESARHC" completed keep alive response.
+2024-10-07 03:52:12.555 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 821.7408ms
+2024-10-07 17:58:57.541 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-07 17:59:02.298 +08:00 [DBG] Hosting starting
+2024-10-07 17:59:02.428 +08:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-07 17:59:02.474 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-36a6ad2a-467d-4dd0-9ec4-fec33560db3e.xml'.
+2024-10-07 17:59:02.685 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-53d09a45-cf17-4796-a1ad-2be8b609d0d0.xml'.
+2024-10-07 17:59:02.733 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-5e0a1508-ecff-41ef-a58d-adc93ff578fe.xml'.
+2024-10-07 17:59:02.781 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6b596c79-0a0a-4cf8-840a-bcaff7354266.xml'.
+2024-10-07 17:59:02.863 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6bc2db21-233b-48b6-8335-89f4f72dfa34.xml'.
+2024-10-07 17:59:02.916 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-93a5d8ff-b524-4a30-b6ce-8b68b3aea500.xml'.
+2024-10-07 17:59:02.956 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-f55988e9-9861-4e5c-b561-edfcd94c5242.xml'.
+2024-10-07 17:59:03.020 +08:00 [DBG] Found key {36a6ad2a-467d-4dd0-9ec4-fec33560db3e}.
+2024-10-07 17:59:03.043 +08:00 [DBG] Found key {53d09a45-cf17-4796-a1ad-2be8b609d0d0}.
+2024-10-07 17:59:03.044 +08:00 [DBG] Found key {5e0a1508-ecff-41ef-a58d-adc93ff578fe}.
+2024-10-07 17:59:03.046 +08:00 [DBG] Found key {6b596c79-0a0a-4cf8-840a-bcaff7354266}.
+2024-10-07 17:59:03.047 +08:00 [DBG] Found key {6bc2db21-233b-48b6-8335-89f4f72dfa34}.
+2024-10-07 17:59:03.048 +08:00 [DBG] Found key {93a5d8ff-b524-4a30-b6ce-8b68b3aea500}.
+2024-10-07 17:59:03.050 +08:00 [DBG] Found key {f55988e9-9861-4e5c-b561-edfcd94c5242}.
+2024-10-07 17:59:03.058 +08:00 [DBG] Considering key {6bc2db21-233b-48b6-8335-89f4f72dfa34} with expiration date 2024-12-09 17:37:48Z as default key.
+2024-10-07 17:59:03.062 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-07 17:59:03.067 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-07 17:59:03.069 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-07 17:59:03.076 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-07 17:59:03.079 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-07 17:59:03.082 +08:00 [DBG] Using key {6bc2db21-233b-48b6-8335-89f4f72dfa34} as the default key.
+2024-10-07 17:59:03.083 +08:00 [DBG] Key ring with default key {6bc2db21-233b-48b6-8335-89f4f72dfa34} was loaded during application startup.
+2024-10-07 17:59:04.047 +08:00 [INF] Now listening on: http://localhost:7109
+2024-10-07 17:59:04.049 +08:00 [INF] Now listening on: http://192.168.1.15:7109
+2024-10-07 17:59:04.051 +08:00 [DBG] Loaded hosting startup assembly AgcWAV3
+2024-10-07 17:59:04.053 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-07 17:59:04.054 +08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-07 17:59:04.057 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-07 17:59:04.058 +08:00 [INF] Hosting environment: Development
+2024-10-07 17:59:04.060 +08:00 [INF] Content root path: E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3
+2024-10-07 17:59:04.061 +08:00 [DBG] Hosting started
+2024-10-07 17:59:04.286 +08:00 [DBG] Connection id "0HN76MQMI2UH5" received FIN.
+2024-10-07 17:59:04.290 +08:00 [DBG] Connection id "0HN76MQMI2UH5" accepted.
+2024-10-07 17:59:04.293 +08:00 [DBG] Connection id "0HN76MQMI2UH5" started.
+2024-10-07 17:59:04.305 +08:00 [DBG] Connection id "0HN76MQMI2UH5" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-07 17:59:04.310 +08:00 [DBG] Connection id "0HN76MQMI2UH5" disconnecting.
+2024-10-07 17:59:04.316 +08:00 [DBG] Connection id "0HN76MQMI2UH5" stopped.
+2024-10-07 17:59:05.014 +08:00 [DBG] Connection id "0HN76MQMI2UH6" accepted.
+2024-10-07 17:59:05.016 +08:00 [DBG] Connection id "0HN76MQMI2UH6" started.
+2024-10-07 17:59:05.020 +08:00 [DBG] Connection id "0HN76MQMI2UH7" accepted.
+2024-10-07 17:59:05.021 +08:00 [DBG] Connection id "0HN76MQMI2UH7" started.
+2024-10-07 17:59:05.671 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-07 17:59:06.384 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-07 17:59:06.697 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-07 17:59:06.699 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 17:59:06.703 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-07 17:59:06.831 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-07 17:59:06.834 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-07 17:59:06.870 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-07 17:59:06.872 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-07 17:59:06.874 +08:00 [DBG] Connection id "0HN76MQMI2UH6" completed keep alive response.
+2024-10-07 17:59:06.877 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 1211.938ms
+2024-10-07 17:59:06.918 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-07 17:59:06.923 +08:00 [DBG] Connection id "0HN76MQMI2UH6" completed keep alive response.
+2024-10-07 17:59:06.924 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 6.1054ms
+2024-10-07 17:59:07.007 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-07 17:59:07.083 +08:00 [DBG] Connection id "0HN76MQMI2UH6" completed keep alive response.
+2024-10-07 17:59:07.084 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 77.0868ms
+2024-10-07 17:59:07.506 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-07 17:59:07.510 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-07 17:59:07.511 +08:00 [DBG] Request did not match any endpoints
+2024-10-07 17:59:07.512 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-07 17:59:08.181 +08:00 [DBG] Connection id "0HN76MQMI2UH6" completed keep alive response.
+2024-10-07 17:59:08.183 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 676.4333ms

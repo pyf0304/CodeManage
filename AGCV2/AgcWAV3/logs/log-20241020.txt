@@ -1,0 +1,231 @@
+2024-10-20 01:19:29.609 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" accepted.
+2024-10-20 01:19:29.656 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" started.
+2024-10-20 01:19:29.659 +08:00 [INF] Request starting HTTP/1.1 OPTIONS http://192.168.1.15:7109/api/account/info - null null
+2024-10-20 01:19:29.669 +08:00 [DBG] 1 candidate(s) found for the request path '/api/account/info'
+2024-10-20 01:19:29.670 +08:00 [DBG] Request matched endpoint '405 HTTP Method Not Supported'
+2024-10-20 01:19:29.672 +08:00 [INF] 申请服务:Request OPTIONS /api/account/info
+2024-10-20 01:19:29.674 +08:00 [DBG] The request has an origin header: 'http://localhost:8089'.
+2024-10-20 01:19:29.676 +08:00 [INF] CORS policy execution successful.
+2024-10-20 01:19:29.678 +08:00 [DBG] The request is a preflight request.
+2024-10-20 01:19:29.679 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" completed keep alive response.
+2024-10-20 01:19:29.680 +08:00 [INF] Request finished HTTP/1.1 OPTIONS http://192.168.1.15:7109/api/account/info - 204 null null 20.5597ms
+2024-10-20 01:19:29.689 +08:00 [INF] Request starting HTTP/1.1 GET http://192.168.1.15:7109/api/account/info - null null
+2024-10-20 01:19:29.693 +08:00 [DBG] 1 candidate(s) found for the request path '/api/account/info'
+2024-10-20 01:19:29.697 +08:00 [DBG] Endpoint 'UserAdmin.Controllers.accountController.info (AgcWAV3)' with route pattern 'api/account/info' is valid for the request path '/api/account/info'
+2024-10-20 01:19:29.699 +08:00 [DBG] Request matched endpoint 'UserAdmin.Controllers.accountController.info (AgcWAV3)'
+2024-10-20 01:19:29.700 +08:00 [INF] 申请服务:Request GET /api/account/info
+2024-10-20 01:19:29.701 +08:00 [DBG] The request has an origin header: 'http://localhost:8089'.
+2024-10-20 01:19:29.702 +08:00 [INF] CORS policy execution successful.
+2024-10-20 01:19:29.704 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-20 01:19:29.706 +08:00 [WRN] Failed to determine the https port for redirect.
+2024-10-20 01:19:29.778 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-20 01:19:29.783 +08:00 [INF] Executing endpoint 'UserAdmin.Controllers.accountController.info (AgcWAV3)'
+2024-10-20 01:19:29.801 +08:00 [INF] Route matched with {action = "info", controller = "account"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult info() on controller UserAdmin.Controllers.accountController (AgcWAV3).
+2024-10-20 01:19:29.806 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-20 01:19:29.809 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-20 01:19:29.811 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-20 01:19:29.814 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-20 01:19:29.815 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-20 01:19:29.821 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: UserAdmin.Controllers.accountController.info (AgcWAV3)
+2024-10-20 01:19:29.972 +08:00 [ERR] 令牌验证失败
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo (UTC): '2024/10/19 15:29:10', Current time (UTC): '2024/10/19 17:19:29'.
+   at Microsoft.IdentityModel.Tokens.ValidatorUtilities.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters, BaseConfiguration configuration)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateJWS(String token, TokenValidationParameters validationParameters, BaseConfiguration currentConfiguration, SecurityToken& signatureValidatedToken, ExceptionDispatchInfo& exceptionThrown)
+--- End of stack trace from previous location ---
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, JwtSecurityToken outerToken, TokenValidationParameters validationParameters, SecurityToken& signatureValidatedToken)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at AgcWA.Controllers.ApiAuthorizeAttributeV4.OnAuthorization(AuthorizationFilterContext context) in E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3\PubFun\JWT\ApiAuthorizeAttributeV4.cs:line 94
+2024-10-20 01:19:30.092 +08:00 [INF] Authorization failed for the request at filter 'AgcWA.Controllers.ApiAuthorizeAttributeV4'.
+2024-10-20 01:19:30.097 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-20 01:19:30.101 +08:00 [DBG] No information found on request to perform content negotiation.
+2024-10-20 01:19:30.103 +08:00 [DBG] Attempting to select the first output formatter in the output formatters list which supports a content type from the explicitly specified content types '["application/problem+json","application/problem+xml","application/problem+json","application/problem+xml"]'.
+2024-10-20 01:19:30.108 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/problem+json' to write the response.
+2024-10-20 01:19:30.110 +08:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-10-20 01:19:30.132 +08:00 [INF] Executed action UserAdmin.Controllers.accountController.info (AgcWAV3) in 310.5511ms
+2024-10-20 01:19:30.134 +08:00 [INF] Executed endpoint 'UserAdmin.Controllers.accountController.info (AgcWAV3)'
+2024-10-20 01:19:30.135 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" completed keep alive response.
+2024-10-20 01:19:30.136 +08:00 [INF] Request finished HTTP/1.1 GET http://192.168.1.15:7109/api/account/info - 401 null application/problem+json; charset=utf-8 447.4376ms
+2024-10-20 01:19:33.784 +08:00 [INF] Request starting HTTP/1.1 GET http://192.168.1.15:7109/api/admin/captchaImg?width=100&height=50 - null null
+2024-10-20 01:19:33.788 +08:00 [DBG] 1 candidate(s) found for the request path '/api/admin/captchaImg'
+2024-10-20 01:19:33.789 +08:00 [DBG] Endpoint 'UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)' with route pattern 'api/admin/captchaImg' is valid for the request path '/api/admin/captchaImg'
+2024-10-20 01:19:33.791 +08:00 [DBG] Request matched endpoint 'UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)'
+2024-10-20 01:19:33.793 +08:00 [INF] 申请服务:Request GET /api/admin/captchaImg
+2024-10-20 01:19:33.794 +08:00 [DBG] The request has an origin header: 'http://localhost:8089'.
+2024-10-20 01:19:33.795 +08:00 [INF] CORS policy execution successful.
+2024-10-20 01:19:33.796 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-20 01:19:33.798 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-20 01:19:33.815 +08:00 [INF] Executing endpoint 'UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)'
+2024-10-20 01:19:33.826 +08:00 [INF] Route matched with {action = "captchaImg", controller = "admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult captchaImg(Int32, Int32) on controller UserAdmin.Controllers.adminController (AgcWAV3).
+2024-10-20 01:19:33.829 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-20 01:19:33.830 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-20 01:19:33.831 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-20 01:19:33.833 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-20 01:19:33.834 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-20 01:19:33.837 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)
+2024-10-20 01:19:33.839 +08:00 [INF] 可匿名访问: UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)
+2024-10-20 01:19:33.841 +08:00 [DBG] Executing controller factory for controller UserAdmin.Controllers.adminController (AgcWAV3)
+2024-10-20 01:19:33.844 +08:00 [DBG] Executed controller factory for controller UserAdmin.Controllers.adminController (AgcWAV3)
+2024-10-20 01:19:33.855 +08:00 [DBG] Attempting to bind parameter 'width' of type 'System.Int32' ...
+2024-10-20 01:19:33.860 +08:00 [DBG] Attempting to bind parameter 'width' of type 'System.Int32' using the name 'width' in request data ...
+2024-10-20 01:19:33.863 +08:00 [DBG] Done attempting to bind parameter 'width' of type 'System.Int32'.
+2024-10-20 01:19:33.865 +08:00 [DBG] Done attempting to bind parameter 'width' of type 'System.Int32'.
+2024-10-20 01:19:33.867 +08:00 [DBG] Attempting to validate the bound parameter 'width' of type 'System.Int32' ...
+2024-10-20 01:19:33.871 +08:00 [DBG] Done attempting to validate the bound parameter 'width' of type 'System.Int32'.
+2024-10-20 01:19:33.874 +08:00 [DBG] Attempting to bind parameter 'height' of type 'System.Int32' ...
+2024-10-20 01:19:33.876 +08:00 [DBG] Attempting to bind parameter 'height' of type 'System.Int32' using the name 'height' in request data ...
+2024-10-20 01:19:33.878 +08:00 [DBG] Done attempting to bind parameter 'height' of type 'System.Int32'.
+2024-10-20 01:19:33.879 +08:00 [DBG] Done attempting to bind parameter 'height' of type 'System.Int32'.
+2024-10-20 01:19:33.880 +08:00 [DBG] Attempting to validate the bound parameter 'height' of type 'System.Int32' ...
+2024-10-20 01:19:33.882 +08:00 [DBG] Done attempting to validate the bound parameter 'height' of type 'System.Int32'.
+2024-10-20 01:19:33.934 +08:00 [INF] Executing action method UserAdmin.Controllers.adminController.captchaImg (AgcWAV3) - Validation state: "Valid"
+2024-10-20 01:19:34.316 +08:00 [INF] 获取校验码:Vb6G,图像信息: data:image/svg+xml;base64,77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6eG1sPSJodHRwOi8vd3d3LnczLm9yZy9YTUwvMTk5OC9uYW1lc3BhY2UiIHdpZHRoPSIxMjBweCIgaGVpZ2h0PSI0MHB4Ij4NCiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iNTAlIiBzdHlsZT0iZmlsbDp3aGl0ZTsiIC8+DQogIDx0ZXh0IHg9IjAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgc3R5bGU9ImZpbGw6YmxhY2s7Ij5WYjZHPC90ZXh0Pg0KPC9zdmc+
+2024-10-20 01:19:34.323 +08:00 [INF] Executed action method UserAdmin.Controllers.adminController.captchaImg (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 383.2208ms.
+2024-10-20 01:19:34.327 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-20 01:19:34.330 +08:00 [DBG] No information found on request to perform content negotiation.
+2024-10-20 01:19:34.331 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-20 01:19:34.332 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-20 01:19:34.333 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-20 01:19:34.334 +08:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[<>f__AnonymousType9`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], AgcWAV3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-20 01:19:34.342 +08:00 [INF] Executed action UserAdmin.Controllers.adminController.captchaImg (AgcWAV3) in 505.3961ms
+2024-10-20 01:19:34.344 +08:00 [INF] Executed endpoint 'UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)'
+2024-10-20 01:19:34.345 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" completed keep alive response.
+2024-10-20 01:19:34.345 +08:00 [INF] Request finished HTTP/1.1 GET http://192.168.1.15:7109/api/admin/captchaImg?width=100&height=50 - 200 null application/json; charset=utf-8 561.6664ms
+2024-10-20 01:19:36.637 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" received FIN.
+2024-10-20 01:19:36.638 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-20 01:19:36.640 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" disconnecting.
+2024-10-20 01:19:36.641 +08:00 [DBG] Connection id "0HN7G4DJB2QUN" stopped.
+2024-10-20 05:41:08.909 +08:00 [DBG] Connection id "0HN7G4DJB2QUO" accepted.
+2024-10-20 05:41:08.922 +08:00 [DBG] Connection id "0HN7G4DJB2QUO" started.
+2024-10-20 05:41:08.924 +08:00 [INF] Request starting HTTP/1.1 GET http://192.168.1.15:7109/api/admin/captchaImg?width=100&height=50 - null null
+2024-10-20 05:41:08.930 +08:00 [DBG] 1 candidate(s) found for the request path '/api/admin/captchaImg'
+2024-10-20 05:41:08.932 +08:00 [DBG] Endpoint 'UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)' with route pattern 'api/admin/captchaImg' is valid for the request path '/api/admin/captchaImg'
+2024-10-20 05:41:08.935 +08:00 [DBG] Request matched endpoint 'UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)'
+2024-10-20 05:41:08.937 +08:00 [INF] 申请服务:Request GET /api/admin/captchaImg
+2024-10-20 05:41:08.938 +08:00 [DBG] The request has an origin header: 'http://localhost:8089'.
+2024-10-20 05:41:08.940 +08:00 [INF] CORS policy execution successful.
+2024-10-20 05:41:08.942 +08:00 [DBG] Static files was skipped as the request already matched an endpoint.
+2024-10-20 05:41:08.948 +08:00 [DBG] AuthenticationScheme: Bearer was not authenticated.
+2024-10-20 05:41:08.950 +08:00 [INF] Executing endpoint 'UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)'
+2024-10-20 05:41:08.952 +08:00 [INF] Route matched with {action = "captchaImg", controller = "admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult captchaImg(Int32, Int32) on controller UserAdmin.Controllers.adminController (AgcWAV3).
+2024-10-20 05:41:08.958 +08:00 [DBG] Execution plan of authorization filters (in the following order): ["AgcWA.Controllers.ApiAuthorizeAttributeV4"]
+2024-10-20 05:41:08.961 +08:00 [DBG] Execution plan of resource filters (in the following order): ["None"]
+2024-10-20 05:41:08.966 +08:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)","Microsoft.AspNetCore.Mvc.Infrastructure.ModelStateInvalidFilter (Order: -2000)"]
+2024-10-20 05:41:08.972 +08:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2024-10-20 05:41:08.975 +08:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.Infrastructure.ClientErrorResultFilter (Order: -2000)"]
+2024-10-20 05:41:08.979 +08:00 [INF] 授权过滤:Authorization filter executing. actionName: UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)
+2024-10-20 05:41:08.981 +08:00 [INF] 可匿名访问: UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)
+2024-10-20 05:41:08.983 +08:00 [DBG] Executing controller factory for controller UserAdmin.Controllers.adminController (AgcWAV3)
+2024-10-20 05:41:08.987 +08:00 [DBG] Executed controller factory for controller UserAdmin.Controllers.adminController (AgcWAV3)
+2024-10-20 05:41:08.989 +08:00 [DBG] Attempting to bind parameter 'width' of type 'System.Int32' ...
+2024-10-20 05:41:08.991 +08:00 [DBG] Attempting to bind parameter 'width' of type 'System.Int32' using the name 'width' in request data ...
+2024-10-20 05:41:08.994 +08:00 [DBG] Done attempting to bind parameter 'width' of type 'System.Int32'.
+2024-10-20 05:41:08.997 +08:00 [DBG] Done attempting to bind parameter 'width' of type 'System.Int32'.
+2024-10-20 05:41:08.999 +08:00 [DBG] Attempting to validate the bound parameter 'width' of type 'System.Int32' ...
+2024-10-20 05:41:09.002 +08:00 [DBG] Done attempting to validate the bound parameter 'width' of type 'System.Int32'.
+2024-10-20 05:41:09.004 +08:00 [DBG] Attempting to bind parameter 'height' of type 'System.Int32' ...
+2024-10-20 05:41:09.006 +08:00 [DBG] Attempting to bind parameter 'height' of type 'System.Int32' using the name 'height' in request data ...
+2024-10-20 05:41:09.009 +08:00 [DBG] Done attempting to bind parameter 'height' of type 'System.Int32'.
+2024-10-20 05:41:09.012 +08:00 [DBG] Done attempting to bind parameter 'height' of type 'System.Int32'.
+2024-10-20 05:41:09.014 +08:00 [DBG] Attempting to validate the bound parameter 'height' of type 'System.Int32' ...
+2024-10-20 05:41:09.017 +08:00 [DBG] Done attempting to validate the bound parameter 'height' of type 'System.Int32'.
+2024-10-20 05:41:09.054 +08:00 [INF] Executing action method UserAdmin.Controllers.adminController.captchaImg (AgcWAV3) - Validation state: "Valid"
+2024-10-20 05:41:09.059 +08:00 [INF] 获取校验码:gWib,图像信息: data:image/svg+xml;base64,77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6eG1sPSJodHRwOi8vd3d3LnczLm9yZy9YTUwvMTk5OC9uYW1lc3BhY2UiIHdpZHRoPSIxMjBweCIgaGVpZ2h0PSI0MHB4Ij4NCiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iNTAlIiBzdHlsZT0iZmlsbDp3aGl0ZTsiIC8+DQogIDx0ZXh0IHg9IjAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNiIgc3R5bGU9ImZpbGw6YmxhY2s7Ij5nV2liPC90ZXh0Pg0KPC9zdmc+
+2024-10-20 05:41:09.062 +08:00 [INF] Executed action method UserAdmin.Controllers.adminController.captchaImg (AgcWAV3), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 4.9791ms.
+2024-10-20 05:41:09.067 +08:00 [DBG] List of registered output formatters, in the following order: ["Microsoft.AspNetCore.Mvc.Formatters.HttpNoContentOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StringOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.StreamOutputFormatter","Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter"]
+2024-10-20 05:41:09.073 +08:00 [DBG] No information found on request to perform content negotiation.
+2024-10-20 05:41:09.076 +08:00 [DBG] Attempting to select an output formatter without using a content type as no explicit content types were specified for the response.
+2024-10-20 05:41:09.079 +08:00 [DBG] Attempting to select the first formatter in the output formatters list which can write the result.
+2024-10-20 05:41:09.080 +08:00 [DBG] Selected output formatter 'Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter' and content type 'application/json' to write the response.
+2024-10-20 05:41:09.083 +08:00 [INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`3[[<>f__AnonymousType9`2[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], AgcWAV3, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-10-20 05:41:09.089 +08:00 [INF] Executed action UserAdmin.Controllers.adminController.captchaImg (AgcWAV3) in 110.1032ms
+2024-10-20 05:41:09.092 +08:00 [INF] Executed endpoint 'UserAdmin.Controllers.adminController.captchaImg (AgcWAV3)'
+2024-10-20 05:41:09.095 +08:00 [DBG] Connection id "0HN7G4DJB2QUO" completed keep alive response.
+2024-10-20 05:41:09.098 +08:00 [INF] Request finished HTTP/1.1 GET http://192.168.1.15:7109/api/admin/captchaImg?width=100&height=50 - 200 null application/json; charset=utf-8 173.8255ms
+2024-10-20 05:41:17.305 +08:00 [DBG] Connection id "0HN7G4DJB2QUO" received FIN.
+2024-10-20 05:41:17.307 +08:00 [DBG] Connection id "0HN7G4DJB2QUO" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-20 05:41:17.310 +08:00 [DBG] Connection id "0HN7G4DJB2QUO" disconnecting.
+2024-10-20 05:41:17.325 +08:00 [DBG] Connection id "0HN7G4DJB2QUO" stopped.
+2024-10-20 17:41:30.448 +08:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.TryParseModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2024-10-20 17:41:35.084 +08:00 [DBG] Hosting starting
+2024-10-20 17:41:35.121 +08:00 [INF] User profile is available. Using 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-20 17:41:35.130 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-36a6ad2a-467d-4dd0-9ec4-fec33560db3e.xml'.
+2024-10-20 17:41:35.155 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-53d09a45-cf17-4796-a1ad-2be8b609d0d0.xml'.
+2024-10-20 17:41:35.171 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-5e0a1508-ecff-41ef-a58d-adc93ff578fe.xml'.
+2024-10-20 17:41:35.186 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6b596c79-0a0a-4cf8-840a-bcaff7354266.xml'.
+2024-10-20 17:41:35.202 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-6bc2db21-233b-48b6-8335-89f4f72dfa34.xml'.
+2024-10-20 17:41:35.226 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-93a5d8ff-b524-4a30-b6ce-8b68b3aea500.xml'.
+2024-10-20 17:41:35.242 +08:00 [DBG] Reading data from file 'C:\Users\Administrator\AppData\Local\ASP.NET\DataProtection-Keys\key-f55988e9-9861-4e5c-b561-edfcd94c5242.xml'.
+2024-10-20 17:41:35.264 +08:00 [DBG] Found key {36a6ad2a-467d-4dd0-9ec4-fec33560db3e}.
+2024-10-20 17:41:35.270 +08:00 [DBG] Found key {53d09a45-cf17-4796-a1ad-2be8b609d0d0}.
+2024-10-20 17:41:35.271 +08:00 [DBG] Found key {5e0a1508-ecff-41ef-a58d-adc93ff578fe}.
+2024-10-20 17:41:35.273 +08:00 [DBG] Found key {6b596c79-0a0a-4cf8-840a-bcaff7354266}.
+2024-10-20 17:41:35.276 +08:00 [DBG] Found key {6bc2db21-233b-48b6-8335-89f4f72dfa34}.
+2024-10-20 17:41:35.277 +08:00 [DBG] Found key {93a5d8ff-b524-4a30-b6ce-8b68b3aea500}.
+2024-10-20 17:41:35.279 +08:00 [DBG] Found key {f55988e9-9861-4e5c-b561-edfcd94c5242}.
+2024-10-20 17:41:35.288 +08:00 [DBG] Considering key {6bc2db21-233b-48b6-8335-89f4f72dfa34} with expiration date 2024-12-09 17:37:48Z as default key.
+2024-10-20 17:41:35.292 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-20 17:41:35.299 +08:00 [DBG] Decrypting secret element using Windows DPAPI.
+2024-10-20 17:41:35.301 +08:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2024-10-20 17:41:35.310 +08:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2024-10-20 17:41:35.312 +08:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2024-10-20 17:41:35.316 +08:00 [DBG] Using key {6bc2db21-233b-48b6-8335-89f4f72dfa34} as the default key.
+2024-10-20 17:41:35.318 +08:00 [DBG] Key ring with default key {6bc2db21-233b-48b6-8335-89f4f72dfa34} was loaded during application startup.
+2024-10-20 17:41:35.869 +08:00 [INF] Now listening on: http://localhost:7109
+2024-10-20 17:41:35.871 +08:00 [INF] Now listening on: http://192.168.1.15:7109
+2024-10-20 17:41:35.872 +08:00 [DBG] Loaded hosting startup assembly AgcWAV3
+2024-10-20 17:41:35.873 +08:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2024-10-20 17:41:35.874 +08:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2024-10-20 17:41:35.876 +08:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-20 17:41:35.877 +08:00 [INF] Hosting environment: Development
+2024-10-20 17:41:35.878 +08:00 [INF] Content root path: E:\OneDrive-personal\OneDrive\AspNet2011\AGCV2\AgcWAV3
+2024-10-20 17:41:35.881 +08:00 [DBG] Hosting started
+2024-10-20 17:41:36.251 +08:00 [DBG] Connection id "0HN7GTDHT5HJU" received FIN.
+2024-10-20 17:41:36.251 +08:00 [DBG] Connection id "0HN7GTDHT5HJV" received FIN.
+2024-10-20 17:41:36.260 +08:00 [DBG] Connection id "0HN7GTDHT5HJV" accepted.
+2024-10-20 17:41:36.260 +08:00 [DBG] Connection id "0HN7GTDHT5HJU" accepted.
+2024-10-20 17:41:36.263 +08:00 [DBG] Connection id "0HN7GTDHT5HJV" started.
+2024-10-20 17:41:36.264 +08:00 [DBG] Connection id "0HN7GTDHT5HJU" started.
+2024-10-20 17:41:36.274 +08:00 [DBG] Connection id "0HN7GTDHT5HJV" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-20 17:41:36.274 +08:00 [DBG] Connection id "0HN7GTDHT5HJU" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-20 17:41:36.278 +08:00 [DBG] Connection id "0HN7GTDHT5HJV" disconnecting.
+2024-10-20 17:41:36.280 +08:00 [DBG] Connection id "0HN7GTDHT5HJU" disconnecting.
+2024-10-20 17:41:36.294 +08:00 [DBG] Connection id "0HN7GTDHT5HJV" stopped.
+2024-10-20 17:41:36.294 +08:00 [DBG] Connection id "0HN7GTDHT5HJU" stopped.
+2024-10-20 17:42:10.955 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" accepted.
+2024-10-20 17:42:10.959 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" started.
+2024-10-20 17:42:10.967 +08:00 [DBG] Connection id "0HN7GTDHT5HK1" accepted.
+2024-10-20 17:42:10.973 +08:00 [DBG] Connection id "0HN7GTDHT5HK1" started.
+2024-10-20 17:42:13.988 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/index.html - null null
+2024-10-20 17:42:14.178 +08:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2024-10-20 17:42:14.467 +08:00 [DBG] No candidates found for the request path '/swagger/index.html'
+2024-10-20 17:42:14.469 +08:00 [DBG] Request did not match any endpoints
+2024-10-20 17:42:14.473 +08:00 [INF] 申请服务:Request GET /swagger/index.html
+2024-10-20 17:42:14.580 +08:00 [DBG] Response markup is scheduled to include Browser Link script injection.
+2024-10-20 17:42:14.582 +08:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2024-10-20 17:42:14.603 +08:00 [DBG] Response markup was updated to include Browser Link script injection.
+2024-10-20 17:42:14.606 +08:00 [DBG] Response markup was updated to include browser refresh script injection.
+2024-10-20 17:42:14.608 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" completed keep alive response.
+2024-10-20 17:42:14.611 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/index.html - 200 null text/html;charset=utf-8 630.3799ms
+2024-10-20 17:42:15.390 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-20 17:42:15.397 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" completed keep alive response.
+2024-10-20 17:42:15.399 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_framework/aspnetcore-browser-refresh.js - 200 13750 application/javascript; charset=utf-8 9.1274ms
+2024-10-20 17:42:21.993 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/_vs/browserLink - null null
+2024-10-20 17:42:22.045 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" completed keep alive response.
+2024-10-20 17:42:22.047 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.0614ms
+2024-10-20 17:42:22.526 +08:00 [INF] Request starting HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - null null
+2024-10-20 17:42:22.531 +08:00 [DBG] No candidates found for the request path '/swagger/v1/swagger.json'
+2024-10-20 17:42:22.532 +08:00 [DBG] Request did not match any endpoints
+2024-10-20 17:42:22.534 +08:00 [INF] 申请服务:Request GET /swagger/v1/swagger.json
+2024-10-20 17:42:23.244 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" completed keep alive response.
+2024-10-20 17:42:23.246 +08:00 [INF] Request finished HTTP/1.1 GET http://localhost:7109/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 719.706ms
+2024-10-20 17:42:45.314 +08:00 [DBG] Connection id "0HN7GTDHT5HK1" received FIN.
+2024-10-20 17:42:45.314 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" received FIN.
+2024-10-20 17:42:45.332 +08:00 [DBG] Connection id "0HN7GTDHT5HK1" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-20 17:42:45.337 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" disconnecting.
+2024-10-20 17:42:45.350 +08:00 [DBG] Connection id "0HN7GTDHT5HK1" disconnecting.
+2024-10-20 17:42:45.361 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" sending FIN because: "The Socket transport's send loop completed gracefully."
+2024-10-20 17:42:45.364 +08:00 [DBG] Connection id "0HN7GTDHT5HK1" stopped.
+2024-10-20 17:42:45.368 +08:00 [DBG] Connection id "0HN7GTDHT5HK0" stopped.

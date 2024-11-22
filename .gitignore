@@ -1,0 +1,6 @@
+*/.vs/
+*.log
+*/bin/
+*/obj/
+*/packages/
+
