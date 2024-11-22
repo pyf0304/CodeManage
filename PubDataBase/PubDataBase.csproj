@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{38984694-02CB-4857-BBA3-125582EEFB74}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PubDataBase</RootNamespace>
+    <AssemblyName>PubDataBase</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>11.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <DocumentationFile>bin\Debug\PubDataBase.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TzPubFunction, Version=2020.12.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\PublicLib\TzPubFunction.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsResource.cs" />
+    <Compile Include="com\taishsoft\commdbfororacle\clsDateTime_Db.cs" />
+    <Compile Include="com\taishsoft\commdbfororacle\clsGeneralTab.cs" />
+    <Compile Include="com\taishsoft\commdbfororacle\clsGeneralTab2.cs" />
+    <Compile Include="com\taishsoft\commdbfororacle\clsOracleDB.cs" />
+    <Compile Include="com\taishsoft\commdbfororacle\clsSpecSQL.cs" />
+    <Compile Include="com\taishsoft\commdbfororacle\clsSQL.cs" />
+    <Compile Include="com\taishsoft\commdbfororacle\clsSqlConnect_Tz.cs" />
+    <Compile Include="com\taishsoft\commdbfororacle\clsSqlEx.cs" />
+    <Compile Include="com\taishsoft\commdbforxml\clsSpecSQL.cs" />
+    <Compile Include="com\taishsoft\commdbforxml\clsSQL.cs" />
+    <Compile Include="com\taishsoft\commdb\clsAppType.cs" />
+    <Compile Include="com\taishsoft\commdb\clsCommBase4DA2.cs" />
+    <Compile Include="com\taishsoft\commdb\clsCommBase4DA.cs" />
+    <Compile Include="com\taishsoft\commdb\clsDateTime_Db.cs" />
+    <Compile Include="com\taishsoft\commdb\clsGeneralTab.cs" />
+    <Compile Include="com\taishsoft\commdb\clsSQL.cs" />
+    <Compile Include="com\taishsoft\commdb\clsSqlConnect_Tz.cs" />
+    <Compile Include="com\taishsoft\commdb\clsSqlEx.cs" />
+    <Compile Include="com\taishsoft\commdb\clsGeneralTab2.cs" />
+    <Compile Include="com\taishsoft\sqlfororacle\clsColumns.cs" />
+    <Compile Include="com\taishsoft\sqlfororacle\clsSqlObject.cs" />
+    <Compile Include="com\taishsoft\sqlfororacle\clsSqlTabView.cs" />
+    <Compile Include="com\taishsoft\sqlfororacle\clsSqlTabViewEx.cs" />
+    <Compile Include="com\taishsoft\sql\clsConstraints.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlDataBase.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlDataBaseEx.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlSP_Para.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlSP_ParaEx.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlStoreProcedure.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlStoreProcedureEx.cs" />
+    <Compile Include="com\taishsoft\syspara\clsDebugBase_Sql.cs" />
+    <Compile Include="com\taishsoft\syspara\clsPubVar.cs" />
+    <Compile Include="com\taishsoft\TzEnum\clsPubEnum.cs" />
+    <Compile Include="com\taishsoft\sql\clsColumns.cs" />
+    <Compile Include="com\taishsoft\sql\clsFKeys.cs" />
+    <Compile Include="com\taishsoft\sql\clsPKeys.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlObject.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlTabView.cs" />
+    <Compile Include="com\taishsoft\sql\clsSqlTabViewEx.cs" />
+    <Compile Include="com\taishsoft\weektime\clsWeekTimeContentMenu.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="com\taishsoft\commdb\clsSpecSQLforSql.cs" />
+    <Compile Include="com\taishsoft\syspara\clsSysPara_PubDataBase.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceCH.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceCH.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceEN.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceEN.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="SpecData\clsSpecSQL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="11.snk" />
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceCH.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceCH.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceEN.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceEN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

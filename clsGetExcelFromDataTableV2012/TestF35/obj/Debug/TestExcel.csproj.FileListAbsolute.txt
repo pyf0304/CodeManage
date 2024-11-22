@@ -1,0 +1,12 @@
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TzPubFunction.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TzPubFunction.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\obj\Debug\TestExcel.csprojResolveAssemblyReference.cache
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TestExcel.dll.config
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TestExcel.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TestExcel.pdb
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\obj\Debug\TestExcel.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\obj\Debug\TestExcel.pdb
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\CommFunc4Web.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\PubDataBase.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\CommFunc4Web.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\PubDataBase.xml

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TzWinCtrlLib", "TzWinCtrlLib.csproj", "{7CD72E0C-46BC-4B66-A25C-D2F639504846}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTzWinCtrlLib", "..\TestTzWinCtrlLib\TestTzWinCtrlLib.csproj", "{77D8359B-5052-4591-95AF-1A294BBD5282}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CD72E0C-46BC-4B66-A25C-D2F639504846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CD72E0C-46BC-4B66-A25C-D2F639504846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CD72E0C-46BC-4B66-A25C-D2F639504846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CD72E0C-46BC-4B66-A25C-D2F639504846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D8359B-5052-4591-95AF-1A294BBD5282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D8359B-5052-4591-95AF-1A294BBD5282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D8359B-5052-4591-95AF-1A294BBD5282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D8359B-5052-4591-95AF-1A294BBD5282}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

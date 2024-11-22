@@ -1,0 +1,10 @@
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\obj\Debug\TestExcelWin.csprojResolveAssemblyReference.cache
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\obj\Debug\TestExcelWin.Form1.resources
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\obj\Debug\TestExcelWin.Properties.Resources.resources
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\obj\Debug\TestExcelWin.csproj.GenerateResource.Cache
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\bin\Debug\TestExcelWin.exe
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\bin\Debug\TestExcelWin.pdb
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\bin\Debug\TzPubFunction.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\bin\Debug\TzPubFunction.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\obj\Debug\TestExcelWin.exe
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcelWin\obj\Debug\TestExcelWin.pdb

@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0EC7669C-CBDF-4CBE-9B4E-6958E1B546FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>com.taishsoft</RootNamespace>
+    <AssemblyName>TzPubFunction</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\TzPubFunction.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="com\taishsoft\commdb4odbc\clsAccess2007SQL.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsAccessBaseSQL.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsAccessAllVersionSQL.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsAccess2003SQL_OleDb.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsAccess2003SQL_Odbc.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsExcelSQL.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsExcel2003SQL_OleDb.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsExcel2007SQL.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsExcel2003SQL_Odbc.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsExcelBaseSQL.cs" />
+    <Compile Include="com\taishsoft\commdb4odbc\clsExcelAllVersionSQL.cs" />
+    <Compile Include="com\taishsoft\commexception\clsDbObjException.cs" />
+    <Compile Include="com\taishsoft\common\CacheHelper.cs" />
+    <Compile Include="com\taishsoft\common\clsAggregate.cs" />
+    <Compile Include="com\taishsoft\common\clsApplicatoin.cs" />
+    <Compile Include="com\taishsoft\common\clsArray.cs" />
+    <Compile Include="com\taishsoft\common\clsBoolCollection.cs" />
+    <Compile Include="com\taishsoft\common\clsBoolObj_TrueOrFalse.cs" />
+    <Compile Include="com\taishsoft\common\clsCheckSql.cs" />
+    <Compile Include="com\taishsoft\common\clsCommonRegular.cs" />
+    <Compile Include="com\taishsoft\common\clsDataTypeTrans.cs" />
+    <Compile Include="com\taishsoft\common\clsOrderByData.cs" />
+    <Compile Include="com\taishsoft\common\clsShortCollection.cs" />
+    <Compile Include="com\taishsoft\common\clsStackTrace.cs" />
+    <Compile Include="com\taishsoft\common\clsStrCompareIgnoreCase.cs" />
+    <Compile Include="com\taishsoft\common\stuLoginPara.cs" />
+    <Compile Include="com\taishsoft\common\stuTextRange.cs" />
+    <Compile Include="com\taishsoft\common\stuTextPos.cs" />
+    <Compile Include="com\taishsoft\common\stuTopPara.cs" />
+    <Compile Include="com\taishsoft\common\stuRangePara.cs" />
+    <Compile Include="com\taishsoft\common\stuPagerPara.cs" />
+    <Compile Include="com\taishsoft\comm_db_obj\clsCommFun4BLV3.cs" />
+    <Compile Include="com\taishsoft\comm_db_obj\clsCommFun4BLV2.cs" />
+    <Compile Include="com\taishsoft\comm_db_obj\clsCommFun4BL.cs" />
+    <Compile Include="com\taishsoft\comm_db_obj\clsCommonDelegate.cs" />
+    <Compile Include="com\taishsoft\datetime\clsDateTime.cs" />
+    <Compile Include="com\taishsoft\common\clsDebugBase_Fun.cs" />
+    <Compile Include="com\taishsoft\common\clsLog.cs" />
+    <Compile Include="com\taishsoft\common\clsSqlStatementEN.cs" />
+    <Compile Include="com\taishsoft\common\clsSqlStatementBL.cs" />
+    <Compile Include="com\taishsoft\common\clsSqlStatementRelaTabEN.cs" />
+    <Compile Include="com\taishsoft\common\clsString.cs" />
+    <Compile Include="com\taishsoft\common\clsStringCollection.cs" />
+    <Compile Include="com\taishsoft\common\clsSysPara_TzPubFunction.cs" />
+    <Compile Include="com\taishsoft\common\clsTranslate.cs" />
+    <Compile Include="com\taishsoft\common\clsAggregate_String.cs" />
+    <Compile Include="com\taishsoft\common\clsIntCollection.cs" />
+    <Compile Include="com\taishsoft\common\clsLog_S.cs" />
+    <Compile Include="com\taishsoft\common\clsWeekTimesliceBL.cs" />
+    <Compile Include="com\taishsoft\common\clsWeekTimesliceEN.cs" />
+    <Compile Include="com\taishsoft\comm_db_obj\clsConnectStrObj.cs" />
+    <Compile Include="com\taishsoft\comm_db_obj\clsEntityBase.cs" />
+    <Compile Include="com\taishsoft\comm_db_obj\clsEntityBase2.cs" />
+    <Compile Include="com\taishsoft\comm_db_obj\clsTable_SqlCommandText.cs" />
+    <Compile Include="com\taishsoft\DynamicCompiler\clsDynamicCompiler.cs" />
+    <Compile Include="com\taishsoft\DynamicCompiler\clsDynamicFunction.cs" />
+    <Compile Include="com\taishsoft\encrypt\clsEncrypt.cs" />
+    <Compile Include="com\taishsoft\file\clsFile.cs" />
+    <Compile Include="com\taishsoft\file\FileCollection.cs" />
+    <Compile Include="com\taishsoft\file\FileConstants.cs" />
+    <Compile Include="com\taishsoft\file\UserFile.cs" />
+    <Compile Include="com\taishsoft\file\clsFileByEncoding.cs" />
+    <Compile Include="com\taishsoft\Ftp\FTPClient.cs" />
+    <Compile Include="com\taishsoft\json\clsJSON.cs" />
+    <Compile Include="com\taishsoft\lexicalAnalysis\clsLexicalAnalysis4Xml.cs" />
+    <Compile Include="com\taishsoft\lexicalAnalysis\clsLexicalAnalysis4CSharp.cs" />
+    <Compile Include="com\taishsoft\lexicalAnalysis\clsLexicalAnalysis4Js.cs" />
+    <Compile Include="com\taishsoft\lexicalAnalysis\clsLexicalAnalysis4Sql.cs" />
+    <Compile Include="com\taishsoft\lexicalAnalysis\clsLexicalAnalysisBase.cs" />
+    <Compile Include="com\taishsoft\lexicalAnalysis\clsWord_LA.cs" />
+    <Compile Include="com\taishsoft\lexicalAnalysis\tzWordType.cs" />
+    <Compile Include="com\taishsoft\math\clsMath.cs" />
+    <Compile Include="com\taishsoft\math\clsRandomNumber.cs" />
+    <Compile Include="com\taishsoft\Net\clsFTP.cs" />
+    <Compile Include="com\taishsoft\Net\clsFTPClient.cs" />
+    <Compile Include="com\taishsoft\datetime\clsDateRangeBL.cs" />
+    <Compile Include="com\taishsoft\datetime\clsDateRangeEN.cs" />
+    <Compile Include="com\taishsoft\table\clsTableDataBL.cs" />
+    <Compile Include="com\taishsoft\table\clsTableDataEN.cs" />
+    <Compile Include="com\taishsoft\util\clsListItem.cs" />
+    <Compile Include="com\taishsoft\util\clsRange.cs" />
+    <Compile Include="com\taishsoft\util\clsRanking.cs" />
+    <Compile Include="com\taishsoft\util\IBindTreeView.cs" />
+    <Compile Include="com\taishsoft\util\IFindPKaoEduCls.cs" />
+    <Compile Include="com\taishsoft\util\IPKaoSetValueToDS.cs" />
+    <Compile Include="com\taishsoft\util\IPKaoGetWeekValueFromDS.cs" />
+    <Compile Include="com\taishsoft\util\IPk2GetWeekValueFromDS.cs" />
+    <Compile Include="com\taishsoft\util\IPk2SetValueToDS.cs" />
+    <Compile Include="com\taishsoft\util\IPk2GetMemoInfo.cs" />
+    <Compile Include="com\taishsoft\util\IPKaoGetMemoInfo.cs" />
+    <Compile Include="com\taishsoft\util\IRankObj.cs" />
+    <Compile Include="com\taishsoft\util\ISetStudentInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="com\taishsoft\util\clsBiDimDistribute.cs" />
+    <Compile Include="com\taishsoft\util\clsCboObject.cs" />
+    <Compile Include="com\taishsoft\util\clsExportField.cs" />
+    <Compile Include="com\taishsoft\util\clsListViewSorter.cs" />
+    <Compile Include="com\taishsoft\util\clsNodeObj.cs" />
+    <Compile Include="com\taishsoft\util\clsQueryModel.cs" />
+    <Compile Include="com\taishsoft\util\IBindListView.cs" />
+    <Compile Include="com\taishsoft\util\IFindClm.cs" />
+    <Compile Include="com\taishsoft\util\IGetMemoInfo.cs" />
+    <Compile Include="com\taishsoft\util\IGetValueFromDialog.cs" />
+    <Compile Include="com\taishsoft\util\IGetWeekValueFromDS.cs" />
+    <Compile Include="com\taishsoft\util\INotifyEditEnd.cs" />
+    <Compile Include="com\taishsoft\util\ISetAdminCls.cs" />
+    <Compile Include="com\taishsoft\util\ISetClassRoom.cs" />
+    <Compile Include="com\taishsoft\util\ISetPkEduCls.cs" />
+    <Compile Include="com\taishsoft\util\ISetTeacherInfo.cs" />
+    <Compile Include="com\taishsoft\util\ISetValueToDS.cs" />
+    <Compile Include="com\taishsoft\util\IShceGroup.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

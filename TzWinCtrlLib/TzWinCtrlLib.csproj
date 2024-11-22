@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7CD72E0C-46BC-4B66-A25C-D2F639504846}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TzWinCtrlLib</RootNamespace>
+    <AssemblyName>TzWinCtrlLib</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\TzWinCtrlLib.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DirectoryTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryTreeView.Designer.cs">
+      <DependentUpon>DirectoryTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TzRadioButtonList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TzRadioButtonList.Designer.cs">
+      <DependentUpon>TzRadioButtonList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FileListView.Designer.cs">
+      <DependentUpon>FileListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DirectoryTreeView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TzRadioButtonList.resx">
+      <DependentUpon>TzRadioButtonList.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FileListView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FileListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="pic\CLSDFOLD.ICO" />
+    <Content Include="pic\csv.ico" />
+    <Content Include="pic\doc.gif" />
+    <Content Include="pic\doc.ico" />
+    <Content Include="pic\doc.JPG" />
+    <Content Include="pic\doc1.ico" />
+    <Content Include="pic\dot.ico" />
+    <Content Include="pic\help.ico" />
+    <Content Include="pic\htm.JPG" />
+    <Content Include="pic\mdb.ico" />
+    <Content Include="pic\mhtml.ico" />
+    <Content Include="pic\ok.ico" />
+    <Content Include="pic\OPENFOLD.ICO" />
+    <Content Include="pic\pot.ico" />
+    <Content Include="pic\ppt.ico" />
+    <Content Include="pic\pub.ico" />
+    <Content Include="pic\rtf.ico" />
+    <Content Include="pic\run.ico" />
+    <Content Include="pic\swf.JPG" />
+    <Content Include="pic\texttype.ico" />
+    <Content Include="pic\txt.ico" />
+    <Content Include="pic\txt.JPG" />
+    <Content Include="pic\xls.ico" />
+    <Content Include="pic\xls.JPG" />
+    <Content Include="pic\xlt.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

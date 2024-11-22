@@ -1,0 +1,16 @@
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\TestExcel4O2007.dll.config
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\TestExcel4O2007.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\TestExcel4O2007.pdb
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\clsGetExcelFromDataTableO2007.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\TzPubFunction.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\Microsoft.Office.Interop.Excel.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\office.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\Microsoft.Vbe.Interop.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\clsGetExcelFromDataTableO2007.pdb
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\clsGetExcelFromDataTableO2007.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\TzPubFunction.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\Microsoft.Office.Interop.Excel.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\bin\office.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\obj\x86\Debug\TestExcel4O2007.csprojResolveAssemblyReference.cache
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\obj\x86\Debug\TestExcel4O2007.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestExcel4O2007\obj\x86\Debug\TestExcel4O2007.pdb

@@ -1,0 +1,14 @@
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TestF35.dll.config
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TestF35.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TestF35.pdb
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\obj\Release\TestF35.csprojResolveAssemblyReference.cache
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\obj\Release\TestF35.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\obj\Release\TestF35.pdb
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\Microsoft.Office.Interop.Excel.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TzPubFunction.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\office.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\Microsoft.Vbe.Interop.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\stdole.dll
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\Microsoft.Office.Interop.Excel.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\TzPubFunction.xml
+E:\BaseClass2005\clsGetExcelFromDataTableV2012\TestF35\bin\office.xml

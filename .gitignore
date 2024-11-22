@@ -1,0 +1,10 @@
+*/.vs/
+*/obj/
+*/bin/
+*/packages/
+*.log
+*.pdb
+GraduateStudyWebApp/ExamLib4WApi/bin/
+GraduateStudyWebApp/ExamLib_Base/obj/
+
+

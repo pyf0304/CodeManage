@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\Builder\TestExcel</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/CommFunc4Web.dll">
+      <publishTime>06/18/2018 16:19:09</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Office.Interop.Excel.dll">
+      <publishTime>01/18/2011 18:27:04</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Vbe.Interop.dll">
+      <publishTime>01/18/2011 18:27:04</publishTime>
+    </File>
+    <File Include="bin/office.dll">
+      <publishTime>01/18/2011 18:27:04</publishTime>
+    </File>
+    <File Include="bin/PubDataBase.dll">
+      <publishTime>06/21/2018 18:30:18</publishTime>
+    </File>
+    <File Include="bin/stdole.dll">
+      <publishTime>03/22/2016 23:22:06</publishTime>
+    </File>
+    <File Include="bin/TestExcel.dll">
+      <publishTime>07/03/2018 08:18:33</publishTime>
+    </File>
+    <File Include="bin/TestExcel.pdb">
+      <publishTime>07/03/2018 08:18:33</publishTime>
+    </File>
+    <File Include="bin/TestF35.dll">
+      <publishTime>07/02/2018 23:58:47</publishTime>
+    </File>
+    <File Include="bin/TestF35.pdb">
+      <publishTime>07/02/2018 23:58:47</publishTime>
+    </File>
+    <File Include="bin/TzPubFunction.dll">
+      <publishTime>06/21/2018 18:30:16</publishTime>
+    </File>
+    <File Include="TestExcelExportByOdbc.aspx">
+      <publishTime>07/03/2018 08:14:21</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/03/2018 00:29:10</publishTime>
+    </File>
+    <File Include="WebForm1.aspx">
+      <publishTime>07/02/2018 08:40:33</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

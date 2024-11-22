@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4066C105-6ED4-4648-B97A-0E2AA1B8CAE2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestPubDataBase</RootNamespace>
+    <AssemblyName>TestPubDataBase</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsSchoolYearEN.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEncodingConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEncodingConvert.Designer.cs">
+      <DependentUpon>frmEncodingConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMath_Edu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMath_Edu.Designer.cs">
+      <DependentUpon>frmMath_Edu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmString.Designer.cs">
+      <DependentUpon>frmString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestBiDimDistribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestBiDimDistribute.Designer.cs">
+      <DependentUpon>frmTestBiDimDistribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestDateRange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestDateRange.Designer.cs">
+      <DependentUpon>frmTestDateRange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestDateTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestDateTime.Designer.cs">
+      <DependentUpon>frmTestDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestAccess.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestAccess.Designer.cs">
+      <DependentUpon>frmTestAccess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestEntity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestEntity.Designer.cs">
+      <DependentUpon>frmTestEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestExcel.Designer.cs">
+      <DependentUpon>frmTestExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestJSON.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestJSON.Designer.cs">
+      <DependentUpon>frmTestJSON.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestSqlIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestSqlIn.Designer.cs">
+      <DependentUpon>frmTestSqlIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestSqlStatement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestSqlStatement.Designer.cs">
+      <DependentUpon>frmTestSqlStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestTableData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestTableData.Designer.cs">
+      <DependentUpon>frmTestTableData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestTimeConflict.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestTimeConflict.Designer.cs">
+      <DependentUpon>frmTestTimeConflict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTestFtpUpLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEncodingConvert.resx">
+      <DependentUpon>frmEncodingConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMath_Edu.resx">
+      <DependentUpon>frmMath_Edu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmString.resx">
+      <DependentUpon>frmString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestBiDimDistribute.resx">
+      <DependentUpon>frmTestBiDimDistribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestDateRange.resx">
+      <DependentUpon>frmTestDateRange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestDateTime.resx">
+      <DependentUpon>frmTestDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestAccess.resx">
+      <DependentUpon>frmTestAccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestEntity.resx">
+      <DependentUpon>frmTestEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestExcel.resx">
+      <DependentUpon>frmTestExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestFile.resx">
+      <DependentUpon>frmTestFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestFtpUpLoad.resx">
+      <DependentUpon>frmTestFtpUpLoad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestJSON.resx">
+      <DependentUpon>frmTestJSON.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestSqlIn.resx">
+      <DependentUpon>frmTestSqlIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestSqlStatement.resx">
+      <DependentUpon>frmTestSqlStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestTableData.resx">
+      <DependentUpon>frmTestTableData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestTimeConflict.resx">
+      <DependentUpon>frmTestTimeConflict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTestUpLoadBak2.resx" />
+    <EmbeddedResource Include="MdiForm.resx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PubDataBase\PubDataBase.csproj">
+      <Project>{38984694-02CB-4857-BBA3-125582EEFB74}</Project>
+      <Name>PubDataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TzPubFunction\TzPubFunction.csproj">
+      <Project>{0EC7669C-CBDF-4CBE-9B4E-6958E1B546FC}</Project>
+      <Name>TzPubFunction</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
