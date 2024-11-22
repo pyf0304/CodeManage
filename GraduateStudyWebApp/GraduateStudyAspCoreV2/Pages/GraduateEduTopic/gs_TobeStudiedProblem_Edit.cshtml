@@ -1,0 +1,180 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+    //所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+<script>
+
+
+    /*
+     按钮单击,用于调用Js函数中btnEdit_Click
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+    */
+    function btnEdit_Click(strCommandName, strKeyId) {
+        require(["../js/GraduateEduTopic/gs_TobeStudiedProblem_EditEx.js"], function (gs_tobestudiedproblem) {
+            gs_tobestudiedproblem.gs_TobeStudiedProblem_EditEx.btnEdit_Click(strCommandName, strKeyId);
+        });
+    }
+
+    
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+</script>
+<div id="divEditLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditDialog_gs_TobeStudiedProblem" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_gs_TobeStudiedProblem" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 835px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lblDialogTitle_gs_TobeStudiedProblem">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabEdit" style="width:800px" class="table table-bordered table-hover table td table-sm">
+                        <tr id="trTopicId" style="display:none">
+
+                            <td class="text-right">
+                                <Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">
+                                    主题编号
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <select id="ddlTopicId" name="ddlTopicId" class="form-control" style="width:150px;"></select>
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblProblemId" name="lblProblemId" class="col-form-label text-right" style="width:90px;">
+                                    问题Id
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtProblemId" name="txtProblemId" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-left" ColSpan=2>
+                                <span class="form-control" style="width:150px;">
+                                    <input type="checkbox" id="chkIsSubmit" name="chkIsSubmit" Text="是否提交"><label for="chkIsSubmit">是否提交</label>
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblVersionCount" name="lblVersionCount" class="col-form-label text-right" style="width:90px;">
+                                    版本统计
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtVersionCount" name="txtVersionCount" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+
+                        <tr id="trUpdUser" style="display:none">
+                            <td class="text-right">
+                                <Label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:150px;">
+                                    修改日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdDate" name="txtUpdDate" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">
+                                    修改人
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdUser" name="txtUpdUser" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trMonth" style="display:none">
+                            <td class="text-right">
+                                <Label id="lblYear" name="lblYear" class="col-form-label text-right" style="width:90px;">
+                                    年
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtYear" name="txtYear" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblMonth" name="lblMonth" class="col-form-label text-right" style="width:90px;">
+                                    月
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtMonth" name="txtMonth" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+
+
+                        <tr id="trProblemTitle">
+                            <td class="text-left" colspan="2">
+                                <input id="txtProblemTitle" name="txtProblemTitle" placeholder="问题标题" class="form-control" style="width:500px;" />
+                            </td>
+               
+                        </tr>
+                        <tr id="trProblemContent">
+                            <td class="text-left" colspan="2">
+                                <textarea id="txtProblemContent" name="txtProblemContent" placeholder="问题内容" class="form-control" style="width:100%;height:200px;" />
+                            </td>
+                        </tr>
+                        <tr id="trProblemDate">
+
+                      
+                            <td class="text-left">
+                                <input id="txtProblemDate" name="txtProblemDate" placeholder="问题日期" class="form-control" style="width:150px;" />
+                            </td>
+                          
+                            <td class="text-left">
+                                <input id="txtParticipant" name="txtParticipant" placeholder="参与者" class="form-control" style="width:300px;" />
+                            </td>
+                        </tr>
+
+
+                        <tr id="trMemo">
+                        
+                            <td class="text-left" colspan="2">
+                                <input id="txtMemo" name="txtMemo" placeholder="备注" class="form-control" style="width:550px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel_gs_TobeStudiedProblem" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btnSubmit_gs_TobeStudiedProblem" type="button" class="btn btn-primary" onclick="btnEdit_Click('Submit')">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>

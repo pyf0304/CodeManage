@@ -1,0 +1,101 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.Web.TestModel
+@{
+
+    Layout = null;
+}
+
+
+<!doctype html>
+<html class="x-admin-sm">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    @*<meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />*@
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/login.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+
+
+    <script src="~/jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+    <!-- 引入 jQuery Mobile 库 -->
+    @*<script src="~/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>*@
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+
+
+    <script type='text/javascript' src='~/textboxio/textboxio.js'></script>
+    <link rel="stylesheet" type="text/css" href="~/textboxio/example.css" />
+
+    <script>
+
+        window.onload = function () {
+            require(["../js/WebApp/User.js"], function (userinfo) {
+                //userinfo.User.Page_Load();
+                var objPage = new userinfo.User();
+                objPage.Page_Load();
+                instantiateTextbox();
+            });
+        }
+
+
+        /*
+         This function replaces all <textareas> on a page with
+         instances of Textbox.io.
+         */
+        //var instantiateTextbox = function () {
+        function instantiateTextbox() {
+            textboxio.replaceAll('textarea', {
+                paste: {
+                    style: 'clean'
+                },
+                css: {
+                    stylesheets: ['../textboxio/example.css']
+                }
+            });
+        };
+
+    </script>
+    <script>
+        /*
+        This function gets the content from the instance of Textbox.io
+        with the ID 'textbox'
+        */
+        var getEditorContent = function () {
+            var editors = textboxio.get('#textbox');
+            var editor = editors[0];
+            return editor.content.get();
+        };
+    </script>
+
+</head>
+<body>
+    @*onload="instantiateTextbox();"*@
+
+    <div>
+
+        <textarea id="textbox" style="width: 80%; height: 400px;"></textarea>
+
+        <p align="center">
+            <button onclick="javascript:alert(getEditorContent());">Get Content</button>
+        </p>
+
+
+        <a href="javascript:;" id="lnkUserName"></a>
+
+        <a href="#" onclick=""><img src="~/img/vote.png" title="点赞"></a>
+    </div>
+    <input id="hidUserInfo" type="hidden" value="@Model.GetSession("objvUserRoleRelation")" />
+    <input id="hidUserId" type="hidden" value="" />
+</body>
+</html>

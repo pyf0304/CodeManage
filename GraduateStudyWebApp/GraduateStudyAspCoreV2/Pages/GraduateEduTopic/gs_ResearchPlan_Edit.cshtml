@@ -1,0 +1,250 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+}
+@section Scripts{
+
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+
+
+    <script>
+        layui.use(['laydate', 'form'],
+            function () {
+                var laydate = layui.laydate;
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#txtStartDate' //指定元素
+                });
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#txtEndDate' //指定元素
+                });
+            });
+    </script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+
+
+
+
+    $(function () {
+      //  $('#txtStartDate').click(function () {
+
+            layui.use(['laydate', 'form'],
+             function () {
+                 var laydate = layui.laydate;
+
+                 //执行一个laydate实例
+                 laydate.render({
+                     elem: '#txtEndDate' //指定元素
+                 });
+
+                 //执行一个laydate实例
+                 laydate.render({
+                     elem: '#txtStartDate' //指定元素
+                 });
+             });
+     //   });
+
+
+
+    //    $('#txtEndDate').click(function () {
+
+            //layui.use(['laydate', 'form'],
+            // function () {
+            //     var laydate = layui.laydate;
+
+            //     //执行一个laydate实例
+            //     laydate.render({
+            //         elem: '#txtStartDate' //指定元素
+            //     });
+
+            //     //执行一个laydate实例
+            //     laydate.render({
+            //         elem: '#txtEndDate' //指定元素
+            //     });
+            // });
+     //   });
+    });
+
+
+ /*
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ */
+function ShowDialog(pstrOp) {
+   strOp = pstrOp;
+   require(['jquery', 'bootstrap'], function($) {
+       if (strOp === "Add") {
+           $('#myModalLabel').html('添加记录');
+//gs_ResearchPlan_EditEx.GetMaxStrId('#txtPlanId');
+        }
+else if (strOp === "Update")
+{
+            $('#myModalLabel').html('修改记录');
+}
+else if (strOp === "Detail")
+{
+            $('#btnOKUpd').hide();
+            $('#myModalLabel').html('详细信息');
+}
+        $('#divEditRegion').modal('show');
+  });
+}
+
+ /*
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ */
+function HideDialog() {
+  require(['jquery', 'bootstrap'], function($) {
+      $('#divEditRegion').modal('hide');
+  });
+}
+</script>
+<div id="divEditLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditRegion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 635px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+                        <tr style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblPlanId" name="lblPlanId" class="col-form-label text-right" style="width:90px;">
+                                    计划Id
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtPlanId" name="txtPlanId" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblStatusId" name="lblStatusId" class="col-form-label text-right" style="width:90px;">
+                                    状态
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <select id="ddlStatusId" name="ddlStatusId" class="form-control" style="width:180px;"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select id="ddlPlanTypeId" name="ddlPlanTypeId" class="form-control" style="width:150px;">
+                                    <option value="0">计划类型</option>
+                                    <option value="01">个人计划</option>
+                                    <option value="02">小组计划</option>
+                                </select>
+                            </td>
+                           
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">
+                                    主题
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <select id="ddlTopicId" name="ddlTopicId" class="form-control" style="width:180px;"></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblPlanContent" name="lblPlanContent" class="col-form-label text-right" style="width:90px;">
+                                    计划内容
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                @*<input id="txtPlanContent" name="txtPlanContent" class="form-control" style="width:350px;" />*@
+
+                                <textarea id="txtPlanContent" name="txtPlanContent" class="form-control" style="width:650px;height:80px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblResponsibleUser" name="lblResponsibleUser" class="col-form-label text-right" style="width:90px;">
+                                    负责人/小组
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtResponsibleUser" name="txtResponsibleUser" class="form-control" style="width:300px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblStartDate" name="lblStartDate" class="col-form-label text-right" style="width:90px;">
+                                    开始日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtStartDate" name="txtStartDate" class="layui-input" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblEndDate" name="lblEndDate" class="col-form-label text-right" style="width:90px;">
+                                    截止日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtEndDate" name="txtEndDate" class="layui-input" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td class="text-left">
+                                <span class="form-control" style="width:150px;">
+                                    <input type="checkbox" id="chkIsSubmit" name="chkIsSubmit" Text="是否提交"><label for="chkIsSubmit">是否提交</label>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                @*<input id="txtMemo" name="txtMemo" class="form-control" style="width:350px;" />*@
+                                <textarea id="txtMemo" name="txtMemo" class="form-control" style="width:350px;height:80px;"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btnOKUpd" type="button" class="btn btn-primary" onclick="mySubmit()">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>

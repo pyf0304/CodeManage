@@ -1,0 +1,816 @@
+﻿
+@page
+@model ExamLib.Pages.CurrEduClsStuCRUDModel
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "教学班与学生关系维护";
+    //操作Session样例，方法1：
+    //Model.seUserId = "TestUserId";
+    var strUserId_Value = Model.seUserId;
+    //操作Session样例，方法2：
+    Model.SetSession("UserId1", "TestUserId1");
+    var strUserId1_Value = Model.GetSession("UserId1");
+    //请参见页尾的隐形控件hidUserid和hidUserId1的使用。
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+}
+@section Scripts{
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    @*Excel.js*@
+    <script src="~/lib/xlsx.core.min.js"></script>
+    <script src="~/lib/xlsx.full.min.js"></script>
+
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+    <script>
+
+
+    function selectFile() {
+        document.getElementById('file').click();
+    }
+
+    //// 读取本地excel文件
+    //function readWorkbookFromLocalFile(file, callback) {
+    //    var reader = new FileReader();
+    //    reader.onload = function (e) {
+    //        var data = e.target.result;
+    //        var workbook = XLSX.read(data, { type: 'binary' });
+    //        if (callback) callback(workbook);
+    //    };
+    //    reader.readAsBinaryString(file);
+    //}
+
+    //// 从网络上读取某个excel文件，url必须同域，否则报错
+    //function readWorkbookFromRemoteFile(url, callback) {
+    //    var xhr = new XMLHttpRequest();
+    //    xhr.open('get', url, true);
+    //    xhr.responseType = 'arraybuffer';
+    //    xhr.onload = function (e) {
+    //        if (xhr.status == 200) {
+    //            var data = new Uint8Array(xhr.response)
+    //            var workbook = XLSX.read(data, { type: 'array' });
+    //            if (callback) callback(workbook);
+    //        }
+    //    };
+    //    xhr.send();
+    //}
+
+    // 读取 excel文件
+    function outputWorkbook(workbook) {
+        var sheetNames = workbook.SheetNames; // 工作表名称集合
+        sheetNames.forEach(name => {
+            var worksheet = workbook.Sheets[name]; // 只能通过工作表名称来获取指定工作表
+            for (var key in worksheet) {
+                // v是读取单元格的原始值
+                console.log(key, key[0] === '!' ? worksheet[key] : worksheet[key].v);
+            }
+        });
+    }
+
+    function readWorkbook(workbook) {
+        var sheetNames = workbook.SheetNames; // 工作表名称集合
+        var worksheet = workbook.Sheets[sheetNames[0]]; // 这里我们只读取第一张sheet
+        var csv = XLSX.utils.sheet_to_csv(worksheet);
+        document.getElementById('result').innerHTML = csv2table(csv);
+    }
+
+    // 将csv转换成表格
+    function csv2table(csv) {
+        var html = '<table>';
+        var rows = csv.split('\n');
+        rows.pop(); // 最后一行没用的
+        rows.forEach(function (row, idx) {
+            var columns = row.split(',');
+            columns.unshift(idx + 1); // 添加行索引
+            if (idx == 0) { // 添加列索引
+                html += '<tr>';
+                for (var i = 0; i < columns.length; i++) {
+                    html += '<th>' + (i == 0 ? '' : String.fromCharCode(65 + i - 1)) + '</th>';
+                }
+                html += '</tr>';
+            }
+            html += '<tr>';
+            columns.forEach(function (column) {
+                html += '<td>' + column + '</td>';
+            });
+            html += '</tr>';
+        });
+        html += '</table>';
+        return html;
+    }
+
+    function table2csv(table) {
+        var csv = [];
+        $(table).find('tr').each(function () {
+            var temp = [];
+            $(this).find('td').each(function () {
+                temp.push($(this).html());
+            })
+            temp.shift(); // 移除第一个
+            csv.push(temp.join(','));
+        });
+        csv.shift();
+        return csv.join('\n');
+    }
+
+    // csv转sheet对象
+    function csv2sheet(csv) {
+        var sheet = {}; // 将要生成的sheet
+        csv = csv.split('\n');
+        csv.forEach(function (row, i) {
+            row = row.split(',');
+            if (i == 0) sheet['!ref'] = 'A1:' + String.fromCharCode(65 + row.length - 1) + (csv.length - 1);
+            row.forEach(function (col, j) {
+                sheet[String.fromCharCode(65 + j) + (i + 1)] = { v: col };
+            });
+        });
+        return sheet;
+    }
+
+    // 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
+    function sheet2blob(sheet, sheetName) {
+        sheetName = sheetName || 'sheet1';
+        var workbook = {
+            SheetNames: [sheetName],
+            Sheets: {}
+        };
+        workbook.Sheets[sheetName] = sheet;
+        // 生成excel的配置项
+        var wopts = {
+            bookType: 'xlsx', // 要生成的文件类型
+            bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+            type: 'binary'
+        };
+        var wbout = XLSX.write(workbook, wopts);
+        var blob = new Blob([s2ab(wbout)], { type: "application/octet-stream" });
+        // 字符串转ArrayBuffer
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        return blob;
+    }
+
+    @*/**
+	 * 通用的打开下载对话框方法，没有测试过具体兼容性
+	 * @param url 下载地址，也可以是一个blob对象，必选
+	 * @param saveName 保存文件名，可选
+	 */*@
+    function openDownloadDialog(url, saveName) {
+        if (typeof url == 'object' && url instanceof Blob) {
+            url = URL.createObjectURL(url); // 创建blob地址
+        }
+        var aLink = document.createElement('a');
+        aLink.href = url;
+        aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+        var event;
+        if (window.MouseEvent) event = new MouseEvent('click');
+        else {
+            event = document.createEvent('MouseEvents');
+            event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        }
+        aLink.dispatchEvent(event);
+    }
+
+    $(function () {
+        document.getElementById('file').addEventListener('change', function (e) {
+            var files = e.target.files;
+            if (files.length == 0) return;
+            var f = files[0];
+            if (!/\.xlsx$/g.test(f.name)) {
+                alert('仅支持读取xlsx格式！');
+                return;
+            }
+            readWorkbookFromLocalFile(f, function (workbook) {
+                readWorkbook(workbook);
+            });
+        });
+        loadRemoteFile('./sample/test.xlsx');
+    });
+
+    function loadRemoteFile(url) {
+        readWorkbookFromRemoteFile(url, function (workbook) {
+            readWorkbook(workbook);
+        });
+    }
+
+    function exportExcel() {
+        //var csv = table2csv($('#result table')[0]);
+        //var csv = table2csv($('#divDataLst table')[0]);
+
+        //var sheet = csv2sheet(csv);
+        //var blob = sheet2blob(sheet);
+
+        //openDownloadDialog(blob, '导出.xlsx');
+
+        var sheet = XLSX.utils.table_to_sheet($('#divDataLst table')[0]);
+        openDownloadDialog(sheet2blob(sheet), '导出教学班学生.xlsx');
+
+    }
+
+    function exportSpecialExcel() {
+        var aoa = [
+			['主要信息', null, null, '其它信息'], // 特别注意合并的地方后面预留2个null
+			['姓名', '性别', '年龄', '注册时间'],
+			['张三', '男', 18, new Date()],
+			['李四', '女', 22, new Date()]
+        ];
+        var sheet = XLSX.utils.aoa_to_sheet(aoa);
+        sheet['!merges'] = [
+			// 设置A1-C1的单元格合并
+			{ s: { r: 0, c: 0 }, e: { r: 0, c: 2 } }
+        ];
+        openDownloadDialog(sheet2blob(sheet), '单元格合并示例.xlsx');
+    }
+
+    </script>
+<script>
+
+var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+var strCurrPrjId = "@Model.CurrPrjId";
+
+ /*
+  动态添加编辑区域
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_AddDPV_Edit)
+ */
+function AddDPV_Edit(divName4Edit) {
+   require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+curreduclsstu.CurrEduClsStuCRUDEx.AddDPV_Edit(divName4Edit);
+});
+}
+
+ /*
+  按钮单击,用于调用Js函数中btn_Click
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btn_Click)
+ */
+function btn_Click(strCommandName, strKeyId) {
+   require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+curreduclsstu.CurrEduClsStuCRUDEx.btn_Click(strCommandName, strKeyId);
+});
+}
+
+ /*
+  添加新记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnAddNewRecord_Click)
+ */
+function btnAddNewRecord_Click() {
+   require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+ShowDialog('Add');
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.btnAddNewRecord_Click();
+});
+}
+
+ /*
+  删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecord_Click)
+ */
+function btnDelRecord_Click() {
+   require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(curreduclsstu, commonfunc) {
+var arrKeyIds = commonfunc.clsCommonFunc4Web.GetCheckedKeyIds();
+if (arrKeyIds.length == 0)
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.btnDelRecord_Click();
+});
+}
+
+
+ /*
+  在数据表里删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecordInTab_Click)
+ */
+function btnDelRecordInTab_Click(strKeyId) {
+   require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+if (strKeyId == "")
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.btnDelRecordInTab_Click(strKeyId);
+});
+}
+
+
+
+
+ /*
+  在数据表里修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnUpdateRecordInTab_Click)
+ */
+function btnUpdateRecordInTab_Click(strKeyId) {
+   require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+    if (strKeyId == "")
+{
+alert("请选择需要修改的记录！");
+return;
+}
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+  objPage.btnUpdateRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  单击数据列表中每行首列的复选框所引发的事件
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ChkClick)
+ */
+function ChkClick(myThis)
+{
+require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(curreduclsstu, commonfunc) {
+var strId = myThis.id;
+var strKey = strId.substring(3);
+var arrKeys = commonfunc.arrSelectedKeys;
+if (myThis.checked == true) {
+if (arrKeys.indexOf(strKey) < 0)
+{
+arrKeys.push(strKey);
+}
+}
+else {
+var index = arrKeys.indexOf(strKey);
+if (index > -1)
+{
+arrKeys.splice(index, 1);
+}
+}
+var sstrKey = "";
+for (let strK of arrKeys)
+{
+sstrKey += `${ strK},`;
+}
+$('#spanResult').html(sstrKey);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ExpandDiv)
+ */
+         function ExpandDiv(divName) {
+//基于RequireJS来调用tzPubFun.ts中的函数OnlyShowDiv。
+require(["../js/TS/PubFun/tzPubFun"], function (pubfun) {
+      pubfun.OnlyShowDiv(divName, "function", "content");
+});
+}
+
+ /*
+  获取数据列表中的所选记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_GetAllCkechedKeys)
+ */
+function GetAllCkechedKeys(tabName)
+{
+var arrKeys = tabName.getElementsByTagName('chkInTab');
+alert(arrKeys.length.toString());
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_IndexPage)
+ */
+function IndexPage(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_JumpToPage)
+ */
+function JumpToPage()
+{
+var intCurrPageIndex = $('#input_number').val();
+var intPageIndex = Number(intCurrPageIndex);
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_mySubmit)
+ */
+function mySubmit(pstrOp) {
+    $("#divLoading").show();
+//    alert("提交" + strOp);
+   require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+           objPage.btnOKUpd_Click();
+    });
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_NextPage)
+ */
+function NextPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) + 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  页面导入-在导入页面后运行的函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_Page_Load)
+ */
+window.onload = function() {
+   require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.Page_Load();
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PageNum)
+ */
+function PageNum(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PrevPage)
+ */
+function PrevPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) - 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  全选数据列表中的所有记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SetAllCkechedKeys)
+ */
+function SetAllCkechedKeys(tabName)
+{
+var thisChk = event.target;
+require(["../js/TS/PubFun/clsCommonFunc4Web.js"], function (commonfunc) {
+console.log(tabName);
+console.log(thisChk);
+commonfunc.clsCommonFunc4Web.SetAllCkechedKeys(tabName, thisChk);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SortBy)
+ */
+function SortBy(strFldName)
+{
+console.log("按：" + strFldName + "排序");
+require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function(curreduclsstu) {
+var objPage = new curreduclsstu.CurrEduClsStuCRUDEx();
+objPage.SortBy(strFldName);
+});
+}
+
+
+    //////////////////////////////////////// 教学班
+/*
+显示对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+*/
+function ShowDialogOne() {
+    require(['jquery', 'bootstrap'], function ($) {
+        $('#divCurrEduClsList').modal('show');
+    });
+}
+
+/*
+隐藏对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+*/
+function HideDialogOne() {
+    require(['jquery', 'bootstrap'], function ($) {
+        $('#divCurrEduClsList').modal('hide');
+    });
+}
+
+//选择论文按钮
+function selectCurrEduCls_Click() {
+    ShowDialogOne();
+    require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function (CurrEduCls) {
+        var objPage = new CurrEduCls.CurrEduClsStuCRUDEx();
+        objPage.selectCurrEduCls_Click();
+    });
+
+}
+
+
+//关闭详情
+function closeTwo_Click() {
+
+    HideDialogOne();
+}
+
+/*
+确定选择教学班数据
+(AutoGCLib.WA_ViewScript_TS4CSharp:btnPaperRecordInTab_Click)
+*/
+
+function btnCurrEduClsInTab_Click(strKeyId) {
+    require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function (CurrEduCls) {
+        if (strKeyId == "") {
+            alert("请选择需要的记录！");
+            return;
+        }
+        //ShowDialogOne();
+        var objPage = new CurrEduCls.CurrEduClsStuCRUDEx();
+        objPage.btnCurrEduClsInTab_Click(strKeyId);
+    });
+}
+
+/*
+修改记录
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_IndexPage)
+*/
+function IndexPageTwo(intPageIndex) {
+    console.log("跳转到" + intPageIndex + "页");
+    require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function (CurrEduCls) {
+        var objPage = new CurrEduCls.CurrEduClsStuCRUDEx();
+        objPage.IndexPageTwo(intPageIndex);
+    });
+}
+
+/*
+ 修改记录
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+*/
+function JumpToPageTwo() {
+    var intCurrPageIndex = $('#input_numberTwo').val();
+    var intPageIndex = Number(intCurrPageIndex);
+    console.log("跳转到" + intPageIndex + "页");
+    require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function (CurrEduCls) {
+        var objPage = new CurrEduCls.CurrEduClsStuCRUDEx();
+        objPage.IndexPageTwo(intPageIndex);
+    });
+}
+
+/*
+ 修改记录
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+*/
+function NextPageTwo() {
+    var intCurrPageIndex = $('#hidCurrPageIndex').val();
+    var intPageIndex = Number(intCurrPageIndex) + 1;
+    console.log("跳转到" + intPageIndex + "页");
+    require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function (CurrEduCls) {
+        var objPage = new CurrEduCls.CurrEduClsStuCRUDEx();
+        objPage.IndexPageTwo(intPageIndex);
+    });
+}
+
+/*
+ 修改记录
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+*/
+function PageNumTwo(intPageIndex) {
+    console.log("跳转到" + intPageIndex + "页");
+    require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function (CurrEduCls) {
+        var objPage = new CurrEduCls.CurrEduClsStuCRUDEx();
+        objPage.IndexPageTwo(intPageIndex);
+    });
+}
+
+/*
+ 修改记录
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+*/
+function PrevPageTwo() {
+    var intCurrPageIndex = $('#hidCurrPageIndex').val();
+    var intPageIndex = Number(intCurrPageIndex) - 1;
+    console.log("跳转到" + intPageIndex + "页");
+    require(["../js/DailyRunning/CurrEduClsStuCRUDEx.js"], function (CurrEduCls) {
+        var objPage = new CurrEduCls.CurrEduClsStuCRUDEx();
+        objPage.IndexPageTwo(intPageIndex);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+<div id="tabLayout" class="tab_layout">
+    @*-- 标题层 --*@
+
+    @*<div style="position: relative; width: 648px; height: 37px; left: 0px; top: 0px;">
+            <Label id="lblViewTitle" name="lblViewTitle" class="h5">
+                教学班与学生关系表CRUD
+            </Label>
+            <Label id="lblMsg_List" name="lblMsg_List" class="text-warning" style="width:250px;">
+            </Label>
+        </div>*@
+
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">个人中心</a>
+            <a>
+                <cite>教学班学生</cite>
+            </a>
+            <Label id="lblMsg_List" name="lblMsg_List"></Label>
+        </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+    @*-- 查询层 --*@
+
+    <div id="divQuery" class="div_query">
+        <table id="tabQuery" style="width:45%;" class="table table-bordered table-hover table td table-sm">
+            <tr>
+                @*<td>
+                        <Label id="lblCurrEduClsId_q" name="lblCurrEduClsId_q" class="col-form-label text-right" style="width:90px;">
+                            教学班Id
+                        </Label>
+                    </td>*@
+                <td>
+                    <input id="txtCurrEduClsId_q" name="txtCurrEduClsId_q" placeholder="教学班ID" class="layui-input" style="width:150px;" />
+                </td>
+                @*<td>
+                        <Label id="lblEduClsName_q" name="lblEduClsName_q" class="col-form-label text-right" style="width:90px;">
+                            教学班名
+                        </Label>
+                    </td>*@
+                <td>
+                    <input id="txtEduClsName_q" name="txtEduClsName_q" placeholder="教学班名" class="layui-input" style="width:200px;" />
+                </td>
+                @*<td>
+                        <Label id="lblCourseName_q" name="lblCourseName_q" class="col-form-label text-right" style="width:90px;">
+                            课程名
+                        </Label>
+                    </td>*@
+                <td>
+                    <input id="txtStuID" name="txtStuID" placeholder="学生Id" class="layui-input" style="width:200px;" />
+                </td>
+                <td>
+                    @*<button type="submit" id="btnQuery" name="btnQuery" class="btn btn-outline-warning text-nowrap" onclick="btn_Click('Query')">查询</button>*@
+                    <button class="layui-btn" lay-submit="" lay-filter="sreach" onclick="btn_Click('Query')">
+                        <i class="layui-icon">&#xe615;</i>
+                    </button>
+                </td>
+                @*<td>
+                        <button type="submit" id="btnExportExcel" name="btnExportExcel" class="btn btn-outline-warning text-nowrap" onclick="btn_Click('ExportExcel')">导出Excel</button>
+                    </td>*@
+            </tr>
+        </table>
+    </div>
+    @*-- 功能区 --*@
+
+    <div id="divFunction" class="table table-bordered table-hover">
+        <ul class="nav">
+            <li class="nav-item">
+                <Label id="lblCurrEduClsStuList" name="lblCurrEduClsStuList" class="col-form-label text-info" style="width:250px;">
+
+                </Label>
+            </li>
+            @*<li class="nav-item ml-3">
+            <button id="btnAddNewRecord" name="btnAddNewRecord" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Create')">添加</button>
+        </li>
+        <li class="nav-item ml-3">
+            <button id="btnUpdateRecord" name="btnUpdateRecord" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Update')">修改</button>
+        </li>*@
+            <li class="nav-item ml-3">
+                <button id="btnAddNewRecord" name="btnAddNewRecord" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('AddCurrEduCls')">加入教学班</button>
+            </li>
+            <li class="nav-item ml-3">
+                <button id="btnDelRecord" name="btnDelRecord" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Delete')">删除</button>
+            </li>
+            <li class="nav-item ml-3">
+                <button id="ExportExcel" class="btn btn-outline-info btn-sm text-nowrap" onclick="exportExcel()" value="导出Excel">Excel导出</button>
+            </li>
+        </ul>
+    </div>
+    @*-- 列表层 --*@
+    <div id="divList" class="div_List">
+        <div id="divDataLst" class="div_List">
+        </div>
+        <div id="divPager" class="pager" value="1">
+           
+        </div>
+    </div>
+    @*-- 编辑层 --*@
+    <div id="divEdit" value="1"></div>
+
+    @*-- 教学班列表层 --*@
+    <div class="modal fade" style="z-index:1060;" id="divCurrEduClsList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="margin-left:100px;">
+            <div class="modal-content" style="width: 1000px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">教学班列表</h4>
+                    <h4 class="modal-title" style="color:red;"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+
+                <div id="divQuery" class="div_query">
+                    <table id="tabQuery" style="width:40%;" class="table table-bordered table-hover table td table-sm">
+                        <tr>
+                            @*<td>
+                                    <Label id="lblCurrEduClsId_q" name="lblCurrEduClsId_q" class="col-form-label text-right" style="width:90px;">
+                                        教学班ID
+                                    </Label>
+                                </td>*@
+                            <td>
+                                <input id="CurrEduClsId_q" name="CurrEduClsId_q" placeholder="教学班ID" class="layui-input" style="width:150px;" />
+                            </td>
+                            @*<td>
+                                    <Label id="lblEduClsName_q" name="lblEduClsName_q" class="col-form-label text-right" style="width:90px;">
+                                        教学班名称
+                                    </Label>
+                                </td>*@
+                            <td>
+                                <input id="EduClsName_q" name="EduClsName_q" placeholder="教学班名称" class="layui-input" style="width:200px;" />
+                            </td>
+                            <td>
+                                @*<button type="submit" id="btnQuery" name="btnQuery" class="btn btn-outline-warning text-nowrap" onclick="btn_Click('QueryCurrEduCls')">查询</button>*@
+                                <button class="layui-btn" lay-submit="" lay-filter="sreach" onclick="btn_Click('QueryCurrEduCls')">
+                                    <i class="layui-icon">&#xe615;</i>
+                                </button>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+
+
+                <div class="modal-body">
+                    <div id="divList" class="div_List">
+                        <div id="divCurrEduClsDataLst" class="div_List">
+                        </div>
+                        <div id="divPager" class="pager" value="1">
+                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnCancel" type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="closeTwo_Click()">关闭</button>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" value="@Model.seUserId" />
+<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvCurrEduClsStuBy" type="hidden" value="" />
+
+<input id="hidSortvCurrEduClsBy" type="hidden" value="" />

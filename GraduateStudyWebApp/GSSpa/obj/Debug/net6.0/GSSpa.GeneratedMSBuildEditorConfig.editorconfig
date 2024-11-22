@@ -1,0 +1,1036 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GSSpa
+build_property.RootNamespace = GSSpa
+build_property.ProjectDir = C:\Users\pyf\OneDrive\AspNetCore\GraduateStudyWebApp\GSSpa\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\pyf\OneDrive\AspNetCore\GraduateStudyWebApp\GSSpa
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/BaseInfo/QxUsers_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFzZUluZm9cUXhVc2Vyc19RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/BaseInfo/XzMajorCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFzZUluZm9cWHpNYWpvckNSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/BaseInfo/XzMajorDirectionCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFzZUluZm9cWHpNYWpvckRpcmVjdGlvbkNSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/BaseInfo/XzMajor_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmFzZUluZm9cWHpNYWpvcl9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/CourseLearning/cc_CourseCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlTGVhcm5pbmdcY2NfQ291cnNlQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/CourseLearning/WA_cc_Course_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlTGVhcm5pbmdcV0FfY2NfQ291cnNlX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/CurrEduClsCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXEN1cnJFZHVDbHNDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/CurrEduClsList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXEN1cnJFZHVDbHNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/CurrEduClsStuCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXEN1cnJFZHVDbHNTdHVDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/CurrEduClsTeacherCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXEN1cnJFZHVDbHNUZWFjaGVyQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/StudentInfoList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXFN0dWRlbnRJbmZvTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/TeacherList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXFRlYWNoZXJMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/WA_CurrEduClsStu_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXFdBX0N1cnJFZHVDbHNTdHVfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/WA_CurrEduClsTeacher_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXFdBX0N1cnJFZHVDbHNUZWFjaGVyX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/DailyRunning/WA_CurrEduCls_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFpbHlSdW5uaW5nXFdBX0N1cnJFZHVDbHNfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/HistoricalVersion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxIaXN0b3JpY2FsVmVyc2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/MyComments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxNeUNvbW1lbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperAddXzmajorRela.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlckFkZFh6bWFqb3JSZWxhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperAttention.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlckF0dGVudGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperCollectionLog_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlckNvbGxlY3Rpb25Mb2dfUVVESS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlckRldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperMajorDirecition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlck1ham9yRGlyZWNpdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperReadList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlclJlYWRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperReadWriteAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlclJlYWRXcml0ZUFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperReadWrite_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlclJlYWRXcml0ZV9RVURJLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperSubViewpoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlclN1YlZpZXdwb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperSubViewpoint_pdf.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlclN1YlZpZXdwb2ludF9wZGYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PaperSubViewpoint_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlclN1YlZpZXdwb2ludF9RVURJLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/Paper_List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlcl9MaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/Paper_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlcl9RVURJLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/Paper_Statistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQYXBlcl9TdGF0aXN0aWNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/Pdf.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQZGYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/PdfDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxQZGZEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduEx/qaPdf.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVFeFxxYVBkZi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/AcademicJournalsCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxBY2FkZW1pY0pvdXJuYWxzQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/AcademicJournals_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxBY2FkZW1pY0pvdXJuYWxzX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_Paper.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_PaperDiscuss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlckRpc2N1c3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_PaperGroupCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlckdyb3VwQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_PaperGroupCRUDBak.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlckdyb3VwQ1JVREJhay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_PaperGroup_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlckdyb3VwX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_PaperParagraph.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlclBhcmFncmFwaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_PaperParagraphCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlclBhcmFncmFwaENSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_PaperParagraphPreview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlclBhcmFncmFwaFByZXZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/gs_PaperParagraph_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxnc19QYXBlclBhcmFncmFwaF9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/JournalSubjectCategoryCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxKb3VybmFsU3ViamVjdENhdGVnb3J5Q1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/JournalSubjectCategory_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxKb3VybmFsU3ViamVjdENhdGVnb3J5X0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/JournalSubjectCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxKb3VybmFsU3ViamVjdENSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/JournalSubject_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxKb3VybmFsU3ViamVjdF9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/OriginalPaperAddideas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxPcmlnaW5hbFBhcGVyQWRkaWRlYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/SectionCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxTZWN0aW9uQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/Section_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxTZWN0aW9uX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/TestParaghCheck.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxUZXN0UGFyYWdoQ2hlY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPaper/TestTree.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQYXBlclxUZXN0VHJlZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/DirectionPaperList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxEaXJlY3Rpb25QYXBlckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/MajorPaperList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxNYWpvclBhcGVyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/MyThesisRead.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxNeVRoZXNpc1JlYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/PaperAllList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxQYXBlckFsbExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/PaperDetailPhone.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxQYXBlckRldGFpbFBob25lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/PaperList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxQYXBlckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/PaperTypeList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxQYXBlclR5cGVMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/QuoteAndGroupThesis.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxRdW90ZUFuZEdyb3VwVGhlc2lzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/QuoteAndGroupThesisShow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxRdW90ZUFuZEdyb3VwVGhlc2lzU2hvdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/SubThesisList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxTdWJUaGVzaXNMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/SubThesisWrite.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxTdWJUaGVzaXNXcml0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/SubviewPointList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxTdWJ2aWV3UG9pbnRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPhone/SubviewPointTypeList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQaG9uZVxTdWJ2aWV3UG9pbnRUeXBlTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/AddConcept.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZENvbmNlcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/Addgs_ReflectLog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZGdzX1JlZmxlY3RMb2cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/Addgs_TeacherTask.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZGdzX1RlYWNoZXJUYXNrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/AddObjectiveFact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZE9iamVjdGl2ZUZhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/AddOriginalPaper.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZE9yaWdpbmFsUGFwZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/AddPaper.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZFBhcGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/AddResearchPlan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZFJlc2VhcmNoUGxhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/AddSysskill.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZFN5c3NraWxsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/AddSysSocialRelations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZFN5c1NvY2lhbFJlbGF0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduPublicPage/AddViewpoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVQdWJsaWNQYWdlXEFkZFZpZXdwb2ludC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/CommentScore.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xDb21tZW50U2NvcmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/gs_TeachingDateCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xnc19UZWFjaGluZ0RhdGVDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/gs_TeachingDate_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xnc19UZWFjaGluZ0RhdGVfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/gs_TotalDataRela.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xnc19Ub3RhbERhdGFSZWxhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/gs_UserConfig.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xnc19Vc2VyQ29uZmlnLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/gs_UserRela.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xnc19Vc2VyUmVsYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/SysComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xTeXNDb21tZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/SysComment_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xTeXNDb21tZW50X1FVRElfVFMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/SysScoreSummaryNewTotal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xTeXNTY29yZVN1bW1hcnlOZXdUb3RhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/SysScoreSummary_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xTeXNTY29yZVN1bW1hcnlfUVVESV9UUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/sys_RequestPushCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xzeXNfUmVxdWVzdFB1c2hDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/sys_RequestPush_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xzeXNfUmVxdWVzdFB1c2hfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/TotalDataStatistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xUb3RhbERhdGFTdGF0aXN0aWNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/TotalDataStatisticsDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xUb3RhbERhdGFTdGF0aXN0aWNzRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTools/TotalDataStatisticsTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb29sc1xUb3RhbERhdGFTdGF0aXN0aWNzVGVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ApplyTopic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xBcHBseVRvcGljLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/Concept_QUDI_Cache.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xDb25jZXB0X1FVRElfQ2FjaGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/DiscussionSubContent_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xEaXNjdXNzaW9uU3ViQ29udGVudF9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ExpertViewpoint.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xFeHBlcnRWaWV3cG9pbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_MeetingMinutesCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19NZWV0aW5nTWludXRlc0NSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_MeetingMinutes_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19NZWV0aW5nTWludXRlc19FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_PaperReportCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19QYXBlclJlcG9ydENSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_PaperReport_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19QYXBlclJlcG9ydF9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_ReflectLogCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19SZWZsZWN0TG9nQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_ReflectLog_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19SZWZsZWN0TG9nX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_ResearchPlanCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19SZXNlYXJjaFBsYW5DUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_ResearchPlan_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19SZXNlYXJjaFBsYW5fRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_ResearchResultCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19SZXNlYXJjaFJlc3VsdENSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_ResearchResult_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19SZXNlYXJjaFJlc3VsdF9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_TeacherTaskCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19UZWFjaGVyVGFza0NSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_TeacherTask_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19UZWFjaGVyVGFza19FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_TobeStudiedProblemCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19Ub2JlU3R1ZGllZFByb2JsZW1DUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_TobeStudiedProblem_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19Ub2JlU3R1ZGllZFByb2JsZW1fRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_TopicRoleCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19Ub3BpY1JvbGVDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_TopicRole_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19Ub3BpY1JvbGVfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_ViewsClassificationCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19WaWV3c0NsYXNzaWZpY2F0aW9uQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/gs_ViewsClassification_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xnc19WaWV3c0NsYXNzaWZpY2F0aW9uX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ke_SubCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xrZV9TdWJDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ke_Sub_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xrZV9TdWJfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ke_SuperCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xrZV9TdXBlckNSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ke_Super_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xrZV9TdXBlcl9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/KnowledgeEconomyAllList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xLbm93bGVkZ2VFY29ub215QWxsTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/MajorDirectionPaperRela_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xNYWpvckRpcmVjdGlvblBhcGVyUmVsYV9RVURJLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/MajorDirectionPaperRela_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xNYWpvckRpcmVjdGlvblBhcGVyUmVsYV9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ObjectiveBasis.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xPYmplY3RpdmVCYXNpcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/OriginalPaperAllList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xPcmlnaW5hbFBhcGVyQWxsTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/PaperAddXzmajorRela.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xQYXBlckFkZFh6bWFqb3JSZWxhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/PaperLstSel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xQYXBlckxzdFNlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/Pdfiframe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xQZGZpZnJhbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/PersonalKnowledgeView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xQZXJzb25hbEtub3dsZWRnZVZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/QuoteAndGroupPaper.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xRdW90ZUFuZEdyb3VwUGFwZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ResearchResultDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSZXNlYXJjaFJlc3VsdERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ResearchTopicAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSZXNlYXJjaFRvcGljQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ResearchTopicList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSZXNlYXJjaFRvcGljTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ResearchTopic_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSZXNlYXJjaFRvcGljX1FVREkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTConceptRela_QUDI_Cache.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVENvbmNlcHRSZWxhX1FVRElfQ2FjaGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTPaperRela_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFBhcGVyUmVsYV9RVURJLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTResearchResult_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFJlc2VhcmNoUmVzdWx0X1FVRElfVFMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTSysSkillRelaCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFN5c1NraWxsUmVsYUNSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTSysSkillRela_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFN5c1NraWxsUmVsYV9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTSysSocialRelaCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFN5c1NvY2lhbFJlbGFDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTSysSocialRela_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFN5c1NvY2lhbFJlbGFfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTTopicObjectiveRela_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFRvcGljT2JqZWN0aXZlUmVsYV9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTUserRela_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFVzZXJSZWxhX1FVREkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/RTViewpointRela_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xSVFZpZXdwb2ludFJlbGFfUVVESS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/SubViewpoint_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xTdWJWaWV3cG9pbnRfUVVESV9UUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/SysCommentType_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xTeXNDb21tZW50VHlwZV9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/SysSkillCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xTeXNTa2lsbENSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/SysSkill_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xTeXNTa2lsbF9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/SysSocialRelationsCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xTeXNTb2NpYWxSZWxhdGlvbnNDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/SysSocialRelations_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xTeXNTb2NpYWxSZWxhdGlvbnNfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/TestTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xUZXN0VGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ThesisDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xUaGVzaXNEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/Thesis_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xUaGVzaXNfUVVESV9UUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/TopicObjective_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xUb3BpY09iamVjdGl2ZV9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/UsersLstSel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xVc2Vyc0xzdFNlbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/ViewpointAdd.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xWaWV3cG9pbnRBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/GraduateEduTopic/Viewpoint_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhZHVhdGVFZHVUb3BpY1xWaWV3cG9pbnRfUVVESS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/atTest1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcYXRUZXN0MS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/atTest2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcYXRUZXN0Mi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/gs_TagsCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcZ3NfVGFnc0NSVUQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/Paper_QA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcUGFwZXJfUUEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/Paper_Tags.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcUGFwZXJfVGFncy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/Pdf_QA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcUGRmX1FBLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/Pdf_QA_Topic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcUGRmX1FBX1RvcGljLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/qaPdf.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VccWFQZGYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/qa_AnswerCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VccWFfQW5zd2VyQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/qa_Answer_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VccWFfQW5zd2VyX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/qa_PaperCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VccWFfUGFwZXJDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/qa_Paper_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VccWFfUGFwZXJfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/qa_QuestionsCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VccWFfUXVlc3Rpb25zQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/qa_Questions_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VccWFfUXVlc3Rpb25zX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/TeaTest_QA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcVGVhVGVzdF9RQS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/InteractManage/Tea_QA.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW50ZXJhY3RNYW5hZ2VcVGVhX1FBLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Knowledges/gs_KnowledgesGraphCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS25vd2xlZGdlc1xnc19Lbm93bGVkZ2VzR3JhcGhDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Knowledges/gs_KnowledgesGraph_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS25vd2xlZGdlc1xnc19Lbm93bGVkZ2VzR3JhcGhfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Knowledges/LogicRela.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS25vd2xlZGdlc1xMb2dpY1JlbGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Knowledges/StructureChart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcS25vd2xlZGdlc1xTdHJ1Y3R1cmVDaGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/LogManage/LoginLog_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nTWFuYWdlXExvZ2luTG9nX1FVRElfVFMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/NewsAnnouncement/FeedBack_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3c0Fubm91bmNlbWVudFxGZWVkQmFja19RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/NewsAnnouncement/MessagePush_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTmV3c0Fubm91bmNlbWVudFxNZXNzYWdlUHVzaF9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/DiscussionType_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcRGlzY3Vzc2lvblR5cGVfUVVESV9UUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/ExplainType_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcRXhwbGFpblR5cGVfUVVESV9UUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/gs_TopicTaskStatusCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcZ3NfVG9waWNUYXNrU3RhdHVzQ1JVRC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/gs_TopicTaskStatus_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcZ3NfVG9waWNUYXNrU3RhdHVzX0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/LiteratureType_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcTGl0ZXJhdHVyZVR5cGVfUVVESV9UUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/Section_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcU2VjdGlvbl9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/SubViewpointType_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcU3ViVmlld3BvaW50VHlwZV9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/SysScoreWeight_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcU3lzU2NvcmVXZWlnaHRfUVVESV9UUy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/ParameterTable/ViewpointType_QUDI_TS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFyYW1ldGVyVGFibGVcVmlld3BvaW50VHlwZV9RVURJX1RTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageEight.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZUVpZ2h0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageFive.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZUZpdmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageFour.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZUZvdXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageNine.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZU5pbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/PageOne.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NcUGFnZU9uZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pager.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pager1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZXIxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pager2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZXIyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageSeven.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZVNldmVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageSix.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZVNpeC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageTen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZVRlbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageThree.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZVRocmVlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/PubWebClass/pageTwo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHViV2ViQ2xhc3NccGFnZVR3by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_CookieConsentPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Db29raWVDb25zZW50UGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_LayoutEmpty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRFbXB0eS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_LayoutIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_LayoutStatistics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRTdGF0aXN0aWNzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_LayoutUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_Layout_Empty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRfRW1wdHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_Layout_PC.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRfUEMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_Layout_RequireJS.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRfUmVxdWlyZUpTLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/SystemSet/CacheUseStateCRUD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3lzdGVtU2V0XENhY2hlVXNlU3RhdGVDUlVELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/SystemSet/CacheUseState_Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3lzdGVtU2V0XENhY2hlVXNlU3RhdGVfRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/SystemSet/vCacheUseState_Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3lzdGVtU2V0XHZDYWNoZVVzZVN0YXRlX0RldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/jiegou_tu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFxqaWVnb3VfdHUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/jsDivTestOne.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFxqc0RpdlRlc3RPbmUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/PdfTest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFxQZGZUZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/Test.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFxUZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/Test2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFxUZXN0Mi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/Test3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFxUZXN0My5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/test4.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFx0ZXN0NC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/test5.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFx0ZXN0NS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/test6_pinfen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFx0ZXN0Nl9waW5mZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/test7_liucheng.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFx0ZXN0N19saXVjaGVuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Test/yuan_xy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVzdFx5dWFuX3h5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/UserManage/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlck1hbmFnZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/UserManage/Users_QUDI.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlck1hbmFnZVxVc2Vyc19RVURJLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/Index3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXEluZGV4My5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/Indexs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXEluZGV4cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/Loginmain.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXExvZ2lubWFpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/LoginPc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXExvZ2luUGMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/MessagePushList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXE1lc3NhZ2VQdXNoTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/MissionSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXE1pc3Npb25TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/TestUploadfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXFRlc3RVcGxvYWRmaWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/testUploadPic.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXHRlc3RVcGxvYWRQaWMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/testUploadVideo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXHRlc3RVcGxvYWRWaWRlby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/User.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXFVzZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/WebApp/wxUserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViQXBwXHd4VXNlckluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/CommentScoreIframe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXENvbW1lbnRTY29yZUlmcmFtZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/Echarts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXEVjaGFydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/GroupTextFrame.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXEdyb3VwVGV4dEZyYW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/IndexIframe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXEluZGV4SWZyYW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/PaperIframe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXFBhcGVySWZyYW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/QAIframe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXFFBSWZyYW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/TextReadIframe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXFRleHRSZWFkSWZyYW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/TopicIframe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXFRvcGljSWZyYW1lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/UserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXFVzZXJJbmZvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Web/Welcome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2ViXFdlbGNvbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pyf/OneDrive/AspNetCore/GraduateStudyWebApp/GSSpa/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-yjgr4jv3rs

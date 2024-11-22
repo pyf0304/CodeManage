@@ -1,0 +1,226 @@
+﻿
+@page
+@{
+    Layout = "~/Pages/Shared/_Layout_RequireJS.cshtml";
+    ViewData["Title"] = "答疑提问表维护";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon" />
+}
+@section Scripts{
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+    //所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+<script>
+
+    /*
+     按钮单击,用于调用Js函数中btn_Click
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btn_Click)
+    */
+    function btn_Click(strCommandName, strKeyId) {
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js"], function (qa_questions) {
+            qa_questions.qa_QuestionsCRUDEx.btn_Click(strCommandName, strKeyId);
+        });
+    }
+
+    /*
+     单击数据列表中每行首列的复选框所引发的事件
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ChkClick)
+    */
+    function ChkClick(myThis) {
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (qa_questions, commonfunc) {
+            var strId = myThis.id;
+            var strKey = strId.substring(3);
+            var arrKeys = commonfunc.arrSelectedKeys;
+            if (myThis.checked == true) {
+                if (arrKeys.indexOf(strKey) < 0) {
+                    arrKeys.push(strKey);
+                }
+            }
+            else {
+                var index = arrKeys.indexOf(strKey);
+                if (index > -1) {
+                    arrKeys.splice(index, 1);
+                }
+            }
+            var sstrKey = "";
+            for (let strK of arrKeys) {
+                sstrKey += `${strK},`;
+            }
+            $('#spanResult').html(sstrKey);
+        });
+    }
+
+    /*
+     获取数据列表中的所选记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_GetAllCkechedKeys)
+    */
+    function GetAllCkechedKeys(tabName) {
+        var arrKeys = tabName.getElementsByTagName('chkInTab');
+        alert(arrKeys.length.toString());
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_IndexPage)
+    */
+    function IndexPage(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js"], function (qa_questions) {
+            var objPage = new qa_questions.qa_QuestionsCRUDEx();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPage() {
+        var intCurrPageIndex = $('#input_number').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js"], function (qa_questions) {
+            var objPage = new qa_questions.qa_QuestionsCRUDEx();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_NextPage)
+    */
+    function NextPage() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js"], function (qa_questions) {
+            var objPage = new qa_questions.qa_QuestionsCRUDEx();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+     页面导入-在导入页面后运行的函数
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_Page_Load)
+    */
+    window.onload = function () {
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js"], function (qa_questions) {
+            var objPage = new qa_questions.qa_QuestionsCRUDEx();
+            objPage.Page_Load();
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PageNum)
+    */
+    function PageNum(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js"], function (qa_questions) {
+            var objPage = new qa_questions.qa_QuestionsCRUDEx();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPage() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js"], function (qa_questions) {
+            var objPage = new qa_questions.qa_QuestionsCRUDEx();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+     全选数据列表中的所有记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SetAllCkechedKeys)
+    */
+    function SetAllCkechedKeys(tabName) {
+        var thisChk = event.target;
+        require(["../js/TS/PubFun/clsCommonFunc4Web.js"], function (commonfunc) {
+            console.log(tabName);
+            console.log(thisChk);
+            commonfunc.clsCommonFunc4Web.SetAllCkechedKeys(tabName, thisChk);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SortBy)
+    */
+    function SortBy(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/InteractManage/qa_QuestionsCRUDEx.js"], function (qa_questions) {
+            var objPage = new qa_questions.qa_QuestionsCRUDEx();
+            objPage.SortBy(strFldName);
+        });
+    }
+</script>
+<div id="tabLayout" class="tab_layout">
+    @*-- 标题层 --*@
+
+    <div style="position: relative; width: 648px; height: 37px; left: 0px; top: 0px;">
+        <Label id="lblViewTitle" name="lblViewTitle" class="h5">
+            答疑提问表CRUD
+        </Label>
+        <Label id="lblMsg_List" name="lblMsg_List" class="text-warning" style="width:250px;">
+        </Label>
+    </div>
+    @*-- 功能区 --*@
+
+    <div id="divFunction" class="table table-bordered table-hover">
+        <ul class="nav">
+            <li class="nav-item">
+                <Label id="lblqa_QuestionsList" name="lblqa_QuestionsList" class="col-form-label text-info" style="width:250px;">
+                    答疑提问表列表
+                </Label>
+            </li>
+            <li class="nav-item ml-3">
+                <button id="btnAddNewRecord" name="btnAddNewRecord" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Create')">添加</button>
+            </li>
+            <li class="nav-item ml-3">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button id="btnGoBottum" name="btnGoBottum" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('GoBottum')">移底</button>
+                    <button id="btnDownMove" name="btnDownMove" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('DownMove')">下移</button>
+                    <button id="btnGoTop" name="btnGoTop" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('GoTop')">移顶</button>
+                    <button id="btnReOrder" name="btnReOrder" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('ReOrder')">重序</button>
+                    <button id="btnUpMove" name="btnUpMove" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('UpMove')">上移</button>
+                </div>
+            </li>
+            <li class="nav-item ml-3">
+                <button id="btnUpdateRecord" name="btnUpdateRecord" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Update')">修改</button>
+            </li>
+            <li class="nav-item ml-3">
+                <button id="btnDelRecord" name="btnDelRecord" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Delete')">删除</button>
+            </li>
+        </ul>
+    </div>
+    @*-- 列表层 --*@
+    <div id="divList" class="div_List">
+        <div id="divDataLst" class="div_List">
+        </div>
+        <div id="divPager" class="pager">
+           
+        </div>
+    </div>
+    @*-- 编辑层 --*@
+    <div id="divEdit" value="1"></div>
+    @*-- 详细信息层 --*@
+    <div id="divDetail" value="1"></div>
+</div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvqa_QuestionsBy" type="hidden" value="" />

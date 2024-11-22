@@ -1,0 +1,118 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+     <script>    
+
+ /*
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ */
+function HideDialog() {
+  require(['jquery', 'bootstrap'], function($) {
+      $('#divEditRegion').modal('hide');
+  });
+}
+
+ /*
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ */
+function ShowDialog(pstrOp) {
+   strOp = pstrOp;
+   require(['jquery', 'bootstrap'], function($) {
+       if (strOp === "Add") {
+           $('#myModalLabel').html('添加记录');
+//RTSysSocialRela_EditEx.GetMaxStrId('#txtmId');
+        }
+else if (strOp === "Update")
+{
+            $('#myModalLabel').html('修改记录');
+}
+else if (strOp === "Detail")
+{
+            $('#btnOKUpd').hide();
+            $('#myModalLabel').html('详细信息');
+}
+        $('#divEditRegion').modal('show');
+  });
+}
+    </script>
+<div id = "tabLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditRegion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="modal-dialog">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr>
+<td>
+<Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">主题编号
+</Label>
+</td>
+<td>
+<input  id="txtTopicId" name="txtTopicId" class="form-control" style="width:150px;"/>
+</td>
+<td>
+<Label id="lblSocialId" name="lblSocialId" class="col-form-label text-right" style="width:90px;">社会Id
+</Label>
+</td>
+<td>
+<input  id="txtSocialId" name="txtSocialId" class="form-control" style="width:150px;"/>
+</td>
+</tr>
+<tr>
+<td>
+<Label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">修改日期
+</Label>
+</td>
+<td>
+<input  id="txtUpdDate" name="txtUpdDate" class="form-control" style="width:150px;"/>
+</td>
+<td>
+<Label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">修改人
+</Label>
+</td>
+<td>
+<input  id="txtUpdUser" name="txtUpdUser" class="form-control" style="width:150px;"/>
+</td>
+</tr>
+<tr>
+<td>
+<Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</Label>
+</td>
+<td>
+<input  id="txtMemo" name="txtMemo" class="form-control" style="width:150px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnOKUpd" type="button" class="btn btn-primary" onclick="mySubmit()">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+</div>

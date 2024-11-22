@@ -1,0 +1,301 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+     <script>    
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Detail_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Detail_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+    </script>
+<div id = "tabLayout" class = "tab_layout" 
+>
+@*-- 详细信息层 --*@
+
+ <div class="modal fade" id="divDetailDialog_vViewpoint" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_vViewpoint" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_vViewpoint">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr >
+<td class="text-right">
+<span id="spnViewpointId_d" name="spnViewpointId_d" CssClass="col-form-label text-right">观点Id</span>
+</td>
+<td class="text-left">
+<label id="lblViewpointId_d" name="lblViewpointId_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnViewpointName_d" name="spnViewpointName_d" CssClass="col-form-label text-right">观点名称</span>
+</td>
+<td class="text-left">
+<label id="lblViewpointName_d" name="lblViewpointName_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnViewpointContent_d" name="spnViewpointContent_d" CssClass="col-form-label text-right">观点内容</span>
+</td>
+<td class="text-left">
+<label id="lblViewpointContent_d" name="lblViewpointContent_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnViewpointTypeName_d" name="spnViewpointTypeName_d" CssClass="col-form-label text-right">观点类型名</span>
+</td>
+<td class="text-left">
+<label id="lblViewpointTypeName_d" name="lblViewpointTypeName_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnReason_d" name="spnReason_d" CssClass="col-form-label text-right">理由</span>
+</td>
+<td class="text-left">
+<label id="lblReason_d" name="lblReason_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnSource_d" name="spnSource_d" CssClass="col-form-label text-right">来源</span>
+</td>
+<td class="text-left">
+<label id="lblSource_d" name="lblSource_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnVPProposePeople_d" name="spnVPProposePeople_d" CssClass="col-form-label text-right">观点提出人</span>
+</td>
+<td class="text-left">
+<label id="lblVPProposePeople_d" name="lblVPProposePeople_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnMemo_d" name="spnMemo_d" CssClass="col-form-label text-right">备注</span>
+</td>
+<td class="text-left">
+<label id="lblMemo_d" name="lblMemo_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnIsSubmit_d" name="spnIsSubmit_d" CssClass="col-form-label text-right">是否提交</span>
+</td>
+<td class="text-left">
+<label id="lblIsSubmit_d" name="lblIsSubmit_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnAppraiseCount_d" name="spnAppraiseCount_d" CssClass="col-form-label text-right">评论数</span>
+</td>
+<td class="text-left">
+<label id="lblAppraiseCount_d" name="lblAppraiseCount_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnscore_d" name="spnscore_d" CssClass="col-form-label text-right">评分</span>
+</td>
+<td class="text-left">
+<label id="lblscore_d" name="lblscore_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnOkCount_d" name="spnOkCount_d" CssClass="col-form-label text-right">点赞统计</span>
+</td>
+<td class="text-left">
+<label id="lblOkCount_d" name="lblOkCount_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnUserTypeName_d" name="spnUserTypeName_d" CssClass="col-form-label text-right">用户类型名称</span>
+</td>
+<td class="text-left">
+<label id="lblUserTypeName_d" name="lblUserTypeName_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnAuthor_d" name="spnAuthor_d" CssClass="col-form-label text-right">作者</span>
+</td>
+<td class="text-left">
+<label id="lblAuthor_d" name="lblAuthor_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnCitationId_d" name="spnCitationId_d" CssClass="col-form-label text-right">引用Id</span>
+</td>
+<td class="text-left">
+<label id="lblCitationId_d" name="lblCitationId_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnKeyword_d" name="spnKeyword_d" CssClass="col-form-label text-right">关键字</span>
+</td>
+<td class="text-left">
+<label id="lblKeyword_d" name="lblKeyword_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnPaperTitle_d" name="spnPaperTitle_d" CssClass="col-form-label text-right">论文标题</span>
+</td>
+<td class="text-left">
+<label id="lblPaperTitle_d" name="lblPaperTitle_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnPeriodical_d" name="spnPeriodical_d" CssClass="col-form-label text-right">期刊</span>
+</td>
+<td class="text-left">
+<label id="lblPeriodical_d" name="lblPeriodical_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnResearchQuestion_d" name="spnResearchQuestion_d" CssClass="col-form-label text-right">研究问题</span>
+</td>
+<td class="text-left">
+<label id="lblResearchQuestion_d" name="lblResearchQuestion_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnUploadfileUrl_d" name="spnUploadfileUrl_d" CssClass="col-form-label text-right">文件地址</span>
+</td>
+<td class="text-left">
+<label id="lblUploadfileUrl_d" name="lblUploadfileUrl_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnCitationCount_d" name="spnCitationCount_d" CssClass="col-form-label text-right">引用统计</span>
+</td>
+<td class="text-left">
+<label id="lblCitationCount_d" name="lblCitationCount_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnStuScore_d" name="spnStuScore_d" CssClass="col-form-label text-right">学生平均分</span>
+</td>
+<td class="text-left">
+<label id="lblStuScore_d" name="lblStuScore_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnTeaScore_d" name="spnTeaScore_d" CssClass="col-form-label text-right">教师评分</span>
+</td>
+<td class="text-left">
+<label id="lblTeaScore_d" name="lblTeaScore_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnid_CurrEduCls_d" name="spnid_CurrEduCls_d" CssClass="col-form-label text-right">教学班流水号</span>
+</td>
+<td class="text-left">
+<label id="lblid_CurrEduCls_d" name="lblid_CurrEduCls_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnPdfContent_d" name="spnPdfContent_d" CssClass="col-form-label text-right">Pdf内容</span>
+</td>
+<td class="text-left">
+<label id="lblPdfContent_d" name="lblPdfContent_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnPdfPageNum_d" name="spnPdfPageNum_d" CssClass="col-form-label text-right">Pdf页码</span>
+</td>
+<td class="text-left">
+<label id="lblPdfPageNum_d" name="lblPdfPageNum_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnVersionCount_d" name="spnVersionCount_d" CssClass="col-form-label text-right">版本统计</span>
+</td>
+<td class="text-left">
+<label id="lblVersionCount_d" name="lblVersionCount_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnCreateDate_d" name="spnCreateDate_d" CssClass="col-form-label text-right">建立日期</span>
+</td>
+<td class="text-left">
+<label id="lblCreateDate_d" name="lblCreateDate_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+<tr >
+<td class="text-right">
+<span id="spnShareId_d" name="spnShareId_d" CssClass="col-form-label text-right">分享Id</span>
+</td>
+<td class="text-left">
+<label id="lblShareId_d" name="lblShareId_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+<td class="text-right">
+<span id="spnIsRecommend_d" name="spnIsRecommend_d" CssClass="col-form-label text-right">是否推荐</span>
+</td>
+<td class="text-left">
+<label id="lblIsRecommend_d" name="lblIsRecommend_d" class="text-primary" style="width:150px;">
+</label>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_d_Viewpoint" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+</div>

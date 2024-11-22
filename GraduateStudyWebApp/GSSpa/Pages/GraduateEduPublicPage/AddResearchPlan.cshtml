@@ -1,0 +1,602 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduPublicPage.AddResearchPlanModel
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "主题研究计划";
+
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+
+}
+@section Scripts{
+
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script>
+        layui.use(['laydate', 'form'],
+            function () {
+                var laydate = layui.laydate;
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#txtStartDate' //指定元素
+                });
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#txtEndDate' //指定元素
+                });
+            });
+    </script>
+
+
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+}
+<script>
+
+    //$(function () {
+
+
+    //    layui.use(['laydate', 'form'],
+    //    function () {
+    //        var laydate = layui.laydate;
+
+    //        //执行一个laydate实例
+    //        laydate.render({
+    //            elem: '#txtEndDate' //指定元素
+    //        });
+
+    //        //执行一个laydate实例
+    //        laydate.render({
+    //            elem: '#txtStartDate' //指定元素
+    //        });
+    //    });
+
+    //});
+@*var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+var strCurrPrjId = "@Model.CurrPrjId";*@
+
+ /*
+  动态添加编辑区域
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_AddDPV_Edit)
+ */
+function AddDPV_Edit(divName4Edit) {
+   require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+gs_researchplan.AddResearchPlanEx.AddDPV_Edit(divName4Edit);
+});
+}
+
+ /*
+  按钮单击,用于调用Js函数中btn_Click
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btn_Click)
+ */
+function btn_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+gs_researchplan.AddResearchPlanEx.btn_Click(strCommandName, strKeyId);
+});
+}
+
+ /*
+  添加新记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnAddNewRecord_Click)
+ */
+function btnAddNewRecord_Click() {
+   require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+ShowDialog('Add');
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.btnAddNewRecord_Click();
+});
+}
+
+ /*
+  删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecord_Click)
+ */
+function btnDelRecord_Click() {
+   require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(gs_researchplan, commonfunc) {
+var arrKeyIds = commonfunc.clsCommonFunc4Web.GetCheckedKeyIds();
+if (arrKeyIds.length == 0)
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.btnDelRecord_Click();
+});
+}
+
+
+ /*
+  在数据表里删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecordInTab_Click)
+ */
+function btnDelRecordInTab_Click(strKeyId) {
+   require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+if (strKeyId == "")
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.btnDelRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  在数据表里修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnUpdateRecordInTab_Click)
+ */
+function btnUpdateRecordInTab_Click(strKeyId) {
+   require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+    if (strKeyId == "")
+{
+alert("请选择需要修改的记录！");
+return;
+}
+var objPage = new gs_researchplan.AddResearchPlanEx();
+  objPage.btnUpdateRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  单击数据列表中每行首列的复选框所引发的事件
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ChkClick)
+ */
+function ChkClick(myThis)
+{
+require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(gs_researchplan, commonfunc) {
+var strId = myThis.id;
+var strKey = strId.substring(3);
+var arrKeys = commonfunc.arrSelectedKeys;
+if (myThis.checked == true) {
+if (arrKeys.indexOf(strKey) < 0)
+{
+arrKeys.push(strKey);
+}
+}
+else {
+var index = arrKeys.indexOf(strKey);
+if (index > -1)
+{
+arrKeys.splice(index, 1);
+}
+}
+var sstrKey = "";
+for (let strK of arrKeys)
+{
+sstrKey += `${ strK},`;
+}
+$('#spanResult').html(sstrKey);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ExpandDiv)
+ */
+         function ExpandDiv(divName) {
+//基于RequireJS来调用tzPubFun.ts中的函数OnlyShowDiv。
+require(["../js/TS/PubFun/tzPubFun"], function (pubfun) {
+      pubfun.OnlyShowDiv(divName, "function", "content");
+});
+}
+
+ /*
+  获取数据列表中的所选记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_GetAllCkechedKeys)
+ */
+function GetAllCkechedKeys(tabName)
+{
+var arrKeys = tabName.getElementsByTagName('chkInTab');
+alert(arrKeys.length.toString());
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_IndexPage)
+ */
+function IndexPage(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_JumpToPage)
+ */
+function JumpToPage()
+{
+var intCurrPageIndex = $('#input_number').val();
+var intPageIndex = Number(intCurrPageIndex);
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_mySubmit)
+ */
+function mySubmit(pstrOp) {
+
+    //    alert("提交" + strOp);
+    if ($("#PlanContent").val() == "") {
+        layer.msg('计划内容不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#ddlStatusId").val() == "" || $("#ddlStatusId").val() == "0") {
+        layer.msg('计划状态不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#ddlPlanTypeId").val() == "" || $("#ddlPlanTypeId").val() == "0") {
+        layer.msg('计划类型不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else {
+        require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function (gs_researchplan) {
+            var objPage = new gs_researchplan.AddResearchPlanEx();
+            objPage.btnOKUpd_Click();
+        });
+    }
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_NextPage)
+ */
+function NextPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) + 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+
+
+
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+function GetPlanId() {
+    var Request = new Object();
+    Request = GetRequest();
+
+    var str2 = Request['TopicId'];
+    $("#hidTopicId").val(str2);
+    //var str3 = Request['PaperId'];
+    //$("#hidRequestPaperId").val(str3);
+    var str1 = Request['PlanId'];
+    $("#hidPlanId").val(str1);
+}
+
+
+function GetPlanId_load() {
+    var Request = new Object();
+    Request = GetRequest();
+    var str1 = Request['PlanId'];
+    $("#hidPlanId").val(str1);
+
+    var str2 = Request['TopicId'];
+    $("#hidTopicId").val(str2);
+    //var str3 = Request['PaperId'];
+    //$("#hidRequestPaperId").val(str3);
+
+    var str7 = Request['Id_CurrEduCls'];
+    $("#hidId_CurrEduCls").val(str7);
+  
+
+    if (str2 != null) {
+
+
+        require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function (gs_researchplan) {
+            var objPage = new gs_researchplan.AddResearchPlanEx();
+            objPage.Page_Load();
+        });
+    }
+    else {
+        require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function (gs_researchplan) {
+            var objPage = new gs_researchplan.AddResearchPlanEx();
+            objPage.Page_Load();
+        });
+    }
+}
+
+
+
+ /*
+  页面导入-在导入页面后运行的函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_Page_Load)
+ */
+window.onload = function () {
+
+    GetPlanId_load();
+
+//   require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+//var objPage = new gs_researchplan.AddResearchPlanEx();
+//objPage.Page_Load();
+//});
+}
+
+
+function CloseWindow() {
+
+    try {
+        var strpaperId = $("#hidRequestPaperId").val();
+        if (strpaperId != "" && strpaperId != undefined) {
+            window.parent.CloseWindow();
+        }
+        else {
+           // var strPageType = $('#hidUserTypeId').val();
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index); //再执行关闭
+
+            //研究计划
+            window.parent.liResearchPlanClick();
+        }
+        //if (strPageType == "01") {
+        //    window.parent.liViewpointClick();
+        //}
+        //else if (strPageType == "02") {
+        //    window.parent.liExpertViewpointClick();
+        //}
+        //else if (strPageType == "03") {
+        //    window.parent.liConceptClick();
+        //} else if (strPageType == "04") {
+        //    window.parent.liObjectiveFactClick();
+        //} else if (strPageType == "05") {
+        //    window.parent.liObjectiveBasisClick();
+        //}
+    } catch (e) {
+        window.opener.location = "父页面地址";
+        window.opener = null;
+
+        window.close();
+    }
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PageNum)
+ */
+function PageNum(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PrevPage)
+ */
+function PrevPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) - 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  全选数据列表中的所有记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SetAllCkechedKeys)
+ */
+function SetAllCkechedKeys(tabName)
+{
+var thisChk = event.target;
+require(["../js/TS/PubFun/clsCommonFunc4Web.js"], function (commonfunc) {
+console.log(tabName);
+console.log(thisChk);
+commonfunc.clsCommonFunc4Web.SetAllCkechedKeys(tabName, thisChk);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SortBy)
+ */
+function SortBy(strFldName)
+{
+console.log("按：" + strFldName + "排序");
+require(["../js/GraduateEduPublicPage/AddResearchPlanEx.js"], function(gs_researchplan) {
+var objPage = new gs_researchplan.AddResearchPlanEx();
+objPage.SortBy(strFldName);
+});
+}
+
+</script>
+
+
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+<div id="tabLayout" style="width: 100%;height:100%;">
+    <div id="divEditRegion" tabindex="-1">
+        <div>
+
+            <div style="width: 98%;margin-left:10px;">
+
+                <div>
+
+                    <table id="tabEdit" style="width:100%;" class="table table-bordered table-hover table td table-sm">
+                        <tr style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblPlanId" name="lblPlanId" class="col-form-label text-right" style="width:90px;">
+                                    计划Id
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtPlanId" name="txtPlanId" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblStatusId" name="lblStatusId" class="col-form-label text-right" style="width:90px;">
+                                    状态
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <select id="ddlStatusId" name="ddlStatusId" class="form-control" style="width:180px;"></select>
+                            </td>
+                        </tr>
+                        @*<tr>
+                                <td class="text-right">
+                                    <Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">
+                                        主题
+                                    </Label>
+                                </td>
+                                <td class="text-left">
+                                    <select id="ddlTopicId" name="ddlTopicId" class="form-control" style="width:180px;"></select>
+                                </td>
+                            </tr>*@
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblTypeId" name="lblTypeId" class="col-form-label text-right" style="width:90px;">
+                                    计划类型
+                                </Label>
+                            </td>
+                            <td>
+                                <select id="ddlPlanTypeId" name="ddlPlanTypeId" class="form-control" style="width:150px;">
+                                    <option value="0">计划类型</option>
+                                    <option value="01">个人计划</option>
+                                    <option value="02">小组计划</option>
+                                </select>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblPlanContent" name="lblPlanContent" class="col-form-label text-right" style="width:90px;">
+                                    计划内容
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                @*<input id="txtPlanContent" name="txtPlanContent" class="form-control" style="width:350px;" />*@
+
+                                <textarea id="txtPlanContent" name="txtPlanContent" class="form-control" style="width:650px;height:80px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblResponsibleUser" name="lblResponsibleUser" class="col-form-label text-right" style="width:90px;">
+                                    负责人/小组
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtResponsibleUser" name="txtResponsibleUser" class="form-control" style="width:300px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblStartDate" name="lblStartDate" class="col-form-label text-right" style="width:90px;">
+                                    开始日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtStartDate" name="txtStartDate" class="layui-input" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblEndDate" name="lblEndDate" class="col-form-label text-right" style="width:90px;">
+                                    截止日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtEndDate" name="txtEndDate" class="layui-input" style="width:150px;" />
+                            </td>
+                        </tr>
+                        @*<tr>
+                                <td></td>
+                                <td class="text-left">
+                                    <span class="form-control" style="width:150px;">
+                                        <input type="checkbox" id="chkIsSubmit" name="chkIsSubmit" Text="是否提交"><label for="chkIsSubmit">是否提交</label>
+                                    </span>
+                                </td>
+                            </tr>*@
+                        <tr>
+                            <td class="text-right">
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                @*<input id="txtMemo" name="txtMemo" class="form-control" style="width:350px;" />*@
+                                <textarea id="txtMemo" name="txtMemo" class="form-control" style="width:350px;height:80px;"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnCancel" type="button" class="btn btn-default" onclick="CloseWindow()">关闭</button>
+                    <button id="btnOKUpd" type="button" class="btn btn-primary" onclick="mySubmit()">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" value="" />
+<!-- 研究计划Id  -->
+<input id="hidPlanId" type="hidden" />
+<!-- 主题Id  -->
+<input id="hidTopicId" type="hidden" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvgs_ResearchPlanBy" type="hidden" value="" />
+
+
+@* 教学班Id *@
+<input id="hidId_CurrEduCls" type="hidden" />

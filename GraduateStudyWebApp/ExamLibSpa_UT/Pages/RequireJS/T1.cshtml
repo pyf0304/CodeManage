@@ -1,0 +1,63 @@
+﻿@page
+@model T1Model
+@{
+    Layout = "~/Pages/Shared/_Layout_RequireJS.cshtml";
+    ViewData["Title"] = "测试RequireJS";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@Model.Message</h3>
+@*<script src="~/js/ts/t1.js"></script>*@
+
+@*<script src="~/lib/require/require.js" data-main="./reqconfig1.js"></script>*@
+@*<script src="~/lib/require/require.js" data-main="/js/src/config"></script>*@
+
+<script>
+    function GetValue4Text1() {
+        requirejs(['jquery', 'clscommonfunc4web'], function ($, commfunc) {
+            var text1 = $('#text1').val();
+            var T1 = commfunc.clsCommonFunc4Web.Test1();
+            alert(text1 + T1);
+        });
+
+    }
+    function GetValue4Text2() {
+
+        requirejs(['jquery', '/js/TS/PubFun/clsCommonFunc4Web.js'], function ($, commfunc) {
+            var text1 = $('#text1').val();
+            var T1 = commfunc.clsCommonFunc4Web.Test1();
+            alert(text1 + T1);
+        });
+
+       
+    }
+    function GetValue4Text3() {
+
+     
+
+        requirejs(['jquery'], function ($) {
+            var text1 = $('#text1').val();
+            //var T1 = commfunc.clsCommonFunc4Web.Test1();
+            var T1 = "T1";
+            alert(text1 + T1);
+        });
+    }
+
+</script>
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+<div>
+    <button onclick="GetValue4Text1()">获取文本框值jquery+clscommonfunc4web</button>
+    <button onclick="GetValue4Text2()">获取文本框值jquery+clscommonfunc4web全名</button>
+    <button onclick="GetValue4Text3()">获取文本框值jquery</button>
+    <input type="text" id="text1" style="width:300px;" value="text1" />
+    <input type="text" id="Text1" style="width:300px;" value="Text1:用户初始化RequireJs测试" />
+
+</div>
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>

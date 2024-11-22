@@ -1,0 +1,106 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+     <script>    
+    </script>
+<div id = "tabLayout" class = "tab_layout" 
+>
+@*-- 详细信息层 --*@
+
+ <div class="modal fade" id="divDetailDialog_vCacheUseState" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_vCacheUseState" aria-hidden="true">
+ <div class="modal-dialog">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_vCacheUseState">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr>
+<td class="text-right">
+<span id="spnmId_d" name="spnmId_d" CssClass="col-form-label text-right">mId</span>
+</td>
+<td class="text-left">
+<Label id="lblmId_d" name="lblmId_d" class="text-primary" style="width:300px;">
+</Label>
+</td>
+</tr>
+<tr>
+<td class="text-right">
+<span id="spnUserId_d" name="spnUserId_d" CssClass="col-form-label text-right">用户Id</span>
+</td>
+<td class="text-left">
+<Label id="lblUserId_d" name="lblUserId_d" class="text-primary" style="width:150px;">
+</Label>
+</td>
+</tr>
+<tr>
+<td class="text-right">
+<span id="spnCacheModeName_d" name="spnCacheModeName_d" CssClass="col-form-label text-right">缓存方式名</span>
+</td>
+<td class="text-left">
+<Label id="lblCacheModeName_d" name="lblCacheModeName_d" class="text-primary" style="width:300px;">
+</Label>
+</td>
+</tr>
+<tr>
+<td class="text-right">
+<span id="spnCacheModeENName_d" name="spnCacheModeENName_d" CssClass="col-form-label text-right">缓存方式英文名</span>
+</td>
+<td class="text-left">
+<Label id="lblCacheModeENName_d" name="lblCacheModeENName_d" class="text-primary" style="width:300px;">
+</Label>
+</td>
+</tr>
+<tr>
+<td class="text-right">
+<span id="spnCacheKey_d" name="spnCacheKey_d" CssClass="col-form-label text-right">缓存关键字</span>
+</td>
+<td class="text-left">
+<Label id="lblCacheKey_d" name="lblCacheKey_d" class="text-primary" style="width:300px;">
+</Label>
+</td>
+</tr>
+<tr>
+<td class="text-right">
+<span id="spnCacheSize_d" name="spnCacheSize_d" CssClass="col-form-label text-right">缓存大小</span>
+</td>
+<td class="text-left">
+<Label id="lblCacheSize_d" name="lblCacheSize_d" class="text-primary" style="width:300px;">
+</Label>
+</td>
+</tr>
+<tr>
+<td class="text-right">
+<span id="spnMemo_d" name="spnMemo_d" CssClass="col-form-label text-right">说明</span>
+</td>
+<td class="text-left">
+<Label id="lblMemo_d" name="lblMemo_d" class="text-primary" style="width:300px;">
+</Label>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_d_CacheUseState" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnOKUpd_d_CacheUseState" type="button" class="btn btn-primary" onclick="Submit_CacheUseState()">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+</div>

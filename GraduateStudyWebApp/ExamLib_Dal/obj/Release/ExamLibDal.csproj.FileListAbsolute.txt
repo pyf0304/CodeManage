@@ -1,0 +1,8 @@
+E:\TzAppData\GraduateStudyWebApp\ExamLibDal\bin\Release\ExamLibDal.dll.config
+E:\TzAppData\GraduateStudyWebApp\ExamLibDal\bin\Release\ExamLibDal.dll
+E:\TzAppData\GraduateStudyWebApp\ExamLibDal\bin\Release\ExamLibDal.pdb
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Dal\obj\Release\ExamLibDal.csproj.AssemblyReference.cache
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Dal\obj\Release\ExamLibDal.csproj.CoreCompileInputs.cache
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Dal\obj\Release\ExamLibDal.csproj.Up2Date
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Dal\obj\Release\ExamLibDal.dll
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Dal\obj\Release\ExamLibDal.pdb

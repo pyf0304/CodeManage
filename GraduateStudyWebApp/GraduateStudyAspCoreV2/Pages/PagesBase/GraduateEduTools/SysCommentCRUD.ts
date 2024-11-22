@@ -1,0 +1,1530 @@
+﻿
+ /**
+ * 类名:SysCommentCRUD(界面:SysCommentCRUD)
+ * 表名:SysComment(01120622)
+ * 版本:2023.01.12.1(服务器:WIN-SRV103-116)
+ * 日期:2023/01/12 16:39:29
+ * 生成者:
+ 工程名称:问卷调查(0112)
+ CM工程:研究生论文学习(变量首字母小写)-全部函数集
+ * 相关数据库:103.116.76.183,9433EduHigh_Jsie
+ * PrjDataBaseId:0170
+ * 模块中文名:研培设置(GraduateEduTools)
+ * 框架-层名:WA_界面后台_TS(TS)(WA_ViewScriptCS_TS)
+ * 编程语言:TypeScript
+ **/
+//import $ from "jquery";
+import { vSysComment_GetRecCountByCondAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsvSysCommentWApi.js";
+import { vSysComment_GetObjLstAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsvSysCommentWApi.js";
+import { vSysComment_GetRecCountByCond_Cache } from "../../TS/L3_ForWApi/GraduateEduTools/clsvSysCommentWApi.js";
+import { vSysComment_GetSubObjLst_Cache } from "../../TS/L3_ForWApi/GraduateEduTools/clsvSysCommentWApi.js";
+import { vUsersSim_BindDdl_UserIdInDiv_Cache } from "../../TS/L3_ForWApi/UserManage_Share/clsvUsersSimWApi.js";
+import { SysComment_DelRecordAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsSysCommentWApi.js";
+import { SysComment_GetObjByCommentIdAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsSysCommentWApi.js";
+import { clsvSysCommentEN } from "../../TS/L0_Entity/GraduateEduTools/clsvSysCommentEN.js";
+import { clsvSysCommentENEx } from "../../TS/L0_Entity/GraduateEduTools/clsvSysCommentENEx.js";
+import { vSysCommentEx_FuncMapByFldName } from "../../TS/L3_ForWApiEx/GraduateEduTools/clsvSysCommentExWApi.js";
+import { vSysComment_GetObjLstByPagerAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsvSysCommentWApi.js";
+import { vSysComment_SortFun_Defa } from "../../TS/L3_ForWApi/GraduateEduTools/clsvSysCommentWApi.js";
+import { vSysComment_GetObjLstByPager_Cache } from "../../TS/L3_ForWApi/GraduateEduTools/clsvSysCommentWApi.js";
+import { SysComment_GetObjLstByCommentIdLstAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsSysCommentWApi.js";
+import { SysComment_GetMaxStrIdAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsSysCommentWApi.js";
+import { SysComment_AddNewRecordAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsSysCommentWApi.js";
+import { SysComment_DelSysCommentsAsync } from "../../TS/L3_ForWApi/GraduateEduTools/clsSysCommentWApi.js";
+import { clsSysCommentEN } from "../../TS/L0_Entity/GraduateEduTools/clsSysCommentEN.js";
+import {  arrSelectedKeys, BindDdl_TrueAndFalseInDiv, BindTab_V, confirm_del, GetObjKeys, Redirect, SortFun  } from "../../TS/PubFun/clsCommFunc4Web.js";
+import {  GetCheckBoxValueInDiv, GetCheckedKeyIdsInDiv, GetInputValueInDiv, GetLabelHtmlInDiv, GetSelectObjInDiv, GetSelectValueInDiv, SetCheckBoxValueByIdInDiv, SetCheckedItem4KeyId, SetInputValueByIdInDiv, SetLabelHtmlByIdInDiv, SetSelectValueByIdInDiv } from "../../TS/PubFun/clsCommFunc4Ctrl.js";
+import { clsPager } from "../../TS/PubFun/clsPager.js";
+import { clsOrderByData } from "../../TS/PubFun/clsOrderByData.js";
+import { stuPagerPara } from "../../TS/PubFun/stuPagerPara.js";
+import { clsDataColumn } from "../../TS/PubFun/clsDataColumn.js";
+import { TransToBool } from "../../TS/PubFun/clsString.js";
+import { clsPubSessionStorage } from "../../TS/PubFun/clsPubSessionStorage.js";
+import { Format, IsNullOrEmpty } from "../../TS/PubFun/clsString.js";
+import { clsOperateList, ShowEmptyRecNumInfo, GetCurrPageIndex, GetSortBy } from "../../TS/PubFun/clsOperateList.js";
+import { clsSysPara4WebApi } from "../../TS/PubConfig/clsSysPara4WebApi.js";
+ /**
+* 宣布一个用于导出Excel的函数，用于调用js端的导出Excel。
+ **/
+declare function exportSpecialExcel_pyf(arrData:any, strFileName:string): void;
+/**
+* 宣布一个已经在其他地方定义存在的变量strUrl_Session_SetString，
+* 用于定义处理Session-设置String函数的地址
+ **/
+declare var strUrl_Session_SetString:string;
+declare var strUrl_Session_GetString: string;
+/**
+* 宣布一个已经在其他地方定义存在的变量strCurrPrjId，
+* 用于定义当前工程Id
+ **/
+declare var strCurrPrjId: string;
+ /** SysCommentCRUD 的摘要说明。其中Q代表查询,U代表修改
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:GeneCode)
+ **/
+export abstract class SysCommentCRUD implements clsOperateList
+{
+public static objPage_CRUD: SysCommentCRUD;
+public static sortFun_Static: (ascOrDesc: string) => (x: any, y: any) => number;
+public static ascOrDesc4SortFun = "Asc";
+public static sortvSysCommentBy = "";
+
+//专门用于数据列表的界面变量，用于分页功能等
+public currPageIndex = 0;
+public divName4List = "divList";  //列表区的层Id
+public divName4DataList = "divDataLst";  //列表中数据区的层Id
+public divName4Pager = "divPager";  //列表中的分页区的层Id
+public bolIsInitShow = false;  //记录是否导入分页区的变量
+public bolIsTableSm = true;//是否窄行的小表，即表中加样式： table-sm
+//public mstrListDiv = "divDataLst";//列表区数据列表层id
+public objPager: clsPager;
+
+public static id_CurrEduCls_Cache = "";//缓存分类字段
+public divName4Query = "divQuery";  //查询区的层Id
+public divName4Function = "divFunction";  //功能区的层Id
+public divName4Layout = "divLayout";  //界面布局的层Id
+constructor() {
+SysCommentCRUD.objPage_CRUD = this;
+this.objPager = new clsPager(this);
+}
+ /**
+ * 每页记录数，在扩展类可以修改
+ **/
+public get pageSize():number {
+return 5;
+}
+public recCount = 0;
+
+
+
+
+
+ /** 函数功能:页面导入,当页面开始运行时所发生的事件
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_Page_Load)
+ **/
+public async Page_Load()
+{
+const strThisFuncName = this.Page_Load.name;
+// 在此处放置用户代码以初始化页面
+try
+{
+this.SetEventFunc();
+ // 为查询区绑定下拉框
+const gvBindDdl = await this.BindDdl4QueryRegion();
+
+
+SysCommentCRUD.sortvSysCommentBy = "comment Asc";
+if (this.bolIsInitShow == false)  //
+{
+this.objPager.InitShow(this.divName4Pager);
+this.bolIsInitShow = true;  //
+}
+//2、显示无条件的表内容在GridView中
+const responseBindGv = await this.BindGv_vSysComment();
+}
+catch (e)
+{
+const strMsg = Format("页面启动不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+}
+}
+
+
+ /** 函数功能:设置事件函数
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_SetEventFunc)
+ **/
+public async SetEventFunc()
+{
+const strThisFuncName = this.SetEventFunc.name;
+// 在此处放置用户代码以初始化页面
+try
+{
+//没有定义相关事件
+}
+catch (e)
+{
+const strMsg = Format("设置事件函数不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+
+ /** 函数功能:页面导入,当页面开始运行时所发生的事件
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_Page_Load_Cache)
+ **/
+public async Page_Load_Cache()
+{
+const strThisFuncName = this.Page_Load_Cache.name;
+// 在此处放置用户代码以初始化页面
+try
+{
+ // 为查询区绑定下拉框
+const gvBindDdl = await this.BindDdl4QueryRegion();
+
+
+this.SetEventFunc();
+SysCommentCRUD.sortvSysCommentBy = "comment Asc";
+if (this.bolIsInitShow == false)  //
+{
+this.objPager.InitShow(this.divName4Pager);
+this.bolIsInitShow = true;  //
+}
+//2、显示无条件的表内容在GridView中
+const responseBindGv = await this.BindGv_vSysComment();
+}
+catch (e)
+{
+const strMsg = Format("页面启动不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+}
+}
+
+
+ /** 根据条件获取相应的对象列表
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_btnQuery_Click)
+ **/
+public async btnQuery_Click() 
+{
+const strThisFuncName = this.btnQuery_Click.name;
+this.SetCurrPageIndex(1);
+const responseBindGv = await this.BindGv_vSysComment();
+}
+
+ /** 合并数据
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_CombineData)
+ **/
+public CombineData(arrvSysCommentObjLst: Array<clsvSysCommentEN>, arrDataColumn: Array<clsDataColumn>) 
+{
+const strThisFuncName = this.CombineData.name;
+const intRowNum = arrvSysCommentObjLst.length;
+const intColNum = arrDataColumn.length;
+const arrData: Array < Array < any >> = new Array<Array<any>>();
+const arrHead: Array < any > = new Array<any>();
+for (let j = 0; j < intColNum; j++)
+{
+arrHead.push(arrDataColumn[j].colHeader);
+}
+arrData.push(arrHead);
+for (let i = 0; i < intRowNum; i++)
+{
+const arrRow: Array < any > = new Array<any>();
+const objEN: clsvSysCommentEN = arrvSysCommentObjLst[i];
+for (let j = 0; j < intColNum; j++)
+{
+arrRow.push(objEN.GetFldValue(arrDataColumn[j].fldName));//i + "" + j;
+}
+arrData.push(arrRow);
+}
+//console.log("arrData", arrData);
+const strFileName = Format("系统评论表({0})导出.xlsx",
+ clsvSysCommentEN._CurrTabName);
+exportSpecialExcel_pyf(arrData, strFileName);
+}
+
+ /** 根据条件获取相应的对象列表
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_ExportExcel)
+ **/
+public async ExportExcel_vSysComment() 
+{
+const strThisFuncName = this.ExportExcel_vSysComment.name;
+if (SysCommentCRUD.sortvSysCommentBy == null)
+{
+const strMsg = Format("在显示列表时，排序字段(sortvSysCommentBy)为空，请检查！(In BindGv_vSysComment_Cache)");
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+const strListDiv = this.divName4DataList;
+const strWhereCond = await this.CombinevSysCommentCondition();
+const intCurrPageIndex = GetCurrPageIndex(this.objPager.currPageIndex);//获取当前页
+ let arrvSysCommentObjLst: Array <clsvSysCommentEN> = [];
+try
+{
+this.recCount = await vSysComment_GetRecCountByCondAsync(strWhereCond);
+if (this.recCount == 0)
+{
+const lblMsg: HTMLSpanElement = < HTMLSpanElement > document.createElement("span");
+lblMsg.innerHTML = Format("根据条件:[{0}]获取的对象列表数为0！", strWhereCond);
+const divDataLst: HTMLDivElement = <HTMLDivElement> document.getElementById("divDataLst");
+if (divDataLst != null)
+{
+divDataLst.innerText = "";
+divDataLst.appendChild(lblMsg);
+}
+const strMsg = Format("在绑定ExportExcel过程中，根据条件:[{0}]获取的对象列表数为0！", strWhereCond);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+return;
+}
+arrvSysCommentObjLst = await vSysComment_GetObjLstAsync(strWhereCond);
+}
+catch(e)
+{
+const strMsg = Format("绑定GridView不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+if (arrvSysCommentObjLst.length == 0)
+{
+const strMsg = Format("在ExportExcel过程中，根据条件获取的记录数为0！");
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+return;
+}
+try
+{
+const arrDataColumn: Array < clsDataColumn > =
+       [
+{
+fldName: "commentId",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论Id",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 2,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "comment",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 3,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "score",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评分",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 4,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "scoreType",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评分类型",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 6,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "tableKey",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "表主键",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 8,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "updUser",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "修改人",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 9,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "updDate",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "修改日期",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 10,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "memo",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "备注",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 11,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "commentTypeName",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论类型名",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 13,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "commentTable",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论表",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 14,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+];
+arrvSysCommentObjLst = arrvSysCommentObjLst.sort(this.SortFun_ExportExcel);
+  this.CombineData(arrvSysCommentObjLst, arrDataColumn); 
+//console.log("完成BindGv_vSysComment!");
+}
+catch(e)
+{
+const strMsg = Format("绑定对象列表不成功, {0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /** 根据条件获取相应的对象列表
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_ExportExcel_Cache)
+ **/
+public async ExportExcel_vSysComment_Cache() 
+{
+const strThisFuncName = this.ExportExcel_vSysComment_Cache.name;
+if (SysCommentCRUD.sortvSysCommentBy == null)
+{
+const strMsg = Format("在显示列表时，排序字段(sortvSysCommentBy)为空，请检查！(In BindGv_vSysComment_Cache)");
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+const strListDiv = this.divName4DataList;
+const objvSysComment_Cond = await this.CombinevSysCommentConditionObj4ExportExcel();
+objvSysComment_Cond.SetCondFldValue(clsvSysCommentEN.con_id_CurrEduCls, SysCommentCRUD.id_CurrEduCls_Cache, "=");
+const strWhereCond = JSON.stringify(objvSysComment_Cond);
+const intCurrPageIndex = GetCurrPageIndex(this.objPager.currPageIndex);//获取当前页
+ let arrvSysCommentObjLst: Array <clsvSysCommentEN> = [];
+try
+{
+this.recCount = await vSysComment_GetRecCountByCond_Cache(objvSysComment_Cond, SysCommentCRUD.id_CurrEduCls_Cache);
+if (this.recCount == 0)
+{
+const lblMsg: HTMLSpanElement = < HTMLSpanElement > document.createElement("span");
+lblMsg.innerHTML = Format("根据条件:[{0}]获取的对象列表数为0！", objvSysComment_Cond.whereCond);
+const divDataLst: HTMLDivElement = <HTMLDivElement> document.getElementById("divDataLst");
+if (divDataLst != null)
+{
+divDataLst.innerText = "";
+divDataLst.appendChild(lblMsg);
+}
+const strMsg = Format("在绑定Gv_Cache过程中，根据条件:[{0}]获取的对象列表数为0！", objvSysComment_Cond.whereCond);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+return;
+}
+arrvSysCommentObjLst = await vSysComment_GetSubObjLst_Cache(objvSysComment_Cond, SysCommentCRUD.id_CurrEduCls_Cache);
+}
+catch(e)
+{
+const strMsg = Format("绑定GridView不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+if (arrvSysCommentObjLst.length == 0)
+{
+const strKey = Format("{0}_{1}", clsSysCommentEN._CurrTabName, SysCommentCRUD.id_CurrEduCls_Cache);
+const strMsg = Format("根据条件获取的记录数为0！(Key={0})", strKey);
+console.error("Error: ", strMsg);
+//console.trace();
+ShowEmptyRecNumInfo(strListDiv, strMsg);
+this.objPager.Hide(this.divName4Pager);
+return;
+}
+try
+{
+const arrDataColumn: Array < clsDataColumn > =
+       [
+{
+fldName: "commentId",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论Id",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 2,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "comment",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 3,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "score",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评分",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 4,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "scoreType",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评分类型",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 6,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "tableKey",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "表主键",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 8,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "updUser",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "修改人",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 9,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "updDate",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "修改日期",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 10,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "memo",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "备注",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 11,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "commentTypeName",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论类型名",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 13,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: "commentTable",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论表",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 14,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+];
+arrvSysCommentObjLst = arrvSysCommentObjLst.sort(this.SortFun_ExportExcel);
+  this.CombineData(arrvSysCommentObjLst, arrDataColumn); 
+//console.log("完成BindGv_vSysComment!");
+}
+catch(e)
+{
+const strMsg = Format("绑定对象列表不成功, {0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /**
+ * 设置绑定下拉框，针对字段:[UserId]
+ * (AGC.PureClassEx.clsASPDropDownListBLEx_Static:GC_SetBindDdl_TS4QryRegion4TabFeature1B)
+ **/
+
+public async SetDdl_UserIdInDiv()
+{
+await vUsersSim_BindDdl_UserIdInDiv_Cache(this.divName4Query, "ddlUserId_q", clsSysPara4WebApi.cmPrjId );//
+}
+
+
+ /** 函数功能:为查询区绑定下拉框
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_BindDdl4QueryRegion)
+ **/
+public async BindDdl4QueryRegion()
+{
+const strThisFuncName = this.BindDdl4QueryRegion.name;
+// 在此处放置用户代码以初始化页面
+
+
+await this.SetDdl_UserIdInDiv();//查询区域
+}
+
+
+ /**
+ * 添加新记录
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_btnCopyRecord_Click)
+ **/
+public async btnCopyRecord_Click() {
+const strThisFuncName = this.btnCopyRecord_Click.name;
+try
+{
+const arrKeyIds = GetCheckedKeyIdsInDiv(this.divName4List);
+if (arrKeyIds.length == 0)
+{
+alert("请选择需要克隆的记录！");
+return "";
+}
+await this.CopyRecord(arrKeyIds);
+await this.BindGv_vSysComment();
+}
+catch(e)
+{
+const strMsg = Format("复制记录不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /** 
+ * 在数据表里删除记录
+ * "strCommentId": 表关键字
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_btnDelRecordInTab_Click)
+ **/
+public async btnDelRecordInTab_Click(strKeyId:string) {
+const strThisFuncName = this.btnDelRecordInTab_Click.name;
+try
+{
+ if (strKeyId == "")
+{
+alert("请选择需要删除的记录！");
+return "";
+}
+if (confirm_del(0) == false)
+{
+return;
+}
+const responseText = await this.DelRecord(strKeyId);
+ await this.BindGv_vSysComment();
+}
+catch(e)
+{
+const strMsg = Format("删除记录不成功. {0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /** 
+ * 在数据表里选择记录
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_btnSelectRecordInTab_Click)
+ **/
+public async btnSelectRecordInTab_Click(strCommentId: string) {
+const strThisFuncName = this.btnSelectRecordInTab_Click.name;
+try
+{
+if (IsNullOrEmpty(strCommentId) == true)
+{
+const strMsg = "请选择相关记录，请检查！";
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+if (confirm_del(0) == false)
+{
+return;
+}
+this.SelectRecord(strCommentId);
+}
+catch(e)
+{
+const strMsg = Format("选择记录不成功. {0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /** 
+ * 根据关键字删除记录
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_DelRecord)
+ **/
+public async DelRecord(strCommentId: string) {
+const strThisFuncName = this.DelRecord.name;
+try
+{
+const returnInt = await SysComment_DelRecordAsync(strCommentId);
+if (returnInt > 0)
+{
+//SysComment_ReFreshCache(SysCommentCRUD.id_CurrEduCls_Cache);
+const strInfo = Format("删除记录成功,共删除{0}条记录!", returnInt);
+//显示信息框
+alert(strInfo);
+}
+else
+{
+const strInfo = Format("删除记录不成功!");
+//显示信息框
+alert(strInfo);
+}
+console.log("完成DelRecord!");
+}
+catch(e)
+{
+const strMsg = Format("删除记录不成功. {0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /** 
+ * 根据关键字选择相应的记录
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_SelectRecord)
+ * @param sender:参数列表
+ **/
+public async SelectRecord(strCommentId: string) 
+{
+const strThisFuncName = this.SelectRecord.name;
+try
+{
+const objSysCommentEN = await SysComment_GetObjByCommentIdAsync(strCommentId);
+//console.log("完成SelectRecord!", objSysCommentEN);
+Redirect("/Index/Main_vSysComment");
+}
+catch(e)
+{
+const strMsg = Format("根据关键字获取相应的记录的对象不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+}
+}
+
+ /** 删除记录
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_btnDelRecord_Click)
+ **/
+public async btnDelRecord_Click() {
+const strThisFuncName = this.btnDelRecord_Click.name;
+try
+{
+const arrKeyIds = GetCheckedKeyIdsInDiv(this.divName4List);
+if (arrKeyIds.length == 0)
+{
+alert("请选择需要删除的记录！");
+return "";
+}
+if (confirm_del(arrKeyIds.length) == false)
+{
+return;
+}
+await this.DelMultiRecord(arrKeyIds);
+await this.BindGv_vSysComment();
+}
+catch(e)
+{
+const strMsg = Format("删除记录不成功. {0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /** 根据条件获取相应的对象列表
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_btnExportExcel_Click)
+ **/
+public async btnExportExcel_Click() 
+{
+const strThisFuncName = this.btnExportExcel_Click.name;
+const responseBindGv = await this.ExportExcel_vSysComment_Cache();
+}
+
+ /** 把所有的查询控件内容组合成一个条件串
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_CombineCondition)
+ * @returns 条件串(strWhereCond)
+ **/
+ public async CombinevSysCommentCondition():Promise<string> 
+{
+//使条件串的初值为"1 = 1",以便在该串的后面用"and "添加其他条件,
+//例如 1 = 1 && UserName = '张三'
+let strWhereCond = " 1 = 1 ";
+//如果该条件控件的内容不为空,就组成一个条件并添加到总条件串中。
+
+try
+{
+if ( this.commentTypeName_q != "")
+{
+strWhereCond += Format(" And {0} like '% {1}%'", clsvSysCommentEN.con_CommentTypeName, this.commentTypeName_q);
+}
+if ( this.userId_q != "" && this.userId_q != "0")
+{
+strWhereCond += Format(" And {0} = '{1}'", clsvSysCommentEN.con_UserId, this.userId_q);
+}
+}
+catch(objException)
+{
+const strMsg:string = Format("(errid:WiTsCs0009)在组合查询条件(CombineSysCommentCondition)时出错!请联系管理员!{0}", objException);
+throw strMsg;
+}
+return strWhereCond;
+}
+
+ /** 把所有的查询控件内容组合成一个条件串
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_CombineConditionObj)
+ * @returns 条件串(strWhereCond)
+ **/
+ public async CombinevSysCommentConditionObj(): Promise<clsvSysCommentEN> 
+{
+//使条件串的初值为"1 = 1",以便在该串的后面用"and "添加其他条件,
+//例如 1 = 1 && UserName = '张三'
+let strWhereCond = " 1 = 1 ";
+const objvSysComment_Cond = new clsvSysCommentEN();
+//如果该条件控件的内容不为空,就组成一个条件并添加到总条件串中。
+try
+{
+if ( this.commentTypeName_q != "")
+{
+strWhereCond += Format(" And {0} like '% {1}%'", clsvSysCommentEN.con_CommentTypeName, this.commentTypeName_q);
+objvSysComment_Cond.SetCondFldValue(clsvSysCommentEN.con_CommentTypeName, this.commentTypeName_q, "like");
+}
+if ( this.userId_q != "" && this.userId_q != "0")
+{
+strWhereCond += Format(" And {0} = '{1}'", clsvSysCommentEN.con_UserId, this.userId_q);
+objvSysComment_Cond.SetCondFldValue(clsvSysCommentEN.con_UserId, this.userId_q, "=");
+}
+
+}
+catch(objException)
+{
+const strMsg:string = Format("(errid:WiTsCs0010)在组合查询条件对象(CombineSysCommentConditionObj)时出错!请联系管理员!{0}", objException);
+throw strMsg;
+}
+objvSysComment_Cond.whereCond = strWhereCond;
+return objvSysComment_Cond;
+}
+
+ /** 把所有的查询控件内容组合成一个条件串
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_CombineConditionObj4ExportExcel)
+ * @returns 条件串(strWhereCond)
+ **/
+ public async CombinevSysCommentConditionObj4ExportExcel():Promise<clsvSysCommentEN> 
+{
+//使条件串的初值为"1 = 1",以便在该串的后面用"and "添加其他条件,
+//例如 1 = 1 && UserName = '张三'
+let strWhereCond = " 1 = 1 ";
+const objvSysComment_Cond = new clsvSysCommentENEx();
+//如果该条件控件的内容不为空,就组成一个条件并添加到总条件串中。
+try
+{
+if ( this.commentTypeName_q != "")
+{
+strWhereCond += Format(" And {0} like '% {1}%'", clsvSysCommentEN.con_CommentTypeName, this.commentTypeName_q);
+objvSysComment_Cond.SetCondFldValue(clsvSysCommentEN.con_CommentTypeName, this.commentTypeName_q, "like");
+}
+if ( this.userId_q != "" && this.userId_q != "0")
+{
+strWhereCond += Format(" And {0} = '{1}'", clsvSysCommentEN.con_UserId, this.userId_q);
+objvSysComment_Cond.SetCondFldValue(clsvSysCommentEN.con_UserId, this.userId_q, "=");
+}
+}
+catch(objException)
+{
+const strMsg:string = Format("(errid:WiTsCs0013)在组合导出Excel条件对象(CombineSysCommentConditionObj4ExportExcel)时出错!请联系管理员!{0}", objException);
+throw strMsg;
+}
+objvSysComment_Cond.whereCond = strWhereCond;
+return objvSysComment_Cond;
+}
+
+ /** 显示vSysComment对象的所有属性值
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_BindTab)
+ * @param divContainer:显示容器
+ * @param arrSysCommentObjLst:需要绑定的对象列表
+ **/
+public async BindTab_vSysComment(divContainer: string, arrvSysCommentObjLst: Array<clsvSysCommentEN>) 
+{
+const strThisFuncName = this.BindTab_vSysComment.name;
+const o: HTMLDivElement = document.getElementById(divContainer) as HTMLDivElement;
+if (o == null)
+{
+alert(Format("{0}不存在！",divContainer));
+return;
+}
+const arrDataColumn: Array < clsDataColumn > =
+       [
+{
+fldName: "",
+sortBy: "",
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "",
+text: "",
+tdClass: "text-left",
+columnType: "CheckBox",
+orderNum: 1,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: clsvSysCommentEN.con_Comment,
+sortBy: clsvSysCommentEN.con_Comment,
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 3,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: clsvSysCommentEN.con_Score,
+sortBy: clsvSysCommentEN.con_Score,
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评分",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 4,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: clsvSysCommentEN.con_ScoreType,
+sortBy: clsvSysCommentEN.con_ScoreType,
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评分类型",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 6,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: clsvSysCommentEN.con_TableKey,
+sortBy: clsvSysCommentEN.con_TableKey,
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "表主键",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 8,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: clsvSysCommentEN.con_CommentTypeName,
+sortBy: clsvSysCommentEN.con_CommentTypeName,
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论类型名",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 9,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: clsvSysCommentEN.con_CommentTable,
+sortBy: clsvSysCommentEN.con_CommentTable,
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "评论表",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 10,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: clsvSysCommentEN.con_UpdUser,
+sortBy: clsvSysCommentEN.con_UpdUser,
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "修改人",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 11,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+{
+fldName: clsvSysCommentEN.con_UpdDate,
+sortBy: clsvSysCommentEN.con_UpdDate,
+sortFun: SortFun,
+getDataSource: "",
+colHeader: "修改日期",
+text: "",
+tdClass: "text-left",
+columnType: "Label",
+orderNum: 12,
+funcName: (strKey:string, strText:string) => { console.log(strKey, strText);return new HTMLElement();}
+},
+];
+await BindTab_V(o, arrvSysCommentObjLst, arrDataColumn,  clsvSysCommentEN.con_CommentId, this); 
+this.objPager.recCount = this.recCount;
+this.objPager.pageSize = this.pageSize;
+this.objPager.ShowPagerV2(this, this.divName4Pager);
+}
+
+ /** 扩展字段值的函数映射
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_ExtendFldFuncMap)
+ * @param arrvSysCommentExObjLst:需要映射的对象列表
+ * @param arrDataColumn:用于绑定表的数据列信息
+ **/
+public async ExtendFldFuncMap(arrvSysCommentExObjLst: Array<clsvSysCommentENEx>, arrDataColumn: Array<clsDataColumn>) {
+const arrFldName = clsvSysCommentEN.AttributeName;
+for (const objDataColumn of arrDataColumn) {
+if (IsNullOrEmpty(objDataColumn.fldName) == true) continue;
+if (arrFldName.indexOf(objDataColumn.fldName) > -1) continue;
+for (const objInFor of arrvSysCommentExObjLst) {
+await vSysCommentEx_FuncMapByFldName(objDataColumn.fldName, objInFor);
+}
+}
+}
+
+ /** 函数功能:在数据列表中跳转到前一页
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_PrevPage)
+ **/
+public async PrevPage()
+{
+const strThisFuncName = this.PrevPage.name;
+const intCurrPageIndex = this.objPager.currPageIndex;
+const intPageIndex = Number(intCurrPageIndex) - 1;
+//console.log("跳转到" + intPageIndex + "页");
+this.IndexPage(intPageIndex);
+}
+
+ /** 函数功能:在数据 列表中跳转到某一页
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_IndexPage)
+ * @param intPageIndex:页序号
+ **/
+public async IndexPage(intPageIndex:number)
+{
+const strThisFuncName = this.IndexPage.name;
+if (intPageIndex == 0)
+{
+intPageIndex = this.objPager.pageCount;
+}
+//console.log("跳转到" + intPageIndex + "页");
+this.SetCurrPageIndex(intPageIndex);
+const responseBindGv = await this.BindGv_vSysComment();
+}
+
+ /** 函数功能:在数据列表中跳转到下一页
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_NextPage)
+ **/
+public async NextPage()
+{
+const strThisFuncName = this.NextPage.name;
+const intCurrPageIndex = this.objPager.currPageIndex;
+const intPageIndex = Number(intCurrPageIndex) + 1;
+//console.log("跳转到" + intPageIndex + "页");
+this.IndexPage(intPageIndex);
+}
+
+ /** 根据条件获取相应的对象列表
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_BindGv)
+ **/
+public async BindGv_vSysComment() 
+{
+const strThisFuncName = this.BindGv_vSysComment.name;
+if (SysCommentCRUD.sortvSysCommentBy == null)
+{
+const strMsg = Format("在显示列表时，排序字段(sortvSysCommentBy)为空，请检查！(In BindGv_vSysComment)");
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+const strListDiv = this.divName4DataList;
+const strWhereCond = await this.CombinevSysCommentCondition();
+let intCurrPageIndex = GetCurrPageIndex(this.objPager.currPageIndex);//获取当前页
+ let arrvSysCommentObjLst: Array <clsvSysCommentEN> = [];
+try
+{
+this.recCount = await vSysComment_GetRecCountByCondAsync(strWhereCond);
+if (this.recCount == 0)
+{
+const lblMsg: HTMLSpanElement = < HTMLSpanElement > document.createElement("span");
+lblMsg.innerHTML = Format("根据条件:[{0}]获取的对象列表数为0！", strWhereCond);
+const divDataLst: HTMLDivElement = < HTMLDivElement > document.getElementById("divDataLst");
+if (divDataLst != null)
+{
+divDataLst.innerText = "";
+divDataLst.appendChild(lblMsg);
+}
+const strMsg = Format("在绑定Gv过程中，根据条件:[{0}]获取的对象列表数为0！", strWhereCond);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+return;
+}
+const intPageCount = this.objPager.GetPageCount(this.recCount, this.pageSize);
+if (intCurrPageIndex == 0)
+{
+if (intPageCount > 1) intCurrPageIndex = intPageCount;
+else intCurrPageIndex = 1;
+this.SetCurrPageIndex(intCurrPageIndex);
+}
+else if (intCurrPageIndex > intPageCount)
+{
+intCurrPageIndex = intPageCount;
+this.SetCurrPageIndex(intCurrPageIndex);
+}
+const objPagerPara: stuPagerPara = {
+pageIndex: intCurrPageIndex,
+pageSize: this.pageSize,
+whereCond: strWhereCond,
+orderBy: SysCommentCRUD.sortvSysCommentBy,//如果该字段为空，就使用下面的排序函数
+sortFun: (x, y) => { console.log(x,y);return 0;}
+}
+const responseObjLst = await vSysComment_GetObjLstByPagerAsync(objPagerPara).then((jsonData)=>{
+arrvSysCommentObjLst = < Array<clsvSysCommentEN>>jsonData;
+});
+}
+catch(e)
+{
+const strMsg = Format("绑定GridView不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+}
+const divPager: HTMLDivElement = < HTMLDivElement > document.getElementById("divPager");
+if (this.recCount <= this.pageSize)
+{
+if (divPager != null)
+{
+divPager.style.display = "none";
+}
+}
+else
+{
+if (divPager != null)
+{
+divPager.style.display = "block";
+}
+}
+if (arrvSysCommentObjLst.length == 0)
+{
+const lblMsg: HTMLSpanElement = < HTMLSpanElement > document.createElement("span");
+lblMsg.innerHTML = "根据条件获取的对象列表数为0！";
+const divDataLst: HTMLDivElement = < HTMLDivElement > document.getElementById("divDataLst");
+if (divDataLst != null)
+{
+divDataLst.innerText = "";
+divDataLst.appendChild(lblMsg);
+}
+const strMsg = Format("根据条件获取的记录数为0！");
+console.error("Error: ", strMsg);
+//console.trace();
+ShowEmptyRecNumInfo(strListDiv, strMsg);
+this.objPager.Hide(this.divName4Pager);
+return;
+}
+try
+{
+await this.BindTab_vSysComment(strListDiv, arrvSysCommentObjLst);
+//console.log("完成BindGv_vSysComment!");
+}
+catch(e)
+{
+//console.trace();
+const strMsg = Format("绑定对象列表不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /** 根据条件获取相应的对象列表
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_BindGv_Cache)
+ **/
+public async BindGv_vSysComment_Cache() 
+{
+const strThisFuncName = this.BindGv_vSysComment_Cache.name;
+if (SysCommentCRUD.sortvSysCommentBy == null)
+{
+const strMsg = Format("在显示列表时，排序字段(sortvSysCommentBy)为空，请检查！(In BindGv_vSysComment_Cache)");
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+const strListDiv = this.divName4DataList;
+const objvSysComment_Cond = await this.CombinevSysCommentConditionObj();
+objvSysComment_Cond.SetCondFldValue(clsvSysCommentEN.con_id_CurrEduCls, SysCommentCRUD.id_CurrEduCls_Cache, "=");
+const strWhereCond = JSON.stringify(objvSysComment_Cond);
+let intCurrPageIndex = GetCurrPageIndex(this.objPager.currPageIndex);//获取当前页
+ let arrvSysCommentObjLst: Array <clsvSysCommentEN> = [];
+try
+{
+this.recCount = await vSysComment_GetRecCountByCond_Cache(objvSysComment_Cond, SysCommentCRUD.id_CurrEduCls_Cache);
+if (this.recCount == 0)
+{
+const lblMsg: HTMLSpanElement = < HTMLSpanElement > document.createElement("span");
+lblMsg.innerHTML = Format("根据条件:[{0}]获取的对象列表数为0！", objvSysComment_Cond.whereCond);
+const divDataLst: HTMLDivElement = <HTMLDivElement> document.getElementById("divDataLst");
+if (divDataLst != null)
+{
+divDataLst.innerText = "";
+divDataLst.appendChild(lblMsg);
+}
+const strMsg = Format("在绑定Gv_Cache过程中，根据条件:[{0}]获取的对象列表数为0！", objvSysComment_Cond.whereCond);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+return;
+}
+const intPageCount = this.objPager.GetPageCount(this.recCount, this.pageSize);
+if (intCurrPageIndex == 0)
+{
+if (intPageCount > 1) intCurrPageIndex = intPageCount;
+else intCurrPageIndex = 1;
+this.SetCurrPageIndex(intCurrPageIndex);
+}
+else if (intCurrPageIndex > intPageCount)
+{
+intCurrPageIndex = intPageCount;
+this.SetCurrPageIndex(intCurrPageIndex);
+}
+const objPagerPara: stuPagerPara = {
+pageIndex: intCurrPageIndex,
+pageSize: this.pageSize,
+whereCond: strWhereCond,
+orderBy: SysCommentCRUD.sortvSysCommentBy,//如果该字段为空，就使用下面的排序函数
+sortFun: vSysComment_SortFun_Defa
+}
+arrvSysCommentObjLst = await vSysComment_GetObjLstByPager_Cache(objPagerPara, SysCommentCRUD.id_CurrEduCls_Cache);
+}
+catch(e)
+{
+const strMsg = Format("绑定GridView不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+const divPager: HTMLDivElement = < HTMLDivElement > document.getElementById("divPager");
+if (this.recCount <= this.pageSize)
+{
+if (divPager != null)
+{
+divPager.style.display = "none";
+}
+}
+else
+{
+if (divPager != null)
+{
+divPager.style.display = "block";
+}
+}
+if (arrvSysCommentObjLst.length == 0)
+{
+const lblMsg: HTMLSpanElement = < HTMLSpanElement > document.createElement("span");
+lblMsg.innerHTML = "根据条件获取的对象列表数为0！";
+const divDataLst: HTMLDivElement = < HTMLDivElement > document.getElementById("divDataLst");
+if (divDataLst != null)
+{
+divDataLst.innerText = "";
+divDataLst.appendChild(lblMsg);
+}
+const strKey = Format("{0}_{1}", clsSysCommentEN._CurrTabName, SysCommentCRUD.id_CurrEduCls_Cache);
+const strMsg = Format("根据条件获取的记录数为0！(Key={0})", strKey);
+console.error("Error: ", strMsg);
+//console.trace();
+ShowEmptyRecNumInfo(strListDiv, strMsg);
+this.objPager.Hide(this.divName4Pager);
+return;
+}
+try
+{
+await this.BindTab_vSysComment(strListDiv, arrvSysCommentObjLst);
+//console.log("完成BindGv_vSysComment_Cache!");
+}
+catch(e)
+{
+const strMsg = Format("绑定对象列表不成功, {0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /**
+ * 排序函数。根据表对象中随机两个字段的值进行比较,正常使用时，需用该类的扩展类的同名函数
+ * 作者:pyf
+ * 日期:
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_SortFunExportExcel)
+ * @param a:比较的第1个对象
+ * @param b:比较的第1个对象
+ * @returns 返回两个对象比较的结果
+ **/
+public SortFun_ExportExcel(a:clsvSysCommentEN , b:clsvSysCommentEN): number 
+{
+const strThisFuncName = this.SortFun_ExportExcel.name;
+if (a.updUser == b.updUser) return a.updUser.localeCompare(b.updUser) ;
+else return a.updDate.localeCompare(b.updDate);
+}
+
+ /** 函数功能:从界面列表中根据某一个字段排序
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_SortBy)
+ * @param objAnchorElement:带有排序字段的Anchors
+ **/
+public async SortBy(objAnchorElement:any) {
+const strThisFuncName = this.SortBy.name;
+ console.log("objAnchorElement(In SetAllCkechedKeysV2):", objAnchorElement);
+let strSortExpress = "";
+//event = window.event || event;
+if (typeof(objAnchorElement) != "function")
+{
+const thisEventObj: HTMLInputElement = objAnchorElement;
+strSortExpress = thisEventObj.getAttribute("FldName") as string;
+}
+const { sortFun, ascOrDesc4SortFun, sortBy } = GetSortBy(objAnchorElement, SysCommentCRUD.ascOrDesc4SortFun, SysCommentCRUD.sortvSysCommentBy, strSortExpress);
+SysCommentCRUD.sortvSysCommentBy = sortBy;
+SysCommentCRUD.ascOrDesc4SortFun = ascOrDesc4SortFun;
+SysCommentCRUD.sortFun_Static = sortFun;
+await this.BindGv_vSysComment();
+}
+
+ /** 复制记录
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_CopyRecord)
+ **/
+public async CopyRecord(arrCommentId: Array<string>) {
+const strThisFuncName = this.CopyRecord.name;
+try
+{
+const arrSysCommentObjLst = await SysComment_GetObjLstByCommentIdLstAsync(arrCommentId);
+//console.log('responseText=');
+//console.log(responseText);
+let intCount = 0;
+for (const objInFor of arrSysCommentObjLst)
+{
+const strMaxStrId = await SysComment_GetMaxStrIdAsync();
+//console.log('strMaxStrId=' + strMaxStrId);
+objInFor.commentId = strMaxStrId;
+const returnBool = await SysComment_AddNewRecordAsync(objInFor);
+//console.log('returnBool=');
+//console.log(returnBool);
+if (returnBool == true)
+{
+//SysComment_ReFreshCache(SysCommentCRUD.id_CurrEduCls_Cache);
+const strInfo = Format("克隆记录成功!");
+intCount++;
+}
+else
+{
+const strInfo = Format("克隆记录不成功!");
+//显示信息框
+alert(strInfo);
+}
+}
+const strInfo = Format("共克隆了{0}条记录!", intCount);
+alert(strInfo);
+//console.log('完成！');
+}
+catch (e)
+{
+const strMsg = Format("复制记录不成功,{0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error("Error: ", strMsg);
+//console.trace();
+alert(strMsg);
+}
+}
+
+ /** 根据关键字列表删除记录
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_DelMultiRecord)
+ **/
+public async DelMultiRecord(arrCommentId: Array<string>) {
+const strThisFuncName = this.DelMultiRecord.name;
+try
+{
+const returnInt = await SysComment_DelSysCommentsAsync(arrCommentId);
+if (returnInt > 0)
+{
+//SysComment_ReFreshCache(SysCommentCRUD.id_CurrEduCls_Cache);
+const strInfo = Format("删除记录成功,共删除{0}条记录!", returnInt);
+//显示信息框
+alert(strInfo);
+}
+else
+{
+const strInfo = Format("删除记录不成功!");
+//显示信息框
+alert(strInfo);
+}
+console.log("完成DelMultiRecord!");
+}
+catch(e)
+{
+const strMsg = Format("删除记录不成功. {0}.(in {1}.{2})", e, this.constructor.name, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+
+ /** 显示{0}对象的所有属性值
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_ShowTabObj)
+ * @param divContainer:显示容器
+ * @param objSysComment:需要显示的对象
+ **/
+public ShowSysCommentObj(divContainer: string, objSysComment: clsSysCommentEN) 
+{
+const strThisFuncName = this.ShowSysCommentObj.name;
+const o = document.getElementById(divContainer);
+if (o == null)
+{
+alert(Format("{}不存在！",divContainer));
+return;
+}
+const sstrKeys = GetObjKeys(objSysComment);
+const ul: HTMLUListElement = document.createElement("ul");
+for (const strKey of sstrKeys)
+{
+const strValue = objSysComment.GetFldValue(strKey);
+const li: HTMLLIElement = document.createElement("li");
+li.innerHTML = Format("{0}:{1}", strKey, strValue);
+ul.appendChild(li);
+}
+o.appendChild(ul);
+}
+
+ /** 函数功能:从界面列表中获取第一个关键字的值
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_GetFirstKey)
+ * @param pobjSysCommentEN:表实体类对象
+ * @returns 列表的第一个关键字值
+ **/
+public GetFirstKey(): string {
+const strThisFuncName = this.GetFirstKey.name;
+if (arrSelectedKeys.length == 1) {
+return arrSelectedKeys[0];
+}
+else {
+alert(`请选择一个关键字！目前选择了:${ arrSelectedKeys.length}个关键字。`);
+return "";
+}
+}
+
+ /** 函数功能:设置当前页序号
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_SetCurrPageIndex)
+ * @param value:页序号
+ * @param strDivName4Pager:当前分页所在的层(div)
+ **/
+public SetCurrPageIndex(value: number) {
+       this.objPager.currPageIndex = value;
+}
+
+ /** 函数功能:预留函数，在某一个层(div)里绑定数据
+ * (AutoGCLib.WA_ViewScriptCS_TS4TypeScript:Gen_WApi_Ts_BindInDiv)
+ **/
+public async BindInDiv(divName4Bind: string) {
+}
+ /**
+ * 评论类型名 (Used In CombineCondition())
+ **/
+public  get commentTypeName_q():string {
+const strValue = GetInputValueInDiv(this.divName4Query, "txtCommentTypeName_q");
+if (strValue == undefined) return "";
+else return strValue.toString();
+}
+ /**
+ * 评论类型名 (Used In CombineCondition())
+ **/
+public  set commentTypeName_q(value: string) {
+ SetInputValueByIdInDiv(this.divName4Query, "txtCommentTypeName_q", value);
+}
+ /**
+ * 用户ID (Used In CombineCondition())
+ **/
+public  get userId_q():string {
+const strValue = GetSelectValueInDiv(this.divName4Query, "ddlUserId_q");
+if (strValue == undefined) return "";
+else if (strValue == "0") return "";
+else return strValue;
+}
+ /**
+ * 用户ID (Used In CombineCondition())
+ **/
+public  set userId_q(value: string) {
+SetSelectValueByIdInDiv(this.divName4Query, "ddlUserId_q", value);
+}
+ /**
+ * 设置界面标题-相当使用ViewState功能
+ **/
+public  set ViewTitle(value: string) {
+ SetLabelHtmlByIdInDiv(this.divName4Layout, "lblViewTitle", value);
+}
+ /**
+ * 设置界面标题
+ **/
+public  get ViewTitle():string {
+const strValue = GetLabelHtmlInDiv(this.divName4Query, "lblViewTitle");
+return strValue;
+}
+}

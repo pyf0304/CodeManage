@@ -1,0 +1,361 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /**
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ **/
+function btnStudentInfo_Edit_Click(strCommandName, strKeyId) {
+   require(["../js/UserManage/StudentInfo_EditEx.js"], function(studentinfo) {
+studentinfo.StudentInfo_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+    </script>
+<div id = "divEditLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_StudentInfo" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_StudentInfo" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_StudentInfo">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr id="trStuID">
+<td class="text-right">
+<label id="lblid_StudentInfo" name="lblid_StudentInfo" class="col-form-label text-right" style="width:90px;">学生流水号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtid_StudentInfo" name="txtid_StudentInfo" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblStuID" name="lblStuID" class="col-form-label text-right" style="width:90px;">学号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtStuID" name="txtStuID" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trid_Politics">
+<td class="text-right">
+<label id="lblStuName" name="lblStuName" class="col-form-label text-right" style="width:90px;">姓名
+</label>
+</td>
+<td class="text-left">
+<input  id="txtStuName" name="txtStuName" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblid_Politics" name="lblid_Politics" class="col-form-label text-right" style="width:90px;">政治面貌流水号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtid_Politics" name="txtid_Politics" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trid_Ethnic">
+<td class="text-right">
+<label id="lblid_Sex" name="lblid_Sex" class="col-form-label text-right" style="width:90px;">性别流水号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtid_Sex" name="txtid_Sex" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblid_Ethnic" name="lblid_Ethnic" class="col-form-label text-right" style="width:90px;">民族流水号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtid_Ethnic" name="txtid_Ethnic" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trid_StuType">
+<td class="text-right">
+<label id="lblid_UniZone" name="lblid_UniZone" class="col-form-label text-right" style="width:90px;">校区流水号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtid_UniZone" name="txtid_UniZone" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblid_StuType" name="lblid_StuType" class="col-form-label text-right" style="width:90px;">学生类别流水号
+</label>
+</td>
+<td class="text-left">
+<select id="ddlid_StuType" name="ddlid_StuType" class="form-control-sm" style="width:150px;"></select>
+</td>
+</tr>
+<tr id="trid_XzMajor">
+<td class="text-right">
+<label id="lblid_XzCollege" name="lblid_XzCollege" class="col-form-label text-right" style="width:90px;">学院流水号
+</label>
+</td>
+<td class="text-left">
+<select id="ddlid_XzCollege" name="ddlid_XzCollege" class="form-control-sm" style="width:150px;"></select>
+</td>
+<td class="text-right">
+<label id="lblid_XzMajor" name="lblid_XzMajor" class="col-form-label text-right" style="width:90px;">专业流水号
+</label>
+</td>
+<td class="text-left">
+<select id="ddlid_XzMajor" name="ddlid_XzMajor" class="form-control-sm" style="width:150px;"></select>
+</td>
+</tr>
+<tr id="trid_AdminCls">
+<td class="text-right">
+<label id="lblid_GradeBase" name="lblid_GradeBase" class="col-form-label text-right" style="width:90px;">年级流水号
+</label>
+</td>
+<td class="text-left">
+<select id="ddlid_GradeBase" name="ddlid_GradeBase" class="form-control-sm" style="width:150px;"></select>
+</td>
+<td class="text-right">
+<label id="lblid_AdminCls" name="lblid_AdminCls" class="col-form-label text-right" style="width:90px;">行政班流水号
+</label>
+</td>
+<td class="text-left">
+<select id="ddlid_AdminCls" name="ddlid_AdminCls" class="form-control-sm" style="width:150px;"></select>
+</td>
+</tr>
+<tr id="trNativePlace">
+<td class="text-right">
+<label id="lblBirthday" name="lblBirthday" class="col-form-label text-right" style="width:90px;">出生日期
+</label>
+</td>
+<td class="text-left">
+<input  id="txtBirthday" name="txtBirthday" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblNativePlace" name="lblNativePlace" class="col-form-label text-right" style="width:90px;">籍贯
+</label>
+</td>
+<td class="text-left">
+<input  id="txtNativePlace" name="txtNativePlace" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trIDCardNo">
+<td class="text-right">
+<label id="lblDuty" name="lblDuty" class="col-form-label text-right" style="width:90px;">职位
+</label>
+</td>
+<td class="text-left">
+<input  id="txtDuty" name="txtDuty" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblIDCardNo" name="lblIDCardNo" class="col-form-label text-right" style="width:90px;">身份证号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtIDCardNo" name="txtIDCardNo" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trLiveAddress">
+<td class="text-right">
+<label id="lblStuCardNo" name="lblStuCardNo" class="col-form-label text-right" style="width:90px;">学生证号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtStuCardNo" name="txtStuCardNo" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblLiveAddress" name="lblLiveAddress" class="col-form-label text-right" style="width:90px;">居住地址
+</label>
+</td>
+<td class="text-left">
+<input  id="txtLiveAddress" name="txtLiveAddress" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trId_CardNo">
+<td class="text-right">
+<label id="lblHomePhone" name="lblHomePhone" class="col-form-label text-right" style="width:90px;">住宅电话
+</label>
+</td>
+<td class="text-left">
+<input  id="txtHomePhone" name="txtHomePhone" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblId_CardNo" name="lblId_CardNo" class="col-form-label text-right" style="width:90px;">内卡号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtId_CardNo" name="txtId_CardNo" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trIsAvconClassUser">
+<td class="text-right">
+<label id="lblCardNo" name="lblCardNo" class="col-form-label text-right" style="width:90px;">卡号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtCardNo" name="txtCardNo" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsAvconClassUser" name="chkIsAvconClassUser" Text = "IsAvconClassUser"  ><label for="chkIsAvconClassUser">IsAvconClassUser</label></span>
+</td>
+</tr>
+<tr id="trIsGpUser">
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsAvconUser" name="chkIsAvconUser" Text = "IsAvconUser"  ><label for="chkIsAvconUser">IsAvconUser</label></span>
+</td>
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsGpUser" name="chkIsGpUser" Text = "是否Gp用户"  ><label for="chkIsGpUser">是否Gp用户</label></span>
+</td>
+</tr>
+<tr id="trUserId">
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsLeaved" name="chkIsLeaved" Text = "IsLeaved"  ><label for="chkIsLeaved">IsLeaved</label></span>
+</td>
+<td class="text-right">
+<label id="lblUserId" name="lblUserId" class="col-form-label text-right" style="width:90px;">用户ID
+</label>
+</td>
+<td class="text-left">
+<input  id="txtUserId" name="txtUserId" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trEnrollmentDate">
+<td class="text-right">
+<label id="lblUserID4Avcon" name="lblUserID4Avcon" class="col-form-label text-right" style="width:90px;">UserID4Avcon
+</label>
+</td>
+<td class="text-left">
+<input  id="txtUserID4Avcon" name="txtUserID4Avcon" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblEnrollmentDate" name="lblEnrollmentDate" class="col-form-label text-right" style="width:90px;">入校日期
+</label>
+</td>
+<td class="text-left">
+<input  id="txtEnrollmentDate" name="txtEnrollmentDate" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trEmail">
+<td class="text-right">
+<label id="lblPostCode" name="lblPostCode" class="col-form-label text-right" style="width:90px;">邮编
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPostCode" name="txtPostCode" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblEmail" name="lblEmail" class="col-form-label text-right" style="width:90px;">电子邮箱
+</label>
+</td>
+<td class="text-left">
+<input  id="txtEmail" name="txtEmail" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trMicroblog">
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsMessage" name="chkIsMessage" Text = "IsMessage"  ><label for="chkIsMessage">IsMessage</label></span>
+</td>
+<td class="text-right">
+<label id="lblMicroblog" name="lblMicroblog" class="col-form-label text-right" style="width:90px;">Microblog
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMicroblog" name="txtMicroblog" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trHeadphoto">
+<td class="text-right">
+<label id="lblPhoneNumber" name="lblPhoneNumber" class="col-form-label text-right" style="width:90px;">PhoneNumber
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPhoneNumber" name="txtPhoneNumber" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblHeadphoto" name="lblHeadphoto" class="col-form-label text-right" style="width:90px;">Headphoto
+</label>
+</td>
+<td class="text-left">
+<input  id="txtHeadphoto" name="txtHeadphoto" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trRegisterPassword">
+<td class="text-right">
+<label id="lblQQ" name="lblQQ" class="col-form-label text-right" style="width:90px;">QQ
+</label>
+</td>
+<td class="text-left">
+<input  id="txtQQ" name="txtQQ" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblRegisterPassword" name="lblRegisterPassword" class="col-form-label text-right" style="width:90px;">RegisterPassword
+</label>
+</td>
+<td class="text-left">
+<input  id="txtRegisterPassword" name="txtRegisterPassword" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trMemo">
+<td class="text-right">
+<label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMemo" name="txtMemo" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_StudentInfo" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_StudentInfo" type="button" class="btn btn-primary" onclick="btnStudentInfo_Edit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

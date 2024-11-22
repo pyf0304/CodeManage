@@ -1,0 +1,294 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <BaseOutputPath>C:\TzAppData\GameEduWebApp\bin</BaseOutputPath>
+    <BaseIntermediateOutputPath>C:\TzAppData\GameEduWebApp\obj</BaseIntermediateOutputPath>
+  </PropertyGroup>
+
+
+
+
+  <ItemGroup>
+    <PackageReference Include="axios.TypeScript.DefinitelyTyped" Version="0.7.7" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.8.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="popper.js" Version="1.16.1" />
+    <PackageReference Include="q.TypeScript.DefinitelyTyped" Version="0.9.7" />
+    <PackageReference Include="RequireJS" Version="2.3.6" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Pages\BaseInfo\XzMajorDirectionCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\DailyRunning\CurrEduClsList.ts" />
+    <TypeScriptCompile Include="Pages\DailyRunning\StudentInfoList.ts" />
+    <TypeScriptCompile Include="Pages\DailyRunning\TeacherList.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\CitingPaper.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\Paper_ListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PaperAttention.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\Paper_QUDIEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\gs_PaperDiscussEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\gs_PaperEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\gs_PaperParagraph.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\gs_PaperParagraphPreview.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\OriginalPaperAddideas.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\gs_PConceptRela.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\gs_PObjectiveRela.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\gs_PSysskillRela.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\gs_PSocialRela.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\Addgs_ReflectLogEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\Addgs_TeacherTaskEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\AddOriginalPaperEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\AddResearchPlanEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\Public_PaperSubViewpoint.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\CommentScore.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\HistoricalVersion.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\MyThesisReadEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\MyComments.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PaperAddXzmajorRela.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PaperCollectionLog_QUDI_Ex.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PaperDetail.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PaperReadList.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PaperReadWriteAdd.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\QuoteAndGroupThesisEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\QuoteAndGroupThesisShowEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\Public_SysSocialRelations.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\Public_SysSkill.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\Public_Concept.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\Public_TopicObjective.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\gs_TotalDataRela.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\gs_UserConfigEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\SysCommentEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\SysComment_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\SysComment_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\SysScoreSummaryNewTotal.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\TotalDataStatisticsDetail.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\gs_UserRela.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\TotalDataStatisticsEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\Paper_Statistics.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\Paper_List.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\PaperReadWrite_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPaper\Paper_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\SubThesisListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\SubThesisWriteEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\SubviewPointListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\SubviewPointTypeListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PdfDetail.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\SysScoreSummary_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTools\SysScoreSummary_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\PaperListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\DirectionPaperListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\MajorPaperListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\PaperAllListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\PaperDetailPhoneEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPhone\PaperTypeListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\AddConceptEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\AddObjectiveFactEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\AddPaperEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\AddSysskillEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\AddSysSocialRelationsEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduPublicPage\AddViewpointEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ApplyTopic.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ExpertViewpoint.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ExpertViewpointEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\KnowledgeEconomyListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ObjectiveBasis.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ObjectiveBasisEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\OriginalPaperAllListEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\Pdfiframe.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\PersonalKnowledgeViewEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ResearchResultDetail.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ResearchTopicViewpointEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ResearchTopicQAEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ResearchTopicConceptEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ResearchTopicObjectiveEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ResearchTopicPlanEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ResearchTopicSysskillEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\ResearchTopicSysSocialRelaEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\RTConceptRela_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\RTConceptRela_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\RTResearchResult_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\RTResearchResult_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_MeetingMinutesCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_PaperReportCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_ResearchResultCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_TobeStudiedProblemCRUD.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_TobeStudiedProblemCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_TopicRoleCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_ViewsClassificationCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\RTSysSkillRelaCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\RTSysSocialRelaCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\SysSkillCRUD.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\SysSkillCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\SysSocialRelationsCRUD.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\SysSocialRelationsCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\SysCommentType_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\SysCommentType_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_MeetingMinutes_EditEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_PaperReport_EditEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_ResearchResult_Edit.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_ResearchResult_EditEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_TobeStudiedProblem_Edit.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_TobeStudiedProblem_EditEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_TopicRole_EditEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduTopic\gs_ViewsClassification_EditEx.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\gs_TagsCRUD.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\gs_TagsCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\TeaTest_QA.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\Tea_QA.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\Paper_QA.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\Paper_Tags.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\Pdf_QA_Topic.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\Pdf_QA.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\qa_AnswerCRUD.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\qa_AnswerCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\qa_PaperCRUD.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\qa_PaperCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\qa_QuestionsCRUD.ts" />
+    <TypeScriptCompile Include="Pages\InteractManage\qa_QuestionsCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\Knowledges\StructureChart.ts" />
+    <TypeScriptCompile Include="Pages\Knowledges\LogicRela.ts" />
+    <TypeScriptCompile Include="Pages\Knowledges\gs_KnowledgesGraphCRUD.ts" />
+    <TypeScriptCompile Include="Pages\Knowledges\gs_KnowledgesGraphCRUDEx.ts" />
+    <TypeScriptCompile Include="Pages\Knowledges\gs_KnowledgesGraph_Edit.ts" />
+    <TypeScriptCompile Include="Pages\Knowledges\gs_KnowledgesGraph_EditEx.ts" />
+    <TypeScriptCompile Include="Pages\ParameterTable\SysScoreWeight_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\ParameterTable\SysScoreWeight_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\ParameterTable\DiscussionType_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\ParameterTable\DiscussionType_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\ParameterTable\LiteratureType_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\ParameterTable\LiteratureType_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PaperMajorDirecition.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\PaperReadWrite_QUDI.ts" />
+    <TypeScriptCompile Include="Pages\GraduateEduEx\Paper_QUDI.ts" />
+    <TypeScriptCompile Include="Pages\ParameterTable\SubViewpointType_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\ParameterTable\SubViewpointType_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\LogManage\LoginLog_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\LogManage\LoginLog_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\NewsAnnouncement\FeedBack_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\NewsAnnouncement\FeedBack_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\NewsAnnouncement\WApiMessagePush_QUDI_TS.ts" />
+    <TypeScriptCompile Include="Pages\NewsAnnouncement\WApiMessagePush_QUDI_TSEx.ts" />
+    <TypeScriptCompile Include="Pages\TS\FunClass\clsDropDownList.ts" />
+    <TypeScriptCompile Include="Pages\TS\FunClass\clsPublicParagraph.ts" />
+    <TypeScriptCompile Include="Pages\TS\FunClass\ParameterAttribute.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\BaseInfo\clsvXzMajorDirectionEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\BaseInfo\clsXzMajorDirectionEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\CourseLearning\clscc_CourseEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\DailyRunning\clsCurrEduClsEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\DailyRunning\clsCurrEduClsStuEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\Knowledges\clscc_CourseExamPaperEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\Knowledges\clscc_CourseKnowledgesEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\Knowledges\clscc_ExamGradeEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\Knowledges\clsvcc_CourseKnowledgesEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\LogManage\clsLoginLogEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\NewsAnnouncement\clsFeedBackEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\NewsAnnouncement\clsMessagePushEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\NewsAnnouncement\clsMessagePushTypeEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\NewsAnnouncement\clsvMessagePushEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\Other\clsvPaperSimEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\ResourceMan\clsResourceTypeEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\ResourceMan\clstz_ContentAttachmentEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\ResourceMan\clsvtz_ContentAttachmentEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SysPara\clsSchoolTermEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SysPara\clsSchoolYearEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SysPara\clsTextDirectEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SysPara\clsUserRolesEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SysPara\clsUserStateEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SystemSet_Share\clsCacheModeEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SystemSet_Share\clsCacheModeENEx.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SystemSet_Share\clsCacheUseStateEN.ts" />
+    <TypeScriptCompile Include="Pages\TS\L0_Entity\SystemSet_Share\clsCacheUseStateENEx.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\BaseInfo\clsvXzMajorDirectionWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\BaseInfo\clsXzMajorDirectionWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\CourseLearning\clscc_CourseWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\DailyRunning\clsCurrEduClsStuWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\DailyRunning\clsCurrEduClsWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\Knowledges\clscc_CourseExamPaperWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\Knowledges\clscc_CourseKnowledgesWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\Knowledges\clscc_ExamGradeWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\Knowledges\clsvcc_CourseKnowledgesWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\LogManage\clsLoginLogWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\NewsAnnouncement\clsFeedBackWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\NewsAnnouncement\clsMessagePushTypeWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\NewsAnnouncement\clsMessagePushWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\NewsAnnouncement\clsvMessagePushWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\ResourceMan\clsResourceTypeWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\ResourceMan\clstz_ContentAttachmentWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\ResourceMan\clsvtz_ContentAttachmentWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\SysPara\clsSchoolTermWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\SysPara\clsSchoolYearWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\SysPara\clsTextDirectWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\SysPara\clsUserRolesWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\SysPara\clsUserStateWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\SystemSet_Share\clsCacheModeWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\SystemSet_Share\clsCacheUseStateWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\UsersRight\clsQxUserRoleRelationWApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApi\UsersRight\clsvQxUserRoleRelationWApi.ts" />
+    <TypeScriptCompile Include="Pages\WebApp\LoginmainEx.ts" />
+    <TypeScriptCompile Include="Pages\WebApp\LoginPcEx.ts" />
+    <TypeScriptCompile Include="Pages\WebApp\MessagePushListEx.ts" />
+    <TypeScriptCompile Include="Pages\WebApp\TestUploadfile.ts" />
+    <TypeScriptCompile Include="Pages\Web\CommentScoreIframe.ts" />
+    <TypeScriptCompile Include="Pages\Web\Index.ts" />
+    <TypeScriptCompile Include="Pages\Web\QAIframe.ts" />
+    <TypeScriptCompile Include="Pages\Web\TopicIframe.ts" />
+    <TypeScriptCompile Include="Pages\Web\PaperIframe.ts" />
+    <TypeScriptCompile Include="Pages\Web\IndexIframe.ts" />
+    <TypeScriptCompile Include="Pages\Web\UserInfo.ts" />
+    <TypeScriptCompile Include="Pages\Test\PdfTest.ts" />
+    <TypeScriptCompile Include="Pages\Web\Welcome.ts" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Pages\ExamManage\" />
+    <Folder Include="Pages\PagesBase\SystemSet\" />
+    <Folder Include="Pages\SystemSet\" />
+    <Folder Include="Pages\TS\L0_Entity\PeopleManage\" />
+    <Folder Include="Pages\TS\L0_Entity\SystemSet\" />
+    <Folder Include="Pages\TS\L3_ForWApiEx\CodeMan\" />
+    <Folder Include="Pages\TS\L3_ForWApiEx\CourseManage\" />
+    <Folder Include="Pages\TS\L3_ForWApiEx\PeopleManage\" />
+    <Folder Include="Pages\TS\L3_ForWApiEx\SystemSet\" />
+    <Folder Include="Pages\TS\L3_ForWApi\PeopleManage\" />
+    <Folder Include="Pages\TS\L3_ForWApi\SystemSet\" />
+    <Folder Include="Pages\TS\PubClass\" />
+    <Folder Include="Pages\WebApp\UploadFiles\" />
+    <Folder Include="wwwroot\js\BaseInfo\" />
+    <Folder Include="wwwroot\UploadFiles\PaperUploadFile\" />
+    <Folder Include="wwwroot\UploadFiles\PaperSubUploadFile\" />
+    <Folder Include="wwwroot\UploadFiles\ViewpointUploadFile\" />
+    <Folder Include="wwwroot\UploadFiles\ConceptUploadFile\" />
+    <Folder Include="wwwroot\UploadFiles\ObjectiveUploadFile\" />
+    <Folder Include="wwwroot\UploadFiles\ZxTextUploadFile\" />
+    <Folder Include="wwwroot\UploadFiles\PaperParagraphPic\" />
+    <Folder Include="wwwroot\UploadFiles\PaperReportFile\" />
+    <Folder Include="wwwroot\UploadFiles\UserCanvasPic\" />
+    <Folder Include="wwwroot\UploadFiles\ResearchResultUploadFile\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="Pages\Web\IndexIframe.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Pages\Web\PaperIframe.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Pages\Web\QAIframe.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Pages\Web\Welcome.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

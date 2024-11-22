@@ -1,0 +1,56 @@
+﻿@page
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "PDF论文答疑";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/pdfjs2.3/web/viewer.css">
+    <!-- This snippet is used in production (included from viewer.html) -->
+    <link rel="resource" type="application/l10n" href="~/pdfjs2.3/web/locale/locale.properties">
+
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/comment.css">
+    <link rel="stylesheet" href="~/css/SimpleTree.css">
+
+    <link rel="stylesheet" href="~/css/public.css" />
+
+}
+@section Scripts{
+    <script type="text/javascript" src="~/lib/at/at2.js"></script>
+
+}
+
+<!-- 文本输入框 -->
+<textarea id="app" class="con" contenteditable="true"></textarea>
+<!-- 提交按钮 -->
+<input type="button" class="submit" id="submit" value="提交">
+<!-- 选框 -->
+<div id="selectuser" class="selectbox" style="display:none;">
+    <h2>用户</h2>
+    <ul id="selectlist">
+        <li uid="1">陆小凤</li>
+        <li uid="2">西门吹雪</li>
+        <li uid="3">百晓生</li>
+        <li uid="4">张无忌</li>
+        <li uid="5">赵敏</li>
+        <li uid="6">段誉</li>
+        <li uid="7">虚竹</li>
+        <li uid="8">段德</li>
+        <li uid="9">周杰伦</li>
+        <li uid="10">张学友</li>
+    </ul>
+</div>
+<!-- 暂存输入框数据 -->
+<pre id="pre_text"></pre>
+
+<script type="text/javascript">
+
+
+
+
+</script>

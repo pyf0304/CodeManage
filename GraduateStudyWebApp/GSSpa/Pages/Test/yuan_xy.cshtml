@@ -1,0 +1,56 @@
+﻿
+@page
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>圆形坐标</title>
+
+
+    <script>
+
+
+        //function calcCircularLayout(nodeSize, center, radius) {
+        function calcCircularLayout() {
+
+            //var nodeSize = document.getElementById("txtNodeSize").value;
+            //var center = document.getElementById("txtCenter").value;
+            //var radius = document.getElementById("txtRadius").value;
+            var nodeSize = 10;
+            var center_x = 600;
+            var center_y = 400;
+            var radius = 400;
+            var span_layouts = document.getElementById("span_layouts");
+
+            var i, _i, _layouts = [];
+            for (i = _i = 0; _i < nodeSize; i = ++_i) {
+                var x = center_x + radius * Math.sin(2 * Math.PI * i / nodeSize),
+                    y = center_y + radius * Math.cos(2 * Math.PI * i / nodeSize);
+
+                _layouts.push({ 'x': x, 'y': y });
+
+                span_layouts.innerHTML = x + ',' + y;
+            }
+
+
+            return _layouts;
+        }
+    </script>
+
+</head>
+<body>
+    <div style="width:50%; margin:auto">
+        <input id="txtNodeSize" placeholder="元素个数" name="txtNodeSize " class="form-control" style="width:200px;" />
+        <input id="txtCenter" placeholder="圆的中心点坐标 " name="txtCenter" class="form-control" style="width:200px;" value="{x:500, y:400}" />
+        <input id="txtRadius" placeholder="圆的半径" name="txtRadius" class="form-control" style="width:200px;" />
+        <button id="submit" onclick="calcCircularLayout()">提交</button>
+        <span id="span_layouts"></span>
+
+        <a href="http://www.baidu.com" target="_blank" style="color:white"></a>
+    </div>
+</body>
+</html>

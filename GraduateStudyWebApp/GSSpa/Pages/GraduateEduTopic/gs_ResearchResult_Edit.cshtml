@@ -1,0 +1,549 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+    //所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+<script>
+
+
+    /*
+     按钮单击,用于调用Js函数中btnEdit_Click
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+    */
+    function btnEdit_Click(strCommandName, strKeyId) {
+        //require(["../js/GraduateEduTopic/gs_ResearchResult_EditEx.js"], function (gs_researchresult) {
+        //    gs_researchresult.gs_ResearchResult_EditEx.btnEdit_Click(strCommandName, strKeyId);
+        //});
+        if ($("#txtResultName").val() == 0) {
+            layer.msg('成果名称不能为空!', {
+                icon: 3,
+                time: 1000
+            });
+        } else if ($("#txtResultContent").val() == "") {
+            layer.msg('成果说明不能为空!', {
+                icon: 3,
+                time: 1000
+            });
+        }
+        else if ($("#txtAuthor").val() == "") {
+            layer.msg('作者不能为空!', {
+                icon: 3,
+                time: 1000
+            });
+        }
+        else {
+                $("#divLoading").show();
+                //防止重复提交
+                $('#btnSubmit_gs_ResearchResult').attr("disabled", true);
+                IsFile(strCommandName, strKeyId);
+            }
+    }
+
+
+    //判断附件格式、以及文件附件格式
+    function IsFile(strCommandName, strKeyId) {
+        var strResultType = $('#ddlResultTypeId').val();
+        //图片
+        var InputsWrapper = $("#InputsWrapper");
+        //var MaxInputs = 2;
+        var y = InputsWrapper.length;
+
+        //循环得到的个数
+        for (var i = 0; i < y; i++) {
+            if (i == 0) {
+                var file1 = $("#txtUploadfile").val();
+
+                if (file1 != "") {
+                    strs = file1.split('.');
+                    var suffix = strs[strs.length - 1];
+
+                    if (strResultType == "02") {
+                        if (suffix != 'pdf' && suffix != 'PDF') {
+                            alert("请选择pdf格式文件！");
+                            var obj = document.getElementById('txtUploadfile');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    } else if (strResultType == "03") {
+                        if (suffix != 'jpg' && suffix != 'JPG' && suffix != 'gif' && suffix != 'GIF' && suffix != 'png' && suffix != 'PNG') {
+                            alert("请选择jpg、gif、png格式文件！");
+                            var obj = document.getElementById('txtUploadfile');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    } else if (strResultType == "04") {
+                        if (suffix != 'rar' && suffix != 'RAR' && suffix != 'zip' && suffix != 'ZIP') {
+                            alert("请选择rar、zip格式文件！");
+                            var obj = document.getElementById('txtUploadfile');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+                    else if (strResultType == "05") {
+                        if (suffix != 'doc' && suffix != 'DOC' && suffix != 'docx' && suffix != 'DOCX') {
+                            alert("请选择doc、docx格式文件！");
+                            var obj = document.getElementById('txtUploadfile1');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+                    else if (strResultType == "06") {
+                        if (suffix != 'ppt' && suffix != 'PPT' && suffix != 'pptx' && suffix != 'PPTX') {
+                            alert("请选择ppt、pptx格式文件！");
+                            var obj = document.getElementById('txtUploadfile1');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+                }
+            }
+            else if (i == 1) {
+                var file2 = $("#txtUploadfile2").val();
+
+                if (file2 != "") {
+                    strs = file2.split('.');
+                    var suffix = strs[strs.length - 1];
+
+                    if (strResultType == "02") {
+                        if (suffix != 'pdf' && suffix != 'PDF') {
+                            alert("请选择pdf格式文件！");
+                            var obj = document.getElementById('txtUploadfile2');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    } else if (strResultType == "03") {
+                        if (suffix != 'jpg' && suffix != 'JPG' && suffix != 'gif' && suffix != 'GIF' && suffix != 'png' && suffix != 'PNG') {
+                            alert("请选择jpg、gif、png格式文件！");
+                            var obj = document.getElementById('txtUploadfile2');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    } else if (strResultType == "04") {
+                        if (suffix != 'rar' && suffix != 'RAR' && suffix != 'zip' && suffix != 'ZIP') {
+                            alert("请选择rar、zip格式文件！");
+                            var obj = document.getElementById('txtUploadfile2');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+                    else if (strResultType == "05") {
+                        if (suffix != 'doc' && suffix != 'DOC' && suffix != 'docx' && suffix != 'DOCX') {
+                            alert("请选择doc、docx格式文件！");
+                            var obj = document.getElementById('txtUploadfile2');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+                    else if (strResultType == "06") {
+                        if (suffix != 'ppt' && suffix != 'PPT' && suffix != 'pptx' && suffix != 'PPTX') {
+                            alert("请选择ppt、pptx格式文件！");
+                            var obj = document.getElementById('txtUploadfile2');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+
+                }
+            }
+            else if (i == 2) {
+
+                var file3 = $("#txtUploadfile3").val();
+
+                if (file3 != "") {
+                    strs = file3.split('.');
+                    var suffix = strs[strs.length - 1];
+
+                    //if (suffix != 'jpg' && suffix != 'gif' && suffix != 'png') {
+                    //    alert("请选择jpg、gif、png格式文件！");
+                    //    var obj = document.getElementById('txtUploadfile3');
+                    //    obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                    //    return;
+                    //    //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                    //}
+                    if (strResultType == "02") {
+                        if (suffix != 'pdf' && suffix != 'PDF') {
+                            alert("请选择pdf格式文件！");
+                            var obj = document.getElementById('txtUploadfile3');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    } else if (strResultType == "03") {
+                        if (suffix != 'jpg' && suffix != 'JPG' && suffix != 'gif' && suffix != 'GIF' && suffix != 'png' && suffix != 'PNG') {
+                            alert("请选择jpg、gif、png格式文件！");
+                            var obj = document.getElementById('txtUploadfile3');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    } else if (strResultType == "04") {
+                        if (suffix != 'rar' && suffix != 'RAR' && suffix != 'zip' && suffix != 'ZIP') {
+                            alert("请选择rar、zip格式文件！");
+                            var obj = document.getElementById('txtUploadfile3');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+                    else if (strResultType == "05") {
+                        if (suffix != 'doc' && suffix != 'DOC' && suffix != 'docx' && suffix != 'DOCX') {
+                            alert("请选择doc、docx格式文件！");
+                            var obj = document.getElementById('txtUploadfile3');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+                    else if (strResultType == "06") {
+                        if (suffix != 'ppt' && suffix != 'PPT' && suffix != 'pptx' && suffix != 'PPTX') {
+                            alert("请选择ppt、pptx格式文件！");
+                            var obj = document.getElementById('txtUploadfile3');
+                            obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                            return;
+                            //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                        }
+                    }
+
+
+                }
+
+            }
+        }
+
+
+
+        //上传
+        doUpload(strCommandName, strKeyId);
+
+
+    }
+
+
+
+        //上传方法
+    function doUpload(strCommandName, strKeyId) {
+        var formData = new FormData($("#uploadForm")[0]);
+        $.ajax({
+             url: "@Url.Action("UploadResearchResultFile", "testUploadPic")",
+            type: 'post',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                //成功/为空
+                if (returndata.status == 0 || returndata.status == -1) {
+
+
+                    //如果文件地址为空，那么是修改 则不用存放地址；返回3个文件地址；
+                    if (returndata.fileNameOne != "") {
+                        $("#hdnFileOne").val(returndata.fileNameOne);
+                    }
+                    if (returndata.fileNameTwo != "") {
+                        $("#hdnFileTwo").val(returndata.fileNameTwo);
+                    }
+                    if (returndata.fileNameThree != "") {
+                        $("#hdnFileThree").val(returndata.fileNameThree);
+                    }
+
+                    require(["../js/GraduateEduTopic/gs_ResearchResult_EditEx.js"], function (gs_researchresult) {
+                        gs_researchresult.gs_ResearchResult_EditEx.btnEdit_Click(strCommandName, strKeyId);
+                    });
+
+                    // var aa = JSON.stringify(returndata);
+
+                    //alert(returndata.message);
+
+                }
+                else {
+
+                    alert('请选择正确格式')
+                }
+
+
+            },
+            error: function (returndata) {
+                alert(returndata);
+            }
+        });
+    }
+   
+
+    /*
+     显示对话框
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+    */
+    function ShowDialog_gs_ResearchResult(pstrOp) {
+        strOp = pstrOp;
+        require(['jquery', 'bootstrap'], function ($) {
+            if (strOp === "Add") {
+                $('#lblDialogTitle_gs_ResearchResult').html('添加记录');
+                //gs_ResearchResult_EditEx.GetMaxStrId('#txtResultId');
+            }
+            else if (strOp === "Update") {
+                $('#lblDialogTitle_gs_ResearchResult').html('修改记录');
+            }
+            else if (strOp === "Detail") {
+                $('#btnSubmit_gs_ResearchResult').hide();
+                $('#lblDialogTitle_gs_ResearchResult').html('详细信息');
+            }
+            $('#divEditDialog_gs_ResearchResult').modal('show');
+        });
+        ToolUploadFileNum();
+    }
+
+    //定义附件框数量
+    function ToolUploadFileNum() {
+        var MaxInputs = 2;
+        var InputsWrapper = $("#InputsWrapper");
+        var x = InputsWrapper.length;
+        var FieldCount = 1;
+        $("#AddMoreFileBox").click(function () {
+
+            if (x <= MaxInputs) {
+                FieldCount++;
+                //add input box
+                $("#InputsWrapper").append('<br/><input type="file" name="txtUploadfile' + FieldCount + '" id="txtUploadfile' + FieldCount + '"/>');
+                x++; //text box increment
+            }
+            return false;
+        });
+    }
+
+    //选择成果类型
+    function SelectResultType_Click() {
+        var strResultType = $('#ddlResultTypeId').val();
+
+        switch (strResultType) {
+            case "01"://选择论文
+                $('#trPaperId').show();
+                $('#trUploadfile').hide();
+                //require(["../js/GraduateEduTopic/gs_ResearchResult_EditEx.js"], function (gs_researchresult) {
+                //    gs_researchresult.gs_ResearchResult_EditEx.SetDdl_PaperId(strResultType);
+                //});
+                break;
+            case "02"://pdf
+                $('#trPaperId').hide();
+                $('#trUploadfile').show();
+                $('#AddMoreFileBox').hide();
+
+                $('#lblUploadfileUrl').html("上传pdf");
+                break;
+            case "03"://图片
+                $('#trPaperId').hide();
+                $('#trUploadfile').show();
+                $('#AddMoreFileBox').show();
+
+                $('#lblUploadfileUrl').html("上传图片");
+                $('#AddMoreFileBox').html("添加更多图片");
+                break;
+            case "04"://压缩文件
+                $('#trPaperId').hide();
+                $('#trUploadfile').show();
+                $('#AddMoreFileBox').show();
+           
+                $('#lblUploadfileUrl').html("上传压缩文件");
+                $('#AddMoreFileBox').html("添加更多附件");
+                break;
+            case "05"://doc
+                $('#trPaperId').hide();
+                $('#trUploadfile').show();
+                $('#AddMoreFileBox').hide();
+
+                $('#lblUploadfileUrl').html("上传word文件");
+                //$('#AddMoreFileBox').html("添加更多word");
+                break;
+            case "06"://ppt
+                $('#trPaperId').hide();
+                $('#trUploadfile').show();
+                $('#AddMoreFileBox').hide();
+
+                $('#lblUploadfileUrl').html("上传ppt文件");
+                //$('#AddMoreFileBox').html("添加更多附件");
+                break;
+        }
+    }
+
+    /*
+     隐藏对话框
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+    */
+    function HideDialog_gs_ResearchResult() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divEditDialog_gs_ResearchResult').modal('hide');
+        });
+    }
+</script>
+<div id="tabLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditDialog_gs_ResearchResult" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_gs_ResearchResult" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="uploadForm" method="post" enctype="multipart/form-data">
+                <div class="modal-content" style="width: 835px;">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="lblDialogTitle_gs_ResearchResult">模态框（Modal）标题</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="tabEdit" style="width:800px" class="table table-bordered table-hover table td table-sm">
+                            <tr style="display:none;">
+                                <td class="text-right">
+                                    <Label id="lblResultId" name="lblResultId" class="col-form-label text-right" style="width:90px;">
+                                        成果Id
+                                    </Label>
+                                </td>
+                                <td class="text-left">
+                                    <input id="txtResultId" name="txtResultId" class="form-control" style="width:150px;" />
+                                </td>
+                                <td class="text-right">
+                                    <Label id="lblPaperId" name="lblPaperId" class="col-form-label text-right" style="width:90px;">
+                                        论文Id
+                                    </Label>
+                                </td>
+                                <td class="text-left">
+                                    @*<select id="ddlPaperId" name="ddlPaperId" class="form-control" style="width:150px;"></select>*@
+                                </td>
+                            </tr>
+                            <tr id="trResultTypeId" style="display:none;">
+                                <td class="text-right">
+                                    <Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">
+                                        主题编号
+                                    </Label>
+                                </td>
+                                <td class="text-left">
+                                    <select id="ddlTopicId" name="ddlTopicId" class="form-control" style="width:150px;"></select>
+                                </td>
+                                <td class="text-right">
+                                    <Label id="lblResultTypeId" name="lblResultTypeId" class="col-form-label text-right" style="width:90px;">
+                                        成果类型Id
+                                    </Label>
+                                </td>
+                                <td class="text-left">
+                                    <input id="txtResultTypeId" name="txtResultTypeId" class="form-control" style="width:150px;" />
+                                </td>
+                            </tr>
+                            <tr id="trResultName">
+                                <td class="text-left" colspan="2">
+                                    <input id="txtResultName" name="txtResultName" placeholder="成果名称" class="form-control" style="width:500px;" />
+                                </td>
+                            </tr>
+
+                            <tr id="trResultContent">
+                                <td class="text-left" colspan="2">
+                                    <textarea id="txtResultContent" name="txtResultContent" placeholder="成果说明" class="form-control" style="width:100%; height:200px;" />
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2">
+                                    <select name="ddlResultTypeId" id="ddlResultTypeId" class="form-control" style="width:300px;" onchange="SelectResultType_Click()">
+                                        <option selected="selected" value="0">请选择研究成果类型...</option>
+                                        <option value="01">选择论文</option>
+                                        <option value="02">上传pdf</option>
+                                        <option value="03">上传图片</option>
+                                        <option value="04">上传压缩文件</option>
+                                        <option value="05">上传word文件</option>
+                                        <option value="06">上传ppt文件</option>
+                                    </select>
+                                </td>
+                            </tr>
+
+
+                            <tr id="trPaperId" style="display:none;">
+                                <td class="text-left" colspan="2">
+                                    <select id="ddlPaperId" name="ddlPaperId" class="form-control" style="width:500px;" />
+                                </td>
+                            </tr>
+
+                            <tr id="trUploadfile" style="display:none;">
+                                <td class="NameTD">
+                                    <Label id="lblUploadfileUrl" name="lblUploadfileUrl" class="col-form-label text-right" style="width:90px;">
+                                        上传图片
+                                    </Label>
+                                </td>
+                                <td class="ValueTD" id="InputsWrapper">
+                                    <input type="file" id="txtUploadfile" name="txtUploadfile">
+                                    <button id="AddMoreFileBox" type="button" class="btn btn-primary" data-dismiss="modal">添加更多图片</button>
+
+                                    @*<input id="txtUploadfileUrl" name="txtUploadfileUrl" class="form-control" style="width:200px;" />*@
+                                </td>
+
+                            </tr>
+
+                            <tr id="trAuthor">
+                                <td class="text-left" colspan="2">
+                                    <input id="txtAuthor" name="txtAuthor" placeholder="作者，如果多人请用逗号隔开" class="form-control" style="width:500px;" />
+                                </td>
+                            </tr>
+
+                            <tr id="trDivision">
+                                <td class="text-left" colspan="2">
+                                    <textarea id="txtDivision" name="txtDivision" placeholder="成果分工" class="form-control" style="width:600px; height:100px;" />
+                                </td>
+                            </tr>
+
+                            <tr id="trUpdUser" style="display:none;">
+                                <td class="text-right">
+                                    <Label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">
+                                        修改日期
+                                    </Label>
+                                </td>
+                                <td class="text-left">
+                                    <input id="txtUpdDate" name="txtUpdDate" class="form-control" style="width:150px;" />
+                                </td>
+                                <td class="text-right">
+                                    <Label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">
+                                        修改人
+                                    </Label>
+                                </td>
+                                <td class="text-left">
+                                    <input id="txtUpdUser" name="txtUpdUser" class="form-control" style="width:150px;" />
+                                </td>
+                            </tr>
+
+                            <tr id="trMemo">
+                                <td class="text-left" colspan="2">
+                                    <textarea id="txtMemo" name="txtMemo" placeholder="备注" class="form-control" style="width:500px; height:80px;" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnCancel_gs_ResearchResult" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button id="btnSubmit_gs_ResearchResult" type="button" class="btn btn-primary" onclick="btnEdit_Click('Submit')">添加</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </form>
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>

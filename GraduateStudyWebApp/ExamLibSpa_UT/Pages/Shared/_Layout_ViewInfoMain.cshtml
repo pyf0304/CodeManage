@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - AGC</title>
+
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent2" style="width:60%; float:left">
+                <ul class="navbar-nav mr-auto">
+                    @*<li class="nav-item" style="width:200px;">   <a asp-page="/Index" class="navbar-brand">界面信息维护</a></li>*@
+
+                    <li class="nav-item active"><a asp-page="/PrjInterface/WApiViewInfo_QUDI_TS">界面列表</a></li>
+
+                    <li class="nav-item ml-2"><a asp-page="/RegionManage/ViewRegionInTab">界面区域维护</a></li>
+                    <li class="nav-item ml-2"><a asp-page="/PrjInterface/WApiViewRelaTab_QUDI_TS">界面相关表维护</a></li>
+                    <li class="nav-item ml-2"><a asp-page="/RegionManage/WApiQryRegionFlds_QUDI_TS">查询区</a></li>
+                    <li class="nav-item ml-2"><a asp-page="/RegionManage/WApiEditRegionFlds_QUDI_TS">编辑区</a></li>
+                    <li class="nav-item ml-2"><a asp-page="/RegionManage/WApiDGRegionFlds_QUDI_TS">列表区</a></li>
+
+                    <li class="nav-item ml-2"><a asp-page="/GeneCode/GeneCode4Tab">生成表代码</a></li>
+
+                    <li class="nav-item ml-2"><a asp-page="/GeneCode/TestGeneCode">测试生成代码</a></li>
+
+
+
+
+                </ul>
+
+            </div>
+            <div style="width:40%; float:right">
+                <ul class="navbar-nav">
+                    
+                 
+                    <li class="nav-item ml-2" ><span class="text-nowrap" style="width:80px">界面:</span></li>
+                    <li class="nav-item"><span id="spnViewName"></span></li>
+                    <li class="nav-item">(<span id="spnViewId"></span>)</li>
+                    <li class="nav-item ml-2" style="width:50px"><span  class="text-nowrap" style="width:80px">应用:</span></li>
+                    <li class="nav-item"><span id="spnApplicationTypeName"></span></li>
+                    <li class="nav-item">(<span id="spnApplicationTypeId"></span>)</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <partial name="_CookieConsentPartial" />
+
+    <div class=" body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2019 - AGC</p>
+        </footer>
+    </div>
+
+
+    @RenderSection("Scripts", required: false)
+    <script>
+        var strWebRoot = "@Model.WebRoot";
+        var strUserLoginInfo = "@Model.seObjUserLoginInfo";
+        var strViewInfo4Session = "@Model.seobjViewInfo4Session";
+
+        /*
+ * 页面导入-在导入页面后运行的函数
+*/
+        function DispUserInfo() {
+            require(["../js/Index/Main_ViewInfo.js"], function (main) {
+                main.Main_ViewInfo.DispUserInfo();
+            });
+        }
+        DispUserInfo();
+
+        function DispViewInfo() {
+            require(["../js/Index/Main_ViewInfo.js"], function (main) {
+                main.Main_ViewInfo.DispViewInfo();
+            });
+        }
+        DispViewInfo();
+    </script>
+</body>
+</html>

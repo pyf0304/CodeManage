@@ -1,0 +1,313 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /**
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ **/
+function btnPaper_Edit_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduPaper/Paper_EditEx.js"], function(paper) {
+paper.Paper_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+    </script>
+<div id = "divEditLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_Paper" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_Paper" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_Paper">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr id="trPaperId">
+<td class="text-right">
+<label id="lblPaperId" name="lblPaperId" class="col-form-label text-right" style="width:90px;">论文Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPaperId" name="txtPaperId" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trPaperTitle">
+<td class="text-right">
+<label id="lblPaperTitle" name="lblPaperTitle" class="col-form-label text-right" style="width:90px;">论文标题
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPaperTitle" name="txtPaperTitle" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trPaperContent">
+<td class="text-right">
+<label id="lblPaperContent" name="lblPaperContent" class="col-form-label text-right" style="width:90px;">主题内容
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPaperContent" name="txtPaperContent" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trPeriodical">
+<td class="text-right">
+<label id="lblPeriodical" name="lblPeriodical" class="col-form-label text-right" style="width:90px;">期刊
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPeriodical" name="txtPeriodical" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trAuthor">
+<td class="text-right">
+<label id="lblAuthor" name="lblAuthor" class="col-form-label text-right" style="width:90px;">作者
+</label>
+</td>
+<td class="text-left">
+<input  id="txtAuthor" name="txtAuthor" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trResearchQuestion">
+<td class="text-right">
+<label id="lblResearchQuestion" name="lblResearchQuestion" class="col-form-label text-right" style="width:90px;">研究问题
+</label>
+</td>
+<td class="text-left">
+<input  id="txtResearchQuestion" name="txtResearchQuestion" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trMemo">
+<td class="text-right">
+<label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMemo" name="txtMemo" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trKeyword">
+<td class="text-right">
+<label id="lblKeyword" name="lblKeyword" class="col-form-label text-right" style="width:90px;">关键字
+</label>
+</td>
+<td class="text-left">
+<input  id="txtKeyword" name="txtKeyword" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trLiteratureSources">
+<td class="text-right">
+<label id="lblLiteratureSources" name="lblLiteratureSources" class="col-form-label text-right" style="width:90px;">文献来源
+</label>
+</td>
+<td class="text-left">
+<input  id="txtLiteratureSources" name="txtLiteratureSources" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trLiteratureLink">
+<td class="text-right">
+<label id="lblLiteratureLink" name="lblLiteratureLink" class="col-form-label text-right" style="width:90px;">文献链接
+</label>
+</td>
+<td class="text-left">
+<input  id="txtLiteratureLink" name="txtLiteratureLink" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trUploadfileUrl">
+<td class="text-right">
+<label id="lblUploadfileUrl" name="lblUploadfileUrl" class="col-form-label text-right" style="width:90px;">文件地址
+</label>
+</td>
+<td class="text-left">
+<input  id="txtUploadfileUrl" name="txtUploadfileUrl" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trIsQuotethesis">
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsQuotethesis" name="chkIsQuotethesis" Text = "是否引用论文"  ><label for="chkIsQuotethesis">是否引用论文</label></span>
+</td>
+</tr>
+<tr id="trQuoteId">
+<td class="text-right">
+<label id="lblQuoteId" name="lblQuoteId" class="col-form-label text-right" style="width:90px;">引用Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtQuoteId" name="txtQuoteId" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trIsChecked">
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsChecked" name="chkIsChecked" Text = "是否检查"  ><label for="chkIsChecked">是否检查</label></span>
+</td>
+</tr>
+<tr id="trChecker">
+<td class="text-right">
+<label id="lblChecker" name="lblChecker" class="col-form-label text-right" style="width:90px;">审核人
+</label>
+</td>
+<td class="text-left">
+<input  id="txtChecker" name="txtChecker" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trLiteratureTypeId">
+<td class="text-right">
+<label id="lblLiteratureTypeId" name="lblLiteratureTypeId" class="col-form-label text-right" style="width:90px;">文献类型Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtLiteratureTypeId" name="txtLiteratureTypeId" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trBrowseNumber">
+<td class="text-right">
+<label id="lblBrowseNumber" name="lblBrowseNumber" class="col-form-label text-right" style="width:90px;">浏览量
+</label>
+</td>
+<td class="text-left">
+<input  id="txtBrowseNumber" name="txtBrowseNumber" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trIsSubmit">
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsSubmit" name="chkIsSubmit" Text = "是否提交"  ><label for="chkIsSubmit">是否提交</label></span>
+</td>
+</tr>
+<tr id="trAppraiseCount">
+<td class="text-right">
+<label id="lblAppraiseCount" name="lblAppraiseCount" class="col-form-label text-right" style="width:90px;">评论数
+</label>
+</td>
+<td class="text-left">
+<input  id="txtAppraiseCount" name="txtAppraiseCount" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trAttachmentCount">
+<td class="text-right">
+<label id="lblAttachmentCount" name="lblAttachmentCount" class="col-form-label text-right" style="width:90px;">附件计数
+</label>
+</td>
+<td class="text-left">
+<input  id="txtAttachmentCount" name="txtAttachmentCount" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trCollectionCount">
+<td class="text-right">
+<label id="lblCollectionCount" name="lblCollectionCount" class="col-form-label text-right" style="width:90px;">CollectionCount
+</label>
+</td>
+<td class="text-left">
+<input  id="txtCollectionCount" name="txtCollectionCount" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trDownloadCount">
+<td class="text-right">
+<label id="lblDownloadCount" name="lblDownloadCount" class="col-form-label text-right" style="width:90px;">DownloadCount
+</label>
+</td>
+<td class="text-left">
+<input  id="txtDownloadCount" name="txtDownloadCount" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trOkCount">
+<td class="text-right">
+<label id="lblOkCount" name="lblOkCount" class="col-form-label text-right" style="width:90px;">点赞统计
+</label>
+</td>
+<td class="text-left">
+<input  id="txtOkCount" name="txtOkCount" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trPcount">
+<td class="text-right">
+<label id="lblPcount" name="lblPcount" class="col-form-label text-right" style="width:90px;">Pcount
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPcount" name="txtPcount" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trscore">
+<td class="text-right">
+<label id="lblscore" name="lblscore" class="col-form-label text-right" style="width:90px;">评分
+</label>
+</td>
+<td class="text-left">
+<input  id="txtscore" name="txtscore" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trStuScore">
+<td class="text-right">
+<label id="lblStuScore" name="lblStuScore" class="col-form-label text-right" style="width:90px;">学生平均分
+</label>
+</td>
+<td class="text-left">
+<input  id="txtStuScore" name="txtStuScore" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trTeaScore">
+<td class="text-right">
+<label id="lblTeaScore" name="lblTeaScore" class="col-form-label text-right" style="width:90px;">教师评分
+</label>
+</td>
+<td class="text-left">
+<input  id="txtTeaScore" name="txtTeaScore" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_Paper" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_Paper" type="button" class="btn btn-primary" onclick="btnPaper_Edit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

@@ -1,0 +1,67 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <BaseOutputPath>E:\TzAppData\GraduateStudyWebApp\ExamLibApiV2\bin</BaseOutputPath>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Compile Remove="obj\**" />
+    <Compile Remove="WebApi\FunClass\**" />
+    <Compile Remove="WebApi\J2EEModule\**" />
+    <Compile Remove="WebApi\NewsBulletin\**" />
+    <Content Remove="bin\**" />
+    <Content Remove="obj\**" />
+    <Content Remove="WebApi\FunClass\**" />
+    <Content Remove="WebApi\J2EEModule\**" />
+    <Content Remove="WebApi\NewsBulletin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <EmbeddedResource Remove="WebApi\FunClass\**" />
+    <EmbeddedResource Remove="WebApi\J2EEModule\**" />
+    <EmbeddedResource Remove="WebApi\NewsBulletin\**" />
+    <None Remove="bin\**" />
+    <None Remove="obj\**" />
+    <None Remove="WebApi\FunClass\**" />
+    <None Remove="WebApi\J2EEModule\**" />
+    <None Remove="WebApi\NewsBulletin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\DataNodeApi2Controller.cs" />
+    <Compile Remove="Controllers\SW_PressurePointApiController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JWT" Version="10.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.6" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="2.19.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="8.0.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExamLib_Base\ExamLib_Base.csproj" />
+    <ProjectReference Include="..\ExamLib_Bll\ExamLibBll.csproj" />
+    <ProjectReference Include="..\ExamLib_Dal\ExamLibDal.csproj" />
+    <ProjectReference Include="..\ExamLib_Entity\ExamLibEntity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="PubDataBase">
+      <HintPath>E:\PublicLib\PubDataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="TzPubFunction">
+      <HintPath>E:\PublicLib\TzPubFunction.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="WebApi\ClassroomManage\" />
+  </ItemGroup>
+
+</Project>

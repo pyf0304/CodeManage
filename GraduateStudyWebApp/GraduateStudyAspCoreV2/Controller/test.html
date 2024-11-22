@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--<script src="~/Scripts/jquery-1.10.2.min.js"></script>-->
+
+    <script>
+        var ApiUrl = "http://101.251.68.133/TaskManageApi/";
+        var name = $("#birthday").val();
+        //var mapParam = new tzDictionary_js_1.Dictionary();
+        //mapParam.add("strWhereCond", 1 = 1);
+        //var strData = mapParam.getParamText();
+        $(function () {
+            $.ajax({
+                type: "put",
+                dataType: "json",
+                url: ApiUrl + "Api/SubTasksApi/UpdateRecord/",
+                //data: {},
+
+                //data: "strWhereCond='" + name + "'",//参数
+                data: " ",//参数
+                contentType: "application/json;charset=utf-8",
+                success: function (data, status) {
+                    if (data == "success") {
+                        $("#name").val(data.d);
+                    }
+                },
+                error: function (e) {
+                    window.alert(e.status);
+                },
+                complete: function () {
+
+                }
+
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            strWhereCond：
+            <input type="text" id="birthday" /><br />
+            <input type="button" id="btnSure" value="确 定" />
+            <!--<input type="text" id="name" style="width: 800px;" />-->
+
+        </div>
+    </form>
+</body>
+</html>

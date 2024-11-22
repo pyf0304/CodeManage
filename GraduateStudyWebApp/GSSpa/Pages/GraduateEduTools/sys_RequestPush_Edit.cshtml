@@ -1,0 +1,178 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /*
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ */
+function btnEdit_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduTools/sys_RequestPush_EditEx.js"], function(sys_requestpush) {
+sys_requestpush.sys_RequestPush_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /*
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ */
+function ShowDialog_sys_RequestPush(pstrOp) {
+   strOp = pstrOp;
+   require(['jquery', 'bootstrap'], function($) {
+       if (strOp === "Add") {
+           $('#lblDialogTitle_sys_RequestPush').html('添加记录');
+//sys_RequestPush_EditEx.GetMaxStrId('#txtRequestId');
+        }
+else if (strOp === "Update")
+{
+            $('#lblDialogTitle_sys_RequestPush').html('修改记录');
+}
+else if (strOp === "Detail")
+{
+            $('#btnSubmit_sys_RequestPush').hide();
+            $('#lblDialogTitle_sys_RequestPush').html('详细信息');
+}
+        $('#divEditDialog_sys_RequestPush').modal('show');
+  });
+}
+
+ /*
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ */
+function HideDialog_sys_RequestPush() {
+  require(['jquery', 'bootstrap'], function($) {
+      $('#divEditDialog_sys_RequestPush').modal('hide');
+  });
+}
+    </script>
+<div id = "tabLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_sys_RequestPush" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_sys_RequestPush" aria-hidden="true">
+ <div class="modal-dialog">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_sys_RequestPush">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr id="trTableKey">
+<td class="text-right">
+<Label id="lblRequesTypeId" name="lblRequesTypeId" class="col-form-label text-right" style="width:90px;">请求类型Id
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtRequesTypeId" name="txtRequesTypeId" class="form-control" style="width:150px;"/>
+</td>
+<td class="text-right">
+<Label id="lblTableKey" name="lblTableKey" class="col-form-label text-right" style="width:90px;">表主键
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtTableKey" name="txtTableKey" class="form-control" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trIsReply">
+<td class="text-right">
+<Label id="lblReceiveUser" name="lblReceiveUser" class="col-form-label text-right" style="width:90px;">接收用户
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtReceiveUser" name="txtReceiveUser" class="form-control" style="width:150px;"/>
+</td>
+<td class="text-left" ColSpan=2>
+<span class="form-control"  style="width:150px;">
+<input type="checkbox"  id="chkIsReply" name="chkIsReply"Text = "是否回复"  ><label for="chkIsReply">是否回复</label></span>
+</td>
+</tr>
+<tr id="trRequestUser">
+<td class="text-right">
+<Label id="lblReplyDate" name="lblReplyDate" class="col-form-label text-right" style="width:90px;">回复日期
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtReplyDate" name="txtReplyDate" class="form-control" style="width:150px;"/>
+</td>
+<td class="text-right">
+<Label id="lblRequestUser" name="lblRequestUser" class="col-form-label text-right" style="width:90px;">RequestUser
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtRequestUser" name="txtRequestUser" class="form-control" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trRequestStata">
+<td class="text-right">
+<Label id="lblRequestDate" name="lblRequestDate" class="col-form-label text-right" style="width:90px;">RequestDate
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtRequestDate" name="txtRequestDate" class="form-control" style="width:150px;"/>
+</td>
+<td class="text-right">
+<Label id="lblRequestStata" name="lblRequestStata" class="col-form-label text-right" style="width:90px;">RequestStata
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtRequestStata" name="txtRequestStata" class="form-control" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trid_CurrEduCls">
+<td class="text-right">
+<Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtMemo" name="txtMemo" class="form-control" style="width:150px;"/>
+</td>
+<td class="text-right">
+<Label id="lblid_CurrEduCls" name="lblid_CurrEduCls" class="col-form-label text-right" style="width:90px;">当前教学班流水号
+</Label>
+</td>
+<td class="text-left">
+<select id="ddlid_CurrEduCls" name="ddlid_CurrEduCls" class="form-control" style="width:150px;"></select>
+</td>
+</tr>
+<tr id="trPushTypeId">
+<td class="text-right">
+<Label id="lblPushTypeId" name="lblPushTypeId" class="col-form-label text-right" style="width:90px;">推送类型Id
+</Label>
+</td>
+<td class="text-left">
+<input  id="txtPushTypeId" name="txtPushTypeId" class="form-control" style="width:150px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_sys_RequestPush" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_sys_RequestPush" type="button" class="btn btn-primary" onclick="btnEdit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+</div>

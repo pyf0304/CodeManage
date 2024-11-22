@@ -1,0 +1,585 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <script type='text/javascript' src='~/textboxio/textboxio.js'></script>
+    <link rel="stylesheet" type="text/css" href="~/textboxio/example.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+    $(document).ready(function () {
+      
+        //$("#txtParagraphContent").keyup(function () {
+        //    //按下键盘起来调用比对函数；
+        //    startCompare();
+        //});
+    });
+    //特殊字符过滤
+    function stripscript(s) {
+        var pattern = new RegExp("[`~!#$^&*()=|{}':;',\\[\\].<>/?~！#￥……&*（）——|{}【】‘；：”“'。，、？]");
+        var rs = "";
+        for (var i = 0; i < s.length; i++) {
+            rs = rs + s.substr(i, 1).replace(pattern, '');
+        }
+        return rs;
+    }
+
+    //通过返回的新的数据循环读取span 存放数组
+    function GetSpanList() {
+        var ColorCode = $("#hidColorCode").val();
+        var strUserId = $("#hidUserId").val();
+        var array = new Array();//声明一个新的数组
+        $("#·inpRight span").each(function (index, item)
+        {
+            var val = $(this).html()
+           // alert(val);
+            array.push($(this).html());//往数组中存入值
+          
+           // array.push(val);//往数组中存入值
+            
+        });
+
+        //循环数组数据，比对含有标签的修改数据；如果找到相同地方，取出然后替换增加背景标签插入到修改段落中；
+        $.each(array, function (index, value) {
+           
+            var txt = $('#txtParagraphContent').val();
+            console.log(txt);
+            var strResult = stripscript(value);
+            var tt = txt.replace(new RegExp(strResult, 'g'), '<span style="color:' + ColorCode + ';">' + strResult + '</span>');
+            $('#txtParagraphContent').val(tt);
+           // alert(i + "..." + value);
+        });
+    }
+
+
+
+//所有用户自定义的JS函数建议都放在这里
+    function startCompare() {
+        var a = $.trim($("#inpLeft").val());
+        var stra = a.replace(/<[^<>]+>/g, '');
+     //   stra = stra.replace(/[\r\n]/g, "");//去掉回车
+       
+        //var b = $.trim($("#inpRight").val());
+        var b = $.trim($("#txtParagraphContent").val());
+        var strb = b.replace(/<[^<>]+>/g, '');
+     //   strb = strb.replace(/[\r\n]/g, "");//去掉回车
+       
+        var result = getHighLightDifferent(stra, strb);
+        //getHighLightDifferent("1000", "10012");
+
+        $("#show1").html(result[0]);//老的数据
+        //$("#show2").html(result[1]);//返回新的数据
+        $("#inpRight").html(result[1]);//返回新的数据存放div中
+
+        //把返回的比对后的不同高亮数据循环得到存入数组
+     //   GetSpanList();
+        return false;
+    }
+
+    var flag = 1;
+
+    function getHighLightDifferent(a, b) {
+        //console.log("输入：" + a);
+        //console.log("输入：" + b);
+
+        var temp = getDiffArray(a, b);
+        var a1 = getHighLight(a, temp[0]);
+        //console.log("输出：" + a1);
+
+        var a2 = getHighLight(b, temp[1]);
+        //console.log("输出：" + a2);
+        //console.log(flag);
+        return new Array(a1, a2);
+    }
+
+    function getHighLight(source, temp) {
+        var ColorCode = $("#hidColorCode").val();
+        var strUserId = $("#hidUserId").val();
+        var result = new StringBuffer();
+        var sourceChars = source.split("");
+        var tempChars = temp.split("");
+        var flag = false;
+        for (var i = 0; i < sourceChars.length; i++) {
+            if (tempChars[i] != ' ') {
+                if (i == 0) {
+                    //result.append("<span style='color:blue'>");
+                    result.append("<span style='color:" + ColorCode + "' name='" + strUserId + "'>");
+                    //result.append("<span style='color:" + ColorCode + "'>");
+                    result.append(sourceChars[i]);
+                }
+                else if (flag) {
+                    result.append(sourceChars[i]);
+                }
+                else {
+                    //result.append("<span style='color:blue'>");
+                    result.append("<span style='color:" + ColorCode + "' name='" + strUserId + "'>");
+                    //result.append("<span style='color:" + ColorCode + "'>");
+                    result.append(sourceChars[i]);
+                }
+                flag = true;
+                if (i == sourceChars.length - 1) {
+                    result.append("</span>");
+                }
+            }
+            else if (flag == true) {
+                result.append("</span>");
+                result.append(sourceChars[i]);
+                flag = false;
+            } else {
+                result.append(sourceChars[i]);
+            }
+        }
+        return result.toString();
+    }
+
+    function getDiffArray(a, b) {
+        var result = new Array();
+        //选取长度较小的字符串用来穷举子串
+        if (a.length < b.length) {
+            var start = 0;
+            var end = a.length;
+            result = getDiff(a, b, start, end);
+        } else {
+            var start = 0;
+            var end = b.length;
+            result = getDiff(b, a, 0, b.length);
+            result = new Array(result[1], result[0]);
+        }
+        return result;
+
+    }
+
+    //将a的指定部分与b进行比较生成比对结果
+    function getDiff(a, b, start, end) {
+        var result = new Array(a, b);
+        var len = result[0].length;
+        while (len > 0) {
+            for (var i = start; i < end - len + 1; i++) {
+                var sub = result[0].substring(i, i + len);
+                var idx = -1;
+                if ((idx = result[1].indexOf(sub)) != -1) {
+                    result[0] = setEmpty(result[0], i, i + len);
+                    result[1] = setEmpty(result[1], idx, idx + len);
+                    if (i > 0) {
+                        //递归获取空白区域左边差异
+                        result = getDiff(result[0], result[1], start, i);
+                    }
+                    if (i + len < end) {
+                        //递归获取空白区域右边差异
+                        result = getDiff(result[0], result[1], i + len, end);
+                    }
+                    len = 0;//退出while循环
+                    break;
+                }
+            }
+            len = parseInt(len / 2);
+            //len = len - 1;
+            //console.log(len);
+        }
+        //console.log(result.join(""));
+        return result;
+    }
+
+    //将字符串s指定的区域设置成空格
+    function setEmpty(s, start, end) {
+        var array = s.split("");
+        for (var i = start; i < end; i++) {
+            array[i] = ' ';
+        }
+        return array.join("");
+    }
+
+    function StringBuffer() {
+        this.__strings__ = [];
+    };
+    StringBuffer.prototype.append = function (str) {
+        this.__strings__.push(str);
+        return this;
+    };
+    //格式化字符串
+    StringBuffer.prototype.appendFormat = function (str) {
+        for (var i = 1; i < arguments.length; i++) {
+            var parent = "\\{" + (i - 1) + "\\}";
+            var reg = new RegExp(parent, "g")
+            str = str.replace(reg, arguments[i]);
+        }
+
+        this.__strings__.push(str);
+        return this;
+    }
+    StringBuffer.prototype.toString = function () {
+        return this.__strings__.join('');
+    };
+    StringBuffer.prototype.clear = function () {
+        this.__strings__ = [];
+    }
+    StringBuffer.prototype.size = function () {
+        return this.__strings__.length;
+    }
+
+
+
+
+
+ 
+  @*@param $ 
+  自定义jQuery扩展方法, 在光标处插入内容*@ 
+
+(function ($) {
+    "use strict";
+    $.fn.extend({
+        insertAtCaret: function (myValue) {
+            var $t = $(this)[0];
+            if (document.selection) {
+                this.focus();
+                var sel = document.selection.createRange();
+                sel.text = myValue;
+                this.focus();
+            } else
+                if ($t.selectionStart || $t.selectionStart == '0') {
+                    var startPos = $t.selectionStart;
+                    var endPos = $t.selectionEnd;
+                    var scrollTop = $t.scrollTop;
+                    $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+                    this.focus();
+                    $t.selectionStart = startPos + myValue.length;
+                    $t.selectionEnd = startPos + myValue.length;
+                    $t.scrollTop = scrollTop;
+                } else {
+                    this.value += myValue;
+                    this.focus();
+                }
+        }
+    });
+})(jQuery);
+</script>
+<script>
+
+
+ /*
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ */
+    function btnEdit_Click(strCommandName, strKeyId) {
+
+        var strTypeId = $('#ddlParagraphTypeId').val();
+        if (strTypeId != "") {
+            if (strTypeId == "01") {
+                var editors = textboxio.get('#txtParagraphContent');
+                var editor = editors[0];
+                $("#txtParagraphContent").val(editor.content.get());
+                //先验证控件
+                if ($("#txtParagraphContent").val() == "") {
+                    layer.msg('内容不能为空!', {
+                        icon: 3,
+                        time: 1000
+                    });
+                }
+                else {
+
+                    require(["../js/GraduateEduPaper/gs_PaperParagraph_EditEx.js"], function (gs_paperparagraph) {
+                        gs_paperparagraph.gs_PaperParagraph_EditEx.btnEdit_Click(strCommandName, strKeyId);
+                    });
+                }
+
+            }
+            else {
+                //先验证控件
+                if ($("#txtUploadfile").val() == "") {
+                    layer.msg('图片不能为空!', {
+                        icon: 3,
+                        time: 1000
+                    });
+                }
+                else {
+                    IsFile(strCommandName, strKeyId);
+                }
+            }
+
+        }
+    }
+    function setTextboxio() {
+        var editors1 = $("#txtParagraphContent").val();
+        var editors = textboxio.get('#txtParagraphContent');
+        var editor = editors[0];
+        editor.content.set(editors1);
+    }
+
+
+    //所有用户自定义的JS函数建议都放在这里
+    function instantiateTextbox() {
+        textboxio.replaceAll('textarea', {
+            paste: {
+                style: 'clean'
+            },
+            css: {
+                stylesheets: ['../textboxio/example.css']
+            }
+        });
+    };
+
+ /*
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ */
+    function ShowDialog_gs_PaperParagraph(pstrOp) {
+        instantiateTextbox();
+   strOp = pstrOp;
+   require(['jquery', 'bootstrap'], function($) {
+       if (strOp === "Add") {
+           $('#lblDialogTitle_gs_PaperParagraph').html('添加记录');
+//gs_PaperParagraph_EditEx.GetMaxStrId('#txtParagraphId');
+        }
+else if (strOp === "Update")
+{
+            $('#lblDialogTitle_gs_PaperParagraph').html('修改记录');
+}
+else if (strOp === "Detail")
+{
+            $('#btnSubmit_gs_PaperParagraph').hide();
+            $('#lblDialogTitle_gs_PaperParagraph').html('详细信息');
+}
+        $('#divEditDialog_gs_PaperParagraph').modal('show');
+   });
+
+
+}
+
+ /*
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ */
+function HideDialog_gs_PaperParagraph() {
+  require(['jquery', 'bootstrap'], function($) {
+      $('#divEditDialog_gs_PaperParagraph').modal('hide');
+  });
+}
+
+
+
+
+//判断图片附件格式、以及文件附件格式
+function IsFile(strCommandName, strKeyId) {
+    //图片
+    var InputsWrapper = $("#InputsWrapper");
+    //var MaxInputs = 2;
+    var y = InputsWrapper.length;
+
+    //循环得到的个数
+    for (var i = 0; i < y; i++) {
+        if (i == 0) {
+            var file1 = $("#txtUploadfile").val();
+
+            if (file1 != "") {
+                strs = file1.split('.');
+                var suffix = strs[strs.length - 1];
+
+                if (suffix != 'jpg' && suffix != 'JPG' && suffix != 'gif' && suffix != 'GIF' && suffix != 'png' && suffix != 'PNG') {
+                    alert("请选择jpg、gif、png格式文件！");
+                    var obj = document.getElementById('txtUploadfile');
+                    obj.outerHTML = obj.outerHTML; //这样清空，在IE8下也能执行成功
+                    return;
+                    //obj.select(); document.selection.clear();这种方法也可以清空 input file 的value值
+                }
+
+            }
+        }
+    }
+    //上传
+    doUpload(strCommandName, strKeyId);
+
+
+}
+//上传方法
+function doUpload(strCommandName, strKeyId) {
+    var formData = new FormData($("#uploadForm")[0]);
+    $.ajax({
+        url: "@Url.Action("UpLoadPaperWriteGraph", "testUploadPic")",
+        type: 'post',
+    data: formData,
+    async: false,
+    cache: false,
+    contentType: false,
+    processData: false,
+    success: function (returndata) {
+        //成功/为空
+        if (returndata.status == 0 || returndata.status == -1) {
+
+
+            //如果图片地址为空，那么是修改 则不用存放地址；
+            if (returndata.fileNamePic != "") {
+                $("#hdnFileOne").val(returndata.fileNamePic);
+            }
+            //if (returndata.fileNameTwo != "") {
+            //    $("#hdnFileTwo").val(returndata.fileNameTwo);
+            //}
+            //if (returndata.fileNameThree != "") {
+            //    $("#hdnFileThree").val(returndata.fileNameThree);
+            //}
+
+            //    alert("提交" + strOp);
+            require(["../js/GraduateEduPaper/gs_PaperParagraph_EditEx.js"], function(gs_paperparagraph) {
+                gs_paperparagraph.gs_PaperParagraph_EditEx.btnEdit_Click(strCommandName, strKeyId);
+            });
+            // var aa = JSON.stringify(returndata);
+
+            //alert(returndata.message);
+
+        }
+        else {
+
+            alert('请选择正确图片格式(in gs_PaperParagraph_Edit)')
+        }
+
+
+    },
+    error: function (returndata) {
+        alert(returndata);
+    }
+});
+}
+
+
+
+/**选择段落类型 */
+function btnSelectParaGraphType() {
+    var strTypeId = $('#ddlParagraphTypeId').val();
+    if (strTypeId != "")
+    {
+        if (strTypeId == "01") {
+            //文本
+
+            $('#trParagraphContent').show();
+            $('#trParagraphPic').hide();
+        }
+        else {
+            //图片02
+            $('#trParagraphContent').hide();
+            $('#trParagraphPic').show();
+        }
+    }
+
+}
+</script>
+<div id="tabLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditDialog_gs_PaperParagraph" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_gs_PaperParagraph" aria-hidden="true">
+        <form id="uploadForm" method="post" enctype="multipart/form-data">
+
+            <div class="modal-dialog">
+                <div class="modal-content" style="width: 835px;">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="lblDialogTitle_gs_PaperParagraph">模态框（Modal）标题</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <table id="tabEdit" style="width:800px" class="table table-bordered table-hover table td table-sm">
+                            <tr id="trParagraphTypeId">
+                                @*<td class="text-right">
+                                        <Label id="lblParagraphTypeId" name="lblParagraphTypeId" class="col-form-label text-right" style="width:90px;">
+                                            段落类型
+                                        </Label>
+                                    </td>*@
+                                <td class="text-left">
+                                    <select id="ddlParagraphTypeId" name="ddlParagraphTypeId" class="form-control" style="width:150px;" onchange="btnSelectParaGraphType()"></select>
+                                </td>
+                            </tr>
+                            <tr id="trParagraphContent" style="display:none;">
+                                @*<td class="text-right">
+                                        <Label id="lblParagraphContent" name="lblParagraphContent" class="col-form-label text-right" style="width:90px;">
+                                            段落内容
+                                        </Label>
+                                    </td>*@
+                                <td class="text-left" ColSpan=3>
+                                    @*<input id="txtParagraphContent" name="txtParagraphContent" class="form-control" style="width:500px;" />*@
+                                    <textarea id="txtParagraphContent" name="txtParagraphContent" class="form-control" style="width:800px;height:300px;"></textarea>
+                                </td>
+                            </tr>
+                            <tr id="trParagraphPic" style="display:none;">
+                                @*<td class="NameTD">
+                                        <Label id="lblUploadfileUrl" name="lblUploadfileUrl" class="col-form-label text-right" style="width:90px;">
+                                            上传图片
+                                        </Label>
+                                    </td>*@
+                                <td class="ValueTD" id="InputsWrapper" colspan="3">
+                                    <input type="file" id="txtUploadfile" name="txtUploadfile">
+                                    @*<button id="AddMoreFileBox" type="button" class="btn btn-primary btn-sm" data-dismiss="modal">添加更多图片</button>*@
+
+                                    @*<input id="txtUploadfileUrl" name="txtUploadfileUrl" class="form-control" style="width:200px;" />*@
+                                </td>
+
+                            </tr>
+                            @*<tr id="trMemo">
+                                    <td class="text-right">
+                                        <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                            备注
+                                        </Label>
+                                    </td>
+                                    <td class="text-left">
+                                        <input id="txtMemo" name="txtMemo" class="form-control" style="width:500px;" />
+                                    </td>
+                                </tr>*@
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="btnCancel_gs_PaperParagraph" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button id="btnSubmit_gs_PaperParagraph" type="button" class="btn btn-primary" onclick="btnEdit_Click('Submit')">添加</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+
+            <div class="form-group" style="display:none;">
+                <div class="col-sm-4">
+                    @* 老的带标签的数据 不更改*@
+                    <textarea rows="2" cols="20" type="text" id="inpOldData" name="inpOldData"></textarea>
+                    @* 需要比对去标签的数据*@
+                    <textarea rows="2" cols="20" type="text" id="inpLeft" name="inpLeft"></textarea>
+
+                </div>
+                @*<div class="col-sm-2">
+                        <input id="inpStartCompare" type="button" value="开始比较" onclick="return startCompare();" />
+                    </div>*@
+                @*<div class="col-sm-4" id="inpRight" name="inpRight">*@
+                    <textarea rows="2" cols="20" type="text" id="inpRight" name="inpRight"></textarea>
+                @*</div>*@
+            </div>
+        </form>
+    </div>
+</div>
+
+@* 论文Id *@
+<input id="hidPaperId" type="hidden" />
+
+@* 节id *@
+<input id="hidSectionId" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+@* 图片 *@
+<input id="hdnFileOne" type="hidden" />
+
+@* 段落id *@
+<input id="hidParagraphId" type="hidden" />
+
+@* 排序号 *@
+<input id="hidOrderNum" type="hidden" />
+
+@* 用户色码快 *@
+<input id="hidUserColorCode" type="hidden" />
+
+@* 历史段落内容 *@
+<input id="hidHisToryContent" type="hidden" />
+
+@* 用户id *@
+<input id="hidUserId" type="hidden" />

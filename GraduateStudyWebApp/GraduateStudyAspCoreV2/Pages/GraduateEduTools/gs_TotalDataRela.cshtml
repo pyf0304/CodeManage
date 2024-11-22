@@ -1,0 +1,1628 @@
+﻿@page
+@{
+
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "总数据各个观点维护";
+}
+@section Styles{
+    @*<link rel="stylesheet" href="../css/Bootstrap-3.0.3.css" />*@
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    @*<link rel="stylesheet" href="../css/site.css" />*@
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <!-- 树形菜单样式 。js -->
+    @*<script type="text/javascript" src="../lib/jquery-1.6.min.js"></script>*@
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+    @*<link rel="stylesheet" href="~/css/paperlist.css" />*@
+
+    <style>
+        #divLeftPaper {
+            float: left;
+            width: 40.5%;
+            position: fixed;
+            top: 40px;
+            left: 1px;
+            background-color: #fff;
+            border-radius: 10px;
+            border: solid 1px #dededf;
+        }
+
+        #divRightContent {
+            float: right;
+            background-color: #fff;
+            width: 59%;
+            padding: 10px;
+            min-height: 700px;
+            /*overflow: hidden;*/
+            border-right: solid 1px #dededf;
+            border-bottom: solid 1px #dbdcde;
+            border-radius: 10px 8px 8px 4px; /* 四个半径值分别是左上角、右上角、右下角和左下角 */
+        }
+    </style>
+
+    <!-- 树形菜单样式 。js -->
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    @*<script src="../js/site.js" asp-append-version="true"></script>*@
+    @*<script src="../lib/bootstrap/dist/js/popper.js" type="module"></script>*@
+
+    <!--tab选项卡-->
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap.min.js"></script>*@
+
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+    <script>
+        function Alert1(strMsg) {
+
+            layer.msg(strMsg, {
+                icon: 1,
+                time: 2000
+            });
+        }
+
+        function Alert2(strMsg) {
+
+            layer.msg(strMsg, {
+                icon: 2,
+                time: 2000
+            });
+        }
+
+        function Alert3(strMsg) {
+
+            layer.msg(strMsg, {
+                icon: 3,
+                time: 2000
+            });
+        }
+        function Alert4(strMsg) {
+
+            layer.msg(strMsg, {
+                icon: 4,
+                time: 2000
+            });
+        }
+    </script>
+}
+<script>
+    window.onload = function () {
+        GetPaperID();
+        //获取隐藏控件值
+        //$("#divContent_list").show();
+
+        $('#hidTabNum').val("3");
+        //var y = localStorage.getItem("hid");
+        //$('#hidTabNum').val(y);
+
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.Page_Load();
+        });
+
+    }
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetPaperID() {
+        var Request = new Object();
+        Request = GetRequest();
+
+        //主键Id
+        var strKeyId = Request['KeyId'];
+        $('#hidKeyId').val(strKeyId);
+        //类型Id
+        var strTypeId = Request['TypeId'];
+        $('#hidTypeId').val(strTypeId);
+
+        //操作类型Id
+        var strOperationType = Request['OperationType'];
+        $('#hidOperationType').val(strOperationType);
+
+        if ($('#hidOperationType').val() == "2") {
+            $('#btnAddViewRela').hide();
+        }
+    }
+    ////刷新本页面
+    //function Refresh_vgv_Paper() {
+
+    //    require(["../js/GraduateEduTools/gs_PaperDiscussEx.js"], function (papersubviewpoint) {
+    //        var objPage = new papersubviewpoint.gs_PaperDiscussEx();
+    //        objPage.Page_Load();
+    //    });
+    //}
+    //添加评论以后刷新父页面数据
+    function RefreshWindow() {
+
+        try {
+            var strLogType = $('#hidPaperLogTypeId').val();
+            if (strLogType == "02") {
+                //刷新父页面
+                window.parent.liPaperClick("02");
+            }
+            else {
+                window.parent.liPaperClick("02");
+            }
+
+            //var strPageType = $('#hidCommentTypeId').val();
+            //if (strPageType == "02") {
+            //    window.parent.Refresh_vPaperSubViewpoint();
+            //}
+            //else if (strPageType == "03") {
+            //    window.parent.Refresh_AllTopicRela();
+            //}
+            //else if (strPageType == "04") {
+            //    window.parent.Refresh_AllTopicRela();
+            //}
+            //else if (strPageType == "05") {
+            //    window.parent.Refresh_AllTopicRela();
+            //}
+            //else if (strPageType == "06") {
+            //    window.parent.Refresh_AllTopicRela();
+            //}
+            //else if (strPageType == "07") {
+            //    window.parent.Refresh_AllTopicRela();
+            //}
+            //else {
+            //    window.parent.Refresh_AllTopicRela();
+            //}
+        } catch (e) {
+            window.opener.location = "父页面地址";
+            window.opener = null;
+            window.close();
+        }
+    }
+
+
+
+
+
+
+    //选择客观事实按钮
+    function btnAddTopicObjectiveRelaRecordInTab_Click() {
+        require(["../js/GraduateEduPaper/gs_PObjectiveRela.js"], function (paperaddideas) {
+            //存放选择id客观事实
+            var strObjectiveType = "01";
+            $('#hidObjectiveTypeId').val(strObjectiveType);
+
+            ShowDialogEight();
+            //调用用户列表绑定；
+            var objPage = new paperaddideas.gs_PObjectiveRela();
+            objPage.btnAddTopicObjectiveRela_Click();
+        });
+    }
+    //选择客观数据按钮
+    function btnAddBasisObjectiveRelaInTab_Click() {
+        require(["../js/GraduateEduPaper/gs_PObjectiveRela.js"], function (paperaddideas) {
+            //存放选择id客观数据
+            var strObjectiveType = "02";
+            $('#hidObjectiveTypeId').val(strObjectiveType);
+            ShowDialogEight();
+            //调用用户列表绑定；
+            var objPage = new paperaddideas.gs_PObjectiveRela();
+            objPage.btnAddTopicObjectiveRela_Click();
+
+        });
+    }
+    //确定选择客观数据
+    function btnOkObjectiveInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            if ($("#ddlgs_TDRelaType").val() != "0") {
+                var objPage = new paperaddideas.gs_TotalDataRela();
+                objPage.btnOkObjectiveInTab_Click(strKeyId);
+            }
+            else {
+                alert("请选择关系类型！");
+                return;
+            }
+        });
+    }
+
+    ///////////////////////////////////////////确定选择概念
+
+    //添加主题概念关系
+    function btnAddConceptRelaRecordInTab_Click() {
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (paperaddideas, commonfunc) {
+            ShowDialogSeven();
+            //调用用户列表绑定；
+            var objPage = new paperaddideas.gs_PConceptRela();
+            objPage.btnAddConceptRela_Click();
+
+        });
+    }
+
+
+    //确定添加概念关系
+    function btnOkConceptInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            if ($("#ddlgs_TDRelaType").val() != "0") {
+                var objPage = new paperaddideas.gs_TotalDataRela();
+                objPage.btnOkConceptInTab_Click(strKeyId);
+            }
+            else {
+                alert("请选择关系类型！");
+                return;
+            }
+        });
+    }
+
+
+
+
+
+
+
+
+
+    //选择主题个人观点关系
+    function btnAddViewPointRelaRecordInTab_Click() {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            //存放选择id
+            // $('#hidPaperId').val(strKeyId);
+            //存放选择类型Id 个人观点
+            var UsertypeId = "01";
+            $('#hidUserTypeId').val(UsertypeId);
+            $('#hidLiTypeId').val("04");
+            ShowDialogTwo();
+            //调用专业方向绑定；
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.btnAddViewpointRela_Click();
+        });
+    }
+
+    //选择主题专家观点关系
+    function btnAddExpegs_PViewpointRelaRecordInTab_Click() {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (paperaddideas, commonfunc) {
+            //存放选择类型Id 专家观点
+            var UsertypeId = "02";
+            $('#hidUserTypeId').val(UsertypeId);
+            ShowDialogTwo();
+            //调用专业方向绑定；
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.btnAddViewpointRela_Click();
+
+        });
+    }
+
+    //删除主题个人观点关系
+    function btnDelViewPointRelaRecordInTab_Click(strKeyId, strVTypeId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (gs_TotalDataRela) {
+
+            if (strKeyId == "") {
+                alert("请选择需要删除的记录！");
+                return;
+            }
+            var objPage = new gs_TotalDataRela.gs_TotalDataRela();
+            objPage.btnDelViewPointRelaRecordInTab_Click(strKeyId, strVTypeId);
+        });
+    }
+
+    //删除主题专家观点关系
+    function btnDelExpegs_PViewpointRelaRecordInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (gs_PViewpointRela) {
+            if (strKeyId == "") {
+                alert("请选择需要删除的记录！");
+                return;
+            }
+            var objPage = new gs_PViewpointRela.gs_TotalDataRela();
+            objPage.btnDelExpegs_PViewpointRelaRecordInTab_Click(strKeyId);
+        });
+    }
+
+
+    //选择观点方法
+    function btnAdd_ViewpointRela_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            if ($("#ddlgs_TDRelaType").val() != "0") {
+                var objPage = new paperaddideas.gs_TotalDataRela();
+                objPage.btnAdd_ViewpointRela_Click(strKeyId);
+            }
+            else {
+                alert("请选择关系类型！");
+                return;
+            }
+        });
+    }
+
+
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_IndexPage)
+    */
+    function IndexPage(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPage() {
+        var intCurrPageIndex = $('#input_number').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPage() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNum(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPage() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.IndexPage(intPageIndex);
+        });
+    }
+
+    /*
+         全选数据列表中的所有记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_SetAllCkechedKeys)
+    */
+    function SetAllCkechedKeys(tabName) {
+        var thisChk = event.target;
+        require(["../js/TS/PubFun/clsCommonFunc4Web.js"], function (commonfunc) {
+            console.log(tabName);
+            console.log(thisChk);
+            commonfunc.clsCommonFunc4Web.SetAllCkechedKeys(tabName, thisChk);
+        });
+    }
+
+    /*
+         显示对话框
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+    */
+    function ShowDialog(pstrOp) {
+        strOp = pstrOp;
+        require(['jquery', 'bootstrap'], function ($) {
+            if (strOp === "Add") {
+                $('#myModalLabel').html('添加记录');
+                //gs_TotalDataRela.GetMaxStrId('#txtTopicId');
+            }
+            else if (strOp === "Update") {
+                $('#myModalLabel').html('修改记录');
+            }
+            else if (strOp === "Detail") {
+                $('#btnOKUpd').hide();
+                $('#myModalLabel').html('详细信息');
+            }
+            $('#divEditRegion').modal('show');
+        });
+    }
+
+    /*
+    隐藏对话框
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+    */
+    function HideDialog() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divEditRegion').modal('hide');
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_SortBy)
+    */
+    function SortBy(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.SortBy(strFldName);
+        });
+    }
+
+    //1.主题详情
+
+    /*
+     在数据表里修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnUpdateRecordInTab_Click)
+    */
+
+    function btnDetailInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            if (strKeyId == "") {
+                alert("请选择需要的记录！");
+                return;
+            }
+            ShowDialogOne();
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.btnDetailInTab_Click(strKeyId);
+        });
+    }
+    //关闭详情
+    function close_Click() {
+
+        HideDialogOne();
+    }
+
+    /*
+显示对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+*/
+    function ShowDialogOne() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divpaperaddideasDetail').modal('show');
+        });
+    }
+
+    /*
+隐藏对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+*/
+    function HideDialogOne() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divpaperaddideasDetail').modal('hide');
+        });
+    }
+
+
+
+    //2.观点列表
+
+    //关闭观点列表
+    function closeOne_Click() {
+
+        HideDialogTwo();
+    }
+
+    /*
+显示对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+*/
+    function ShowDialogTwo() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divViewpointList').modal('show');
+        });
+    }
+
+    /*
+隐藏对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+*/
+    function HideDialogTwo() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divViewpointList').modal('hide');
+        });
+
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.GetAllFunctionMethod();
+        });
+    }
+    /*
+    修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_IndexPage)
+    */
+    function IndexPageOne(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageOne() {
+        var intCurrPageIndex = $('#input_numberOne').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPageOne() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNumOne(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageOne() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+
+
+
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageTwo() {
+        var intCurrPageIndex = $('#input_numberTwo').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPageTwo() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNumTwo(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageTwo() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+
+
+
+    ///////////////////////////////////////////////////////主题概念关系
+
+    function IndexPageSeven(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageSeven(intPageIndex);
+        });
+    }
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageSeven() {
+        var intCurrPageIndex = $('#input_numberSeven').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_PConceptRela();
+            objPage.IndexPageSeven(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPageSeven() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_PConceptRela();
+            objPage.IndexPageSeven(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNumSeven(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_PConceptRela();
+            objPage.IndexPageSeven(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageSeven() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_PConceptRela();
+            objPage.IndexPageSeven(intPageIndex);
+        });
+    }
+
+    ////////////////////////////////////////////////////////////////////弹出概念列表；
+    function closeSeven_Click() {
+
+        HideDialogSeven();
+    }
+
+    /*
+显示对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+*/
+    function ShowDialogSeven() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divConceptList').modal('show');
+        });
+    }
+
+    /*
+隐藏对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+*/
+    function HideDialogSeven() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divConceptList').modal('hide');
+        });
+
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.GetAllFunctionMethod();
+        });
+    }
+
+
+
+    /*
+    在数据表里删除记录的事件函数
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnDelRecordInTab_Click)
+    */
+    function btnDelConceptRecordInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (gs_PConceptRela) {
+            if (strKeyId == "") {
+                alert("请选择需要删除的记录！");
+                return;
+            }
+            var objPage = new gs_PConceptRela.gs_TotalDataRela();
+            objPage.btnDelConceptRecordInTab_Click(strKeyId);
+        });
+    }
+
+    /*
+查询记录 观点 列表
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnQuery_Click)
+*/
+    function btnViewpointQuery_Click() {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (gs_PConceptRela) {
+            $("#Text1").val("进入函数：btnQuery_Click");
+            var objPage = new gs_PConceptRela.gs_TotalDataRela();
+            objPage.btnViewpointQuery_Click();
+        });
+    }
+
+    /*
+ 查询记录 概念列表  gs_PConceptRela TS
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnQuery_Click)
+*/
+    function btnConceptQuery_Click() {
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js"], function (concept) {
+            $("#Text1").val("进入函数：btnQuery_Click");
+            var objPage = new concept.gs_PConceptRela();
+            objPage.btnConceptQuery_Click();
+        });
+    }
+
+
+
+    ////////////////////////////////////////////////////////////////////主题客观关系；
+    function closeEight_Click() {
+
+        HideDialogEight();
+    }
+
+    /*
+显示对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+*/
+    function ShowDialogEight() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divObjectiveList').modal('show');
+        });
+    }
+
+    /*
+隐藏对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+*/
+    function HideDialogEight() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divObjectiveList').modal('hide');
+        });
+
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.GetAllFunctionMethod();
+        });
+    }
+
+    //删除客观事实
+    function btnDelObjectiveRecordInTab_Click(strKeyId, strVTypeId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (gs_PConceptRela) {
+            if (strKeyId == "") {
+                alert("请选择需要删除的记录！");
+                return;
+            }
+            var objPage = new gs_PConceptRela.gs_TotalDataRela();
+            objPage.btnDelObjectiveRecordInTab_Click(strKeyId, strVTypeId);
+        });
+    }
+    //删除客观数据
+    function btnDelBasisObjectiveRecordInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (gs_PConceptRela) {
+            if (strKeyId == "") {
+                alert("请选择需要删除的记录！");
+                return;
+            }
+            var objPage = new gs_PConceptRela.gs_TotalDataRela();
+            objPage.btnDelBasisObjectiveRecordInTab_Click(strKeyId);
+        });
+    }
+
+    /*
+查询记录 客观列表查询功能  gs_PObjectiveRela TS
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnQuery_Click)
+*/
+    function btnQueryObjective_Click() {
+        require(["../js/GraduateEduPaper/gs_PObjectiveRela.js"], function (concept) {
+            $("#Text1").val("进入函数：btnQuery_Click");
+            var objPage = new concept.gs_PObjectiveRela();
+            objPage.btnQueryObjective_Click();
+        });
+    }
+
+
+
+
+    //-----------------------------------------------------------------关于各个列表表头排序
+
+    //个人观点 专家观点表头排序
+    function SortByViewpoint(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (viewpoint) {
+            var objPage = new viewpoint.gs_TotalDataRela();
+            objPage.SortByViewpoint(strFldName);
+        });
+    }
+
+
+
+
+
+    //概念表头排序
+    function SortByConcept(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js"], function (viewpoint) {
+            var objPage = new viewpoint.gs_PConceptRela();
+            objPage.SortByConcept(strFldName);
+        });
+    }
+
+    //客观事实 数据表头排序
+    function SortByObjectiveFact(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/GraduateEduPaper/gs_PObjectiveRela.js"], function (viewpoint) {
+            var objPage = new viewpoint.gs_PObjectiveRela();
+            objPage.SortByObjectiveFact(strFldName);
+        });
+    }
+
+
+
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SortBy)
+    */
+    function SortBy(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/GraduateEduTools/SysSkillCRUDEx.js"], function (sysskill) {
+            var objPage = new sysskill.SysSkillCRUDEx();
+            objPage.SortBy(strFldName);
+        });
+    }
+
+
+
+    //--------------------------------------------------------------------------tab页切换事件
+
+    //个人观点
+    function liViewpointClick() {
+        var strnum = "3";
+        $('#hidTabNum').val(strnum);
+        var UsertypeId = "01";
+        $('#hidUserTypeId').val(UsertypeId);
+        $('#hidLiTypeId').val("04");
+        $('#tdLevelId').hide();
+        $('#tdOperationTypeId').hide();
+        //var x = $('#hidTabNum').val();
+        //localStorage.setItem("hid", x);
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            //var objPage = new viewpoint.gs_TotalDataRela();
+            //objPage.liViewpointClick();
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.btnAddViewpointRela_Click();
+        });
+
+    }
+
+
+    //专家观点
+    function liExpertViewpointClick() {
+        var strnum = "4";
+        $('#hidTabNum').val(strnum);
+        var UsertypeId = "02";
+        $('#hidUserTypeId').val(UsertypeId);
+        $('#hidLiTypeId').val("05");
+
+        $('#tdLevelId').hide();
+        $('#tdOperationTypeId').hide();
+        //var x = $('#hidTabNum').val();
+        //localStorage.setItem("hid", x);
+
+        //require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (viewpoint) {
+        //    var objPage = new viewpoint.gs_TotalDataRela();
+        //    objPage.liExpertViewpointClick();
+        //});
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.btnAddViewpointRela_Click();
+        });
+    }
+    //相关概念
+    function liConceptClick() {
+        var strnum = "5";
+        $('#hidTabNum').val(strnum);
+        $('#hidLiTypeId').val("06");
+        $('#tdLevelId').hide();
+        $('#tdOperationTypeId').hide();
+        //var x = $('#hidTabNum').val();
+        //localStorage.setItem("hid", x);
+        //require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (viewpoint) {
+        //    var objPage = new viewpoint.gs_TotalDataRela();
+        //    objPage.liConceptClick();
+        //});
+        require(["../js/GraduateEduPaper/gs_PConceptRela.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (paperaddideas, commonfunc) {
+            var objPage = new paperaddideas.gs_PConceptRela();
+            objPage.btnAddConceptRela_Click();
+        });
+    }
+    //客观事实
+    function liObjectiveFactClick() {
+        var strnum = "6";
+        $('#hidTabNum').val(strnum);
+        var strObjectiveType = "01";
+        $('#hidObjectiveTypeId').val(strObjectiveType);
+        $('#hidLiTypeId').val("07");
+        $('#tdLevelId').hide();
+        $('#tdOperationTypeId').hide();
+        //var x = $('#hidTabNum').val();
+        //localStorage.setItem("hid", x);
+        //require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (viewpoint) {
+        //    var objPage = new viewpoint.gs_TotalDataRela();
+        //    objPage.liObjectiveFactClick();
+        //});
+        require(["../js/GraduateEduPaper/gs_PObjectiveRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_PObjectiveRela();
+            objPage.btnAddTopicObjectiveRela_Click();
+        });
+    }
+    //客观数据
+    function liObjectiveBasisClick() {
+        var strnum = "7";
+        $('#hidTabNum').val(strnum);
+        var strObjectiveType = "02";
+        $('#hidObjectiveTypeId').val(strObjectiveType);
+        $('#hidLiTypeId').val("08");
+        $('#tdLevelId').hide();
+        $('#tdOperationTypeId').hide();
+        //var x = $('#hidTabNum').val();
+        //localStorage.setItem("hid", x);
+        //require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (viewpoint) {
+        //    var objPage = new viewpoint.gs_TotalDataRela();
+        //    objPage.liObjectiveBasisClick();
+        //});
+        require(["../js/GraduateEduPaper/gs_PObjectiveRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_PObjectiveRela();
+            objPage.btnAddTopicObjectiveRela_Click();
+        });
+    }
+    //技能
+    function liSysskillClick() {
+        var strnum = "9";
+        $('#hidTabNum').val(strnum);
+        $('#hidLiTypeId').val("09");
+        $('#tdLevelId').hide();
+        $('#tdOperationTypeId').show();
+
+        //var x = $('#hidTabNum').val();
+        //localStorage.setItem("hid", x);
+        //require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (viewpoint) {
+        //    var objPage = new viewpoint.gs_TotalDataRela();
+        //    objPage.liSysskillClick();
+        //});
+        require(["../js/GraduateEduPaper/gs_PSysskillRela.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (paperaddideas, commonfunc) {
+            var objPage = new paperaddideas.gs_PSysskillRela();
+            objPage.btnAddSysskillInTab_Click();
+        });
+    }
+    //社会关系
+    function liSysSocialRelationsClick() {
+        var strnum = "10";
+        $('#hidTabNum').val(strnum);
+        $('#hidLiTypeId').val("10");
+        $('#tdLevelId').show();
+        $('#tdOperationTypeId').hide();
+        //var x = $('#hidTabNum').val();
+        //localStorage.setItem("hid", x);
+        //require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (viewpoint) {
+        //    var objPage = new viewpoint.gs_TotalDataRela();
+        //    objPage.liSysSocialRelationsClick();
+        //});
+        require(["../js/GraduateEduPaper/gs_PSocialRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_PSocialRela();
+            objPage.btnAddgs_PSocialRelaInTab_Click();
+        });
+    }
+
+
+
+
+
+    //-------------------------------------------------------------------技能；
+
+    function IndexPageTen(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTen(intPageIndex);
+        });
+    }
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageTen() {
+        var intCurrPageIndex = $('#input_numberTen').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTen(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPageTen() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTen(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNumTen(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTen(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageTen() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageTen(intPageIndex);
+        });
+    }
+
+    //删除技能主题关系
+    function btnDelSysskillRecordInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (gs_PViewpointRela) {
+            if (strKeyId == "") {
+                alert("请选择需要删除的记录！");
+                return;
+            }
+            var objPage = new gs_PViewpointRela.gs_TotalDataRela();
+            objPage.btnDelSysskillRecordInTab_Click(strKeyId);
+        });
+    }
+
+
+    //点击选择技能数据按钮
+    function btnAddSysskillInTab_Click() {
+        require(["../js/GraduateEduPaper/gs_PSysskillRela.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (paperaddideas, commonfunc) {
+            ShowDialogNine();
+            //调用用户列表绑定；
+            var objPage = new paperaddideas.gs_PSysskillRela();
+            objPage.btnAddSysskillInTab_Click();
+        });
+    }
+
+
+    //确定选择技能方法
+    function btnOkSysskillInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            if ($("#ddlgs_TDRelaType").val() != "0") {
+                var objPage = new paperaddideas.gs_TotalDataRela();
+                objPage.btnOkSysskillInTab_Click(strKeyId);
+            }
+            else {
+                alert("请选择关系类型！");
+                return;
+            }
+        });
+    }
+
+    //技能查询方法；
+    function btnQuerySysskill_Click() {
+        require(["../js/GraduateEduPaper/gs_PSysskillRela.js"], function (paperaddideas) {
+
+            var objPage = new paperaddideas.gs_PSysskillRela();
+            objPage.btnQuerySysskill_Click();
+        });
+    }
+
+
+
+    function closeNine_Click() {
+
+        HideDialogNine();
+    }
+
+    /*
+显示对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+*/
+    function ShowDialogNine() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divSysSkillList').modal('show');
+        });
+    }
+
+    /*
+隐藏对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+*/
+    function HideDialogNine() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divSysSkillList').modal('hide');
+        });
+
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.GetAllFunctionMethod();
+        });
+    }
+
+    //-------------------------------------------------------------------社会关系；
+
+    function IndexPageEleven(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageEleven(intPageIndex);
+        });
+    }
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageEleven() {
+        var intCurrPageIndex = $('#input_numberEleven').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageEleven(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPageEleven() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageEleven(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNumEleven(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageEleven(intPageIndex);
+        });
+    }
+
+    /*
+         修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageEleven() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (subviewpoint) {
+            var objPage = new subviewpoint.gs_TotalDataRela();
+            objPage.IndexPageEleven(intPageIndex);
+        });
+    }
+
+    //删除技能主题关系
+    function btnDelgs_PSocialRelaRecordInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (gs_tdRela) {
+            if (strKeyId == "") {
+                alert("请选择需要删除的记录！");
+                return;
+            }
+            var objPage = new gs_tdRela.gs_TotalDataRela();
+            objPage.btnDelgs_PSocialRelaRecordInTab_Click(strKeyId);
+        });
+    }
+
+    //点击选择社会关系
+    function btnAddgs_PSocialRelaInTab_Click() {
+        require(["../js/GraduateEduPaper/gs_PSocialRela.js"], function (paperaddideas) {
+            ShowDialogTen();
+            //调用用户列表绑定；
+            var objPage = new paperaddideas.gs_PSocialRela();
+            objPage.btnAddgs_PSocialRelaInTab_Click();
+        });
+    }
+
+
+    //确定选择社会关系
+    function btnOkgs_PSocialRelaInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            if ($("#ddlgs_TDRelaType").val() != "0") {
+                var objPage = new paperaddideas.gs_TotalDataRela();
+                objPage.btnOkgs_PSocialRelaInTab_Click(strKeyId);
+            }
+            else {
+                alert("请选择关系类型！");
+                return;
+            }
+        });
+    }
+
+    //技能查询方法；
+    function btnQuerygs_PSocialRela_Click() {
+        require(["../js/GraduateEduPaper/gs_PSocialRela.js"], function (paperaddideas) {
+
+            var objPage = new paperaddideas.gs_PSocialRela();
+            objPage.btnQuerygs_PSocialRela_Click();
+
+        });
+    }
+
+
+
+    function closeTen_Click() {
+
+        HideDialogTen();
+    }
+
+    /*
+显示对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+*/
+    function ShowDialogTen() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divSysSocialRelationsList').modal('show');
+        });
+    }
+
+    /*
+隐藏对话框
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+*/
+    function HideDialogTen() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divSysSocialRelationsList').modal('hide');
+        });
+
+        require(["../js/GraduateEduTools/gs_TotalDataRela.js"], function (paperaddideas) {
+            var objPage = new paperaddideas.gs_TotalDataRela();
+            objPage.GetAllFunctionMethod();
+        });
+    }
+
+
+
+</script>
+
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+
+<div id="tabLayout" class="tab_layout">
+    @*-- 标题层 --*@
+
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">主题各观点</a>
+            <a>
+                <cite>各观点关系</cite>
+            </a>
+            <Label id="lblMsg_List" name="lblMsg_List"></Label>
+        </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+
+
+
+    @*-- 列表层 --*@
+
+    @*-- 分左右2个区域 --*@
+    <div>
+        <div id="divLeftPaper" class="divTree2">
+            <div id="div_Viewpoint"></div>
+        </div>
+
+        <div id="divRightContent" class="divContent2">
+
+            <div id="divContent_list">
+                @*-- 下 1个人观点 --*@
+                <button id="btnAddViewRela" class="layui-btn" onclick="btnAddViewPointRelaRecordInTab_Click()"><i class="layui-icon"></i>添加各观点关系</button>
+                <div id="divPersonalViewpointRelaDataLst" class="div_List"></div>
+                @*-- 下 2专家观点 --*@
+                @*<button class="layui-btn" onclick="btnAddExpegs_PViewpointRelaRecordInTab_Click()"><i class="layui-icon"></i>选择专家观点</button>*@
+                <div id="divExpertViewpointRelaDataLst" class="div_List"></div>
+                @*-- 底 概念 --*@
+                @*<button class="layui-btn" onclick="btnAddConceptRelaRecordInTab_Click()"><i class="layui-icon"></i>添加概念关系</button>*@
+                <div id="divgs_PConceptRelaDataLst" class="div_List"></div>
+                @*-- 底 客观事实 --*@
+                @* <button class="layui-btn" onclick="btnAddTopicObjectiveRelaRecordInTab_Click()"><i class="layui-icon"></i>选择客观事实</button>*@
+                <div id="divRtTopicObjectiveDataLst" class="div_List"></div>
+                @*-- 底 客观数据 --*@
+                @*<button class="layui-btn" onclick="btnAddBasisObjectiveRelaInTab_Click()"><i class="layui-icon"></i>选择客观数据</button>*@
+                <div id="divBasisRtTopicObjectiveDataLst" class="div_List"></div>
+                @*--  技能 --*@
+                @* <button class="layui-btn" onclick="btnAddSysskillInTab_Click()"><i class="layui-icon"></i>选择操作技能</button>*@
+                <div id="divSysskillDataLst" class="div_List"></div>
+                @*--  社会关系 --*@
+                @*<button class="layui-btn" onclick="btnAddgs_PSocialRelaInTab_Click()"><i class="layui-icon"></i>选择社会关系</button>*@
+                <div id="divSysSocialRelaDataLst" class="div_List"></div>
+                              
+
+            </div>
+
+        </div>
+
+
+        @*-- 编辑层 --*@
+
+
+        @*-- 观点列表 --*@
+        <div class="modal fade" style="z-index:1060;" id="divViewpointList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog" style="margin-left:200px;">
+                <div class="modal-content" style="width: 1200px;">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">观点列表</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+
+                    <div id="divQuery" class="div_query">
+                        <table id="tabQuery" name="tabQuery" style="width: 10%; " class="table table-bordered table-hover table td table-sm">
+                            <tr>
+                                <td>
+                                    <input id="txtViewpointName_q" name="txtViewpointName_q" placeholder="观点名称" class="layui-input" style="width:300px;" />
+                                </td>
+                                @*<td>
+                                        <input id="txtViewUpdName_q" name="txtViewUpdName_q" placeholder="编辑用户" class="layui-input" style="width:200px;" />
+                                    </td>*@
+                                <td id="tdOperationTypeId" style="display:none;">
+                                    <select id="ddlOperationTypeId_q" name="ddlOperationTypeId_q" class="form-control" style="width:120px;"></select>
+                                </td>
+                                <td id="tdLevelId" style="display:none;">
+                                    <select id="ddlLevelId_q" name="ddlLevelId_q" class="form-control" style="width:120px;"></select>
+                                </td>
+                                <td>
+                                    <button class="layui-btn" lay-submit="" lay-filter="sreach" onclick="btnViewpointQuery_Click()">
+                                        <i class="layui-icon">&#xe615;</i>
+                                    </button>
+                                </td>
+                                <td>
+                                    <select id="ddlgs_TDRelaType" name="ddlgs_TDRelaType" class="form-control" style="width:200px;" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="myTab" class="nav nav-tabs" role="tablist">
+
+                            <li id="liViewpoint" class="nav-item"><a class="nav-link active" href="#li_Viewpoint" data-toggle="tab" onclick="liViewpointClick()">个人观点</a></li>
+                            <li id="liExpertViewpoint" class="nav-item"><a class="nav-link" href="#li_Viewpoint" data-toggle="tab" onclick="liExpertViewpointClick()">专家观点</a></li>
+                            <li id="liConcept" class="nav-item"><a class="nav-link" href="#li_Concept" data-toggle="tab" onclick="liConceptClick()">相关概念</a></li>
+                            <li id="liObjectiveFact" class="nav-item"><a class="nav-link" href="#li_Objective" data-toggle="tab" onclick="liObjectiveFactClick()">客观事实</a></li>
+                            <li id="liObjectiveBasis" class="nav-item"><a class="nav-link" href="#li_Objective" data-toggle="tab" onclick="liObjectiveBasisClick()">客观数据</a></li>
+
+
+                            <li id="liSysskill" class="nav-item"><a class="nav-link" href="#li_Sysskill" data-toggle="tab" onclick="liSysskillClick()">操作技能</a></li>
+                            <li id="liSysSocialRela" class="nav-item"><a class="nav-link" href="#li_SysSocialRela" data-toggle="tab" onclick="liSysSocialRelationsClick()">社会关系</a></li>
+
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane active" id="li_Viewpoint">
+                                <div id="divViewpointDataLst" class="div_List">
+                                </div>
+                                <div id="divPager1" class="pager" value="1" style="display:none;">
+
+                                </div>
+                            </div>
+
+                            @*<div class="tab-pane fade" id="li_ExpertViewpoint">
+                                    <div id="divViewpointDataLst2" class="div_List">
+                                    </div>
+                                    <div id="divPager1" class="pager" value="1" style="display:none;">
+                                        @Html.Partial("~/Pages/PubWebClass/pageOne.cshtml")
+                                    </div>
+                                </div>*@
+
+                            <div class="tab-pane fade" id="li_Concept">
+                                <div id="divConceptDataLst" class="div_List">
+                                </div>
+
+                                <div id="divPager2" class="pager" value="1" style="display:none;">
+
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="li_Objective">
+                                <div id="divObjectiveDataLst" class="div_List">
+                                </div>
+                                <div id="divPager3" class="pager" value="1" style="display:none;">
+
+                                </div>
+                            </div>
+
+                            @*<div class="tab-pane fade" id="li_ObjectiveBasis">
+                                    <div id="divObjectiveDataLst2" class="div_List">
+                                    </div>
+                                    <div id="divPager3" class="pager" value="1" style="display:none;">
+                                        @Html.Partial("~/Pages/PubWebClass/pageSeven.cshtml")
+                                    </div>
+                                </div>*@
+
+                            <div class="tab-pane fade" id="li_Sysskill">
+                                <div id="divSysSkillDataLst" class="div_List">
+                                </div>
+                                <div id="divPager3" class="pager" value="1" style="display:none;">
+
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="li_SysSocialRela">
+                                <div id="divSysSocialDataLst" class="div_List">
+                                </div>
+                                <div id="divPager3" class="pager" value="1" style="display:none;">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button id="btnCancel" type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="closeOne_Click()">关闭</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidTypeId" type="hidden" />
+<input id="hidLiTypeId" type="hidden" />
+<input id="hidmId" type="hidden" />
+
+<input id="hidOperationType" type="hidden" />
+
+<input id="hidPageType" type="hidden" value="gs_TDR" />
+@*//当前页面的操作类型*@
+@*<input id="hidOperationType" type="hidden" value="04" />*@
+
+
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortpaperaddideasBy" type="hidden" value="" />
+<input id="hidUserId" type="hidden" value="" />
+<input id="hidRoleId" type="hidden" value="" />
+
+@*- 观点 个人 专家 --*@
+<input id="hidSortvViewpointBy" type="hidden" value="" />
+<input id="hidPaperId" type="hidden" value="" />
+<input id="hidViewpointId" type="hidden" value="" />
+
+@*- 论文 --*@
+<input id="hidSortvPaperBy" type="hidden" value="" />
+@* 论文Id *@
+<input id="hidPaperId" type="hidden" value="" />
+
+<input id="hidSortQxUsersBy" type="hidden" value="" />
+<input id="hidUserIdKey" type="hidden" value="" />
+
+
+
+
+@*- 主题观点关系 --*@
+<input id="hidSortvgs_PViewpointRelaBy" type="hidden" value="" />
+<input id="hidCurrPageIndexViewpoint" type="hidden" value="1" />
+
+
+@*- 主题概念关系 --*@
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvgs_PConceptRelaBy" type="hidden" value="" />
+<input id="hidConceptId" type="hidden" value="" />
+
+@*- 主题客观关系 --*@
+<input id="hidSortvTopicObjectiveBy" type="hidden" value="" />
+<input id="hidObjectiveId" type="hidden" value="" />
+
+@*- 观点角色类型 --*@
+<input id="hidUserTypeId" type="hidden" value="" />
+
+@*- 客观类型 --*@
+<input id="hidObjectiveTypeId" type="hidden" value="" />
+
+
+@*- 客观事实列表 --*@
+<input id="hidSortvTopicObjectiveBy" type="hidden" value="" />
+@*- 存放tab页顺序 --*@
+<input id="hidTabNum" type="hidden" />
+
+
+@* 区分个人专家观点  区分客观事实和客观数据 *@
+<input id="hidPageType" type="hidden" />
+
+@*-技能 --*@
+<input id="hidSortvgs_PSkillRelaBy" type="hidden" value="" />
+<input id="hidSkillId" type="hidden" value="" />
+
+@*-社会关系 --*@
+<input id="hidSortvgs_PSocialRelaBy" type="hidden" value="" />
+<input id="hidSocialId" type="hidden" value="" />
+
+
+@*-自研论文步骤类型 子观点 --*@
+<input id="PaperLogTypeId" type="hidden" />
+
+@*论文日志类型；*@
+<input id="hidPaperLogTypeId" type="hidden" />
+

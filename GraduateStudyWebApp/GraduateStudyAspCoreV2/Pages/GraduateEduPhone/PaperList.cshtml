@@ -1,0 +1,276 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduPhone.PaperListModel
+@{
+    Layout = "~/Pages/Shared/_Layout_Empty.cshtml";
+    //Layout = null;
+    ViewData["Title"] = "论文";
+
+    var strUrl_Session_SetString = Model.Url_Session_SetString;
+    var strUrl_Session_GetString = Model.Url_Session_GetString;
+}
+@section Styles{
+    @*<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="../css/site.css" />*@
+    <link href="~/css/index.css" rel="stylesheet" type="text/css">
+}
+@section Scripts{
+
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    @*<script src="../lib/bootstrap/dist/js/popper.js"></script>*@
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+    <script src="../lib/jquery/dist/jquery.js"></script>
+
+    @*<script src="../lib/jquery.min.js"></script>*@
+    @*<script src="../lib/jquery-form.js"></script>*@
+}
+
+<script>
+
+      var strWebRoot = "@Model.WebRoot";
+     var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+    /*
+       页面导入-在导入页面后运行的函数
+         (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_Page_Load)
+      */
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetThesisOpTypeID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var str1;
+        str1 = Request['QuoteGroupId'];
+
+        if (str1 != null) {
+            $('#hidQuoteGroupId').val(str1);
+
+            require(["../js/GraduateEduPhone/PaperListEx.js"], function (Paper) {
+
+                var objpage = new Paper.PaperListEx();
+                objpage.Page_Load();
+                //var objPage = new taskinfo.Task_TSEx();
+                //objPage.Page_Load();
+            });
+
+        }
+        else {
+            require(["../js/GraduateEduPhone/PaperListEx.js"], function (Paper) {
+
+                var objpage = new Paper.PaperListEx();
+                objpage.Page_Load();
+
+            });
+        }
+    }
+
+
+    window.onload = function () {
+
+        GetThesisOpTypeID();
+    }
+
+    /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_mySubmit)
+ */
+    function mySubmit(pstrOp) {
+        //    alert("提交" + strOp);
+        //require(["../js/GraduateEduEx/SubThesisListEx.js"], function (Thesis) {
+        //    var objPage = new Thesis.SubThesisListEx();
+        //    objPage.btnOKUpd_Click();
+        //});
+
+        doUpload();
+    }
+
+    //上传方法
+      function doUpload() {
+        var formData = new FormData($("#uploadForm")[0]);
+        $.ajax({
+             url: "@Url.Action("UploadFile", "testUploadPic")",
+            type: 'post',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                //成功
+                //成功/为空
+                if (returndata.status == 0 || returndata.status == -1) {
+
+                    //如果地址为空，那么是修改 则不用存放地址；
+                    if (returndata.fileName != "") {
+                        $("#hdnpic").val(returndata.fileName);
+                    }
+
+                    require(["../js/GraduateEduPhone/PaperListEx.js"], function (Paper) {
+                        var objPage = new Paper.PaperListEx();
+                        objPage.btnOKUpd_Click();
+                    });
+                    // var aa = JSON.stringify(returndata);
+
+                    //alert(returndata.message);
+
+                }
+                else {
+
+                    alert('请选择正确文件!(in PaperList.doUpload)')
+                }
+
+
+            },
+            error: function (returndata) {
+                alert(returndata);
+            }
+        });
+    }
+
+
+</script>
+
+<div data-role="page" id="pageOne">
+
+    <div data-role="header" data-position="fixed">
+        <a href="/GraduateStudyWebApp/WebApp/Indexs" rel="external" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">主页</a>
+
+        <h1>论文</h1>
+        <a href="#pageAdd" class="ui-btn ui-btn-right ui-icon-bullets ui-btn-icon-left ui-corner-all">
+                添加
+            </a>
+    </div>
+
+    <div data-role="content" id="contents">
+        <div id="pageone" style="width: 100%;height:auto;display: inline-block;border: 1px solid #CCC;border-bottom:1px dashed #CCC;background:#FFF;">
+            <div style="width: 100%;height: 5%;padding:0px 0px 0px 20px;text-align:left;">
+            </div>
+
+            <ul id="thesis" data-role="listview" data-inset="true">
+                <li class="question_title">请选择论文</li>
+            </ul>
+
+
+        </div>
+
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a asp-page="/WebApp/Indexs" rel="external" data-icon="home" class="ui-btn-active ui-state-persist">首页</a></li>
+                <li><a asp-page="/WebApp/MessagePushList" rel="external" data-icon="star">消息</a></li>
+                <li><a asp-page="/WebApp/User" rel="external" data-icon="user">我的</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<div data-role="page" id="pageAdd">
+    <div data-role="header">
+        <a href="#pageOne" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">返回</a>
+        <h1>论文添加</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <div style=" margin-top:20px; width:100%;">
+            <form method="post" action="demo_form.php" id="uploadForm">
+                @*<div class="ui-field-contain">
+            <label for="info">论文Id：</label>
+            <input type="text" id="txtThesisId" name="txtThesisId">
+        </div>*@
+                <div class="ui-field-contain">
+                    <label for="bday">论文标题：</label>
+                    <input type="text" id="txtPaperTitle" name="txtPaperTitle">
+
+                </div>
+               
+                <div class="ui-field-contain">
+                    <label for="bday">主题内容：</label>
+
+                    <textarea id="txtPaperContent" name="txtPaperContent" style="height:75px;"></textarea>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">期刊：</label>
+                    <input type="text" id="txtPeriodical" name="txtPeriodical">
+
+                </div>
+                <div class="ui-field-contain">
+                    <label for="info">作者：</label>
+                    <input type="text" id="txtAuthor" name="txtAuthor">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">研究问题：</label>
+                    <input type="text" id="txtResearchQuestion" name="txtResearchQuestion">
+
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">上传附件：</label>
+                    <input type="file" id="txtUploadfileUrl" name="txtUploadfileUrl">
+                    @*<button id="btnUpdFile" type="button" class="btn btn-primary" onclick="btnUpdFile()">上传</button>*@
+
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">文献来源：</label>
+                    <input type="text" id="txtLiteratureSources" name="txtLiteratureSources">
+
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">文献链接：</label>
+                    <input type="text" id="txtLiteratureLink" name="txtLiteratureLink">
+
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">关键字：</label>
+                    <input type="text" id="txtKeyword" name="txtKeyword">
+
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">研究者：</label>
+                    <input type="text" id="txtResearcherInformation" name="txtResearcherInformation">
+
+                </div>
+                
+                <div class="ui-field-contain">
+                    <label for="bday">备注：</label>
+
+                    <textarea id="txtMemo" name="txtMemo" style="height:75px;"></textarea>
+                </div>
+
+                <div class="ui-field-contain">
+                    <button id="btnOKUpd" type="button" onclick="mySubmit()">提交</button>
+
+                </div>
+            </form>
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+<input id="hdnpic" type="text" name="text" />
+<input id="hidOpType" type="hidden" />
+<input id="hidOperationType" type="hidden" value="@Model.GetSession("OperationType")" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" value="@Model.GetSession("UserId")" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvThesisBy" type="hidden" value="" />
+<input id="hidQuoteGroupId" type="hidden" value="@Model.GetSession("QuoteGroupId")" />
+<input id="hidUserInfo" type="hidden" value="@Model.GetSession("objvUserRoleRelation")" />

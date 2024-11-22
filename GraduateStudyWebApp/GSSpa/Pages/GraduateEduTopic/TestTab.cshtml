@@ -1,0 +1,189 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEdu.TestTabModel
+@{
+    //Layout = "~/Pages/Shared/_Layout_RequireJS.cshtml";
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+
+
+    <script type='text/javascript' src='~/textboxio/textboxio.js'></script>
+    <link rel="stylesheet" type="text/css" href="~/textboxio/example.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" />
+    <style type="text/css">
+        div, ul, li, a {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        body {
+            font-size: 14px;
+            background-color: #f7f7f7;
+        }
+
+        a {
+            color: #666;
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: #F60;
+            }
+
+        #title li {
+            float: left;
+            /*//margin-right:20px;*/
+            padding: 5px;
+            border: 1px solid #dedede;
+            background: #FFF;
+            /*//width:50px;*/
+            text-align: center;
+            height: 28px;
+            line-height: 28px;
+            position: relative;
+            z-index: 1000;
+        }
+
+        #title, #wrap {
+            clear: both;
+            background-color: #FFF;
+            width: 300px;
+        }
+
+        #wrap {
+            border: 1px solid #dedede;
+            height: 300px;
+            position: relative;
+            top: -1px;
+            padding: 10px;
+        }
+
+            #wrap > div {
+                display: none;
+                height: 100%;
+                overflow: auto;
+            }
+
+            #wrap .active {
+                display: block;
+            }
+
+        #title .ho {
+            border-bottom: 1px solid #FFF;
+            background: red;
+        }
+
+            #title .ho a {
+                color: white;
+            }
+    </style>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script type='text/javascript'>
+        $(function () {
+            function tab(pa) {
+                $(pa + ".title li").click(function () {
+                    //找到是点击第几个
+                    var ind = $(pa + "#title li").index($(this));
+                    //alert(ind);
+                    //以前显示的隐藏
+                    $(pa + ".wrap div:visible").hide();
+                    //第几个显示
+                    $(pa + ".wrap div:eq(" + ind + ")").show();
+                    //有高亮ho 去掉高亮ho
+                    $(pa + ".title li.ho").removeClass("ho");
+                    //被点击的元素添加ho
+                    $(this).addClass("ho");
+
+                }) //clicked
+            } //tab ed
+            tab(".tab1 ");
+
+            $("#btnOK").click(function () { alert('ok') });
+            $("#btnCancel").click(function () { alert('cancel') });
+        })
+    </script>
+
+</head>
+<body>
+    <div class="tab1" style="margin:100px;">
+        <ul id="title" class="title">
+            <li class="ho"><a href="javascript:void(0)">话费ggggg</a></li>
+            <li><a href="javascript:void(0)">游戏</a></li>
+            <li><a href="javascript:void(0)">旅行xxxx</a></li>
+            <li><a href="javascript:void(0)">保险</a></li>
+        </ul>
+        <div id="wrap" class="wrap">
+            <div class="active">
+                this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1<br>this is con1
+            </div>
+            <div>
+                this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>this is con2<br>
+            </div>
+            <div> this is con3</div>
+            <div>this is con4</div>
+        </div>
+    </div>
+
+
+    <div style="height:400px;width:400px;margin:100px;background-color:#FFF;">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active">
+                <a href="#home" data-toggle="tab">
+                    菜鸟教程
+                </a>
+            </li>
+            <li><a href="#ios" data-toggle="tab">iOS</a></li>
+            <li><a href="#jmeter" data-toggle="tab">jmeter</a></li>
+            <li><a href="#ejb" data-toggle="tab">ejb</a></li>
+
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="home" style="padding:5;">
+                <p>菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。</p>
+            </div>
+            <div class="tab-pane fade" id="ios">
+                <p>
+                    iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple
+                    TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。
+                </p>
+            </div>
+            <div class="tab-pane fade" id="jmeter">
+                <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
+            </div>
+            <div class="tab-pane fade" id="ejb">
+                <p>
+                    Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

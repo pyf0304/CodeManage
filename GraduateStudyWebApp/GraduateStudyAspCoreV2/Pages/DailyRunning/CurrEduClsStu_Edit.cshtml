@@ -1,0 +1,120 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /**
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ **/
+function btnCurrEduClsStu_Edit_Click(strCommandName, strKeyId) {
+   require(["../js/DailyRunning/CurrEduClsStu_EditEx.js"], function(curreduclsstu) {
+curreduclsstu.CurrEduClsStu_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+    </script>
+<div id = "divEditLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_CurrEduClsStu" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_CurrEduClsStu" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_CurrEduClsStu">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr id="trid_Stu">
+<td class="text-right">
+<label id="lblid_CurrEduCls" name="lblid_CurrEduCls" class="col-form-label text-right" style="width:90px;">教学班
+</label>
+</td>
+<td class="text-left">
+<select id="ddlid_CurrEduCls" name="ddlid_CurrEduCls" class="form-control-sm" style="width:200px;"></select>
+</td>
+<td class="text-right">
+<label id="lblid_Stu" name="lblid_Stu" class="col-form-label text-right" style="width:90px;">学生
+</label>
+</td>
+<td class="text-left">
+<input  id="txtid_Stu" name="txtid_Stu" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trSchoolYear">
+<td class="text-right">
+<label id="lblSchoolTerm" name="lblSchoolTerm" class="col-form-label text-right" style="width:90px;">学期
+</label>
+</td>
+<td class="text-left">
+<select id="ddlSchoolTerm" name="ddlSchoolTerm" class="form-control-sm" style="width:200px;"></select>
+</td>
+<td class="text-right">
+<label id="lblSchoolYear" name="lblSchoolYear" class="col-form-label text-right" style="width:90px;">学年
+</label>
+</td>
+<td class="text-left">
+<select id="ddlSchoolYear" name="ddlSchoolYear" class="form-control-sm" style="width:200px;"></select>
+</td>
+</tr>
+<tr id="trMemo">
+<td class="text-right">
+<label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</label>
+</td>
+<td class="text-left" ColSpan=3>
+<input  id="txtMemo" name="txtMemo" class="form-control-sm" style="width:400px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_CurrEduClsStu" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_CurrEduClsStu" type="button" class="btn btn-primary" onclick="btnCurrEduClsStu_Edit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

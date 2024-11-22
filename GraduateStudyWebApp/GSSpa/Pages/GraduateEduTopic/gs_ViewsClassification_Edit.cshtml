@@ -1,0 +1,149 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+    //所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+<script>
+
+
+    /*
+     按钮单击,用于调用Js函数中btnEdit_Click
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+    */
+    function btnEdit_Click(strCommandName, strKeyId) {
+        require(["../js/GraduateEduTopic/gs_ViewsClassification_EditEx.js"], function (gs_viewsclassification) {
+            gs_viewsclassification.gs_ViewsClassification_EditEx.btnEdit_Click(strCommandName, strKeyId);
+        });
+    }
+
+    /*
+     显示对话框
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+    */
+    function ShowDialog_gs_ViewsClassification(pstrOp) {
+        strOp = pstrOp;
+        require(['jquery', 'bootstrap'], function ($) {
+            if (strOp === "Add") {
+                $('#lblDialogTitle_gs_ViewsClassification').html('添加记录');
+                //gs_ViewsClassification_EditEx.GetMaxStrId('#txtClassificationId');
+            }
+            else if (strOp === "Update") {
+                $('#lblDialogTitle_gs_ViewsClassification').html('修改记录');
+            }
+            else if (strOp === "Detail") {
+                $('#btnSubmit_gs_ViewsClassification').hide();
+                $('#lblDialogTitle_gs_ViewsClassification').html('详细信息');
+            }
+            $('#divEditDialog_gs_ViewsClassification').modal('show');
+        });
+    }
+
+    /*
+     隐藏对话框
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+    */
+    function HideDialog_gs_ViewsClassification() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divEditDialog_gs_ViewsClassification').modal('hide');
+        });
+    }
+</script>
+<div id="tabLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditDialog_gs_ViewsClassification" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_gs_ViewsClassification" aria-hidden="true" style="margin-top:200px;">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 635px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lblDialogTitle_gs_ViewsClassification">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+                        <tr id="trClassificationName">
+                            <td class="text-left">
+                                <input id="txtClassificationName" name="txtClassificationName" placeholder="分类名称" class="form-control" style="width:100%;" />
+                            </td>
+                        </tr>
+                        <tr id="trUpdDate" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblClassificationId" name="lblClassificationId" class="col-form-label text-right" style="width:90px;">
+                                    分类Id
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtClassificationId" name="txtClassificationId" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">
+                                    主题编号
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <select id="ddlTopicId" name="ddlTopicId" class="form-control" style="width:150px;"></select>
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">
+                                    修改日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdDate" name="txtUpdDate" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trMemo" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">
+                                    修改人
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdUser" name="txtUpdUser" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtMemo" name="txtMemo" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trOrderNum" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblOrderNum" name="lblOrderNum" class="col-form-label text-right" style="width:90px;">
+                                    序号
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtOrderNum" name="txtOrderNum" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel_gs_ViewsClassification" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btnSubmit_gs_ViewsClassification" type="button" class="btn btn-primary" onclick="btnEdit_Click('Submit')">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>

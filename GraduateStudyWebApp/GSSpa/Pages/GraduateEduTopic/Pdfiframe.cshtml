@@ -1,0 +1,814 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduTopic.PdfiframeModel
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "pdf查看";
+    //操作Session样例，方法1：
+    //Model.seUserId = "TestUserId";
+    var strUserId_Value = Model.seUserId;
+    //操作Session样例，方法2：
+    Model.SetSession("UserId1", "TestUserId1");
+    var strUserId1_Value = Model.GetSession("UserId1");
+    //请参见页尾的隐形控件hidUserid和hidUserId1的使用。
+}
+@section Styles{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+
+    <style>
+        #pdfcontenttext {
+            float: left;
+            width: 54.5%;
+            height: 100%;
+            position: fixed;
+            /*top: 40px;*/
+            left: 1px;
+            border-radius: 10px;
+        }
+
+        #right_Content {
+            float: right;
+            width: 45%;
+            padding: 10px 10px 0 0;
+        }
+    </style>
+
+
+
+}
+@section Scripts{
+
+    @*<script src="../lib/jquery/dist/jquery.js"></script>
+        <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="../lib/require/require.js" data-main="../js/src/config"></script>*@
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    @*<script src="../js/site.js" asp-append-version="true"></script>*@
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+
+}
+
+<script>
+
+    var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+    var strCurrPrjId = "@Model.CurrPrjId";
+    var strWebRoot = "@Model.WebRoot";
+     var strAddressAndPort = "@Model.AddressAndPort";
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetPaperID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var strTopicId = Request['TopicId'];
+        var strPageType = Request['PageType'];
+        var strId_CurrEduCls = Request['Id_CurrEduCls'];
+        $("#hidId_CurrEduCls").val(strId_CurrEduCls);
+
+        $('#hidPageType').val(strPageType);
+
+        if (strPageType == "01")
+        {
+            $('#hidUserTypeId').val("01");
+        } else if (strPageType == "02")
+        {
+            $('#hidUserTypeId').val("02");
+        } else if (strPageType == "04")
+        {
+            $('#hidObjectiveTypeId').val("01");
+        } else if (strPageType == "05")
+        {
+            $('#hidObjectiveTypeId').val("02");
+        }
+
+
+
+
+        if (strTopicId != null) {
+            $('#hidTopicId').val(strTopicId);//存放主题Id
+            $('#hidPageType').val(strPageType);//存放页面区分
+
+
+            require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+                var objpage = new pdf.Pdfiframe();
+                objpage.Page_Load();
+
+            });
+
+        }
+    }
+    function CloseWindow() {
+
+        try {
+            $('#div_list').show();
+            $('#tabEdit').show();
+            $('#div_page').hide();
+
+            require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+                var objpage = new pdf.Pdfiframe();
+                objpage.BindEdit();
+
+            });
+
+            //CloseWindow_();
+
+
+            //var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            //parent.layer.close(index); //再执行关闭
+            //parent.location.reload();//完成刷新
+        } catch (e) {
+            window.opener.location = "父页面地址";
+            window.opener = null;
+            window.close();
+        }
+
+        //window.parent.opener.location.reload();
+        //var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        //parent.layer.close(index); //再执行关闭
+        ///window.location.reload();
+    }
+
+    window.onload = function () {
+        $("#hidTabNum").val(1);
+
+        GetPaperID();
+    }
+
+
+    /**根据学院选择专业 */
+    function SelectPaper() {
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.SelectPaper();
+        });
+    }
+
+
+
+
+
+    function CloseWindow_() {
+
+        try {
+            var strPageType = $('#hidPageType').val();
+            if (strPageType == "01") {
+                window.parent.liViewpointClick();
+            } else if (strPageType == "02") {
+                window.parent.liExpertViewpointClick();
+            } else if (strPageType == "03") {
+                window.parent.liConceptClick();
+            } else if (strPageType == "04") {
+                window.parent.liObjectiveFactClick();
+            } else if (strPageType == "05") {
+                window.parent.liObjectiveBasisClick();
+            }
+            else if (strPageType == "06") {
+                window.parent.liSysskillClick();//技能
+            }
+            else if (strPageType == "07") {
+                window.parent.liSysSocialRelationsClick();//社会关系
+            }
+        } catch (e) {
+            window.opener.location = "父页面地址";
+            window.opener = null;
+            window.close();
+        }
+
+        //window.parent.opener.location.reload();
+        //var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        //parent.layer.close(index); //再执行关闭
+        ///window.location.reload();
+    }
+
+
+
+
+    /*
+     添加新记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnAddNewRecord_Click)
+    */
+    function btnAddNewRecord_Click() {
+
+        var pageNum = document.getElementById('iframe_qaPdf').contentWindow.document.getElementById('pageNumber');
+
+        $('#hidPdfPageNum').val(pageNum.value);
+
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            if ($("#ddlVTypeId").val() != 0) {
+                $('#div_list').hide();
+                $('#tabEdit').hide();
+                $('#div_page').show();
+                layer.msg('pdf页码：' + pageNum.value, {
+                    icon: 4,
+                    time: 1000
+                });
+                //alert("pdf页码：" + pageNum.value);
+            }
+            else {
+                alert("请选择观点类型！");
+                return;
+            }
+            var objPage = new pdf.Pdfiframe();
+            objPage.BindPage();
+        });
+
+
+    }
+
+    /*********************************************************观点列表***************************************************/
+
+    //选择观点方法
+    function btnOkInTab_Click(strKeyId) {
+
+            require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+                if (strKeyId == "") {
+                    alert("请选择需要的记录！");
+                    return;
+                }
+                var objPage = new pdf.Pdfiframe();
+                objPage.btnOkInTab_Click(strKeyId);
+            });
+
+
+    }
+
+    //个人观点 专家观点表头排序
+    function SortByViewpoint(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.SortByViewpoint(strFldName);
+        });
+    }
+
+    /*
+修改记录
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_IndexPage)
+*/
+    function IndexPageOne(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageOne() {
+        var intCurrPageIndex = $('#input_numberOne').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPageOne() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNumOne(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageOne() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+
+    //////////////////////////////////////////////////////////////主题概念关系/////////////////////////////////////////////////////////////////
+    //选择概念方法
+    function btnOkConceptInTab_Click(strKeyId, strStata) {
+            require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+                if (strKeyId == "") {
+                    alert("请选择需要的记录！");
+                    return;
+                }
+                var objPage = new pdf.Pdfiframe();
+                objPage.btnOkConceptInTab_Click(strKeyId);
+            });
+
+    }
+    //概念表头排序
+    function SortByConcept(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.SortByConcept(strFldName);
+        });
+    }
+
+
+    function IndexPageTwo(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageTwo() {
+        var intCurrPageIndex = $('#input_numberTwo').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPageTwo() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNumTwo(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageTwo() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageTwo(intPageIndex);
+        });
+    }
+
+
+    //////////////////////////////////////////////////////////////客观数据事实/////////////////////////////////////////////////////////////////
+    //确定选择客观数据
+    function btnOkObjectiveInTab_Click(strKeyId) {
+            require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+                if (strKeyId == "") {
+                    alert("请选择需要的记录！");
+                    return;
+                }
+                var objPage = new pdf.Pdfiframe();
+                objPage.btnOkObjectiveInTab_Click(strKeyId);
+            });
+    }
+    //客观事实 数据表头排序
+    function SortByObjectiveFact(strFldName) {
+        console.log("按：" + strFldName + "排序");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.SortByObjectiveFact(strFldName);
+        });
+    }
+
+    function IndexPageThree(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageThree(intPageIndex);
+        });
+    }
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageThree() {
+        var intCurrPageIndex = $('#input_numberThree').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageThree(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+    */
+    function NextPageThree() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageThree(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+    */
+    function PageNumThree(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageThree(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageThree() {
+        var intCurrPageIndex = $('#hidCurrPageIndex').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.IndexPageThree(intPageIndex);
+        });
+    }
+
+
+    //////////////////////////////////////////////////////////////主题技能关系/////////////////////////////////////////////////////////////////
+    //选择技能
+    function btnOkSysskillInTab_Click(strKeyId, strStata) {
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            if (strKeyId == "") {
+                alert("请选择需要的记录！");
+                return;
+            }
+            var objPage = new pdf.Pdfiframe();
+            objPage.btnOkSysskillInTab_Click(strKeyId);
+        });
+
+    }
+
+    //////////////////////////////////////////////////////////////主题社会关系/////////////////////////////////////////////////////////////////
+    //选择社会关系
+    function btnOkSyssocialInTab_Click(strKeyId, strStata) {
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            if (strKeyId == "") {
+                alert("请选择需要的记录！");
+                return;
+            }
+            var objPage = new pdf.Pdfiframe();
+            objPage.btnOkSyssocialInTab_Click(strKeyId);
+        });
+
+    }
+
+
+
+
+
+/*********************************tab页切换事件*****************************/
+
+    ////个人观点
+    //function liViewpointClick() {
+    //    $('#hidPageType').val("01");
+    //    $('#hidUserTypeId').val("01");
+    //    require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+    //        var objPage = new pdf.Pdfiframe();
+    //        objPage.BindEdit();
+    //    });
+    //}
+
+    ////专家观点
+    //function liExpertViewpointClick() {
+    //    $('#hidPageType').val("02");
+    //    $('#hidUserTypeId').val("02");
+    //    require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+    //        var objPage = new pdf.Pdfiframe();
+    //        objPage.BindEdit();
+    //    });
+    //}
+
+    ////相关概念
+    //function liConceptClick() {
+    //    $('#hidPageType').val("03");
+    //    require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+    //        var objPage = new pdf.Pdfiframe();
+    //        objPage.BindEdit();
+    //    });
+    //}
+
+    ////客观事实
+    //function liObjectiveFactClick() {
+    //    $('#hidPageType').val("04");
+    //    $('#hidObjectiveTypeId').val("01");
+    //    require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+    //        var objPage = new pdf.Pdfiframe();
+    //        objPage.BindEdit();
+    //    });
+    //}
+
+    ////客观数据
+    //function liObjectiveBasisClick() {
+    //    $('#hidPageType').val("05");
+    //    $('#hidObjectiveTypeId').val("02");
+    //    require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+    //        var objPage = new pdf.Pdfiframe();
+    //        objPage.BindEdit();
+    //    });
+    //}
+
+    ////技能
+    //function liSysskillClick() {
+    //    $('#hidPageType').val("06");
+    //    require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+    //        var objPage = new pdf.Pdfiframe();
+    //        objPage.BindEdit();
+    //    });
+    //}
+
+    ////社会关系
+    //function liSysSocialRelationsClick() {
+    //    $('#hidPageType').val("07");
+    //    require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+    //        var objPage = new pdf.Pdfiframe();
+    //        objPage.BindEdit();
+    //    });
+    //}
+
+    //向左推移
+    function right_Click() {
+        var pdfcontenttext = document.getElementById("pdfcontenttext");
+        var right_Content = document.getElementById("right_Content");
+
+        var hidleftNum = document.getElementById("hidleftNum");
+        var hidrightNum = document.getElementById("hidrightNum");
+
+        var num = 5;
+        hidleftNum.value = parseInt(hidleftNum.value) - num;
+        hidrightNum.value = parseInt(hidrightNum.value) + num;
+
+        pdfcontenttext.style.width = hidleftNum.value + '%';
+        right_Content.style.width = hidrightNum.value + '%';
+
+        layer.msg('答疑内容增宽到：' + hidrightNum.value + '%', {
+            icon: 1,
+            time: 2000
+        });
+    }
+
+
+    //向右推移
+    function left_Click() {
+        var pdfcontenttext = document.getElementById("pdfcontenttext");
+        var right_Content = document.getElementById("right_Content");
+
+        var hidleftNum = document.getElementById("hidleftNum");
+        var hidrightNum = document.getElementById("hidrightNum");
+
+        var num = 5;
+        hidleftNum.value = parseInt(hidleftNum.value) + num;
+        hidrightNum.value = parseInt(hidrightNum.value) - num;
+        pdfcontenttext.style.width = hidleftNum.value + '%';
+        right_Content.style.width = hidrightNum.value + '%';
+        layer.msg('pdf增宽到：' + hidleftNum.value + '%', {
+            icon: 1,
+            time: 2000
+        });
+    }
+
+    //观点控制pdf页码
+    function btnPdfPageNum_Click(PageNum) {
+        //var pageNum = document.getElementById('Pdfiframe').contentWindow.document.getElementById('pageNumber');
+        //iframeName.window.childMethod();
+        document.getElementById("iframe_qaPdf").contentWindow.btnUpdatePaperPageNum_Click(PageNum);
+    }
+    //pdf页码控制观点
+    function btnPdfPage_VNum_Click(PageNum) {
+        //var pageNum = document.getElementById('Pdfiframe').contentWindow.document.getElementById('pageNumber');
+        //iframeName.window.childMethod();
+        //document.getElementById("Pdfiframe").contentWindow.btnUpdatePaperPageNum_Click(PageNum);
+        var strPageNum = "#PdfNum" + PageNum;
+        //layer.msg('当前页码：' + strPageNum, {
+        //    icon: 1,
+        //    time: 2000
+        //});
+        window.location.hash = strPageNum;
+    }
+
+
+    //点击tab事件；
+    function li_PaperMenu_Click(KeyId) {
+        //存储点击的id
+        $("#hidTabNum").val(KeyId);
+        require(["../js/GraduateEduTopic/Pdfiframe.js"], function (pdf) {
+            var objPage = new pdf.Pdfiframe();
+            objPage.li_PaperMenu_Click();
+        });
+    }
+
+</script>
+
+
+<div class="box">
+    @* pdf *@
+    <div id="pdfcontenttext">
+
+        <div id="divQuery" class="div_query">
+            <table id="tabQuery" name="tabQuery" style="width: 30%; " class="table table-bordered table-hover table td table-sm">
+                <tr>
+                    <td class="ValueTD">
+                        <select id="ddlPaperId_q" name="ddlPaperId_q" class="form-control" style="width:400px;" onchange="SelectPaper()" />
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <a class="layui-btn layui-btn-normal" style="line-height:1.6em;margin-top:3px;float:right; color:#fff;" onclick="right_Click()" title="向左推移">
+                            <i class="layui-icon layui-icon-shrink-right" style="line-height:32px"></i>
+                        </a>
+                    </td>
+                    <td></td>
+                    <td>
+                        <a class="layui-btn layui-btn-normal" style="line-height:1.6em;margin-top:3px; float:right; color:#fff;" onclick="left_Click()" title="向右推移">
+                            <i class="layui-icon layui-icon-spread-left" style="line-height:32px"></i>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="div_pdf" style="width:100%; height:100%;"></div>
+    </div>
+
+
+
+    @* 编辑内容 *@
+    <div id="right_Content">
+        <ul id="tabMenu" class="nav nav-tabs" role="tablist">
+            <li id="liPaper_SubViewpoint" class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#Paper_SubViewpoint" onclick="li_PaperMenu_Click(1)">子观点</a>
+            </li>
+            <li id="liPaper_QA" class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#Paper_QA" onclick="li_PaperMenu_Click(2)">论文答疑</a>
+            </li>
+            <li id="liPaper_Tags" class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#Paper_Tags" onclick="li_PaperMenu_Click(3)">论文标记</a>
+            </li>
+            <li id="liTea_QA" class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#Tea_QA" onclick="li_PaperMenu_Click(4)">教师提问</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div id="Paper_SubViewpoint" class="tab-pane active">
+                @*<table id="tabEdit" name="tabQuery" style="width: 20%; position: fixed; top:0px;" class="table table-bordered table-hover table td table-sm">*@
+                <table id="tabEdit" name="tabQuery" style="width: 20%;" class="table table-bordered table-hover table td table-sm">
+                    <tr>
+                        <td class="ValueTD">
+                            <select id="ddlVTypeId" name="ddlVTypeId" class="form-control" style="width:200px;">
+                                <option value="0">请选择:观点类型...</option>
+                                <option value="01">个人观点</option>
+                                <option value="02">专家观点</option>
+                                <option value="03">相关概念</option>
+                                <option value="04">客观事实</option>
+                                <option value="05">客观数据</option>
+                                <option value="06">操作技能</option>
+                                <option value="07">社会关系</option>
+                            </select>
+                        </td>
+
+                        <td> <button class="layui-btn" onclick="btnAddNewRecord_Click()"><i class="layui-icon"></i>添加各观点数据</button></td>
+                    </tr>
+                </table>
+
+                <div id="div_list" style="width:100%;margin-top:50px;">
+                </div>
+
+                <div id="div_page" style="width:100%; display:none;">
+                </div>
+            </div>
+
+            <div id="Paper_QA" class="tab-pane fade">
+            </div>
+
+            <div id="Paper_Tags" class="tab-pane fade">
+            </div>
+
+            <div id="Tea_QA" class="tab-pane fade">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input id="hidUserId" type="hidden" />
+<input id="hidPaperId" type="hidden" />
+<input id="hidTopicId" type="hidden" />
+@* 页面类型 *@
+<input id="hidPageType" type="hidden" />
+@* pdf页码 *@
+<input id="hidPdfPageNum" type="hidden" />
+
+<input id="hidViewpointId" type="hidden" />
+
+@*<input id="hidUserInfo" type="hidden" value="@Model.GetSession("objvUserRoleRelation")" />*@
+
+
+<input id="hidSortvViewpointIdBy" type="hidden" value="" />
+
+@*- 观点角色类型 --*@
+<input id="hidUserTypeId" type="hidden" value="" />
+
+
+@*- 主题概念关系 --*@
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortConceptBy" type="hidden" value="" />
+<input id="hidConceptId" type="hidden" value="" />
+
+@*- 主题客观关系 --*@
+<input id="hidSortvTopicObjectiveBy" type="hidden" value="" />
+<input id="hidObjectiveId" type="hidden" value="" />
+
+
+@*- 客观类型 --*@
+<input id="hidObjectiveTypeId" type="hidden" value="" />
+@*- 技能 --*@
+<input id="hidSortvSysSkillBy" type="hidden" value="" />
+<input id="hidSkillId" type="hidden" value="" />
+@*- 社会关系 --*@
+<input id="hidSortvSysSocialRelationsBy" type="hidden" value="" />
+<input id="hidSocialId" type="hidden" value="" />
+
+
+@* pdfContent num *@
+<input id="hidleftNum" type="hidden" value="55" />
+@* rightContent num *@
+<input id="hidrightNum" type="hidden" value="45" />
+
+@* 教学班id*@
+<input id="hidId_CurrEduCls" type="hidden" />
+
+
+@* tab页菜单Id *@
+<input id="hidTabNum" type="hidden" />
+

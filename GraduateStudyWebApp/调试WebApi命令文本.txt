@@ -1,0 +1,42 @@
+btnAddQA_Click("02");
+
+
+
+
+jquery.js:9488 [Deprecation] Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.
+
+
+
+http://localhost:49590/GraduateStudyWebApp/Api/testUploadPic/Test/
+
+正确：http://localhost:49590/GraduateStudyWebApp/testUploadPic/Plus/?a=1&b=2
+错误：http://localhost:49590/GraduateStudyWebApp/Api/testUploadPic/Plus/?a=1&b=2
+
+
+http://localhost:49590/GraduateStudyWebApp/api/Values/Test
+
+
+http://localhost:49590/api/testUploadPic/Plus/?a=1&b=2
+
+
+https://www.sh-tz.com/Agc/api/AutoGeneCodeApi/Plus/?a=1&b=2
+
+
+http://localhost:23429/swagger/api/WeatherForecast/Plus/?a=1&b=2
+
+http://localhost:23429/swagger/api/WeatherForecast/Get
+
+http://localhost:23429/swagger/api/WeatherForecast
+http://localhost:23429/swagger/v1/swagger.json
+
+http://localhost:23429/swagger.json
+
+正确：http://localhost:23429/WeatherForecast
+正确: http://localhost:23429/api/Values
+正确: http://localhost:23429/api/Values/1,2
+正确: http://localhost:23429/api/Values/Test
+
+http://localhost:23429/WeatherForecast/api/Values
+http://localhost:23429/WeatherForecast/get_data
+http://example.com/service_name/get_data
+

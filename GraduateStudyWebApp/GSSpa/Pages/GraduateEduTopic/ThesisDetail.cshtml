@@ -1,0 +1,287 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduTopic.ThesisDetailModel
+@{
+
+    Layout = "~/Pages/Shared/_LayoutIndex.cshtml";
+    //Layout = null;
+    ViewData["Title"] = "论文";
+
+    var strUrl_Session_SetString = Model.Url_Session_SetString;
+    var strUrl_Session_GetString = Model.Url_Session_GetString;
+}
+@section Styles{
+    @*<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="../css/site.css" />*@
+    @*<link href="~/css/index.css" rel="stylesheet" type="text/css">*@
+    <style>
+
+        .ui-listview > li p {
+            white-space: normal;
+        }
+    </style>
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    @*<script src="../js/site.js" asp-append-version="true"></script>*@
+    <script src="../lib/bootstrap/dist/js/popper.js" type="module"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+
+<script>
+        var strPicAddress = "@Model.PicAddress";
+      var strWebRoot = "@Model.WebRoot";
+     var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+    //存放路径地址
+    $('#hidPicAddress').val(strPicAddress);
+    /*
+     页面导入-在导入页面后运行的函数
+       (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_Page_Load)
+    */
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetThesisID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var str1;
+        str1 = Request['ThesisId'];
+
+        if (str1 != null) {
+            $('#hidThesisId').val(str1);
+
+            require(["../js/GraduateEduTopic/ThesisDetailEx.js"], function (ThesisDetail) {
+
+                var objpage = new ThesisDetail.ThesisDetailEx();
+                objpage.Page_Load();
+                //var objPage = new taskinfo.Task_TSEx();
+                //objPage.Page_Load();
+            });
+
+        }
+        else {
+            require(["../js/GraduateEduTopic/ThesisDetailEx.js"], function (ThesisDetail) {
+
+                var objpage = new ThesisDetail.ThesisDetailEx();
+                objpage.Page_Load();
+
+            });
+        }
+    }
+
+
+    window.onload = function () {
+
+        GetThesisID();
+    }
+
+
+
+    //删除
+    function btnDeleteRecordInTab_Click(strKeyId){
+        require(["../js/GraduateEduTopic/ThesisDetailEx.js"], function (ThesisDetail) {
+            if (strKeyId == "") {
+                alert("请选择删除按钮！");
+                return;
+            }
+            //存放子观点的主键；
+            $('#hidSubviewPointId').val(strKeyId);
+            //ShowDialog('Update');
+            //window.location.href = "#pageAdd";
+            var objpage = new ThesisDetail.ThesisDetailEx();
+            objpage.btnDelRecordInTab_Click(strKeyId);
+        });
+    }
+
+    //添加
+    function btnAddRecordInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTopic/ThesisDetailEx.js"], function (ThesisDetail) {
+
+            if (strKeyId == "") {
+                alert("请选择添加按钮！");
+                return;
+            }
+            window.location.href = "#pageAdd";
+            //存放子模块类型ID的主键；
+            $('#hidSubviewPointTypeId').val(strKeyId);
+            //ShowDialog('Update');
+            //window.location.href = "#pageAdd";
+            var objpage = new ThesisDetail.ThesisDetailEx();
+            objpage.btnAddNewRecord_Click();
+        });
+    }
+    //修改
+    function btnUpdateRecordInTab_Click(strKeyId) {
+        require(["../js/GraduateEduTopic/ThesisDetailEx.js"], function (ThesisDetail) {
+            if (strKeyId == "") {
+                alert("请选择修改按钮！");
+                return;
+            }
+            //存放子观点的主键；
+            $('#hidSubviewPointId').val(strKeyId);
+            //ShowDialog('Update');
+            window.location.href = "#pageAdd";
+            var objpage = new ThesisDetail.ThesisDetailEx();
+            objpage.btnUpdateRecord_Click();
+        });
+    }
+
+
+    /*
+提交编辑
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_mySubmit)
+*/
+    function mySubmit(pstrOp) {
+        //    alert("提交" + strOp);
+        require(["../js/GraduateEduTopic/ThesisDetailEx.js"], function (ThesisDetail) {
+            var objpage = new ThesisDetail.ThesisDetailEx();
+            objpage.btnOKUpd_Click();
+        });
+    }
+
+    var isbool = true;
+    function changeblock() {
+       
+        //控制显示隐藏
+            if (isbool == true) {
+                document.getElementById('divOne').style.display = 'none';
+                document.getElementById('divTwo').style.display = 'block';
+                //this.value = "显示";
+                isbool = false;
+            } else {
+               
+                isbool = true;
+                document.getElementById('divOne').style.display = 'block';
+                document.getElementById('divTwo').style.display = 'none';
+                //this.value = "隐藏";
+            }
+    }
+</script>
+
+<div data-role="page" id="pageOne">
+
+    <div data-role="header" data-position="fixed">
+        <a href="../GraduateEduTopicEx/SubThesisList" rel="external" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">上一页</a>
+
+        <h1>论文</h1>
+        <a href="" class="ui-btn ui-btn-right ui-icon-bullets ui-btn-icon-left ui-corner-all" onclick="changeblock()">
+            观点
+        </a>
+    </div>
+
+    <div data-role="content" id="contents">
+        <div id="pageone" style="width: 100%;height:auto;">
+            <div style="margin-top:10px;">
+                <div id="divOne" style="width:100%;">
+                    <ul id="Thesis" data-role="listview" data-inset="true"></ul>
+                </div>
+             
+                    <ul id="divTwo" data-role="listview" data-inset="true" style="display:none;">
+                        <li data-role="divider">观点列表</li>
+                    </ul>
+               
+            </div>
+    </div>
+    @*<div data-role="content" id="contents">
+            <div id="pageone" style="width: 100%;height:auto;display: inline-block;border: 1px solid #CCC;border-bottom:1px dashed #CCC;background:#FFF;">
+                <div style="width: 100%;height: 5%;padding:0px 0px 0px 20px;text-align:left;">
+                </div>
+
+                <div style="margin-top:20px;">
+                    <div id="divOne" style="width:100%;">
+                        <ul id="Thesis" data-role="listview" data-inset="true"></ul>
+                    </div>
+
+                    <div id="divTwo" style="width:100%;height:100%;font-size:14px;">
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>*@
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a asp-page="/WebApp/Indexs" rel="external" data-icon="home" class="ui-btn-active ui-state-persist">首页</a></li>
+                <li><a asp-page="/WebApp/MessagePushList" rel="external" data-icon="star">消息</a></li>
+                <li><a asp-page="/WebApp/User" rel="external" data-icon="user">我的</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<div data-role="page" id="pageAdd">
+    <div data-role="header">
+        <a href="#pageOne" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">返回</a>
+        <h1>子观点</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <div style=" margin-top:20px; width:100%;">
+            <form method="post" action="demo_form.php">
+                <div class="ui-field-contain">
+                    <label for="info">详情内容：</label>
+                    @*<input type="text" id="" name="txtSubViewpointContent">*@
+                    <textarea id="txtSubViewpointContent" name="txtSubViewpointContent"></textarea>
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">是否公开：</label>
+                    <input type="checkbox" id="chkIsPublic" name="chkIsQuotethesis" Text="是否公开">
+
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">备注：</label>
+                    <input type="text" id="txtMemo" name="txtMemo">
+
+                </div>
+
+
+                <div class="ui-field-contain">
+                    <button id="btnOKUpd" type="button" onclick="mySubmit()">提交</button>
+
+                </div>
+            </form>
+
+
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+    </div>
+
+<input id="hidOpType" type="hidden" />
+<input id="hidThesisId" type="hidden" value="@Model.GetSession("ThesisId")" />
+<input id="hidSubviewPointId" type="hidden" />
+<input id="hidSubviewPointTypeId" type="hidden" />
+@*<input id="hidOperationType" type="hidden" value="@Model.GetSession("OperationType")" />*@
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" value="@Model.GetSession("UserId")" />
+@*<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />*@
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvThesisBy" type="hidden" value="" />
+<input id="hidPicAddress" type="hidden" value="" />
+<input id="hidUserInfo" type="hidden" value="@Model.GetSession("objvUserRoleRelation")" />

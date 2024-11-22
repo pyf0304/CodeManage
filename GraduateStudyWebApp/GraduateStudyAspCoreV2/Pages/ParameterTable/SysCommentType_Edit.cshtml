@@ -1,0 +1,124 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /**
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ **/
+function btnSysCommentType_Edit_Click(strCommandName, strKeyId) {
+   require(["../js/ParameterTable/SysCommentType_EditEx.js"], function(syscommenttype) {
+syscommenttype.SysCommentType_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+    </script>
+<div id = "divEditLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_SysCommentType" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_SysCommentType" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 235px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_SysCommentType">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:200px" class="table table-bordered table-hover table td table-sm">
+<tr id="trCommentTypeId">
+<td class="text-right">
+<label id="lblCommentTypeId" name="lblCommentTypeId" class="col-form-label text-right" style="width:90px;">评论类型Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtCommentTypeId" name="txtCommentTypeId" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trCommentTypeName">
+<td class="text-right">
+<label id="lblCommentTypeName" name="lblCommentTypeName" class="col-form-label text-right" style="width:90px;">评论类型名
+</label>
+</td>
+<td class="text-left">
+<input  id="txtCommentTypeName" name="txtCommentTypeName" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trCommentTable">
+<td class="text-right">
+<label id="lblCommentTable" name="lblCommentTable" class="col-form-label text-right" style="width:90px;">评论表
+</label>
+</td>
+<td class="text-left">
+<input  id="txtCommentTable" name="txtCommentTable" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trCommentTableId">
+<td class="text-right">
+<label id="lblCommentTableId" name="lblCommentTableId" class="col-form-label text-right" style="width:90px;">评论表Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtCommentTableId" name="txtCommentTableId" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trMemo">
+<td class="text-right">
+<label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMemo" name="txtMemo" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_SysCommentType" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_SysCommentType" type="button" class="btn btn-primary" onclick="btnSysCommentType_Edit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

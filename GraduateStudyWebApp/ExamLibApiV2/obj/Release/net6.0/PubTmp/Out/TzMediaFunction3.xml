@@ -1,0 +1,580 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TzMediaFunction3</name>
+    </assembly>
+    <members>
+        <member name="T:com.taish.media.clsExerciseTime">
+            <summary>
+            练习时间类
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsExerciseTime.Index">
+            <summary>
+            序号
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsExerciseTime.ExerciseId">
+            <summary>
+            练习题的关键字
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsExerciseTime.PopupSeconds">
+            <summary>
+            弹出练习的时间（秒）
+            </summary>
+        </member>
+        <member name="M:com.taish.media.clsExerciseTime.GetExerciseTimeStringByObjLst(System.Collections.Generic.List{com.taish.media.clsExerciseTime})">
+            <summary>
+            根据练习列表，获取练习字符串，形式改变。
+            </summary>
+            <param name="arrExerciseTimeObjLst">练习列表</param>
+            <returns>练习字符串</returns>
+        </member>
+        <member name="T:com.taish.media.clsMediaItem">
+            <summary>
+            媒体元素Item自定义类
+            </summary>
+            
+        </member>
+        <member name="P:com.taish.media.clsMediaItem.src">
+            <summary>
+            视频资源，是需要播放的视频Web地址
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsMediaItem.name">
+            <summary>
+            视频名称，显示的名称，一般用描述性名称。无论有无与视频播放效果无关。
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsMediaItem.Extension">
+            <summary>
+            视频文件的扩展名
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsMediaItem.FullFileName">
+            <summary>
+            视频的物理地址，是在服务器中的具体物理位置
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsMediaItem.IsUseSilverLight4Wmv">
+            <summary>
+            视频的物理地址，是在服务器中的具体物理位置
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsMediaItem.IsExistFile">
+            <summary>
+            视频文件是否物理视频的物理地址，是在服务器中的具体物理位置
+            </summary>
+        </member>
+        <member name="T:com.taish.media.clsTimelineMarker">
+            <summary>
+            时间线标记类
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsTimelineMarker.Hours">
+            <summary>
+            小时数
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsTimelineMarker.Minutes">
+            <summary>
+            分钟数
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsTimelineMarker.Seconds">
+            <summary>
+            秒数
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsTimelineMarker.Milliseconds">
+            <summary>
+            毫秒数
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsTimelineMarker.TotalSeconds">
+            <summary>
+            总共的秒数
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsTimelineMarker.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsTimelineMarker.Text">
+            <summary>
+            文本内容
+            </summary>
+        </member>
+        <member name="M:com.taish.media.clsTimelineMarker.ToString">
+            <summary>
+            把时间线类型，变成字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:com.taish.media.clsPlayClass">
+             <summary>
+             PlayClass 的摘要说明。版本：V1.1
+            原作CSDN,经本人稍加修改
+             </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Id">
+            <summary>
+            生成控件的Id
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.ImagePath">
+            <summary>
+            图像路径
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.IsUseAvconPlay">
+            <summary>
+            是否使用华平方式播放Avi文件
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.IsUseSilverLightPlay4Wmv">
+            <summary>
+            是否使用SilverLight播放Wmv文件
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.IsUseSilverLightPlay4Mp4">
+            <summary>
+            是否使用SilverLight播放Wmv文件
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.SilverLightClientBinPath">
+            <summary>
+            SilverLight ClientBin 路径
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.IsSupportsHtml5">
+            <summary>
+            当前客户的浏览器是否支持Html5
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.IsIE">
+            <summary>
+            浏览器是否IE
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.IsChrome">
+            <summary>
+            浏览器是否Chrome
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.FlvplayerPath">
+            <summary>
+            Flv文件的播放器所在目录
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.UserId">
+            <summary>
+            当前用户
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.UserIdIP">
+            <summary>
+            当前用户的IP地址
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Width1">
+            <summary>
+            第一个视频的宽度
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Width2">
+            <summary>
+            第二个视频的宽度
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Height1">
+            <summary>
+            第一个视频的高度
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Height2">
+            <summary>
+            第二个视频的高度
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Widths1">
+            <summary>
+            视频1的宽度数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Widths2">
+            <summary>
+            视频2的宽度数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iWidths">
+            <summary>
+            两个视频的宽度数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iHeights">
+            <summary>
+            两个视频的高度数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iMaxWidth">
+            <summary>
+            播放两个视频的最大宽度（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iMaxHeight">
+            <summary>
+            播放两个视频的最大高度（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iWidths1">
+            <summary>
+            视频1的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iWidths2">
+            <summary>
+            视频2的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Heights1">
+            <summary>
+            视频1的高度数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Heights2">
+            <summary>
+            视频2的高度数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iHeights1">
+            <summary>
+            视频1的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iHeights2">
+            <summary>
+            视频2的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Lefts1">
+            <summary>
+            视频1的左数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Lefts2">
+            <summary>
+            视频2的左数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Lefts3">
+            <summary>
+            双视频播放控制菜单的左数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Lefts4">
+            <summary>
+            双视频播放控制菜单(大播放)的左数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Lefts5">
+            <summary>
+            双视频播放模式控制菜单的左数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iLefts1">
+            <summary>
+            视频1的左数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iLefts2">
+            <summary>
+            视频2的左数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iLefts3">
+            <summary>
+            双视频的播放控制面板左数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iLefts4">
+            <summary>
+            双视频的播放控制面板(大播放)的左数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iLefts5">
+            <summary>
+            双视频的模式控制面板的左数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Tops1">
+            <summary>
+            视频1的顶数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Tops2">
+            <summary>
+            视频2的顶数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Tops3">
+            <summary>
+            双视频的播放控制面板的顶数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Tops4">
+            <summary>
+            双视频的播放控制面板(大播放)的顶数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.Tops5">
+            <summary>
+            双视频的播放模式控制面板的顶数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iTops1">
+            <summary>
+            视频1的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iTops2">
+            <summary>
+            视频2的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iTops3">
+            <summary>
+            双视频的控制面板的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iTops4">
+            <summary>
+            双视频的控制面板（大播放）的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.iTops5">
+            <summary>
+            双视频的模式控制面板的顶数组（整型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.IsAutoHide4Ctrls">
+            <summary>
+            视频2的顶数组
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.bIsAutoHide4Ctrls">
+            <summary>
+            控件双频的面板是否显示数组（布尔型）
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.CurrentPosition">
+            <summary>
+            当前位置
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.PlayerBackGround">
+            <summary>
+            播放器背景颜色
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.PlayerVersion">
+            <summary>
+            播放器的版本
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.PlayerVersionStr">
+            <summary>
+            播放器版本字符串
+            </summary>
+        </member>
+        <member name="P:com.taish.media.clsPlayClass.IsDualVideo">
+            <summary>
+            是否双视频
+            </summary>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.Play">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.huaping(System.String,System.Int32,System.Int32)">
+            <summary>
+            华平格式文件播放
+            </summary>
+            <param name="url"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.huaping_avc(System.String)">
+            <summary>
+            华平格式文件播放
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.wmv(System.String,System.Int32,System.Int32)">
+            <summary>
+            wmv格式文件播放
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.wmvWithSilverLight(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            wmv格式文件播放,非华平方式
+            作者：潘以锋
+            建立：201312
+            修改1：20140722，主要修改添加了播放视频过程中，弹出练习题供用户做。
+            </summary>
+            <param name="strUrl"></param>
+            <param name="strMediaName1"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.wmvWithSilverLight(System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            wmv格式文件播放,非华平方式
+            </summary>
+            <param name="strUrl"></param>
+            <param name="strMediaName1"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="currentPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.wmvWithSilverLightDBak(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            wmv格式文件播放,非华平方式
+            </summary>
+            <param name="url"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="currentPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.wmvWithSilverLightD2(System.String,System.String,System.String,System.String)">
+            <summary>
+            wmv格式文件播放,非华平方式
+            </summary>
+            <param name="url"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="currentPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.wmvWithSilverLightDBak(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            wmv格式文件播放,非华平方式
+            </summary>
+            <param name="strUrl"></param>
+            <param name="strMediaName1"></param>
+            <param name="strMediaName2"></param>
+            <param name="currentPosition"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.wmvWithSilverLightD2(System.String,System.String,System.String)">
+            <summary>
+            wmv格式文件播放,非华平方式
+            </summary>
+            <param name="strUrl"></param>
+            <param name="strMediaName1"></param>
+            <param name="strMediaName2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.mp4WithSilverLight(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            mp4格式文件播放
+            </summary>
+            <param name="strUrl"></param>
+            <param name="strMediaName1"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.mp4WithSilverLightDBak(System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            mp4格式文件播放
+            </summary>
+            <param name="strUrl"></param>
+            <param name="strMediaName1"></param>
+            <param name="strMediaName2"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="width1"></param>
+            <param name="height1"></param>
+            <param name="width2"></param>
+            <param name="height2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.mp4WithSilverLightD2(System.String,System.String,System.String)">
+            <summary>
+            mp4格式文件播放
+            </summary>
+            <param name="strUrl"></param>
+            <param name="strMediaName1"></param>
+            <param name="strMediaName2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.mp4WithHtml5(System.String,System.Int32,System.Int32)">
+            <summary>
+            wmv格式文件播放,非华平方式
+            </summary>
+            <param name="strUrl"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.mp4WithHtml5(System.String,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            wmv格式文件播放,非华平方式
+            </summary>
+            <param name="strUrl"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="strObjId">对象Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:com.taish.media.clsPlayClass.avi(System.String,System.Int32,System.Int32)">
+            <summary>
+            avi格式文件播放
+            </summary>
+            <param name="url"></param>
+            <returns></returns>
+        </member>
+        <member name="T:com.taish.media.PlayerVersionType">
+            <summary>
+            播放器的版本类型
+            </summary>
+        </member>
+        <member name="F:com.taish.media.PlayerVersionType.TZMediaPlayerV5">
+            <summary>
+            播放器的版本单频V5
+            </summary>
+        </member>
+        <member name="F:com.taish.media.PlayerVersionType.TZMediaPlayerV6">
+            <summary>
+            播放器的版本单频V6
+            </summary>
+        </member>
+        <member name="F:com.taish.media.PlayerVersionType.TZMediaPlayerV7">
+            <summary>
+            播放器的版本单频V7
+            </summary>
+        </member>
+        <member name="F:com.taish.media.PlayerVersionType.TZMediaPlayerV8">
+            <summary>
+            播放器的版本单频V8
+            </summary>
+        </member>
+        <member name="F:com.taish.media.PlayerVersionType.TZMediaPlayerDV1">
+            <summary>
+            播放器的版本双频DV1
+            </summary>
+        </member>
+    </members>
+</doc>

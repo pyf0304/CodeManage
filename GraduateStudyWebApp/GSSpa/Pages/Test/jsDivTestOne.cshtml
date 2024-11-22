@@ -1,0 +1,251 @@
+﻿@page
+@{
+    Layout = null;
+}
+@*<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>分隔条左右拖动 splitter</title>
+    <style>
+        #root {
+            position: relative;
+            width: 800px;
+            height: 300px;
+            margin: 20px auto;
+        }
+
+        #left {
+            width: 200px;
+            background: #ffdd40;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+        }
+
+        #right {
+            margin-left: 220px;
+            background: pink;
+            height: 100%;
+        }
+
+        #line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 209px;
+            width: 4px;
+            background: #e7e7e7;
+            box-shadow: 0px 0px 8px #ccc;
+            cursor: w-resize;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <center>左右拖动分隔条改变显示区域宽度<span id="msg"></span></center>
+    <div id="root">
+        <div id="left">左边部分</div>
+        <div id="right">右边部分</div>
+         分隔条 
+        <div id="line"></div>
+    </div>
+</body>
+
+</html>
+<script>
+    // 改变分隔条左右宽度所需常量
+    const leftWidth = 200;  // 左边部分宽度
+    const rightToLeftGap = 20;  // 右边部分与左边部分的距离
+    const lineWidth = 4; // 分隔条宽度
+    const splitMinLeft = 209; // 分隔条左边部分最小宽度
+    const splitMaxLeft = 408; // 分隔条左边部分最大宽度
+
+    var oRoot = document.getElementById('root'),
+        oLeft = document.getElementById('left'),
+        oRight = document.getElementById('right'),
+        oLine = document.getElementById('line');
+
+    window.onload = function () {
+        oLine.onmousedown = handleLineMouseDown;
+    };
+
+    // 分隔条操作
+    function handleLineMouseDown(e) {
+        // 记录下初始位置的值
+        let disX = e.clientX;
+        oLine.left = oLine.offsetLeft;
+
+        document.onmousemove = function (e) {
+            let moveX = e.clientX - disX;   // 鼠标拖动的偏移距离
+            let iT = oLine.left + moveX,    // 分隔条相对父级定位的 left 值
+                maxT = oRoot.clientWidth - oLine.offsetWidth;
+
+            iT < 0 && (iT = 0);
+            iT > maxT && (iT = maxT);
+
+            if (iT <= splitMinLeft || iT >= splitMaxLeft) return false;
+
+            let leftLineGap = splitMinLeft - leftWidth; // 分隔条距左边部分的距离
+            let oLeftWidth = iT - leftLineGap;
+            let oRightMarginLeft = oLeftWidth + lineWidth + rightToLeftGap;
+
+            oLine.style.left = `${iT}px`;
+            oLeft.style.width = `${oLeftWidth}px`;
+            oRight.style.marginLeft = `${oRightMarginLeft}px`;
+            return false;
+        };
+
+        // 鼠标放开的时候取消操作
+        document.onmouseup = function () {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        };
+    }
+</script>*@
+
+
+<html>
+<head>
+    <title>Demo</title>
+    <meta charset="utf-8" />
+
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        body {
+            padding: 0 40px;
+        }
+
+        .box {
+            position: relative;
+            height: calc(100% - 200px);
+        }
+
+        .bar {
+            height: 100%;
+            width: 7px;
+            background: #d6d6d6;
+            position: absolute;
+            z-index: 1;
+            left: 250px;
+            top: 0;
+            cursor: e-resize;
+            opacity: 0;
+        }
+
+            .bar:hover {
+                opacity: 1;
+            }
+
+        .left-part {
+            position: absolute;
+            left: 0;
+            width: 250px;
+            top: 0;
+            bottom: 0;
+            border: 1px solid #ddd;
+        }
+
+        .right-part {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: calc(100% - 250px);
+        }
+
+        .bar:after {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -50px;
+            width: 7px;
+            height: 100px;
+            content: " ";
+            cursor: pointer;
+            background: url(arrow.jpg) no-repeat center;
+        }
+
+        .resetBar:after {
+            background: none;
+            cursor: e-resize;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height:200px;background:red;"></div>
+    <div class="box">
+        <div class="left-part" id="leftPart">左侧</div>
+        <div id="bar" class="bar resetBar"></div>
+        <div class="right-part" id="rightPart">右侧</div>
+    </div>
+    <script type="text/javascript">
+            var bar = document.getElementById('bar')
+            var leftPart = document.getElementById('leftPart')
+            var rightPart = document.getElementById('rightPart')
+            var defaultWidth = 250 // 默认宽度
+            var ismove = false // 用来判断是否移动了,区分点击和移动
+
+            var startx = 0,x,oldx = defaultWidth;
+            bar.addEventListener('mousedown', function (e) {
+              ismove = false
+              e.preventDefault();
+              startx = e.clientX
+
+              function move(e) {
+                ismove = true
+                x = oldx + e.clientX - startx
+                // 设置它距离左边最小值
+                if (x < 200) {
+                  x = 200
+                }
+                bar.style.left = x+'px'
+
+              }
+
+              function up(e) {
+                // 如果没有移动相当于发生了点击事件
+                if(ismove) {
+                    leftPart.style.width = x + 'px'
+                    rightPart.style.width = 'calc(100% - '+ x +'px)'
+                    oldx = x
+                    // 如果距离默认值,设置可以点击回到默认状态
+                    if (x != defaultWidth && bar.classList.contains('resetBar')) {
+                      bar.classList.remove('resetBar')
+                    }
+                } else {
+                  var top = bar.getBoundingClientRect().top
+                  // 相当于点击了箭头
+                  if(e.clientY - top >= (bar.offsetHeight/2-50) && e.clientY - top <= (bar.offsetHeight/2+50)) {
+                    leftPart.style.width = defaultWidth + 'px'
+                    rightPart.style.width = 'calc(100% - '+ defaultWidth +'px)'
+                    bar.style.left = defaultWidth + 'px'
+                    oldx = defaultWidth
+                    bar.classList.add('resetBar')
+                  }
+                }
+
+                document.removeEventListener('mousemove',move)
+                document.removeEventListener('mouseup',up)
+              }
+              document.addEventListener('mousemove', move, false)
+              document.addEventListener('mouseup', up, false)
+            }, false)
+    </script>
+</body>
+</html>
+
+

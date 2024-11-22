@@ -1,0 +1,181 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /**
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ **/
+function btnPaperSubViewpoint_Edit_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduPaper/PaperSubViewpoint_EditEx.js"], function(papersubviewpoint) {
+papersubviewpoint.PaperSubViewpoint_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+    </script>
+<div id = "divEditLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_PaperSubViewpoint" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_PaperSubViewpoint" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 235px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_PaperSubViewpoint">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:200px" class="table table-bordered table-hover table td table-sm">
+<tr id="trSectionId">
+<td class="text-right">
+<label id="lblPaperRWId" name="lblPaperRWId" class="col-form-label text-right" style="width:90px;">论文读写Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPaperRWId" name="txtPaperRWId" class="form-control-sm" style="width:200px;"/>
+</td>
+<td class="text-right">
+<label id="lblSectionId" name="lblSectionId" class="col-form-label text-right" style="width:90px;">节Id
+</label>
+</td>
+<td class="text-left">
+<select id="ddlSectionId" name="ddlSectionId" class="form-control-sm" style="width:200px;"></select>
+</td>
+</tr>
+<tr id="trRWTitle">
+<td class="text-right">
+<label id="lblSubViewpointTypeId" name="lblSubViewpointTypeId" class="col-form-label text-right" style="width:90px;">类型Id
+</label>
+</td>
+<td class="text-left">
+<select id="ddlSubViewpointTypeId" name="ddlSubViewpointTypeId" class="form-control-sm" style="width:200px;"></select>
+</td>
+<td class="text-right">
+<label id="lblRWTitle" name="lblRWTitle" class="col-form-label text-right" style="width:90px;">读写标题
+</label>
+</td>
+<td class="text-left">
+<input  id="txtRWTitle" name="txtRWTitle" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trExplainTypeId">
+<td class="text-right">
+<label id="lblSubViewpointContent" name="lblSubViewpointContent" class="col-form-label text-right" style="width:90px;">详情内容
+</label>
+</td>
+<td class="text-left">
+<input  id="txtSubViewpointContent" name="txtSubViewpointContent" class="form-control-sm" style="width:200px;"/>
+</td>
+<td class="text-right">
+<label id="lblExplainTypeId" name="lblExplainTypeId" class="col-form-label text-right" style="width:90px;">说明类型Id
+</label>
+</td>
+<td class="text-left">
+<select id="ddlExplainTypeId" name="ddlExplainTypeId" class="form-control-sm" style="width:200px;"></select>
+</td>
+</tr>
+<tr id="trIsPublic">
+<td class="text-right">
+<label id="lblExplainContent" name="lblExplainContent" class="col-form-label text-right" style="width:90px;">说明内容
+</label>
+</td>
+<td class="text-left">
+<input  id="txtExplainContent" name="txtExplainContent" class="form-control-sm" style="width:200px;"/>
+</td>
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:200px;">
+<input type="checkbox"  id="chkIsPublic" name="chkIsPublic" Text = "是否公开"  ><label for="chkIsPublic">是否公开</label></span>
+</td>
+</tr>
+<tr id="trPageNumber">
+<td class="text-right">
+<label id="lblLiteratureSourcesId" name="lblLiteratureSourcesId" class="col-form-label text-right" style="width:90px;">文献来源
+</label>
+</td>
+<td class="text-left">
+<input  id="txtLiteratureSourcesId" name="txtLiteratureSourcesId" class="form-control-sm" style="width:200px;"/>
+</td>
+<td class="text-right">
+<label id="lblPageNumber" name="lblPageNumber" class="col-form-label text-right" style="width:90px;">页码
+</label>
+</td>
+<td class="text-left">
+<input  id="txtPageNumber" name="txtPageNumber" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trUpdDate">
+<td class="text-right">
+<label id="lblOrderNum" name="lblOrderNum" class="col-form-label text-right" style="width:90px;">序号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtOrderNum" name="txtOrderNum" class="form-control-sm" style="width:200px;"/>
+</td>
+<td class="text-right">
+<label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">修改日期
+</label>
+</td>
+<td class="text-left">
+<input  id="txtUpdDate" name="txtUpdDate" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trMemo">
+<td class="text-right">
+<label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMemo" name="txtMemo" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_PaperSubViewpoint" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_PaperSubViewpoint" type="button" class="btn btn-primary" onclick="btnPaperSubViewpoint_Edit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

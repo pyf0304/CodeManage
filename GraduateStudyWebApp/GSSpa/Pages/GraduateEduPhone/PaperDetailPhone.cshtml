@@ -1,0 +1,589 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduPhone.PaperDetailPhoneModel
+@{
+    Layout = "~/Pages/Shared/_Layout_Empty.cshtml";
+    ViewData["Title"] = "论文详情";
+    //操作Session样例，方法1：
+    //Model.seUserId = "TestUserId";
+    var strUserId_Value = Model.seUserId;
+    //操作Session样例，方法2：
+    Model.SetSession("UserId1", "TestUserId1");
+    var strUserId1_Value = Model.GetSession("UserId1");
+    //请参见页尾的隐形控件hidUserid和hidUserId1的使用。
+}
+@section Styles{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+
+    <link rel="stylesheet" href="~/css/comment.css">
+    <!-- 评论评分 -->
+    <link rel="stylesheet" type="text/css" href="../lib/startnum-1.0/css/startnum.css" />
+
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    @*<script charset="utf-8" src="~/lib/Xadmin/lib/layui/layui.js"></script>
+        <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>*@
+    <!-- 详细评论 -->
+    <link rel="stylesheet" href="~/css/phonepaperlist.css" />
+    <link rel="stylesheet" href="~/css/public.css" />
+
+    <!-- 评论列表 -->
+    <link rel="stylesheet" href="~/css/phonepinglun.css" />
+    <style>
+        .test {
+            height: auto;
+            margin: 0 5% 0 15%;
+        }
+
+        /*.ul {
+            width: 200px;
+            height: 20px;
+        }
+
+            .ul li {
+                float: left;
+                width: 20px;
+                height: 20px;
+                list-style: none;
+                background-image: url('/images/star.gif');
+            }
+
+            .ul:hover li { background-image: url('/images/star.gif'); }
+
+            .ul li:hover ~ li { background-image: url('/images/star.gif'); }*/
+    </style>
+
+}
+@section Scripts{
+    <script src="../lib/jquery.min.js"></script>
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    @*<script src="../lib/bootstrap/dist/js/popper.js"></script>*@
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+
+    <!-- 评论评分 -->
+    <script src="../lib/startnum-1.0/starnum.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+
+
+
+
+
+}
+<script>
+
+    var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+    var strCurrPrjId = "@Model.CurrPrjId";
+    var strWebRoot = "@Model.WebRoot";
+     var strAddressAndPort = "@Model.AddressAndPort";
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetPaperID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var str1;
+        str1 = Request['PaperId'];
+
+        if (str1 != null) {
+            $('#hidPaperId').val(str1);
+
+            require(["../js/GraduateEduPhone/PaperDetailPhoneEx.js"], function (PaperDetailPhoneEx) {
+
+                var objpage = new PaperDetailPhoneEx.PaperDetailPhoneEx();
+                objpage.btnDetailRecord_Click();
+                //var objPage = new taskinfo.Task_TSEx();
+                //objPage.Page_Load();
+            });
+
+        }
+        else {
+            require(["../js/GraduateEduPhone/PaperDetailPhoneEx.js"], function (PaperDetailPhoneEx) {
+
+                var objpage = new PaperDetailPhoneEx.PaperDetailPhoneEx();
+                objpage.btnDetailRecord_Click();
+
+            });
+        }
+    }
+
+
+    window.onload = function () {
+
+
+        //		aurl   文件夹路径
+        //	divname   div的id ， （必传参数）
+        //	inputname  会为你生成input :text;设置input id 默认div id;
+        //	starnum    星星的个数；默认五个；
+        //	startnum   星星初始化个数，初始化后，不可更改；(op  设置 true ；)
+        //  textTure   星星数默认五颗；开启文本显示；
+
+        initPingFen({ divname: 'pingfen2', textTure: true, inputname: 'pin' });
+        //文本框弹出键盘；
+        //$("input").trigger("click").focus();
+
+        
+        //$("div").on("tap", function () {
+        //    //$(this).hide();
+        //    $("#divTextAreaPingLun").hide();
+        //    $("#divPingLunOne").show();
+        //}); 
+
+        //默认评论框是隐藏
+        $("#divTextAreaPingLun").hide();
+        $("#divPingLunOne").show();
+
+        GetPaperID();
+    }
+
+    
+
+    $('textarea').on('focus', function (event) {
+        //自动反弹 输入法高度自适应
+        var target = this;
+        setTimeout(function () {
+            target.scrollIntoViewIfNeeded();
+        }, 100);
+    });
+
+    
+    function BlurOrFocus() {
+        var obj = document.getElementsByClassName('textarea')[0];
+        var docTouchend = function (event) {
+
+            if (event.target != obj) {
+                setTimeout(function () {
+                    obj.blur();
+                    $("#divTextAreaPingLun").hide();
+                    $("#divPingLunOne").show();
+                    document.removeEventListener('touchend', docTouchend, false);
+                }, 1000);
+
+            }
+        }
+
+        if (obj) {
+            obj.addEventListener('touchstart', function () {
+                document.addEventListener('touchend', docTouchend, false);
+            }, false);
+        }
+
+    }
+
+    //用来处理点击屏幕其他地方隐藏弹出的div评论框；    
+    $("div").on("tap", function () {
+    //$("#contents").on("tap", function () {
+        //$(this).hide();
+        $("#divTextAreaPingLun").hide();
+        $("#divPingLunOne").show();
+    }); 
+
+    /*
+    是否隐藏
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+*/
+    function btnIsDisplay_Click() {
+       
+        $("#divTextAreaPingLun").show();
+        $("#divPingLunOne").hide();
+        //$("textarea").focus();
+        $("textarea").trigger("click").focus();
+
+        //$('textarea').on('focus', function (event) {
+        //    //自动反弹 输入法高度自适应
+        //    var target = this;
+        //    setTimeout(function () {
+        //        target.scrollIntoViewIfNeeded();
+        //    }, 100);
+        //});
+
+        //require(["../js/GraduateEduEx/PaperSubViewpoint.js"], function (papersubviewpoint) {
+        //    var objPage = new papersubviewpoint.PaperSubViewpoint();
+        //    objPage.btnIsDisplay_Click();
+        //});
+    }
+
+
+    /*
+提交评论
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_mySubmit)
+*/
+    function SubmitAppraise_Click(pstrOp) {
+        //    alert("提交" + strOp);
+        require(["../js/GraduateEduPhone/PaperDetailPhoneEx.js"], function (PaperDetailPhoneEx) {
+            var objPage = new PaperDetailPhoneEx.PaperDetailPhoneEx();
+            objPage.SubmitAppraise_Click();
+        });
+    }
+
+    /*
+添加点赞
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnAddNewRecord_Click)
+*/
+    function btnAddVote_Click() {
+        //$('#hidSubViewpointId').val(strKeyId);
+        require(["../js/GraduateEduPhone/PaperDetailPhoneEx.js"], function (PaperDetailPhoneEx) {
+            var objPage = new PaperDetailPhoneEx.PaperDetailPhoneEx();
+            objPage.btnAddVote_Click();
+
+            layer.msg('已点赞!', {
+                icon: 1,
+                time: 2000
+            });
+        });
+    }
+
+
+    /*
+添加收藏
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnAddNewRecord_Click)
+*/
+    function btnAddCollection_Click() {
+        //$('#hidSubViewpointId').val(strKeyId);
+        require(["../js/GraduateEduPhone/PaperDetailPhoneEx.js"], function (PaperDetailPhoneEx) {
+            var objPage = new PaperDetailPhoneEx.PaperDetailPhoneEx();
+            objPage.btnAddCollection_Click();
+            layer.msg('已收藏!', {
+                icon: 1,
+                time: 2000
+            });
+        });
+    }
+
+    //下载
+    function btnDownLoadFile_Click() {
+        require(["../js/GraduateEduPhone/PaperDetailPhoneEx.js"], function (PaperDetailPhoneEx) {
+            var objpage = new PaperDetailPhoneEx.PaperDetailPhoneEx();
+            objpage.btnDownLoadFile_Click();
+
+        });
+    }
+
+
+
+
+    //下载方法
+    function doDownLoad(filepath,filename) {
+        var aLink = document.createElement('a');
+        aLink.download = filename;
+        aLink.href = filepath;
+        document.body.appendChild(aLink);
+        aLink.click();
+        document.body.removeChild(aLink);
+
+        @*$.ajax(
+            {
+                url: "@Url.Action("DownloadFile", "testUploadPic")",    // 请求地址,
+                data: JSON.stringify({ path: filepath }),   // 需要传送的参数
+                type: 'POST',   // 请求方式
+                dataType: 'json', // 返回数据的格式, 通常为JSON
+                contentType: 'application/json',
+                success: function (result) {
+                    //成功/为空
+                    if (result.status == 0 || result.status == -1) {
+
+                        console.log('ok'); // 请求失败时的回调函数
+                        }
+                },
+                error: function () {
+                    console.log('Send Request Fail..'); // 请求失败时的回调函数
+                }
+            }
+        );*@
+    }
+
+//    /*
+//提交评论
+//(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_mySubmit)
+//*/
+//    function SubmitAppraise_Click(pstrOp) {
+//        //    alert("提交" + strOp);
+//        require(["../js/GraduateEduPhone/PaperDetailPhoneEx.js"], function (PaperDetailPhoneEx) {
+//            var objPage = new PaperDetailPhoneEx.PaperDetailPhoneEx();
+//            objPage.SubmitAppraise_Click();
+//        });
+//    }
+
+</script>
+
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+@*<a id="backtop" class="back-top" href="javascript:scroll(0,0);" target="_self" title="返回顶部" style="display: block;">
+        <i class="icon-backtop"></i>
+    </a>*@
+<div data-role="page" id="pageOne">
+
+    <div data-role="header" data-position="fixed">
+        <a href="/GraduateStudyWebApp/WebApp/Indexs" rel="external" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">主页</a>
+
+        <h1>论文详细</h1>
+        @*<a href="#pageAdd" class="ui-btn ui-btn-right ui-icon-bullets ui-btn-icon-left ui-corner-all">
+                添加
+            </a>*@
+    </div>
+
+
+
+    <div data-role="content" id="contents">
+
+        <div id="divList" class="div_List">
+            <div id="divDataLst" class="div_List">
+                @*<div class="modal-content" style="width: 100%;">*@
+                <div class="" style="width: 100%;">
+                    @*<div style="text-align:right;padding: 1rem 1rem; border-bottom: 1px solid #dee2e6;">
+
+                        <a href="javascript:history.back(-1)" class="btn btn-outline-info text-nowrap">返回</a>
+                    </div>*@
+                    @*<div class="modal-body" style="padding-left:80px;padding-right:80px; ">*@
+                    <div class="baseinfo">
+                        @*<div style="height:30px;">
+                            <div style="float:left;color:red;">网络首发时间：<label id="lblUpdDate" name="lblUpdDate"></label></div>
+
+                            <div id="div_VoteCollection" style="float:right; margin-right:100px; line-height:50px;">
+                                评分： <label id="lblScore" name="lblScore"></label>
+
+                                浏览量： <label id="lblViews" name="lblViews"></label>
+                                &nbsp;&nbsp;
+                                <a href="#" onclick="btnAddVote_Click()"><img id="imgVotet" src="../img/vote.png" width="30px" height="30px" title="点赞"></a>
+                                <label id="lblOKCount" name="lblOKCount"></label>
+                                &nbsp;&nbsp;
+                                <a href="#" onclick="btnAddCollection_Click()"><img id="imgCollection" src="../img/collection.png" width="30px" height="30px" title="收藏"></a>
+
+                            </div>
+                        </div>*@
+
+                        <div style="text-align:center;margin-top:10px;margin-bottom:10px;"> <h2><label id="txtPaperTitle" name="txtPaperTitle" /></h2></div>
+
+                        <div style="text-align:left;margin-top:10px;display:inline inline-block;">
+                            <label id="lblUpdDate" name="lblUpdDate" style="color:cadetblue;font-size:10px;display:inline;"></label>
+                            <label id="txtAuthor" name="txtAuthor" style="color:cadetblue;font-size:10px;display:inline;"></label>
+                        </div>
+                        <div style="text-align:left;margin-top:10px; font-size:14px;">
+                            <label id="txtPaperContent" name="txtPaperContent" style="font-size:14px;" />
+                        </div>
+                        <div style="margin-top:30px;font-size:10px">
+                            <Label id="lblResearchQuestion" name="lblResearchQuestion" style="font-weight:bold;font-size:10px;display:inline;">
+                                研究问题 |
+                            </Label>
+                            <label id="txtResearchQuestion" name="txtResearchQuestion" style="font-size:10px;display:inline;" />
+                        </div>
+                        <div style="text-align:left;margin-top:10px;">
+                            <Label id="lblKeyword" name="lblKeyword" style="font-weight:bold;font-size:10px;display:inline;">
+                                关键字 |
+                            </Label>
+                            <label id="txtKeyword" name="txtKeyword" style="font-size:10px;display:inline;" />
+                        </div>
+
+                        <div style="text-align:left;margin-top:10px;">
+                            <Label id="lblPeriodical" name="lblPeriodical" style="font-weight:bold;font-size:10px;display:inline;">
+                                期刊 |
+                            </Label>
+                            <label id="txtPeriodical" name="txtPeriodical" style="font-size:10px;display:inline;" />
+                        </div>
+                        <div id="div_VoteCollection" style="float:left;margin-top:10px;">
+                            <label id="lblScore" name="lblScore" style="font-size:10px;display:inline;"></label><label id="lblpf" name="lblpf" style="font-size:10px;display:inline;">分</label> |
+
+                            <label id="lblViews" name="lblViews" style="font-size:10px;display:inline;"></label><label id="lblll" name="lblll" style="font-size:10px;display:inline;">阅读</label>
+
+
+                        </div>
+
+
+                        @*<div style="text-align:right;margin-top:50px;">
+                            <button id="btnDownLoadFile" type="button" class="btn btn-primary" onclick="btnDownLoadFile_Click()">下载附件</button>
+                            <label id="lblDownLoadFile" name="txtPeriodical" style="color:crimson;font-weight:bold;">此论文暂无下载文件</label>
+                        </div>*@
+                    </div>
+
+                    @*评分：*@
+                    @*<div style="padding-left:170px;padding-right:100px;">
+                        <div id="pingfen2"></div>
+                    </div>*@
+
+                    @*<div style="padding-left:100px;padding-right:100px;">
+                        <div class="box" id="J_Post">
+                            <div class="common-avatar my-avatar J_userCenter">
+                                <img src="../img/avatar5.png" width="100%" height="100%">
+                            </div>
+                            <div class="box-content box-login">
+
+
+                                <div class="box-textarea-block">
+
+
+                                    <textarea class="box-textarea J_Textarea" id="txtAppraiseContent" placeholder="说两句吧..."></textarea>
+                                </div>
+
+                                <div class="box-info" style="height:60px;">
+                                    <div class="box-operate">
+                                        <span class="box-avatar">
+                                            <img src="../img/avatar3.png" width="100%" height="100%">
+                                        </span>
+                                        <b class="box-username" id="bUserName"></b>
+
+
+                                    </div>
+                                    <div class="box-commentBtn box-commentBtn--able J_PostBtn" id="J_PostBtn" onclick="SubmitAppraise_Click()">发布评论</div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="comment-short" id="J_Short">
+                            <div class="comment-title">
+                                <p class="comment-all">全部评论</p>
+                                <div class="comment-center" id="J_CommentCenter">
+                                    <span class="comment-center-slash">/</span>
+                                    <span class="comment-my J_userCenter">我的评论</span>
+                                </div>
+
+                            </div>
+                            <div id="J_ShortComment">
+
+                            </div>
+                        </div>
+                    </div>*@
+
+
+
+
+
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
+
+
+
+
+        <div class="test">
+
+            <div lang="en-US" class="gitment-container gitment-comments-container">
+                <ul id="ulPinglun" class="gitment-comments-list">
+
+
+                    @*<li class="gitment-comment">
+                        <a class="gitment-comment-avatar">
+                            <img class="gitment-comment-avatar-img" src="~/img/avatar5.png">
+                        </a>
+                        <div class="gitment-comment-main">
+                            <div class="gitment-comment-header">
+                                <a class="gitment-comment-name">
+                                    张三
+                                </a>
+                                <span>2018.05.17</span>
+
+                                <div class="gitment-comment-like-btn">
+                                    <svg class="gitment-heart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                        <path d="M25 39.7l-.6-.5C11.5 28.7 8 25 8 19c0-5 4-9 9-9 4.1 0 6.4 2.3 8 4.1 1.6-1.8 3.9-4.1 8-4.1 5 0 9 4 9 9 0 6-3.5 9.7-16.4 20.2l-.6.5zM17 12c-3.9 0-7 3.1-7 7 0 5.1 3.2 8.5 15 18.1 11.8-9.6 15-13 15-18.1 0-3.9-3.1-7-7-7-3.5 0-5.4 2.1-6.9 3.8L25 17.1l-1.1-1.3C22.4 14.1 20.5 12 17 12z"></path>
+                                    </svg>
+                                    22
+                                </div>
+                            </div>
+                            <div class="gitment-comment-body gitment-markdown">
+                                <p>
+                                    评论的内容评论的内容评论的内容评论的内容评论的内容
+                                    评论的内容评论的内容评论的内容评论的内容评论的内容评论的内容
+                                    评论的内容评论的内容评论的内容评论的内容评论的内容评论的内容评论的内容
+                                    评论的内容评论的内容评论的内容评论的内容
+                                </p>
+                            </div>
+                        </div>
+                    </li>*@
+                </ul>
+            </div>
+        </div>
+
+    </div>
+  
+
+
+
+
+    <div data-role="footer" data-position="fixed">
+        <div id="divTextAreaPingLun" style="display:none;text-align:left;display:inline;">
+            @*<div style="padding-left:170px;padding-right:100px;">*@
+            <div style="padding-left:10px">
+              
+                <div id="pingfen2"></div>
+            </div>
+            <div id="divAreaPingLun" style="display:none;text-align:left;display:inline;">
+                <textarea placeholder="说点什么......" autofocus="autofocus" id="txtAppraiseContent" style="display:inline;width:78%;margin-left:10px;"></textarea>
+                <button id="btnSendMsg" type="button" class="btn btn-primary btn-sm" style="display:inline;width:18%;float:right;margin-top:15px;" onclick="SubmitAppraise_Click()">发送</button>
+
+            </div>
+        </div>
+        
+        <div data-role="navbar" id="divPingLunOne">
+            <ul>
+                <li onclick="btnIsDisplay_Click()"><input id="txtPingLun" name="txtPingLun" autofocus="autofocus" /></li>
+                <li><a href="#" onclick="btnAddVote_Click()"><img id="imgVotet" src="~/img/vote.png" style="width:30px;height:30px;" title="点赞"></a></li>
+                <li><a href="#" onclick="btnAddCollection_Click()"><img id="imgCollection" src="~/img/collection.png" style="width:30px;height:30px;" title="收藏"></a></li>
+
+            </ul>
+
+            @*<div class="comment-add">
+                <div class="commentguest">
+                        <img src="~/img/st_node.gif" class="img-circle">
+                    </div>
+                <div id="comment-input" class="comment-input">
+                    <div class="commentarea">
+                        <textarea id="content" rows="6" cols="25" onpropertychange="if(this.scrollHeight> 80)this.style.posHeight=this.scrollHeight+5" placeholder="请写下您的评论"></textarea>
+                    </div>
+                    <div class="commentbtn">
+                        <div class="commentmask"></div>
+                        <a href="javascript:;" class="getcomment btn btn-block" role="button">评论</a>
+                    </div>
+                    <div class="commentguest">
+                        <img src="~/img/vote.png" class="img-circle">
+                    </div>
+                    <div class="commentguest">
+                        <img src="~/img/collection.png" class="img-circle">
+                    </div>
+                </div>
+            </div>*@
+        </div>
+
+    </div>
+</div>
+
+<input id="hidOpType" type="hidden" />
+<input id="hidPaperId" type="hidden" />
+<input id="hidSubviewPointId" type="hidden" />
+<input id="hidSubviewPointTypeId" type="hidden" />
+@*<input id="hidOperationType" type="hidden" value="@Model.GetSession("OperationType")" />*@<input id="hidOperationType" type="hidden" value="@Model.GetSession(" OperationType")" />
+<input id="hidKeyId" type="hidden" />
+
+@*<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />*@<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvThesisBy" type="hidden" value="" />
+<input id="hidPicAddress" type="hidden" value="" />
+<input id="hidUserInfo" type="hidden" value="@Model.GetSession("objvUserRoleRelation")" />
+
+
+<input id="hidUserId" type="hidden" />
+
+<input id="hidUserName" type="hidden" />
+<input id="hidBrowseNumber" type="hidden" />

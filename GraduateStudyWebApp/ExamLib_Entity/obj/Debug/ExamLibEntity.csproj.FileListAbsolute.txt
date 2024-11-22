@@ -1,0 +1,8 @@
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Entity\obj\Debug\ExamLibEntity.csproj.AssemblyReference.cache
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Entity\obj\Debug\ExamLibEntity.csproj.CoreCompileInputs.cache
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Entity\obj\Debug\ExamLibEntity.pdb
+E:\TzAppData\GraduateStudyWebApp\ExamLibEntity\bin\Debug\ExamLibEntity.dll.config
+E:\TzAppData\GraduateStudyWebApp\ExamLibEntity\bin\Debug\ExamLibEntity.dll
+E:\TzAppData\GraduateStudyWebApp\ExamLibEntity\bin\Debug\ExamLibEntity.pdb
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Entity\obj\Debug\ExamLibE.3AFD0B2C.Up2Date
+E:\OneDrive-personal\OneDrive\AspNetCore\GraduateStudyWebApp\ExamLib_Entity\obj\Debug\ExamLibEntity.dll

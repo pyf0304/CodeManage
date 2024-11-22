@@ -1,0 +1,134 @@
+﻿@page
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "PDF论文答疑";
+}
+
+@section Styles{
+    <link rel="stylesheet" href="~/pdfjs2.3/web/viewer.css">
+    <!-- This snippet is used in production (included from viewer.html) -->
+    <link rel="resource" type="application/l10n" href="~/pdfjs2.3/web/locale/locale.properties">
+
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/comment.css">
+
+
+
+    <link rel="stylesheet" href="~/css/SimpleTree.css">
+
+    <link rel="stylesheet" href="~/css/public.css" />
+    <style type="text/css">
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #input {
+            width: 610px;
+            height: 130px;
+            position: relative;
+            margin: 100px auto;
+        }
+
+        .same {
+            display: inline-block;
+            position: absolute;
+            overflow-x: hidden;
+            overflow-y: auto;
+            outline: none;
+            resize: none;
+            white-space: pre-wrap;
+            cursor: auto;
+            color: rgb(128, 128, 128);
+            width: 600px;
+            height: 100px;
+            top: 20px;
+            padding: 4px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 18px;
+            border: 1px solid #fa7d3c;
+            font-family: Arial, 'Microsoft YaHei';
+        }
+
+        #div {
+            z-index: 9999;
+            /*visibility: hidden;*/
+        }
+
+        #textarea {
+            z-index: 10000;
+        }
+
+        #info {
+            position: absolute;
+            background: #fff;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            padding: 2px;
+            box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.2);
+            z-index: 10001;
+            display: none;
+        }
+
+            #info .list-content, #info .list-title {
+                font-family: Arial, 'Microsoft YaHei';
+                font-size: 12px;
+                padding: 6px 10px;
+                cursor: pointer;
+                list-style: none;
+            }
+
+                #info .list-content.list-active {
+                    color: #eb7350;
+                    background-color: #f2f2f5;
+                }
+
+        #rest {
+            font-family: Arial, 'Microsoft YaHei';
+            height: 20px;
+            font-size: 14px;
+            line-height: 20px;
+            position: absolute;
+            right: 0;
+        }
+
+            #rest span {
+                color: #eb7350;
+                font-size: 18px;
+                line-height: 20px;
+                font-weight: bold;
+            }
+    </style>
+
+
+}
+@section Scripts{
+    <script type="text/javascript" src="~/lib/at/at1.js"></script>
+
+}
+
+<div id="input">
+    <p id="rest">还可以输入<span>140</span>字</p>
+    <textarea id="textarea" class="same" placeholder="说点什么吧"></textarea>
+    <!-- div内容与textarea完全一样 位置也一样 textareaz-index更高一些  用于计算at对象列表框弹出的位置  -->
+    <div id="div" class="same" contenteditable="true"></div>
+</div>
+<!-- at下拉列表 -->
+<ul id="info"></ul>
+<input id="cursor" type="hidden" />
+<button style="width:100px;height:25px;margin-left:40%;padding:3px;" type="button" onclick="onClickGetAtObject()">获取@对象</button>
+<script type="text/javascript" src="at.js"></script>
+
+<script type="text/javascript">
+
+
+
+
+</script>

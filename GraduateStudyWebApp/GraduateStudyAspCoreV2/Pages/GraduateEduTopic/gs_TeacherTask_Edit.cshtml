@@ -1,0 +1,135 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+
+
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+</script>
+<div id="divEditLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditDialog_gs_TeacherTask" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_gs_TeacherTask" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 635px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lblDialogTitle_gs_TeacherTask">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                         <table id="tabEdit" style="width:100%;" class="table table-bordered table-hover table td table-sm">
+                        <tr id="trid_CurrEduCls" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">
+                                    主题编号
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtTopicId" name="txtTopicId" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblid_CurrEduCls" name="lblid_CurrEduCls" class="col-form-label text-right" style="width:90px;">
+                                    当前教学班流水号
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtid_CurrEduCls" name="txtid_CurrEduCls" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trMissionStatement">
+                            <td class="text-right">
+                                <Label id="lblMissionStatement" name="lblMissionStatement" class="col-form-label text-right" style="width:90px;">
+                                    任务说明
+                                </Label>
+                            </td>
+                            <td class="text-left" ColSpan=5>
+                                @*<input id="txtMissionStatement" name="txtMissionStatement" class="form-control" style="width:350px;" />*@
+
+                                <textarea id="txtMissionStatement" name="txtMissionStatement" class="form-control" style="width:1000px;height:150px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr id="trMissionRequirement">
+                            <td class="text-right">
+                                <Label id="lblMissionRequirement" name="lblMissionRequirement" class="col-form-label text-right" style="width:90px;">
+                                    任务要求
+                                </Label>
+                            </td>
+                            <td class="text-left" ColSpan=5>
+                                @*<input id="txtMissionRequirement" name="txtMissionRequirement" class="form-control" style="width:350px;" />*@
+
+                                <textarea id="txtMissionRequirement" name="txtMissionRequirement" class="form-control" style="width:1000px;height:150px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr id="trUpdUser" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">
+                                    修改日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdDate" name="txtUpdDate" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">
+                                    修改人
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdUser" name="txtUpdUser" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trMemo" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtMemo" name="txtMemo" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel_gs_TeacherTask" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btnSubmit_gs_TeacherTask" type="button" class="btn btn-primary" onclick="Submit_gs_TeacherTask()">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>

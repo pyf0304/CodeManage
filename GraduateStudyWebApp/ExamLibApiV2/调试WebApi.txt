@@ -1,0 +1,55 @@
+http://localhost:28523/ExamLibWA/api/MyCalc/Plus?a=1&b=2
+
+正确：http://localhost:28523/ExamLibWA/api/MyCalc/Plus/1,2
+https://www.sh-tz.com/ExamLibWA/api/MyCalc/Plus/1,2
+
+正确：http://localhost:28523/ExamLibWA/MyCalc2/Test2
+
+正确：http://localhost:28523/ExamLibWA/vTeacherInfoApi/Test2
+
+正确：http://localhost:28523/ExamLibWA/vTeacherInfoApi/GetObjLst/?strWhereCond=1=1
+http://192.168.1.15/ExamLibWA/vTeacherInfoApi/GetObjLst/?strWhereCond=1=1
+
+正确：http://localhost:28523/ExamLibWA/vTeacherInfoApi/GetRecCountByCond/?strWhereCond=1=1
+
+http://localhost:28523/ExamLibWA/vQxUserRoleRelationApi/GetFirstObj?strWhereCond=1=1
+http://192.168.1.15/ExamLibWA/vQxUserRoleRelationApi/GetFirstObj?strWhereCond=1=1
+
+http://localhost:28523/ExamLibWA/ge_UserCreditsLogExApi/Getge_UserCreditsRankLstEx?strWhere=1=1
+http://192.168.1.15/ExamLibWA/ge_UserCreditsLogExApi/Getge_UserCreditsRankLstEx?strWhere=1=1
+http://tzar.tpddns.cn:5080/ExamLibWA/ge_UserCreditsLogExApi/Getge_UserCreditsRankLstEx?strWhere=1=1
+
+http://localhost:28523/ExamLibWA/vgs_PaperAttentionExApi/GetPaperIdNumObjLst?strWhereCond=1=1
+http://192.168.1.15/ExamLibWA/vgs_PaperAttentionExApi/GetPaperIdNumObjLst?strWhereCond=1=1
+
+
+https://www.sh-tz.com/ExamLibWA/MyCalc2/Test2
+
+
+http://localhost:28523/ExamLibWA/api/MyCalc/Test2
+
+http://localhost:28523/ExamLibWA/api/MyCalc/Minus/a=3&b=2
+
+
+
+http://localhost:28523/ExamLibWA/api/WeatherForecast
+
+
+http://localhost:23429/api/Values/Test
+
+http://192.168.1.15/ExamLibWA/ge_InspectionResultsExApi/GetChapterNameByGameLevelIdEx?gameLevelId=00000003
+
+
+   http://192.168.1.15/ExamLibWA/ge_StuBatchQuesRelaExApi/Getge_StuBatchQuesRelaListEx?userId=00701&courseId=00000035
+http://localhost:28523/ExamLibWA/ge_StuBatchQuesRelaExApi/Getge_StuBatchQuesRelaListEx?userId=00701&courseId=00000035
+http://localhost:28523/ExamLibWA/ge_StuBatchQuesRelaExApi/Getge_StuBatchQuesRelaListEx?userId=00701&courseId=00000035
+
+http://localhost:28523/ExamLibWA/ge_StuBatchQuesRelaExApi/Getge_StuBatchQuesRelaListExV2?userId=00701&courseId=00000035&DifficultyLevelId=&QuestionTypeId=&QuestionNum=1&GameLevelId=
+http://localhost:28523/ExamLibWA/gs_KnowledgesGraphApi/GetObjLstAsync?strWhereCond=id_CurrEduCls ='00000051' and isAnswer=1 and isRecommend = 1 order by updDate Asc[Exclude]or [/Exclude]
+
+http://localhost:28523/ExamLibWA/vgs_KnowledgesLogic_User_SimApi/GetObjLst?strWhereCond=id_CurrEduCls ='00000051'
+http://localhost:28523/ExamLibWA/vgs_KnowledgesLogic_User_SimApi/GetFirstObj?strWhereCond=id_CurrEduCls ='00000051'
+http://localhost:28523/ExamLibWA/UserDefaValueExApi/SetUserDefaValue?strUserId=00701&strDefaValName=默认教学班Id&strUserDefaValue00000052
+http://192.168.1.15/ExamLibWA/UserDefaValueExApi/SetUserDefaValue?strUserId=00701&strDefaValName=默认教学班Id&strUserDefaValue00000052
+
+http://localhost:28523/ExamLibWA/QuestionnaireExApi/GetRecCountByCond?strWhereCond=1=1

@@ -1,0 +1,71 @@
+﻿@page
+@model AGC.Pages.TestSession2Model
+@{
+    Layout = "~/Pages/Shared/_Layout_RequireJS.cshtml";
+    ViewData["Title"] = "TestSession2";
+    var strValue = Model.GetSession("pyf1");
+    var strValue2 = Model.GetSession2("pyf2");
+    var strValue3 = Model.GetSession3("pyf3");
+
+
+}
+
+<h1>TestSession2</h1>
+
+<div>
+    @*<a href="/Session/GetString">点击读取session</a>*@
+
+    <span class="text-dark">方式1：直接调用控制层：Sessioncontroller</span>
+    <br />
+    <input type="button" onclick="GetSession('UserId')" class="btn btn-outline-info" value="取Session-UserId" />
+    <br />
+    <span class="text-danger">Key:</span>  <span id="myKey" class="text-danger">key</span>
+    <span class="text-Info">Value:</span>    <span id="myValue" class="text-Info">value</span>
+    <br />
+    <br />
+    <span class="text-dark">方式2：调用页面模型(PageModel)的属性：sePyf2</span>
+    <br />
+    <input type="button" onclick="Get_sePyf2()" class="btn btn-outline-info" value="取sePyf2" />
+    <br />
+    <span class="text-danger">Key:</span>  <span id="myKey2" class="text-danger">key</span>
+    <span class="text-Info">Value:</span>    <span id="myValue2" class="text-Info">value</span>
+
+</div>
+
+
+
+<script type="text/javascript">
+    //Js函数，用于界面的CRUD, 后备之用,可能后面派作用
+        var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+    function Get_sePyf2() {
+        //注意：这里的值是页面一被导入完成，就获得Session-pyf2
+        var strValue = "@Model.sePyf2()";
+        $('#myKey2').html('pyf2');
+        $('#myValue2').html(strValue);
+
+        alert(strValue);
+    }
+
+    function GetSession(strKey) {
+
+        $.ajax({
+            url: strUrl_Session_GetString,
+            cache: false,
+            async: false,
+            type: 'get',
+            dataType: "json",
+            data: { Key: strKey },
+            success: function (data) {
+                //$('#myValue').val(text);
+                var v1 = data.value;
+                var k1 = data.key;
+                $('#myKey').html(k1);
+                $('#myValue').html(v1);
+                console.log(v1);
+
+            }
+
+        });
+    }
+</script>

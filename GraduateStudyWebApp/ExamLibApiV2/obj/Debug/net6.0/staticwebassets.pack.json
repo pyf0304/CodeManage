@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\PaperUploadFile\\AAA20230928022855.pdf",
+      "PackagePath": "staticwebassets\\UploadFiles\\PaperUploadFile\\AAA20230928022855.pdf"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\PaperUploadFile\\AAA20230928024642.pdf",
+      "PackagePath": "staticwebassets\\UploadFiles\\PaperUploadFile\\AAA20230928024642.pdf"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\PaperUploadFile\\汇报论文20230928023013.pdf",
+      "PackagePath": "staticwebassets\\UploadFiles\\PaperUploadFile\\汇报论文20230928023013.pdf"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\Scan120240223114614.jpg",
+      "PackagePath": "staticwebassets\\UploadFiles\\Scan120240223114614.jpg"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\Scan120240223115424.jpg",
+      "PackagePath": "staticwebassets\\UploadFiles\\Scan120240223115424.jpg"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\Scan120240223115915.jpg",
+      "PackagePath": "staticwebassets\\UploadFiles\\Scan120240223115915.jpg"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\第1章完成20231129071936.png",
+      "PackagePath": "staticwebassets\\UploadFiles\\第1章完成20231129071936.png"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\第1章完成20231129072946.png",
+      "PackagePath": "staticwebassets\\UploadFiles\\第1章完成20231129072946.png"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\第2章完成20231129071936.png",
+      "PackagePath": "staticwebassets\\UploadFiles\\第2章完成20231129071936.png"
+    },
+    {
+      "Id": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\wwwroot\\UploadFiles\\第2章完成20231129072946.png",
+      "PackagePath": "staticwebassets\\UploadFiles\\第2章完成20231129072946.png"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.ExamLibApiV2.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.ExamLibApiV2.props",
+      "PackagePath": "build\\ExamLibApiV2.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.ExamLibApiV2.props",
+      "PackagePath": "buildMultiTargeting\\ExamLibApiV2.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.ExamLibApiV2.props",
+      "PackagePath": "buildTransitive\\ExamLibApiV2.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

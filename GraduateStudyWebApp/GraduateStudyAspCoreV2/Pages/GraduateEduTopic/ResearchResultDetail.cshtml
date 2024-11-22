@@ -1,0 +1,261 @@
+﻿@page
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "研究成果详情";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/comment.css">
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+    <link rel="stylesheet" href="~/css/paperlist.css" />
+    <style>
+
+        .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+            color: #0080ff;
+            background-color: #fff;
+            border-color: #dee2e6 #dee2e6 #fff;
+            font-weight: bold;
+        }
+        /*.layui-table td, .layui-table th {
+            position: relative;
+            padding: 9px 15px;
+            min-height: 20px;
+            line-height: 20px;
+            font-size: 15px;
+        }*/
+        .layui-fluid {
+            padding: 0px;
+        }
+
+        .layui-table td, .layui-table th {
+            min-width: 20px;
+        }
+
+        #tbList img {
+            max-width: 460px;
+        }
+
+        .text-span {
+            background-color: yellow;
+            /*color: red;*/
+        }
+
+        #leftPart {
+            float: left;
+            width: 55%;
+            height: 100%;
+            position: fixed;
+            top: 40px;
+            left: 1px;
+            border-radius: 10px;
+        }
+
+        #right_Content {
+            float: right;
+            width: 45%;
+        }
+    </style>
+
+}
+@section Scripts{
+
+    @*<script src="../lib/jquery/dist/jquery.js"></script>
+        <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="../lib/require/require.js" data-main="../js/src/config"></script>*@
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    @*<script src="../js/site.js" asp-append-version="true"></script>
+        <script src="../lib/bootstrap/dist/js/popper.js"></script>*@
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+
+}
+<script>
+
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetPaperID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var str1;
+        str1 = Request['ResultId'];
+        str2 = Request['ResultTypeId'];
+        str3 = Request['PaperId'];
+
+        if (str1 != null) {
+            $('#hidResultId').val(str1);
+            $('#hidResultTypeId').val(str2);
+            $('#hidPaperId').val(str3);
+
+            require(["../js/GraduateEduTopic/ResearchResultDetail.js"], function (ResearchResult) {
+                var objpage = new ResearchResult.ResearchResultDetail();
+                objpage.Page_Load();
+
+            });
+
+        }
+    }
+
+
+
+
+    window.onload = function () {
+        GetPaperID();
+    }
+
+    function liResearchResultClick() {
+        require(["../js/GraduateEduTopic/ResearchResultDetail.js"], function (ResearchResult) {
+            var objpage = new ResearchResult.ResearchResultDetail();
+            objpage.Bind_ResearchResult();
+
+        });
+    }
+
+    //向左推移
+    function right_Click() {
+        var leftPart = document.getElementById("leftPart");
+        var right_Content = document.getElementById("right_Content");
+
+        var hidleftNum = document.getElementById("hidleftNum");
+        var hidrightNum = document.getElementById("hidrightNum");
+
+        var num = 5;
+        hidleftNum.value = parseInt(hidleftNum.value) - num;
+        hidrightNum.value = parseInt(hidrightNum.value) + num;
+
+        leftPart.style.width = hidleftNum.value + '%';
+        right_Content.style.width = hidrightNum.value + '%';
+
+        layer.msg('内容编辑区增宽到：' + hidrightNum.value + '%', {
+            icon: 1,
+            time: 2000
+        });
+    }
+
+
+
+
+    //向右推移
+    function left_Click() {
+        var leftPart = document.getElementById("leftPart");
+        var right_Content = document.getElementById("right_Content");
+
+        var hidleftNum = document.getElementById("hidleftNum");
+        var hidrightNum = document.getElementById("hidrightNum");
+
+        var num = 5;
+        hidleftNum.value = parseInt(hidleftNum.value) + num;
+        hidrightNum.value = parseInt(hidrightNum.value) - num;
+        leftPart.style.width = hidleftNum.value + '%';
+        right_Content.style.width = hidrightNum.value + '%';
+        layer.msg('pdf增宽到：' + hidleftNum.value + '%', {
+            icon: 1,
+            time: 2000
+        });
+    }
+
+
+    //下载方法
+    function btnDownLoadFile_Click(filepath, filename) {
+        var aLink = document.createElement('a');
+        aLink.download = filename;
+        aLink.href = filepath;
+        document.body.appendChild(aLink);
+        aLink.click();
+        document.body.removeChild(aLink);
+
+        @* $.ajax(
+            {
+                url: "@Url.Action("DownloadFile", "testUploadPic")",    // 请求地址,
+                data: JSON.stringify({ path: filepath }),   // 需要传送的参数
+                type: 'POST',   // 请求方式
+                dataType: 'json', // 返回数据的格式, 通常为JSON
+                contentType: 'application/json',
+                success: function (result) {
+                    //成功/为空
+                    if (result.status == 0 || result.status == -1) {
+
+                        console.log('ok'); // 请求失败时的回调函数
+                    }
+                },
+                error: function () {
+                    console.log('Send Request Fail..'); // 请求失败时的回调函数
+                }
+            }
+        );*@
+    }
+</script>
+
+
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+@*<a id="backtop" class="back-top" href="javascript:scroll(0,0);" target="_self" title="返回顶部" style="display: block;">
+        <i class="icon-backtop"></i>
+    </a>*@
+<div class="x-nav" style="position:fixed;top:1px;left:1px;right:1px;width:100%;">
+    <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">主题研究</a>
+        <a>
+            <cite><span id="spanPaperContent">研究成果详情</span></cite>
+        </a>
+        <Label id="lblMsg_List" name="lblMsg_List"></Label>
+    </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;float:right;margin-top:2px; color:#fff;" onclick="location.reload()" title="刷新">
+        <i class="layui-icon layui-icon-refresh-3" style="line-height:32px"></i>
+    </a>
+
+
+    <a class="layui-btn layui-btn-normal" style="line-height:1.6em;margin-top:2px; float:right; color:#fff;" onclick="left_Click()" title="向右推移">
+        <i class="layui-icon layui-icon-spread-left" style="line-height:32px"></i>
+    </a>
+
+
+    <a class="layui-btn layui-btn-normal" style="line-height:1.6em;margin-top:2px;float:right; color:#fff;" onclick="right_Click()" title="向左推移">
+        <i class="layui-icon layui-icon-shrink-right" style="line-height:32px"></i>
+    </a>
+
+
+</div>
+<div style="width:100%; height:100%;">
+    @*<div id="pdfcontenttext">*@
+    <div id="leftPart">
+
+    </div>
+    <div id="right_Content" style="margin-top:40px;">
+
+    </div>
+</div>
+
+
+<input id="hidResultId" type="hidden" />
+
+<input id="hidPaperId" type="hidden" />
+<input id="hidResultTypeId" type="hidden" />
+
+
+@* pdfContent num *@
+<input id="hidleftNum" type="hidden" value="55" />
+@* rightContent num *@
+<input id="hidrightNum" type="hidden" value="45" />

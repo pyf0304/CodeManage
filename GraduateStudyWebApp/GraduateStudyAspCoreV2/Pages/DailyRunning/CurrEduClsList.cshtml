@@ -1,0 +1,608 @@
+﻿
+@page
+@model ExamLib.Pages.CurrEduClsCRUDModel
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "当前教学班维护";
+    //操作Session样例，方法1：
+    //Model.seUserId = "TestUserId";
+    var strUserId_Value = Model.seUserId;
+    //操作Session样例，方法2：
+    Model.SetSession("UserId1", "TestUserId1");
+    var strUserId1_Value = Model.GetSession("UserId1");
+    //请参见页尾的隐形控件hidUserid和hidUserId1的使用。
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+}
+@section Scripts{
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script>
+        layui.use(['laydate', 'form'],
+            function () {
+                var laydate = layui.laydate;
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#txtStartDate' //指定元素
+                });
+
+                //执行一个laydate实例
+                laydate.render({
+                    elem: '#txtEndDate' //指定元素
+                });
+            });
+    </script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+
+var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+    var strCurrPrjId = "@Model.CurrPrjId";
+
+    //确定推送课文
+    function btnPushEduClsTextInTab_Click(strKeyId) {
+        require(["../js/DailyRunning/CurrEduClsList.js"], function (CurrEduCls) {
+            if (strKeyId == "") {
+                alert("请选择需要的记录！");
+                return;
+            }
+            var objPage = new CurrEduCls.CurrEduClsList();
+            objPage.btnPushEduClsTextInTab_Click(strKeyId);
+        });
+    }
+
+
+    function btn_ClickAddEduTeacher() {
+        require(["../js/DailyRunning/CurrEduClsList.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (concept, commonfunc) {
+            var strKeyId = commonfunc.clsCommonFunc4Web.GetFirstCheckedKeyId(objPage.divName4List);
+            if (strKeyId == "") {
+                alert("请选择需要的教学班！");
+                return;
+            }
+            xadmin.open('添加教学班教师', '../DailyRunning/TeacherList?CurrEduClsId=' + strKeyId, '', '', true)
+           
+        });
+    }
+    function btn_ClickAddEduStudent() {
+        require(["../js/DailyRunning/CurrEduClsList.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (concept, commonfunc) {
+            var strKeyId = commonfunc.clsCommonFunc4Web.GetFirstCheckedKeyId(objPage.divName4List);
+            if (strKeyId == "") {
+                alert("请选择需要的教学班！");
+                return;
+            }
+            //Pagetype=01代表是通过教学班界面进入；
+            xadmin.open('添加教学班学生', '../DailyRunning/StudentInfoList?Pagetype=01&CurrEduClsId=' + strKeyId+'&TextId=""', '', '', true)
+            //ShowDialog('Update');
+        });
+    }
+
+
+    //设置教学班时间
+    function btnSetUpDateRecord_Click() {
+        require(["../js/DailyRunning/CurrEduClsList.js"], function (Statistics) {
+            var objPage = new Statistics.CurrEduClsList();
+            objPage.btnSetUpDateRecord_Click();
+        });
+    }
+
+    /*
+     显示对话框
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+    */
+    function ShowDialogOne(pstrOp) {
+        strOp = pstrOp;
+        require(['jquery', 'bootstrap'], function ($) {
+            if (strOp === "Add") {
+                $('#myModalLabel').html('添加记录');
+                //WA_CurrEduCls_EditEx.GetMaxStrId('#txtid_CurrEduCls');
+            }
+            else if (strOp === "Update") {
+                $('#myModalLabel').html('修改记录');
+            }
+            else if (strOp === "Detail") {
+                $('#btnOKUpd').hide();
+                $('#myModalLabel').html('详细信息');
+            }
+            $('#divEditRegionSetUpDate').modal('show');
+        });
+    }
+
+    /*
+     隐藏对话框
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+    */
+    function HideDialogOne() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divEditRegionSetUpDate').modal('hide');
+        });
+    }
+
+
+
+ /*
+  动态添加编辑区域
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_AddDPV_Edit)
+ */
+function AddDPV_Edit(divName4Edit) {
+   require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+curreducls.CurrEduClsList.AddDPV_Edit(divName4Edit);
+});
+}
+
+ /*
+  按钮单击,用于调用Js函数中btn_Click
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btn_Click)
+ */
+function btn_Click(strCommandName, strKeyId) {
+   require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+curreducls.CurrEduClsList.btn_Click(strCommandName, strKeyId);
+});
+}
+
+ /*
+  添加新记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnAddNewRecord_Click)
+ */
+function btnAddNewRecord_Click() {
+   require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+ShowDialog('Add');
+var objPage = new curreducls.CurrEduClsList();
+objPage.btnAddNewRecord_Click();
+});
+}
+
+ /*
+  删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecord_Click)
+ */
+function btnDelRecord_Click() {
+   require(["../js/DailyRunning/CurrEduClsList.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(curreducls, commonfunc) {
+var arrKeyIds = commonfunc.clsCommonFunc4Web.GetCheckedKeyIds();
+if (arrKeyIds.length == 0)
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new curreducls.CurrEduClsList();
+objPage.btnDelRecord_Click();
+});
+}
+
+
+ /*
+  在数据表里删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecordInTab_Click)
+ */
+function btnDelRecordInTab_Click(strKeyId) {
+   require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+if (strKeyId == "")
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new curreducls.CurrEduClsList();
+objPage.btnDelRecordInTab_Click(strKeyId);
+});
+}
+
+
+/*
+ 修改记录
+(AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnUpdateRecord_Click)
+*/
+function btnSetUpDateRecord_Click() {
+    require(["../js/DailyRunning/CurrEduClsList.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (curreducls, commonfunc) {
+        var strKeyId = commonfunc.clsCommonFunc4Web.GetFirstCheckedKeyId(objPage.divName4List);
+        if (strKeyId == "") {
+            alert("请选择一条需要的记录！");
+            return;
+        }
+
+        var objPage = new curreducls.CurrEduClsList();
+        objPage.btnSetUpDateRecord_Click(strKeyId);
+    });
+}
+ /*
+  在数据表里修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnUpdateRecordInTab_Click)
+ */
+function btnUpdateRecordInTab_Click(strKeyId) {
+   require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+    if (strKeyId == "")
+{
+alert("请选择需要修改的记录！");
+return;
+}
+var objPage = new curreducls.CurrEduClsList();
+  objPage.btnUpdateRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  单击数据列表中每行首列的复选框所引发的事件
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ChkClick)
+ */
+function ChkClick(myThis)
+{
+require(["../js/DailyRunning/CurrEduClsList.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(curreducls, commonfunc) {
+var strId = myThis.id;
+var strKey = strId.substring(3);
+var arrKeys = commonfunc.arrSelectedKeys;
+if (myThis.checked == true) {
+if (arrKeys.indexOf(strKey) < 0)
+{
+arrKeys.push(strKey);
+}
+}
+else {
+var index = arrKeys.indexOf(strKey);
+if (index > -1)
+{
+arrKeys.splice(index, 1);
+}
+}
+var sstrKey = "";
+for (let strK of arrKeys)
+{
+sstrKey += `${ strK},`;
+}
+$('#spanResult').html(sstrKey);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ExpandDiv)
+ */
+         function ExpandDiv(divName) {
+//基于RequireJS来调用tzPubFun.ts中的函数OnlyShowDiv。
+require(["../js/TS/PubFun/tzPubFun"], function (pubfun) {
+      pubfun.OnlyShowDiv(divName, "function", "content");
+});
+}
+
+ /*
+  获取数据列表中的所选记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_GetAllCkechedKeys)
+ */
+function GetAllCkechedKeys(tabName)
+{
+var arrKeys = tabName.getElementsByTagName('chkInTab');
+alert(arrKeys.length.toString());
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_IndexPage)
+ */
+function IndexPage(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+var objPage = new curreducls.CurrEduClsList();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_JumpToPage)
+ */
+function JumpToPage()
+{
+var intCurrPageIndex = $('#input_number').val();
+var intPageIndex = Number(intCurrPageIndex);
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+var objPage = new curreducls.CurrEduClsList();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_mySubmit)
+ */
+function mySubmit(pstrOp) {
+    $("#divLoading").show();
+    //防止重复提交
+    $('#btnOKUpd').attr("disabled", true);
+//    alert("提交" + strOp);
+   require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+var objPage = new curreducls.CurrEduClsList();
+           objPage.btnOKUpd_Click();
+    });
+}
+
+  function getWeek(dateString) {
+        var dateArray = dateString.split("-");
+        date = new Date(dateArray[0], parseInt(dateArray[1] - 1), dateArray[2]);
+        return "周" + "日一二三四五六".charAt(date.getDay());
+    };
+/*
+提交编辑
+(AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_mySubmit)
+*/
+  function mySubmitDate(pstrOp) {
+
+      //if ($("#txtStartDate").val() == "") {
+
+      //    layer.msg('请选择开始日期!', {
+      //        icon: 3,
+      //        time: 1000
+      //    });
+
+      //}
+      //else if ($("#txtEndDate").val() == "") {
+      //    layer.msg('请选择结束日期!', {
+      //        icon: 3,
+      //        time: 1000
+      //    });
+      //}
+      //else {
+      //    $("#divLoading").show();
+      //    //防止重复提交
+      //    $('#btnOKUpd').attr("disabled", true);
+      //    //    alert("提交" + strOp);
+      //    require(["../js/DailyRunning/CurrEduClsList.js"], function (curreducls) {
+      //        var objPage = new curreducls.CurrEduClsList();
+      //        objPage.mySubmitDate();
+      //    });
+      //}
+      var weekStart = getWeek($("#txtStartDate").val());
+      var weekEnd = getWeek($("#txtEndDate").val());
+      if ($("#txtStartDate").val() == "") {
+
+          layer.msg('请选择开始日期!', {
+              icon: 3,
+              time: 1000
+          });
+
+      }
+      else if (weekStart != "周日") {
+
+          layer.msg('请选择周日的开始日期!', {
+              icon: 3,
+              time: 1500
+          });
+      }
+      else if ($("#txtEndDate").val() == "") {
+          layer.msg('请选择结束日期!', {
+              icon: 3,
+              time: 1000
+          });
+      }
+      else if (weekEnd != "周六") {
+            layer.msg('请选择周六的结束日期!', {
+                icon: 3,
+                time: 1500
+            });
+
+        }
+        else {
+            $("#divLoading").show();
+        //防止重复提交
+            $('#btnOKUpd').attr("disabled", true);
+        //    alert("提交" + strOp);
+            require(["../js/DailyRunning/CurrEduClsList.js"], function (curreducls) {
+                var objPage = new curreducls.CurrEduClsList();
+                objPage.mySubmitDate();
+            });
+        }
+
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_NextPage)
+ */
+function NextPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) + 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+var objPage = new curreducls.CurrEduClsList();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+function GetTextId() {
+    var Request = new Object();
+    Request = GetRequest();
+
+    //课文Id
+    var strTextId = Request['TextId'];
+    $('#hidTextId').val(strTextId);
+
+    if (strTextId != null) {
+        require(["../js/DailyRunning/CurrEduClsList.js"], function (curreducls) {
+            var objPage = new curreducls.CurrEduClsList();
+            objPage.Page_Load();
+        });
+    }
+}
+
+ /*
+  页面导入-在导入页面后运行的函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_Page_Load)
+ */
+window.onload = function() {
+    this.GetTextId();
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PageNum)
+ */
+function PageNum(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+var objPage = new curreducls.CurrEduClsList();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PrevPage)
+ */
+function PrevPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) - 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+var objPage = new curreducls.CurrEduClsList();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  全选数据列表中的所有记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SetAllCkechedKeys)
+ */
+function SetAllCkechedKeys(tabName)
+{
+var thisChk = event.target;
+require(["../js/TS/PubFun/clsCommonFunc4Web.js"], function (commonfunc) {
+console.log(tabName);
+console.log(thisChk);
+commonfunc.clsCommonFunc4Web.SetAllCkechedKeys(tabName, thisChk);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SortBy)
+ */
+function SortBy(strFldName)
+{
+console.log("按：" + strFldName + "排序");
+require(["../js/DailyRunning/CurrEduClsList.js"], function(curreducls) {
+var objPage = new curreducls.CurrEduClsList();
+objPage.SortBy(strFldName);
+});
+}
+
+ 
+</script>
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+<div id="tabLayout" class="tab_layout">
+    @*-- 标题层 --*@
+
+    @*<div style="position: relative; width: 648px; height: 37px; left: 0px; top: 0px;">
+            <Label id="lblViewTitle" name="lblViewTitle" class="h5">
+                当前教学班CRUD
+            </Label>
+            <Label id="lblMsg_List" name="lblMsg_List" class="text-warning" style="width:250px;">
+            </Label>
+        </div>*@
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">个人中心</a>
+            <a>
+                <cite>教学班</cite>
+            </a>
+            <Label id="lblMsg_List" name="lblMsg_List"></Label>
+        </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+    @*-- 查询层 --*@
+
+    <div id="divQuery" class="div_query">
+        <table id="tabQuery" style="width:40%" class="table table-bordered table-hover table td table-sm">
+            <tr>
+                <td>
+                    <input id="txtCurrEduClsId_q" name="txtCurrEduClsId_q" placeholder="教学班ID" class="layui-input" style="width:150px;" />
+                </td>
+
+                <td>
+                    <input id="txtEduClsName_q" name="txtEduClsName_q" placeholder="教学班名称" class="layui-input" style="width:200px;" />
+                </td>
+                <td>
+                    @*<button type="submit" id="btnQuery" name="btnQuery" class="btn btn-outline-warning text-nowrap" onclick="btn_Click('Query')">查询</button>*@
+                    <button class="layui-btn" lay-submit="" lay-filter="sreach" onclick="btn_Click('Query')">
+                        <i class="layui-icon">&#xe615;</i>
+                    </button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    @*-- 功能区 --*@
+
+    <div id="divFunction" class="table table-bordered table-hover">
+        <ul class="nav">
+            <li class="nav-item">
+                <Label id="lblCurrEduClsList" name="lblCurrEduClsList" class="col-form-label text-info" style="width:250px;">
+
+                </Label>
+            </li>
+
+        </ul>
+    </div>
+    @*-- 列表层 --*@
+    <div id="divList" class="div_List">
+        <div id="divDataLst" class="div_List">
+        </div>
+        <div id="divPager" class="pager" value="1">
+           
+        </div>
+    </div>
+    @*-- 编辑层 --*@
+    <div id="divEdit" value="1"></div>
+
+
+
+
+</div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" value="@Model.seUserId" />
+<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvCurrEduClsBy" type="hidden" value="" />
+<input id="txtid_CurrEduCls" type="hidden" />
+<!-- 存放教学班日期主键 -->
+<input id="hidgs_DateId" type="hidden" />
+<!-- 存放不同界面传入参数 -->
+<input id="hidPagetype" type="hidden" />
+<!-- 课文id -->
+<input id="hidTextId" type="hidden" />

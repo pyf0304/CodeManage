@@ -1,0 +1,652 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduPublicPage.AddSysSocialRelationsModel
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "社会关系表维护";
+    //操作Session样例，方法1：
+    //Model.seUserId = "TestUserId";
+    var strUserId_Value = Model.seUserId;
+    //操作Session样例，方法2：
+    Model.SetSession("UserId1", "TestUserId1");
+    var strUserId1_Value = Model.GetSession("UserId1");
+    //请参见页尾的隐形控件hidUserid和hidUserId1的使用。
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+}
+@section Scripts{
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+
+var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+var strCurrPrjId = "@Model.CurrPrjId";
+
+ /*
+  动态添加编辑区域
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_AddDPV_Edit)
+ */
+function AddDPV_Edit(divName4Edit) {
+   require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+syssocialrelations.AddSysSocialRelationsEx.AddDPV_Edit(divName4Edit);
+});
+}
+
+ /*
+  按钮单击,用于调用Js函数中btn_Click
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btn_Click)
+ */
+function btn_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+syssocialrelations.AddSysSocialRelationsEx.btn_Click(strCommandName, strKeyId);
+});
+}
+
+ /*
+  添加新记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnAddNewRecord_Click)
+ */
+function btnAddNewRecord_Click() {
+   require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+ShowDialog('Add');
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.btnAddNewRecord_Click();
+});
+}
+
+ /*
+  删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecord_Click)
+ */
+function btnDelRecord_Click() {
+   require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(syssocialrelations, commonfunc) {
+var arrKeyIds = commonfunc.clsCommonFunc4Web.GetCheckedKeyIds();
+if (arrKeyIds.length == 0)
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.btnDelRecord_Click();
+});
+}
+
+
+ /*
+  在数据表里删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecordInTab_Click)
+ */
+function btnDelRecordInTab_Click(strKeyId) {
+   require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+if (strKeyId == "")
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.btnDelRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  在数据表里修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnUpdateRecordInTab_Click)
+ */
+function btnUpdateRecordInTab_Click(strKeyId) {
+   require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+    if (strKeyId == "")
+{
+alert("请选择需要修改的记录！");
+return;
+}
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+  objPage.btnUpdateRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  单击数据列表中每行首列的复选框所引发的事件
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ChkClick)
+ */
+function ChkClick(myThis)
+{
+require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(syssocialrelations, commonfunc) {
+var strId = myThis.id;
+var strKey = strId.substring(3);
+var arrKeys = commonfunc.arrSelectedKeys;
+if (myThis.checked == true) {
+if (arrKeys.indexOf(strKey) < 0)
+{
+arrKeys.push(strKey);
+}
+}
+else {
+var index = arrKeys.indexOf(strKey);
+if (index > -1)
+{
+arrKeys.splice(index, 1);
+}
+}
+var sstrKey = "";
+for (let strK of arrKeys)
+{
+sstrKey += `${ strK},`;
+}
+$('#spanResult').html(sstrKey);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ExpandDiv)
+ */
+         function ExpandDiv(divName) {
+//基于RequireJS来调用tzPubFun.ts中的函数OnlyShowDiv。
+require(["../js/TS/PubFun/tzPubFun"], function (pubfun) {
+      pubfun.OnlyShowDiv(divName, "function", "content");
+});
+}
+
+ /*
+  获取数据列表中的所选记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_GetAllCkechedKeys)
+ */
+function GetAllCkechedKeys(tabName)
+{
+var arrKeys = tabName.getElementsByTagName('chkInTab');
+alert(arrKeys.length.toString());
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_IndexPage)
+ */
+function IndexPage(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_JumpToPage)
+ */
+function JumpToPage()
+{
+var intCurrPageIndex = $('#input_number').val();
+var intPageIndex = Number(intCurrPageIndex);
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_mySubmit)
+ */
+function mySubmit(pstrOp) {
+
+    //先验证控件
+    if ($("#txtFullName").val() == "") {
+        layer.msg('姓名不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#txtFullName").val().length > 100) {
+        layer.msg('姓名不能超过100!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#ddlOperationTypeId").val() == "" || $("#ddlOperationTypeId").val() == "0") {
+        layer.msg('操作类型不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+
+    else if ($("#txtNationality").val() == "") {
+        layer.msg('国籍不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#txtNationality").val().length > 1000) {
+        layer.msg('国籍不能超过100!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#ddlShareId").val() == "" || $("#ddlShareId").val() == "0") {
+        layer.msg('分享不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#txtAchievement").val() == "") {
+        layer.msg('成就不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#txtAchievement").val().length > 1000) {
+        layer.msg('成就不能超过1000!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+
+    else {
+        $("#divLoading").show();
+        //防止重复提交
+        $('#btnOKUpd').attr("disabled", true);
+        ////调用附件验证；
+        //IsFile();
+        //    alert("提交" + strOp);
+        require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function (syssocialrelations) {
+            var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+            objPage.btnOKUpd_Click();
+        });
+
+    }
+
+
+
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_NextPage)
+ */
+function NextPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) + 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+
+
+
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+//function GetSyssocialId() {
+//    var Request = new Object();
+//    Request = GetRequest();
+
+//    var str2 = Request['TopicId'];
+//    $("#hidTopicId").val(str2);
+//    var str3 = Request['PaperId'];
+//    $("#hidRequestPaperId").val(str3);
+
+
+//    var str1 = Request['SocialId'];
+//    $("#hidSocialId").val(str1);
+//}
+
+
+function GetSyssocialId_load() {
+    var Request = new Object();
+    Request = GetRequest();
+    var str1 = Request['SocialId'];
+    $("#hidSocialId").val(str1);
+    var str2 = Request['TopicId'];
+    $("#hidTopicId").val(str2);
+    var str3 = Request['PaperId'];
+    $("#hidRequestPaperId").val(str3);
+
+    var str5 = Request['PdfPageNum'];
+    $("#hidPdfPageNum").val(str5);
+
+    var str7 = Request['Id_CurrEduCls'];
+    $("#hidId_CurrEduCls").val(str7);
+
+
+    if (str2 != null) {
+
+
+        require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+            var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+            objPage.Page_Load();
+        });
+
+    }
+    else {
+        require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+            var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+            objPage.Page_Load();
+        });
+    }
+}
+
+ /*
+  页面导入-在导入页面后运行的函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_Page_Load)
+ */
+window.onload = function () {
+
+    GetSyssocialId_load();
+
+
+
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PageNum)
+ */
+function PageNum(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PrevPage)
+ */
+function PrevPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) - 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  全选数据列表中的所有记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SetAllCkechedKeys)
+ */
+function SetAllCkechedKeys(tabName)
+{
+var thisChk = event.target;
+require(["../js/TS/PubFun/clsCommonFunc4Web.js"], function (commonfunc) {
+console.log(tabName);
+console.log(thisChk);
+commonfunc.clsCommonFunc4Web.SetAllCkechedKeys(tabName, thisChk);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SortBy)
+ */
+function SortBy(strFldName)
+{
+console.log("按：" + strFldName + "排序");
+require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js"], function(syssocialrelations) {
+var objPage = new syssocialrelations.AddSysSocialRelationsEx();
+objPage.SortBy(strFldName);
+});
+}
+
+ 
+
+//技能数据提交
+function btnIsSubmit_Click(strKeyId) {
+    require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (viewpoint, commonfunc) {
+        
+        if (strKeyId == "") {
+            alert("请选择需要提交的记录！");
+            return;
+        }
+        //ShowDialog('Update');
+        var objPage = new viewpoint.AddSysSocialRelationsEx();
+        objPage.btnIsSubmit_Click(strKeyId);
+    });
+}
+//取消提交
+function btnCancelSubmit_Click(strKeyId) {
+
+    require(["../js/GraduateEduPublicPage/AddSysSocialRelationsEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function (viewpoint, commonfunc) {
+
+        if (strKeyId == "") {
+            alert("请选择需要取消的记录！");
+            return;
+        }
+        var objPage = new viewpoint.AddSysSocialRelationsEx();
+        objPage.btnCancelSubmit_Click(strKeyId);
+
+    });
+
+}
+
+function CloseWindow() {
+
+    try {
+        var strpaperId = $("#hidRequestPaperId").val();
+        if (strpaperId != "") {
+            window.parent.CloseWindow();
+        }
+        else {
+            var strPageType = $('#hidUserTypeId').val();
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index); //再执行关闭
+
+            //社会关系；
+            window.parent.liSysSocialRelationsClick();
+        }
+        //if (strPageType == "01") {
+        //    window.parent.liViewpointClick();
+        //}
+        //else if (strPageType == "02") {
+        //    window.parent.liExpertViewpointClick();
+        //}
+        //else if (strPageType == "03") {
+        //    window.parent.liConceptClick();
+        //} else if (strPageType == "04") {
+        //    window.parent.liObjectiveFactClick();
+        //} else if (strPageType == "05") {
+        //    window.parent.liObjectiveBasisClick();
+        //}
+    } catch (e) {
+        window.opener.location = "父页面地址";
+        window.opener = null;
+
+        window.close();
+    }
+}
+</script>
+
+
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+<div id="tabLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    @*<div class="modal fade" id="divEditRegion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">*@
+    <div id="divEditRegion" tabindex="-1">
+        <div>
+            @*<div class="modal-content" style="width: 835px;">*@
+            <div style="width: 99%;margin-left:5px;">
+                <div>
+                    <table id="tabEdit" style="width:100%;padding: 1px; border:0px" class="table table-bordered table-hover">
+                        <tr style="display:none;">
+                            <td class="NameTD" style="width:10%;">
+                                <Label id="lblSocialId" name="lblSocialId" class="col-form-label text-right" style="width:90px;">
+                                    社会Id
+                                </Label>
+                            </td>
+                            <td class="ValueTD" colspan="2">
+                                <input id="txtSocialId" name="txtSocialId" class="form-control" style="width:150px;" />
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblFullName" name="lblFullName" class="col-form-label text-right" style="width:90px;">
+                                    姓名
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtFullName" name="txtFullName" class="form-control" style="width:200px;" />
+                            </td>
+                            <td class="NameTD">
+                                <Label id="lblNationality" name="lblNationality" class="col-form-label text-right" style="width:90px;">
+                                    国籍
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtNationality" name="txtNationality" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr></tr>
+
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblWorkUnit" name="lblWorkUnit" class="col-form-label text-right" style="width:90px;">
+                                    工作单位
+                                </Label>
+                            </td>
+                            <td class="ValueTD" colspan="3">
+                                <input id="txtWorkUnit" name="txtWorkUnit" class="form-control" style="width:300px;" />
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblMajor" name="lblMajor" class="col-form-label text-right" style="width:90px;">
+                                    专业
+                                </Label>
+                            </td>
+                            <td class="ValueTD" colspan="3">
+                                <input id="txtMajor" name="txtMajor" class="form-control" style="width:200px;" />
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td class="NameTD">
+                                <Label id="lblLevelId" name="lblLevelId" class="col-form-label text-right" style="width:90px;">
+                                    级别
+                                </Label>
+                            </td>
+                            <td class="NameTD">
+                                <select id="ddlLevelId" name="ddlLevelId" class="form-control" style="width:200px;"></select>
+                            </td>
+                            <td colspan="3">
+                                <span class="form-control" style="width:150px;">
+                                    <input type="checkbox" id="chkIsSubmit" name="chkIsSubmit" Text="是否提交"><label for="chkIsSubmit">是否提交</label>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblAchievement" name="lblAchievement" class="col-form-label text-right" style="width:90px;">
+                                    成就
+                                </Label>
+                            </td>
+                            <td colspan="3">
+                                @*<input id="txtAchievement" name="txtAchievement" class="form-control" style="width:150px;" />*@
+                                <textarea id="txtAchievement" name="txtAchievement" class="form-control" style="width:98%;height:150px;"></textarea>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblDetailedDescription" name="lblDetailedDescription" class="col-form-label text-right" style="width:90px;">
+                                    详细说明
+                                </Label>
+                            </td>
+                            <td colspan="3">
+                                @*<input id="txtDetailedDescription" name="txtDetailedDescription" class="form-control" style="width:150px;" />*@
+                                <textarea id="txtDetailedDescription" name="txtDetailedDescription" class="form-control" style="width:98%;height:200px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblShareId" name="lblShareId" class="col-form-label text-right" style="width:90px;">
+                                    分享
+                                </Label>
+                            </td>
+                            <td class="ValueTD" colspan="3">
+                                <select id="ddlShareId" name="ddlShareId" class="form-control" style="width:200px;" />
+
+                            </td>
+
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td colspan="3">
+                                <textarea id="txtMemo" name="txtMemo" class="form-control" style="width:98%;height:40px;"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel" type="button" class="btn btn-default" onclick="CloseWindow()">关闭</button>
+                    <button id="btnOKUpd" type="button" class="btn btn-primary" onclick="mySubmit()">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" value="@Model.seUserId" />
+<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvSysSocialRelationsBy" type="hidden" value="" />
+
+<!-- 论文排序  -->
+<input id="hidSortvPaperBy" type="hidden" value="" />
+<!-- 主题Id  -->
+<input id="hidTopicId" type="hidden" />
+<!-- 社会关系Id  -->
+<input id="hidSocialId" type="hidden" />
+<!-- 传参论文  -->
+<input id="hidRequestPaperId" type="hidden" />
+
+
+<input id="hidPdfPageNum" type="hidden" />
+
+@* 教学班Id *@
+<input id="hidId_CurrEduCls" type="hidden" />

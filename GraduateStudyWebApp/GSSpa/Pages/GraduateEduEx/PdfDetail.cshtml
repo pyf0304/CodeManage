@@ -1,0 +1,84 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduEx.PdfDetailModel
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "pdf查看";
+    //操作Session样例，方法1：
+    //Model.seUserId = "TestUserId";
+    var strUserId_Value = Model.seUserId;
+    //操作Session样例，方法2：
+    Model.SetSession("UserId1", "TestUserId1");
+    var strUserId1_Value = Model.GetSession("UserId1");
+    //请参见页尾的隐形控件hidUserid和hidUserId1的使用。
+}
+@section Styles{
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+
+}
+@section Scripts{
+
+    @*<script src="../lib/jquery/dist/jquery.js"></script>
+        <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="../lib/require/require.js" data-main="../js/src/config"></script>*@
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+
+}
+<script>
+
+    var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+    var strCurrPrjId = "@Model.CurrPrjId";
+    var strWebRoot = "@Model.WebRoot";
+     var strAddressAndPort = "@Model.AddressAndPort";
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetPaperID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var str1;
+        str1 = Request['PaperId'];
+
+        if (str1 != null) {
+            $('#hidPaperId').val(str1);
+
+            require(["../js/GraduateEduEx/PdfDetail.js"], function (pdf) {
+                var objpage = new pdf.PdfDetail();
+                objpage.Page_Load();
+
+            });
+
+        }
+    }
+
+
+    window.onload = function () {
+        GetPaperID();
+    }
+</script>
+
+
+<div style="height:100%;" id="div_pdf">
+</div>
+
+
+<input id="hidPaperId" type="hidden" />

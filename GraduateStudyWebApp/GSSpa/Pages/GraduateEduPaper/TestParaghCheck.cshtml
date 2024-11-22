@@ -1,0 +1,687 @@
+﻿@page
+@{
+    Layout = null;
+    ViewData["Title"] = "比较两个String字符串";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>比较两个String字符串找出不同，并将不同处高亮显示</title>
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <style type="text/css">
+        textarea {
+            border: 1px;
+            /*//可根据需要修改有无边框显示长度和宽带*/
+            overflow: auto;
+            height: 100%;
+            width: 100%
+        }
+
+        input {
+            border: 1px;
+            overflow: auto;
+            height: 99%;
+            width: 96%
+        }
+    </style>
+    <script type="text/javascript" src="../lib/jquery-1.6.min.js"></script>
+    @*<script src="jquery-1.10.2.min.js"></script>*@
+    @*<script src="getHighLightDifferent.js"></script>*@
+
+    @*Excel.js*@
+    <script src="~/lib/xlsx.core.min.js" type="text/javascript"></script>
+    <script src="~/lib/xlsx.full.min.js" type="text/javascript"></script>
+
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+
+
+    <script src="~/lib/require/require.js" data-main="../js/src/config"></script>
+
+    @*Excel.js 导出所需要的函数 ；测试等等；*@
+    <script>
+
+
+    function selectFile() {
+        document.getElementById('file').click();
+    }
+
+    //// 读取本地excel文件
+    //function readWorkbookFromLocalFile(file, callback) {
+    //    var reader = new FileReader();
+    //    reader.onload = function (e) {
+    //        var data = e.target.result;
+    //        var workbook = XLSX.read(data, { type: 'binary' });
+    //        if (callback) callback(workbook);
+    //    };
+    //    reader.readAsBinaryString(file);
+    //}
+
+    //// 从网络上读取某个excel文件，url必须同域，否则报错
+    //function readWorkbookFromRemoteFile(url, callback) {
+    //    var xhr = new XMLHttpRequest();
+    //    xhr.open('get', url, true);
+    //    xhr.responseType = 'arraybuffer';
+    //    xhr.onload = function (e) {
+    //        if (xhr.status == 200) {
+    //            var data = new Uint8Array(xhr.response)
+    //            var workbook = XLSX.read(data, { type: 'array' });
+    //            if (callback) callback(workbook);
+    //        }
+    //    };
+    //    xhr.send();
+    //}
+
+    // 读取 excel文件
+    function outputWorkbook(workbook) {
+        var sheetNames = workbook.SheetNames; // 工作表名称集合
+        sheetNames.forEach(name => {
+            var worksheet = workbook.Sheets[name]; // 只能通过工作表名称来获取指定工作表
+            for (var key in worksheet) {
+                // v是读取单元格的原始值
+                console.log(key, key[0] === '!' ? worksheet[key] : worksheet[key].v);
+            }
+        });
+    }
+
+    function readWorkbook(workbook) {
+        var sheetNames = workbook.SheetNames; // 工作表名称集合
+        var worksheet = workbook.Sheets[sheetNames[0]]; // 这里我们只读取第一张sheet
+        var csv = XLSX.utils.sheet_to_csv(worksheet);
+        document.getElementById('result').innerHTML = csv2table(csv);
+    }
+
+    // 将csv转换成表格
+    function csv2table(csv) {
+        var html = '<table>';
+        var rows = csv.split('\n');
+        rows.pop(); // 最后一行没用的
+        rows.forEach(function (row, idx) {
+            var columns = row.split(',');
+            columns.unshift(idx + 1); // 添加行索引
+            if (idx == 0) { // 添加列索引
+                html += '<tr>';
+                for (var i = 0; i < columns.length; i++) {
+                    html += '<th>' + (i == 0 ? '' : String.fromCharCode(65 + i - 1)) + '</th>';
+                }
+                html += '</tr>';
+            }
+            html += '<tr>';
+            columns.forEach(function (column) {
+                html += '<td>' + column + '</td>';
+            });
+            html += '</tr>';
+        });
+        html += '</table>';
+        return html;
+    }
+
+    function table2csv(table) {
+        var csv = [];
+        $(table).find('tr').each(function () {
+            var temp = [];
+            $(this).find('td').each(function () {
+                temp.push($(this).html());
+            })
+            temp.shift(); // 移除第一个
+            csv.push(temp.join(','));
+        });
+        csv.shift();
+        return csv.join('\n');
+    }
+
+    // csv转sheet对象
+    function csv2sheet(csv) {
+        var sheet = {}; // 将要生成的sheet
+        csv = csv.split('\n');
+        csv.forEach(function (row, i) {
+            row = row.split(',');
+            if (i == 0) sheet['!ref'] = 'A1:' + String.fromCharCode(65 + row.length - 1) + (csv.length - 1);
+            row.forEach(function (col, j) {
+                sheet[String.fromCharCode(65 + j) + (i + 1)] = { v: col };
+            });
+        });
+        return sheet;
+    }
+
+    // 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
+    function sheet2blob(sheet, sheetName) {
+        sheetName = sheetName || 'sheet1';
+        var workbook = {
+            SheetNames: [sheetName],
+            Sheets: {}
+        };
+        workbook.Sheets[sheetName] = sheet;
+        // 生成excel的配置项
+        var wopts = {
+            bookType: 'xlsx', // 要生成的文件类型
+            bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+            type: 'binary'
+        };
+        var wbout = XLSX.write(workbook, wopts);
+        var blob = new Blob([s2ab(wbout)], { type: "application/octet-stream" });
+        // 字符串转ArrayBuffer
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+        return blob;
+    }
+
+    @*/**
+	 * 通用的打开下载对话框方法，没有测试过具体兼容性
+	 * @param url 下载地址，也可以是一个blob对象，必选
+	 * @param saveName 保存文件名，可选
+	 */*@
+    function openDownloadDialog(url, saveName) {
+        if (typeof url == 'object' && url instanceof Blob) {
+            url = URL.createObjectURL(url); // 创建blob地址
+        }
+        var aLink = document.createElement('a');
+        aLink.href = url;
+        aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+        var event;
+        if (window.MouseEvent) event = new MouseEvent('click');
+        else {
+            event = document.createEvent('MouseEvents');
+            event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        }
+        aLink.dispatchEvent(event);
+    }
+
+    $(function () {
+        document.getElementById('file').addEventListener('change', function (e) {
+            var files = e.target.files;
+            if (files.length == 0) return;
+            var f = files[0];
+            if (!/\.xlsx$/g.test(f.name)) {
+                alert('仅支持读取xlsx格式！');
+                return;
+            }
+            readWorkbookFromLocalFile(f, function (workbook) {
+                readWorkbook(workbook);
+            });
+        });
+        loadRemoteFile('./sample/test.xlsx');
+    });
+
+    function loadRemoteFile(url) {
+        readWorkbookFromRemoteFile(url, function (workbook) {
+            readWorkbook(workbook);
+        });
+    }
+
+     //导出Excel 通过js；
+    function exportExcel() {
+        //var csv = table2csv($('#result table')[0]);
+        //var csv = table2csv($('#divDataLst table')[0]);
+
+        //var sheet = csv2sheet(csv);
+        //var blob = sheet2blob(sheet);
+
+        //openDownloadDialog(blob, '导出.xlsx');
+
+        //1
+       
+        //openDownloadDialog(sheet2blob(sheet), '导出.xlsx');
+
+        //另一种
+       // var table1 = document.querySelector("#table1");
+        //  var sheet = XLSX.utils.table_to_sheet(table1);//将一个table对象转换成一个sheet对象
+
+        var sheet = XLSX.utils.table_to_sheet($('#divDataLst table')[0]);
+        openDownloadDialog(sheet2blob(sheet), '下载.xlsx');
+    }
+
+    function exportSpecialExcel() {
+        var aoa = [
+			['主要信息', null, null, '其它信息'], // 特别注意合并的地方后面预留2个null
+			['姓名', '性别', '年龄', '注册时间'],
+			['张三', '男', 18, new Date()],
+			['李四', '女', 22, new Date()]
+        ];
+        var sheet = XLSX.utils.aoa_to_sheet(aoa);
+        sheet['!merges'] = [
+			// 设置A1-C1的单元格合并
+			{ s: { r: 0, c: 0 }, e: { r: 0, c: 2 } }
+        ];
+        openDownloadDialog(sheet2blob(sheet), '单元格合并示例.xlsx');
+    }
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            //$("#inpStartCompare").click(function () {
+            //return startCompare();
+            $("#click").click(function () {
+                // $('p').hide();
+                var txt = $('#txt').html();
+                console.log(txt);
+                var tt = txt.replace(/我/g, '<span style="color:red;">你</span>');
+                $('#txt').html(tt);
+            });
+            //});
+        });
+        function startCompare() {
+            var a = $.trim($("#inpLeft").val());
+            var b = $.trim($("#inpRight").val());
+
+            var result = getHighLightDifferent(a, b);
+            //getHighLightDifferent("1000", "10012");
+
+            $("#show1").html(result[0]);
+            $("#show2").html(result[1]);
+            return false;
+        }
+
+        var flag = 1;
+
+        function getHighLightDifferent(a, b) {
+            //console.log("输入：" + a);
+            //console.log("输入：" + b);
+
+            var temp = getDiffArray(a, b);
+            var a1 = getHighLight(a, temp[0]);
+            //console.log("输出：" + a1);
+
+            var a2 = getHighLight(b, temp[1]);
+            //console.log("输出：" + a2);
+            //console.log(flag);
+            return new Array(a1, a2);
+        }
+
+        function getHighLight(source, temp) {
+            var ColorCode = $("#hidColorcode").val();
+            var result = new StringBuffer();
+            var sourceChars = source.split("");
+            var tempChars = temp.split("");
+            var flag = false;
+            for (var i = 0; i < sourceChars.length; i++) {
+                if (tempChars[i] != ' ') {
+                    if (i == 0) {
+                        //result.append("<span style='color:blue'>");
+                        result.append("<span style='color:'" + ColorCode + "'>");
+                        result.append(sourceChars[i]);
+                    }
+                    else if (flag) {
+                        result.append(sourceChars[i]);
+                    }
+                    else {
+                        result.append("<span style='color:blue'>");
+                        result.append(sourceChars[i]);
+                    }
+                    flag = true;
+                    if (i == sourceChars.length - 1) {
+                        result.append("</span>");
+                    }
+                }
+                else if (flag == true) {
+                    result.append("</span>");
+                    result.append(sourceChars[i]);
+                    flag = false;
+                } else {
+                    result.append(sourceChars[i]);
+                }
+            }
+            return result.toString();
+        }
+
+        function getDiffArray(a, b) {
+            var result = new Array();
+            //选取长度较小的字符串用来穷举子串
+            if (a.length < b.length) {
+                var start = 0;
+                var end = a.length;
+                result = getDiff(a, b, start, end);
+            } else {
+                var start = 0;
+                var end = b.length;
+                result = getDiff(b, a, 0, b.length);
+                result = new Array(result[1], result[0]);
+            }
+            return result;
+
+        }
+
+        //将a的指定部分与b进行比较生成比对结果
+        function getDiff(a, b, start, end) {
+            var result = new Array(a, b);
+            var len = result[0].length;
+            while (len > 0) {
+                for (var i = start; i < end - len + 1; i++) {
+                    var sub = result[0].substring(i, i + len);
+                    var idx = -1;
+                    if ((idx = result[1].indexOf(sub)) != -1) {
+                        result[0] = setEmpty(result[0], i, i + len);
+                        result[1] = setEmpty(result[1], idx, idx + len);
+                        if (i > 0) {
+                            //递归获取空白区域左边差异
+                            result = getDiff(result[0], result[1], start, i);
+                        }
+                        if (i + len < end) {
+                            //递归获取空白区域右边差异
+                            result = getDiff(result[0], result[1], i + len, end);
+                        }
+                        len = 0;//退出while循环
+                        break;
+                    }
+                }
+                len = parseInt(len / 2);
+                //len = len - 1;
+                //console.log(len);
+            }
+            //console.log(result.join(""));
+            return result;
+        }
+
+        //将字符串s指定的区域设置成空格
+        function setEmpty(s, start, end) {
+            var array = s.split("");
+            for (var i = start; i < end; i++) {
+                array[i] = ' ';
+            }
+            return array.join("");
+        }
+
+        function StringBuffer() {
+            this.__strings__ = [];
+        };
+        StringBuffer.prototype.append = function (str) {
+            this.__strings__.push(str);
+            return this;
+        };
+        //格式化字符串
+        StringBuffer.prototype.appendFormat = function (str) {
+            for (var i = 1; i < arguments.length; i++) {
+                var parent = "\\{" + (i - 1) + "\\}";
+                var reg = new RegExp(parent, "g")
+                str = str.replace(reg, arguments[i]);
+            }
+
+            this.__strings__.push(str);
+            return this;
+        }
+        StringBuffer.prototype.toString = function () {
+            return this.__strings__.join('');
+        };
+        StringBuffer.prototype.clear = function () {
+            this.__strings__ = [];
+        }
+        StringBuffer.prototype.size = function () {
+            return this.__strings__.length;
+        }
+
+
+
+        // param $
+        //自定义jQuery扩展方法, 在光标处插入内容
+
+      @*(function ($) {
+          "use strict";
+          $.fn.extend({
+              insertAtCaret: function (myValue) {
+                  var $t = $(this)[0];
+                  if (document.selection) {
+                      this.focus();
+                      var sel = document.selection.createRange();
+                      sel.text = myValue;
+                      this.focus();
+                  } else
+                      if ($t.selectionStart || $t.selectionStart == '0') {
+                          var startPos = $t.selectionStart;
+                          var endPos = $t.selectionEnd;
+                          var scrollTop = $t.scrollTop;
+                          $t.value = $t.value.substring(0, startPos) + myValue + $t.value.substring(endPos, $t.value.length);
+                          this.focus();
+                          $t.selectionStart = startPos + myValue.length;
+                          $t.selectionEnd = startPos + myValue.length;
+                          $t.scrollTop = scrollTop;
+                      } else {
+                          this.value += myValue;
+                          this.focus();
+                      }
+              }
+          });
+      })(jQuery);*@
+
+
+//-----------------------------------------
+        //var ContentCurrentPostion = null; //记录当前位置,如果是IE记录的应该是一个rang范围,firefox则记录的是一个位置值
+        ///****记录插入位置***/
+        ////var GetTextAreaPostion = function (obj) {
+        //function GetTextAreaPostion(obj) {
+        //    if (document.selection) {
+        //        obj.focus();
+        //        ContentCurrentPostion = document.selection.createRange();
+        //    }
+        //    else if (obj.selectionStart || obj.selectionStart == '0') {
+        //        var startPos = obj.selectionStart;
+        //        var endPos = obj.selectionEnd;
+        //        ContentCurrentPostion = new Object();
+        //        ContentCurrentPostion.startPos = startPos;
+        //        ContentCurrentPostion.endPos = endPos;
+        //    }
+        //    else {
+        //        ContentCurrentPostion = null;
+        //    }
+        //}
+
+        //var SetContent = function (value, id) {
+        //    var str = value;
+        //    if (ContentCurrentPostion != null) {
+        //        $(id).focus();
+        //        if (document.selection) {
+        //            ContentCurrentPostion.text = str;
+        //        }
+        //        else {
+        //            var startPos = ContentCurrentPostion.startPos;
+        //            var endPos = ContentCurrentPostion.endPos;
+        //            $(id).value = $(id).value.substring(0, startPos) + str + $(id).value.substring(endPos, $(id).value.length);
+
+        //        }
+        //    }
+        //    else {
+        //        $(id).value += str;
+        //    }
+        //};
+
+
+
+
+
+
+function checkTxt() {
+    var obj = $('#text1'),
+        len = obj.val().length;
+    $('#num').html(len);
+}
+
+
+//循环得到的不同数据span标签内容；
+function eachCheckSpan() {
+    $("span[id='pid']").each(function (index, item) {//item是每个span项
+        var val = $(item).attr("value");//获取span中value的值
+        var arr = [];
+        arr.push(val);
+        for (var j = 0; j < data.length; j++) {//data是ajax返回的list;
+            if (data[j] == arr[0]) {
+                //console.log(data[j]);
+                $(item).css("background-color", "red");//表示该用户的列表中有该商品就让其变色
+            }
+        }
+
+    }
+   );
+}
+
+
+
+
+        //得到指定标签的内容；
+function GetTagContent()
+{
+    //var str = '<span style="color:red;">测试<span style="color:blue">一</span>大<span style="color:blue">段静态数据</span>，每段显示不同的颜色，<span style="color:blue">html嵌套显示</span>。</span>';
+    //var pat = /<(.*?)>/g;
+
+
+    //console.log(str.match(pat));　
+
+
+    var str = "aaa<bbbcccdddeee>fff";
+  //  str = str.match(/aaa(\S*)fff/)[1];
+    var str2 = str = str.match(/<(\S*)>/)[1];
+    var str3 = str = str.match(/<(\S*)>/)[2];
+    console.log(str2);
+    console.log(str3);
+    alert(str2);//结果bbbcccdddeee
+}
+
+
+function ck() {
+    //if (txt.indexOf('门票dao权') > -1) {
+    //    return '门票';
+    //}
+
+
+    var a = "aaaa门票bcd";
+    var b = "123a4a4b5b6";
+    //截取第2个字符"b"后面所有的字符  123a4a4b5b6   b5b6
+    var index = b.indexOf("b", b.indexOf("b") + 1);
+    var c = b.substring(index, b.length - index);//4b5
+
+    var d = b.substring(0, index);//123a4a4b5
+    var e = b.substring(index, b.length);//b6
+    var e1 = b.substring(index+1, b.length);//6
+
+    //alert(ck(c));
+    //alert(ck(d));
+    //alert(ck(e));
+}
+
+
+//function btnAddArrayByString() {
+//    var strText = '<span style="color:red;">测试<span style="color:blue">一</span>大<span style="color:blue">段数据</span>，不同的颜色，<span style="color:blue">嵌套显示</span>。</span>';
+//    require(["../js/GraduateEduPaper/gs_PaperParagraphPreview.js"], function (papersubviewpoint) {
+//        if (strKeyId == "") {
+//            alert("请选择需要修改的记录！");
+//            return;
+//        }
+
+//        var objPage = new papersubviewpoint.gs_PaperParagraphPreview();
+//        objPage.AddArrayByString(strText);
+//    });
+//}
+
+    </script>
+</head>
+<body>
+    <form>
+        <button id="clkGetTag" onclick="ck();">字符串截取测试</button>
+
+        <button id="clkGetTag" onclick="GetTagContent();">点击截取<>标签内容</button>
+
+
+        <button id="clkArrData" onclick="btnAddArrayByString();">对象列表数据存放测试</button>
+        <fieldset>
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <textarea rows="2" cols="20" type="text" id="inpLeft" name="inpLeft" onclick="GetTextAreaPostion(this)">——我们要坚持开放理念，推动各方各施所长、各尽所能，通过双边合作、三方合作、多边合作等各种形式，坚持一切合作都在阳光下运作。</textarea>
+
+                </div>
+                <div class="col-sm-2">
+                    <input id="inpStartCompare" type="button" value="开始比较" onclick="return startCompare();" />
+                </div>
+                <div class="col-sm-4">
+                    <textarea rows="2" cols="20" type="text" id="inpRight" name="inpRight">——我们要秉持共商共建共享原则，推动各方各施所长、各尽所能，通过双边合作、三方合作、多边合作等各种形式，聚沙成塔、积水成渊。</textarea>
+                </div>
+            </div>
+        </fieldset>
+        <br />
+        <div class="container">
+            <div id="show1" class="panel panel-primary"></div>
+            <div id="show2" class="panel panel-primary"></div>
+
+
+
+
+
+
+
+            <div id="show3" class="panel panel-primary">
+                <span style="color:red;">
+                    测试
+                    <span style="color:blue">一</span>
+                    大<span style="color:blue">段静态数据</span>
+                    ，每段显示不同的颜色，
+                    <span style="color:blue">html嵌套显示</span>。
+                </span>
+
+                <span style="color:#FF69B4" name="t1">
+                    <p>这是一段<span style="color:#EE82EE;" name="">友情提示</span>代码，<span style="color:#EE82EE;" name=>测试</span></p>
+                </span>
+            </div>
+        </div>
+        <div>
+            <span style="color:red;">测试<span style="color:blue">一</span>大<span style="color:blue">段数据</span>不同<span style="color:red;">小小</span><span style="color:blue"></span></span>
+        </div>
+
+        <div>
+            判断用户输入了几个字
+            <textarea class="area" name="" rows="2" cols="20" id="text1" maxlength="100" oninput="checkTxt()">多多少少</textarea>
+            <p class="notice">已输入<span id="num">0</span>个字</p>
+        </div>
+
+        <span style="color:red;">
+            <p id="txt"><span style="color:blue">如果你点我，我就会消失。</span></p>
+        </span>
+        <button id="click">点我!</button>
+    </form>
+
+    <div id="divDataLst" class="div_List" contenteditable="">
+        <table id="table1" border="1" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <td>序号</td>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>兴趣</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>张三</td>
+                    <td>18</td>
+                    <td>打游戏</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>李四</td>
+                    <td>88</td>
+                    <td>看电影</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>王五</td>
+                    <td>81</td>
+                    <td>睡觉</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
+
+    <button id="btn" onclick="exportExcel()">导出</button>
+
+</body>
+
+
+</html>
+<input id="hidColorcode" type="hidden" />

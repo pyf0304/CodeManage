@@ -1,0 +1,169 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /**
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ **/
+function btnSysComment_Edit_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduTools/SysComment_EditEx.js"], function(syscomment) {
+syscomment.SysComment_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+    </script>
+<div id = "divEditLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_SysComment" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_SysComment" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 235px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_SysComment">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:200px" class="table table-bordered table-hover table td table-sm">
+<tr id="trCommentId">
+<td class="text-right">
+<label id="lblCommentId" name="lblCommentId" class="col-form-label text-right" style="width:90px;">评论Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtCommentId" name="txtCommentId" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trComment">
+<td class="text-right">
+<label id="lblComment" name="lblComment" class="col-form-label text-right" style="width:90px;">评论
+</label>
+</td>
+<td class="text-left">
+<input  id="txtComment" name="txtComment" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trscore">
+<td class="text-right">
+<label id="lblscore" name="lblscore" class="col-form-label text-right" style="width:90px;">评分
+</label>
+</td>
+<td class="text-left">
+<input  id="txtscore" name="txtscore" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trCommentTypeId">
+<td class="text-right">
+<label id="lblCommentTypeId" name="lblCommentTypeId" class="col-form-label text-right" style="width:90px;">评论类型Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtCommentTypeId" name="txtCommentTypeId" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trScoreType">
+<td class="text-right">
+<label id="lblScoreType" name="lblScoreType" class="col-form-label text-right" style="width:90px;">评分类型
+</label>
+</td>
+<td class="text-left">
+<input  id="txtScoreType" name="txtScoreType" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trParentId">
+<td class="text-right">
+<label id="lblParentId" name="lblParentId" class="col-form-label text-right" style="width:90px;">父Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtParentId" name="txtParentId" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trTableKey">
+<td class="text-right">
+<label id="lblTableKey" name="lblTableKey" class="col-form-label text-right" style="width:90px;">表主键
+</label>
+</td>
+<td class="text-left">
+<input  id="txtTableKey" name="txtTableKey" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trUpdUser">
+<td class="text-right">
+<label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">修改人
+</label>
+</td>
+<td class="text-left">
+<input  id="txtUpdUser" name="txtUpdUser" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trUpdDate">
+<td class="text-right">
+<label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">修改日期
+</label>
+</td>
+<td class="text-left">
+<input  id="txtUpdDate" name="txtUpdDate" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+<tr id="trMemo">
+<td class="text-right">
+<label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMemo" name="txtMemo" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_SysComment" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_SysComment" type="button" class="btn btn-primary" onclick="btnSysComment_Edit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

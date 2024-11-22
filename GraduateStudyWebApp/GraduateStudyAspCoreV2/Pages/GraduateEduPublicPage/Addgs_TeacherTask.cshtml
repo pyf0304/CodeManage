@@ -1,0 +1,459 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduPublicPage.Addgs_TeacherTaskModel
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "教师任务布置";
+
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <link rel="stylesheet" href="~/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/SimpleTree.css">
+
+}
+@section Scripts{
+
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+}
+
+<script>
+
+var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+var strCurrPrjId = "@Model.CurrPrjId";
+
+ /*
+  动态添加编辑区域
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_AddDPV_Edit)
+ */
+function AddDPV_Edit(divName4Edit) {
+   require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+gs_teachertask.Addgs_TeacherTaskEx.AddDPV_Edit(divName4Edit);
+});
+}
+
+ /*
+  按钮单击,用于调用Js函数中btn_Click
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btn_Click)
+ */
+function btn_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+gs_teachertask.Addgs_TeacherTaskEx.btn_Click(strCommandName, strKeyId);
+});
+}
+
+ /*
+  在数据表里删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnDelRecordInTab_Click)
+ */
+function btnDelRecordInTab_Click(strKeyId) {
+   require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+if (strKeyId == "")
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+objPage.btnDelRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  在数据表里修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btnUpdateRecordInTab_Click)
+ */
+function btnUpdateRecordInTab_Click(strKeyId) {
+   require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+    if (strKeyId == "")
+{
+alert("请选择需要修改的记录！");
+return;
+}
+var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+  objPage.btnUpdateRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  单击数据列表中每行首列的复选框所引发的事件
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ChkClick)
+ */
+function ChkClick(myThis)
+{
+require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(gs_teachertask, commonfunc) {
+var strId = myThis.id;
+var strKey = strId.substring(3);
+var arrKeys = commonfunc.arrSelectedKeys;
+if (myThis.checked == true) {
+if (arrKeys.indexOf(strKey) < 0)
+{
+arrKeys.push(strKey);
+}
+}
+else {
+var index = arrKeys.indexOf(strKey);
+if (index > -1)
+{
+arrKeys.splice(index, 1);
+}
+}
+var sstrKey = "";
+for (let strK of arrKeys)
+{
+sstrKey += `${ strK},`;
+}
+$('#spanResult').html(sstrKey);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_ExpandDiv)
+ */
+         function ExpandDiv(divName) {
+//基于RequireJS来调用tzPubFun.ts中的函数OnlyShowDiv。
+require(["../js/TS/PubFun/tzPubFun"], function (pubfun) {
+      pubfun.OnlyShowDiv(divName, "function", "content");
+});
+}
+
+ /*
+  获取数据列表中的所选记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_GetAllCkechedKeys)
+ */
+function GetAllCkechedKeys(tabName)
+{
+var arrKeys = tabName.getElementsByTagName('chkInTab');
+alert(arrKeys.length.toString());
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_IndexPage)
+ */
+function IndexPage(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_JumpToPage)
+ */
+function JumpToPage()
+{
+var intCurrPageIndex = $('#input_number').val();
+var intPageIndex = Number(intCurrPageIndex);
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_mySubmit)
+ */
+function Submit_gs_TeacherTask(pstrOp) {
+
+    if ($("#txtMissionStatement").val() == "") {
+        layer.msg('任务说明不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else if ($("#txtMissionRequirement").val() == "") {
+        layer.msg('任务要求不能为空!', {
+            icon: 3,
+            time: 1000
+        });
+    }
+    else {
+        //    alert("提交" + strOp);
+        require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function (gs_teachertask) {
+            var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+            objPage.btnSubmit_Click();
+        });
+
+    }
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_NextPage)
+ */
+function NextPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) + 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+
+function GetRequest() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+function GetTeacherTaskId_load() {
+    var Request = new Object();
+    Request = GetRequest();
+
+    var str2 = Request['TopicId'];
+    $("#hidTopicId").val(str2);
+    
+    var str1 = Request['mId'];
+    $("#hidKeyId").val(str1);
+
+
+    var str3 = Request['Id_CurrEduCls'];
+    $("#hidId_CurrEduCls").val(str3);
+
+
+    if (str2 != null) {
+
+
+        require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function (gs_teachertask) {
+            var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+            objPage.Page_Load();
+        });
+    }
+    else {
+        require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function (gs_teachertask) {
+            var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+            objPage.Page_Load();
+        });
+    }
+}
+
+
+ /*
+  页面导入-在导入页面后运行的函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_Page_Load)
+ */
+window.onload = function () {
+
+    this.GetTeacherTaskId_load();
+
+}
+
+function CloseWindow() {
+
+    try {
+        var strpaperId = $("#hidRequestPaperId").val();
+        if (strpaperId != "" && strpaperId != undefined) {
+            window.parent.CloseWindow();
+        }
+        else {
+            // var strPageType = $('#hidUserTypeId').val();
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index); //再执行关闭
+
+            //研究计划
+            window.parent.liResearchPlanClick();
+        }
+
+    } catch (e) {
+        window.opener.location = "父页面地址";
+        window.opener = null;
+
+        window.close();
+    }
+}
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PageNum)
+ */
+function PageNum(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_PrevPage)
+ */
+function PrevPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) - 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  全选数据列表中的所有记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SetAllCkechedKeys)
+ */
+function SetAllCkechedKeys(tabName)
+{
+var thisChk = event.target;
+require(["../js/TS/PubFun/clsCommonFunc4Web.js"], function (commonfunc) {
+console.log(tabName);
+console.log(thisChk);
+commonfunc.clsCommonFunc4Web.SetAllCkechedKeys(tabName, thisChk);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_SortBy)
+ */
+function SortBy(strFldName)
+{
+console.log("按：" + strFldName + "排序");
+require(["../js/GraduateEduPublicPage/Addgs_TeacherTaskEx.js"], function(gs_teachertask) {
+var objPage = new gs_teachertask.Addgs_TeacherTaskEx();
+objPage.SortBy(strFldName);
+});
+}
+</script>
+
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+<div id="tabLayout" style="width: 100%;height:100%;">
+    <div id="divEditRegion" tabindex="-1">
+        <div>
+
+            <div style="width: 98%;margin-left:10px;">
+
+                <div>
+
+                    <table id="tabEdit" style="width:100%;" class="table table-bordered table-hover table td table-sm">
+                        <tr id="trid_CurrEduCls" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">
+                                    主题编号
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtTopicId" name="txtTopicId" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblid_CurrEduCls" name="lblid_CurrEduCls" class="col-form-label text-right" style="width:90px;">
+                                    当前教学班流水号
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtid_CurrEduCls" name="txtid_CurrEduCls" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trMissionStatement">
+                            <td class="text-right">
+                                <Label id="lblMissionStatement" name="lblMissionStatement" class="col-form-label text-right" style="width:90px;">
+                                    任务说明
+                                </Label>
+                            </td>
+                            <td class="text-left" ColSpan=5>
+                                @*<input id="txtMissionStatement" name="txtMissionStatement" class="form-control" style="width:350px;" />*@
+
+                                <textarea id="txtMissionStatement" name="txtMissionStatement" class="form-control" style="width:1000px;height:150px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr id="trMissionRequirement">
+                            <td class="text-right">
+                                <Label id="lblMissionRequirement" name="lblMissionRequirement" class="col-form-label text-right" style="width:90px;">
+                                    任务要求
+                                </Label>
+                            </td>
+                            <td class="text-left" ColSpan=5>
+                                @*<input id="txtMissionRequirement" name="txtMissionRequirement" class="form-control" style="width:350px;" />*@
+
+                                <textarea id="txtMissionRequirement" name="txtMissionRequirement" class="form-control" style="width:1000px;height:150px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr id="trUpdUser" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">
+                                    修改日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdDate" name="txtUpdDate" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">
+                                    修改人
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdUser" name="txtUpdUser" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trMemo" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtMemo" name="txtMemo" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnCancel" type="button" class="btn btn-default" onclick="CloseWindow()">关闭</button>
+                    <button id="btnSubmit_gs_TeacherTask" type="button" class="btn btn-primary" onclick="Submit_gs_TeacherTask()">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" value="@Model.seUserId" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortgs_TeacherTaskBy" type="hidden" value="" />
+<!-- 主题Id  -->
+<input id="hidTopicId" type="hidden" />
+
+<!-- 教学班Id  -->
+<input id="hidId_CurrEduCls" type="hidden" />
+
+@* 教学班Id *@
+<input id="hidId_CurrEduCls" type="hidden" />

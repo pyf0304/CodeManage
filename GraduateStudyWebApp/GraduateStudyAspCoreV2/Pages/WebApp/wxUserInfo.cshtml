@@ -1,0 +1,141 @@
+﻿@page
+@model TaskManageCore.Pages.WebApp.wxUserInfoModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta使用viewport以确保页面可自由缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 引入 jQuery Mobile 样式 -->
+    <link rel="stylesheet" href="~/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- 引入 jQuery 库 -->
+    <script src="~/jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+    <!-- 引入 jQuery Mobile 库 -->
+    <script src="~/jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+    <script>
+     var strWebRoot = "@Model.WebRoot";
+     var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+
+    //function GetRequest() {
+    //    var url = location.search; //获取url中"?"符后的字串
+    //    var theRequest = new Object();
+    //    if (url.indexOf("?") != -1) {
+    //        var str = url.substr(1);
+    //        strs = str.split("&");
+    //        for (var i = 0; i < strs.length; i++) {
+    //            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+    //        }
+    //    }
+    //    return theRequest;
+    //}
+
+    //function Getcode() {
+    //    var Request = new Object();
+    //    Request = GetRequest();
+    //    var str1;
+    //    str1 = Request['code'];
+
+    //    if (str1 != null) {
+    //        $('#hidcode').val(str1);
+    //            require(["../js/WebApp/wxUserInfo.js"], function (wxuser) {
+    //            var objPage = new wxuser.wxUserInfo();
+    //            objPage.Page_Load();
+    //        });
+    //    }
+    //    else {
+
+    //    }
+    //}
+
+
+    //$(function () {
+
+    //    Getcode();
+
+    //});
+
+
+    window.onload = function () {
+        require(["../js/WebApp/wxUserInfo.js"], function (wxuser) {
+
+            var objPage = new wxuser.wxUserInfo();
+            objPage.Page_Load();
+        });
+        }
+
+
+        function btnBind_Click() {
+            require(["../js/WebApp/wxUserInfo.js"], function (wxuser) {
+                //$("#Text1").val("进入函数：btnLogin_Click");
+                var objPage = new wxuser.wxUserInfo();
+                objPage.btnBind_Click();
+            });
+        }
+
+        function btnCancel_Click() {
+            window.location.href = "/GraduateStudyWebApp/WebApp/Login";
+        }
+
+    </script>
+
+</head>
+<body>
+    <!--跳页-->
+    <div data-role="page" id="pageone">
+        <div data-role="header">
+            <h1 role="heading">微信授权</h1>
+        </div>
+    </div>
+    <!--绑定-->
+    <div data-role="page" id="pagetwo">
+        <div data-role="header">
+            <h1 role="heading">绑定微信用户</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+
+            <div class="align-content-center" style="border-radius:5px;width:100%;text-align:center; background-color:lightseagreen;padding-top:5px;padding-bottom:5px;">
+                <a href="#" id="imgUser">
+                    <img id="imgHeadimgUrl" style="border-radius:100px; width:40%" src="~/img/avatar5.png" />
+                </a>
+                <h3>微信昵称：<span id="lbNickName" style="color:white"></span></h3>
+
+            </div>
+
+            <form method="get" action="">
+                <div class="ui-field-contain">
+                    <label for="name">用户名:</label>
+                    <input type="text" name="txtUserId" id="txtUserId">
+                    <br />
+                    <label for="password">密码:</label>
+                    <input type="password" name="txtPassword" id="txtPassword">
+                    <div style="margin-top: 20%;">
+                        <a href="" rel="external" data-role="button" data-transition="flow" onclick="btnBind_Click()">绑定微信</a>
+                        @*<a asp-page="/WebApp/Login" data-role="button" data-transition="flip">暂不绑定</a>*@
+                        <a href="" data-role="button" data-transition="flip" onclick="btnCancel_Click()">暂不绑定</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div data-role="footer" style="text-align: center" data-position="fixed">
+            <p>CopyRight &copy;泰泽教育</p>
+        </div>
+
+        <input id="hidOpenId" type="hidden" />
+        <input id="hidHeadimgUrl" type="hidden" />
+
+    </div>
+    <input id="hidcode" type="hidden" />
+</body>
+</html>
+

@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BF93421C-41E1-4A67-AE31-BDFCAC272B4E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExamLibBll</RootNamespace>
+    <AssemblyName>ExamLibBll</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>E:\TzAppData\GraduateStudyWebApp\ExamLibBll\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>E:\TzAppData\GraduateStudyWebApp\ExamLibBll\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommFunc4Web">
+      <HintPath>E:\PublicLib\CommFunc4Web.dll</HintPath>
+    </Reference>
+    <Reference Include="GeneralPlatform_Entity">
+      <HintPath>E:\PublicLib\GeneralPlatform_Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="GP4WApi">
+      <HintPath>..\..\..\..\..\PublicLib\GP\GP4WApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PubDataBase, Version=2020.12.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\PublicLib\PubDataBase.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TzMediaFunction3">
+      <HintPath>E:\PublicLib\TzMediaFunction3.dll</HintPath>
+    </Reference>
+    <Reference Include="TzPubFunction">
+      <HintPath>E:\PublicLib\TzPubFunction.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class\BaseInfo\clsQxUsersBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsTeacherInfoBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsvQuestionnaire_SimBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsvQxUsersBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsvXzClgBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsvXzMajorBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsvXzMajorDirectionBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsXzClgBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsXzGradeBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsXzMajorBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsXzMajorDirectionBLEx.cs" />
+    <Compile Include="Class\BaseInfo\clsXzMajorShoolTypeBLEx.cs" />
+    <Compile Include="Class\BaseTab\clsSubmitStatusBLEx.cs" />
+    <Compile Include="Class\BigConceptTeaching\clsBigConceptBLEx.cs" />
+    <Compile Include="Class\ClassroomManage\clsClsRmTypeBLEx.cs" />
+    <Compile Include="Class\CourseManage\clsvcc_Course_SimBLEx.cs" />
+    <Compile Include="Class\FunClass\clsMyConfig.cs" />
+    <Compile Include="Class\FunClass\clsPubFun4BLEx.cs" />
+    <Compile Include="Class\FunClass\clsPubFun4DataImport.cs" />
+    <Compile Include="Class\CourseLearning\clsCaseExerciseRelaBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clscc_CourseBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clscc_CourseTypeBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clscc_ExcellentTypeBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clscc_ThemesBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsCourseLearningCaseBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsCourseLearningCaseTypeBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsLearnModeBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsTeachingSolutionBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsvCaseExerciseRelaBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsvcc_CourseBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsvcc_CourseTypeBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsvcc_ExcellentTypeBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsvTeachingSolutionBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsXzDegreeTypeBLEx.cs" />
+    <Compile Include="Class\CourseLearning\clsXzMajorTypeBLEx.cs" />
+    <Compile Include="Class\CourseManage\clscc_CourseIsLikeBLEx.cs" />
+    <Compile Include="Class\CourseManage\clscc_CourseStudentRelationBLEx.cs" />
+    <Compile Include="Class\CourseManage\clscc_CourseTeacherRelationBLEx.cs" />
+    <Compile Include="Class\CourseManage\clsKcCrsTypeBLEx.cs" />
+    <Compile Include="Class\CourseManage\clsKcEduWayBLEx.cs" />
+    <Compile Include="Class\CourseManage\clsKcWkStatusBLEx.cs" />
+    <Compile Include="Class\CourseManage\clsvcc_CourseExBLEx.cs" />
+    <Compile Include="Class\DailyRunning\clsCurrEduClsBLEx.cs" />
+    <Compile Include="Class\DailyRunning\clsCurrEduClsStuBLEx.cs" />
+    <Compile Include="Class\DailyRunning\clsCurrEduClsTeacherBLEx.cs" />
+    <Compile Include="Class\DailyRunning\clsPk2EduClsTeacherTypeBLEx.cs" />
+    <Compile Include="Class\DailyRunning\clsvCurrEduClsBLEx.cs" />
+    <Compile Include="Class\DailyRunning\clsvCurrEduClsStuBLEx.cs" />
+    <Compile Include="Class\DailyRunning\clsvCurrEduClsTeacherBLEx.cs" />
+    <Compile Include="Class\EPortfolio\clsRsStuTypeBLEx.cs" />
+    <Compile Include="Class\ExamManage\clsgs_UserConfigBLEx.cs" />
+    <Compile Include="Class\ExamManage\clsKsExamTypeBLEx.cs" />
+    <Compile Include="Class\ExamManage\clsvzx_UserConfigBLEx.cs" />
+    <Compile Include="Class\ExamManage\clszx_UserConfigBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsBadgeTypeBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_ConnectLookChartBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_ControlAttributeBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_ControlTypeBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_DifficultyLevelBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_EventTypeBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_ExaminationCriteriaBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_ExaminationTypeBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_GameLevelChapterRelaBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_InspectionResultsBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_InspectProcessBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_OperationTypeBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_QuestionStructureGraphRelaBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_UserBadgeLogBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_UserBadgeTtlBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_UserCreditsLogBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_UserCreditsTtlBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsge_UserLevelScoreBLEx.cs" />
+    <Compile Include="Class\GameLearn\clsQuestionRecommendBLEx.cs" />
+    <Compile Include="Class\GradEduPaper\clsPaperResRelaBLEx.cs" />
+    <Compile Include="Class\GradEduPaper\clsPaperSubResBLEx.cs" />
+    <Compile Include="Class\GradEduTopic\clsAqa_QuestionsExBLEx.cs" />
+    <Compile Include="Class\GradEduTopic\clsgs_VpClassificationBLEx.cs" />
+    <Compile Include="Class\GradEduTopic\clsgs_VpClassificationRelaBLEx.cs" />
+    <Compile Include="Class\GradEduTopic\clsRTViewpointBLEx.cs" />
+    <Compile Include="Class\GradEduTopic\clsvRTViewpointBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsAcademicJournalsBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_OriginalPaperLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PaperAttentionBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PaperDiscussBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PaperGroupBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PaperParagraphBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PaperParagraphVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PaperVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PConcepRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PSkillRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PSocialRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PTopicObjectiveRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsgs_PViewpointRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsJournalSubjectBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsJournalSubjectCategoryBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsMajorDirectionPaperRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperCollectionLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperDownloadLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperEduClsRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperHistoryLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperReadWriteBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperSubAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperSubViewpointAppraiseBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsPaperSubViewpointBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsSectionBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvgs_PaperAttentionBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvgs_PaperParagraphBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvgs_PaperVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvgs_PConceptRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvgs_PSkillRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvgs_PSocialRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvgs_PTopicObjectiveRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvgs_PViewpointRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvMajorDirectionPaperRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperCollectionLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperCountBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperDownloadLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperEduClsRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperReadWriteBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperSubAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperSubViewpointAppraiseBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvPaperSubViewpointBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvSectionBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clsvzx_TextCountBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clszx_OriginalPaperLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduPaper\clszx_PaperDiscussBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsDiscussionSubContentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsDiscussionTopicsBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_AnswerCountBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_RequestNoticeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_TagsTypeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_TdRelaTypeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_TeachingDateBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_TotalDataRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_TotalDataStatisticsBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_TotalDataStatisticsNewBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_TotalDataTypeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_UserRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsgs_UserRelaPositionBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsSysCommentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsSysCommentNewBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsSysCountBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsSysScoreSummaryBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsSysScoreWeightBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clssys_RequestPushBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clssys_RequestTypeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvDiscussionSubContentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvDiscussionTopicsBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvgs_TeachingDateBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvgs_TotalDataStatisticsBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvgs_UserConfigBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvSysCommentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvSysCountBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvSysScoreSummaryBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvSysScoreWeightBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvzx_SysCommentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvzx_SysCountBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvzx_SysScoreSummaryBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvzx_TeachingDateBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clsvzx_TotalDataStatisticsBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_AnswerCountBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_RequestNoticeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_SysCommentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_SysCountBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_SysScoreSummaryBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_sys_RequestTypeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_TagsTypeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_TDRelaTypeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_TeachingDateBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_TotalDataRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_TotalDataStatisticsBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_TotalDataTypeBLEx.cs" />
+    <Compile Include="Class\GraduateEduTools\clszx_UserRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsConceptAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsConceptBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsConceptCitationBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsConceptVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_MeetingMinutesBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_MeetingMinutesVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_PaperReportBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_ReflectLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_ResearchPlanBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_ResearchResultAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_ResearchResultBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_RTqa_PaperRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_TeacherTaskBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_TobeStudiedProblemBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_TobeStudiedProblemVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_TopicRoleBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsgs_ViewsClassificationBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clske_SubBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clske_SuperBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsObjectiveAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsResearchTopicBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsRTConceptRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsRTPaperRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsRTResearchResultBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsRTSysSkillRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsRTSysSocialRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsRTTopicObjectiveRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsRTUserRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsRTViewpointRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsSysSkillBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsSysSkillVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsSysSocialRelationsBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsSysSocialRelationsVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsTopicObjectiveBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsTopicObjectiveVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvConceptAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvConceptBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvConceptCitationBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvgs_MeetingMinutesBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvgs_PaperReportBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvgs_ResearchPlanBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvgs_ResearchResultBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvgs_RTqa_PaperRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvgs_TobeStudiedProblemBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsViewpointAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsViewpointBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsViewpointCitationBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsViewpointLikeLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsViewpointVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvke_SubBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvObjectiveAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvResearchTopicBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvRTConceptRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvRTPaperRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvRTResearchResultBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvRTSysSkillBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvRTSysSocialRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvRTTopicObjectiveRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvRTUserRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvRTViewpointRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvSysSkillBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvSysSocialRelationsBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvTopicObjectiveBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvViewpointAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvViewpointBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvViewpointCitationBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvViewpointLikeLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvzx_MeetingMinutesBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvzx_PaperReportBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvzx_ResearchResultBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clsvzx_TobeStudiedProblemBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_ConceptAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_ConceptCitationBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_MeetingMinutesBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_MeetingMinutesVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_PaperReportBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_ResearchResultAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_ResearchResultBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_RTPaperRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_RTqa_PaperRelaBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_TobeStudiedProblemBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_TobeStudiedProblemVerBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_ViewpointAttachmentBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_ViewpointCitationBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_ViewpointLikeLogBLEx.cs" />
+    <Compile Include="Class\GraduateEduTopic\clszx_ViewsClassificationBLEx.cs" />
+    <Compile Include="Class\GraduateEdu\clsPaperAppraiseBLEx.cs" />
+    <Compile Include="Class\GraduateEdu\clsPaperLikeLogBLEx.cs" />
+    <Compile Include="Class\GraduateEdu\clsViewpointScoreBLEx.cs" />
+    <Compile Include="Class\GraduateEdu\clsIndexBLEx.cs" />
+    <Compile Include="Class\GraduateEdu\clsvViewpointScoreBLEx.cs" />
+    <Compile Include="Class\GraduateEdu\clszx_ViewpointScoreBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_ExamPaperEduClsRelaBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_ExamPaperQuestionTypeRelaBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_ExamPaperStuBatchRelaBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_ExamPaperStuRelationBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_WorkEduClsRelaBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_WorkStuRelation4CorrectBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_WorkStuRelation4ErrorLibBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_WorkStuRelation4GoodLibBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_WorkStuRelationBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_WorkStuRelation_TotalBLEx.cs" />
+    <Compile Include="Class\InteractManage\clscc_WorkStuRelation_TotalByQuTypeBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsge_StuBatchQuesRelaBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsge_StuErrorLibBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsgs_TagsBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsqa_AnswerBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsqa_AnswerVerBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsqa_PaperBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsqa_PushBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsqa_QuestionsBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsqa_QuestionsTypeBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsSourceTypeBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsSysVoteBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvcc_WorkEduClsRelaBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvcc_WorkStuRelationBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvcc_WorkStuRelationTtlBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvgs_TagsBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvqa_AnswerBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvqa_PaperBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvqa_PushBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvqa_QuestionsBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvSysVoteBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvzx_qa_PaperBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvzx_qa_PushBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvzx_SysVoteBLEx.cs" />
+    <Compile Include="Class\InteractManage\clsvzx_TagsBLEx.cs" />
+    <Compile Include="Class\InteractManage\clszx_qa_PaperBLEx.cs" />
+    <Compile Include="Class\InteractManage\clszx_qa_PushBLEx.cs" />
+    <Compile Include="Class\InteractManage\clszx_QuestionsTypeBLEx.cs" />
+    <Compile Include="Class\InteractManage\clszx_SysVoteBLEx.cs" />
+    <Compile Include="Class\InteractManage\clszx_TagsBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_CourseChapterBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_CourseExamPaperBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_CourseExamPaperRelationshipBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_CourseExamPaperUserExamsLogBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_CourseExamPaperUserLogBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_CourseKnowledgesBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_ExamGradeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_KnowledgeModulesBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_KnowledgesExamLibRelaBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_KnowledgeStuTeachLogBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_PaperDispModeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clscc_PapersBigTopicBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_ConnectLookChartNodeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_ConnectLookNodeRelaBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_GameLevelBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_KMLearningGoalsBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_KnowledgesClsMasterBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_KnowledgesUserMasterBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_LevelModeTypeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_LogicChartSubmitResultsBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_QuestionKnowledgeGraphRelaBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_StructureChartNodeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_StructureGraphBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_StructureSectionBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_StructureSectionTypeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsge_StructureSubmitResultsBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsgs_KnowledgesGraphBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsgs_KnowledgesGraphTypeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsgs_KnowledgesLogicBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsgs_KnowledgesLogicRelaBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsgs_KnowledgesLogic_UserBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsgs_RelaTypeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsgs_StructureChartBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsgs_StructureChartNodeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsKnowledgeLearnDetailBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsKnowledgeLearnTotalBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsKnowledgeMasterLevelBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsKnowledgeMasterTypeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsKnowledgeTypeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsvcc_CourseChapter4ExamLibBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsvcc_CourseChapter4KnowledgeBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsvcc_CourseChapterBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsvcc_CourseExamPaperBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsvcc_CourseExamPaperRelationshipBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsvcc_CourseKnowledgesBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsvKnowledgeLearnDetailBLEx.cs" />
+    <Compile Include="Class\Knowledges\clsvKnowledgeLearnTotalBLEx.cs" />
+    <Compile Include="Class\LogManage\clsLoginLogBLEx.cs" />
+    <Compile Include="Class\LogManage\clsSysDefaValNameBLEx.cs" />
+    <Compile Include="Class\LogManage\clsUserDefaValueBLEx.cs" />
+    <Compile Include="Class\LogManage\clszx_LoginLogBLEx.cs" />
+    <Compile Include="Class\MicroTeachSenate\clsMicroteachCaseBLEx.cs" />
+    <Compile Include="Class\MicroTeachSenate\clsMicroTeachCaseRelaInfoBLEx.cs" />
+    <Compile Include="Class\MicroTeachSenate\clsMicroTeachCaseRelaInfoTypeBLEx.cs" />
+    <Compile Include="Class\MicroTeachSenate\clsMicroteachCase_Resource_RelBLEx.cs" />
+    <Compile Include="Class\MicroTeachSenate\clsvVideoPlayLogBLEx.cs" />
+    <Compile Include="Class\NewsAnnouncement\clsFeedBackBLEx.cs" />
+    <Compile Include="Class\NewsAnnouncement\clsMessagePushBLEx.cs" />
+    <Compile Include="Class\NewsAnnouncement\clsMessagePushTypeBLEx.cs" />
+    <Compile Include="Class\NewsAnnouncement\clsMessagePushUsersRelationBLEx.cs" />
+    <Compile Include="Class\NewsAnnouncement\clsvMessagePushBLEx.cs" />
+    <Compile Include="Class\NewsAnnouncement\clsvMessagePushUsersRelationBLEx.cs" />
+    <Compile Include="Class\Other\clsPaperSubViewpointLikeLogBLEx.cs" />
+    <Compile Include="Class\Other\clsViewpointAppraiseBLEx.cs" />
+    <Compile Include="Class\Other\clsvPaperCount2BLEx.cs" />
+    <Compile Include="Class\Other\clsvPaperSimBLEx.cs" />
+    <Compile Include="Class\Other\clsvPaperSubViewpointLikeLogBLEx.cs" />
+    <Compile Include="Class\Other\clsvViewpointAppraiseBLEx.cs" />
+    <Compile Include="Class\Other\clsvzx_PaperSimBLEx.cs" />
+    <Compile Include="Class\Other\clszx_ViewpointAppraiseBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsDiscussionTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsExplainTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_ColorBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_ConfigTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_EduClsTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_OriginalPaperLogTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_PaperStatusBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_PaperSubViewsAttitudesBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_PaperTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_ParagraphStateBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_ParagraphTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_ShareBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsgs_TopicTaskStatusBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsLiteratureTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsSubViewpointTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsSysCommentTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsSysOperationTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsSysScoreTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsSysSecurityLevelBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsSysVoteTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsTopicUserRoleBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clsViewpointTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_ConfigTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_DiscussionTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_EduClsTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_ExplainTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_OriginalPaperLogTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_PaperStatusBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_PaperSubViewsAttitudesBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_ParagraphStateBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_ParagraphTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_ShareBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_SysCommentTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_SysOperationTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_SysScoreTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_SysSecurityLevelBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_SysVoteTypeBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_TopicTaskStatusBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_TopicUserRoleBLEx.cs" />
+    <Compile Include="Class\ParameterTable\clszx_ViewpointTypeBLEx.cs" />
+    <Compile Include="Class\PeopleManage\clsvTeacherInfoBLEx.cs" />
+    <Compile Include="Class\PeopleManage\clsXzAdminClsBLEx.cs" />
+    <Compile Include="Class\PeopleManage\clsXzAdminClsTypeBLEx.cs" />
+    <Compile Include="Class\PrjManage\clsQxProjectsBLEx.cs" />
+    <Compile Include="Class\PrjMenu\clsPageDispModeBLEx.cs" />
+    <Compile Include="Class\PubicClassSenate\clsPubClassCaseBLEx.cs" />
+    <Compile Include="Class\PubicClassSenate\clsPubClassCaseSenateBLEx.cs" />
+    <Compile Include="Class\PubicClassSenate\clsPubClassCaseSenateClassBLEx.cs" />
+    <Compile Include="Class\PubicClassSenate\clsPubClassCase_Resource_RelBLEx.cs" />
+    <Compile Include="Class\PubicClassSenate\clsPubTeachCaseRelaInfoBLEx.cs" />
+    <Compile Include="Class\PubicClassSenate\clsPubTeachCaseRelaInfoTypeBLEx.cs" />
+    <Compile Include="Class\QueryStatistics\clsQuestionMarkStatusBLEx.cs" />
+    <Compile Include="Class\QueryStatistics\clsQuestionStuFinishedStatusBLEx.cs" />
+    <Compile Include="Class\QueryStatistics\clsvQuestionStuFinishedStatusBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsAnswerBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsCjScoreKindEN.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsCjStuScoreEN.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsKcCrsEN.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsQuestionnaireBatchBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsQuestionnaireBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsQuestionnaireSetBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsQuestionOptionsBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsvAnswerBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsvQuestionnaire4AppBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsvQuestionnaire4App_TBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsvQuestionnaireBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsvQuestionnaire_AnswerBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsvQuestionnaire_KnowledgeBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\clsvQuestionOptionsBLEx.cs" />
+    <Compile Include="Class\QuestionaireEdit\stuExcelData.cs" />
+    <Compile Include="Class\QuestionnaireResult\clsUserAnswerResultBLEx.cs" />
+    <Compile Include="Class\QuestionnaireResult\clsvUserAnswerResultBLEx.cs" />
+    <Compile Include="Class\ResourceMan\clsPaperSubResTypeBLEx.cs" />
+    <Compile Include="Class\ResourceMan\clsResourceBLEx.cs" />
+    <Compile Include="Class\ResourceMan\clsResourceTypeBLEx.cs" />
+    <Compile Include="Class\ResourceMan\clstz_ContentAttachmentBLEx.cs" />
+    <Compile Include="Class\ResourceMan\clsvtz_ContentAttachmentBLEx.cs" />
+    <Compile Include="Class\RT_Params\clsgs_KnowledgeTypeBLEx.cs" />
+    <Compile Include="Class\ScoreManage\clsCjClsScoreTtlBLEx.cs" />
+    <Compile Include="Class\ScoreManage\clsCjGetScoreWayBLEx.cs" />
+    <Compile Include="Class\ScoreManage\clsCjScoreTypeBLEx.cs" />
+    <Compile Include="Class\SenateGaugePara\clsRecommendedDegreeBLEx.cs" />
+    <Compile Include="Class\SenateGaugePara\clsSenateGaugeVersionBLEx.cs" />
+    <Compile Include="Class\SkillDemo\clsCaseTypeBLEx.cs" />
+    <Compile Include="Class\SkillDemo\clsDisciplineBLEx.cs" />
+    <Compile Include="Class\SkillDemo\clsFtpResourceBLEx.cs" />
+    <Compile Include="Class\SkillDemo\clsTeachCaseBLEx.cs" />
+    <Compile Include="Class\SkillDemo\clsTeachCaseRelaInfoBLEx.cs" />
+    <Compile Include="Class\SkillDemo\clsTeachCaseRelaInfoTypeBLEx.cs" />
+    <Compile Include="Class\SkillDemo\clsTeachCase_Resource_RelBLEx.cs" />
+    <Compile Include="Class\SkillDemo\clsTeachSkillBLEx.cs" />
+    <Compile Include="Class\FunClass\stuExcelData.cs" />
+    <Compile Include="Class\SysParameterManage\clsFuncModuleBLEx.cs" />
+    <Compile Include="Class\SysPara\clsAnswerModeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsAnswerTypeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsAssessmentMethodsBLEx.cs" />
+    <Compile Include="Class\SysPara\clsCaseLevelBLEx.cs" />
+    <Compile Include="Class\SysPara\clscc_ExamPaperTypeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsContentTypeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsDiscipline_psBLEx.cs" />
+    <Compile Include="Class\SysPara\clsFileServerBLEx.cs" />
+    <Compile Include="Class\SysPara\clsOperationTypeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsPlatDefaRoleBLEx.cs" />
+    <Compile Include="Class\SysPara\clsQuestionType4CourseBLEx.cs" />
+    <Compile Include="Class\SysPara\clsQxDepartmentTypeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsAdminGradeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsDegreeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsEthnicBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsPoliticsBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsProfGradeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsProvinceBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsQualifBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsReligionBLEx.cs" />
+    <Compile Include="Class\SysPara\clsRsStaffTypeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsSchoolTermBLEx.cs" />
+    <Compile Include="Class\SysPara\clsSchoolYearBLEx.cs" />
+    <Compile Include="Class\SysPara\clsSexBLEx.cs" />
+    <Compile Include="Class\SysPara\clsStudyLevelBLEx.cs" />
+    <Compile Include="Class\SysPara\clsTeachingMethodsBLEx.cs" />
+    <Compile Include="Class\SysPara\clsTextDirectBLEx.cs" />
+    <Compile Include="Class\SysPara\clsUserKindBLEx.cs" />
+    <Compile Include="Class\SysPara\clsUserRolesBLEx.cs" />
+    <Compile Include="Class\SysPara\clsUserStateBLEx.cs" />
+    <Compile Include="Class\SysPara\clsvPlatDefaRoleBLEx.cs" />
+    <Compile Include="Class\SysPara\clsvQuestionType4CourseBLEx.cs" />
+    <Compile Include="Class\SysPara\clsvUserRolesBLEx.cs" />
+    <Compile Include="Class\SysPara\clsvXzGradeBaseBLEx.cs" />
+    <Compile Include="Class\SysPara\clsvXzUniZoneBLEx.cs" />
+    <Compile Include="Class\SysPara\clsWorkTypeBLEx.cs" />
+    <Compile Include="Class\SysPara\clsXzGradeBaseBLEx.cs" />
+    <Compile Include="Class\SysPara\clsXzSchoolBLEx.cs" />
+    <Compile Include="Class\SysPara\clsXzSchool_PsBLEx.cs" />
+    <Compile Include="Class\SysPara\clsXzUniZoneBLEx.cs" />
+    <Compile Include="Class\SystemSet\clsCacheModeBLEx.cs" />
+    <Compile Include="Class\SystemSet\clsCacheUseStateBLEx.cs" />
+    <Compile Include="Class\SystemSet\clsQuestionTypeBLEx.cs" />
+    <Compile Include="Class\SystemSet\clsvCacheUseStateBLEx.cs" />
+    <Compile Include="Class\TeachingCaseResLib\clsTeachingCaseResCaseBLEx.cs" />
+    <Compile Include="Class\TeachingCaseResLib\clsTeachingCaseResCaseTypeBLEx.cs" />
+    <Compile Include="Class\TeachingPlan\clsJxTeachingPlanBLEx.cs" />
+    <Compile Include="Class\TeachingPlan\clsJxTeachPlanKnowledgeBLEx.cs" />
+    <Compile Include="Class\UserManage\clsQxDepartmentInfoBLEx.cs" />
+    <Compile Include="Class\UserManage\clsQxRoleRightRelationBLEx.cs" />
+    <Compile Include="Class\UserManage\clsQxRolesBLEx.cs" />
+    <Compile Include="Class\UserManage\clsQxUserIdentityBLEx.cs" />
+    <Compile Include="Class\UserManage\clsQxUserStateBLEx.cs" />
+    <Compile Include="Class\UserManage\clsStudentInfoBLEx.cs" />
+    <Compile Include="Class\UserManage\clsUserIdentityBLEx.cs" />
+    <Compile Include="Class\UserManage\clsUsersBLEx.cs" />
+    <Compile Include="Class\UserManage\clsUserTypeBLEx.cs" />
+    <Compile Include="Class\UserManage\clsvStudentInfoBLEx.cs" />
+    <Compile Include="Class\UserManage\clsvUsersBLEx.cs" />
+    <Compile Include="Class\UserManage\clsvUsersSimBLEx.cs" />
+    <Compile Include="Class\UsersRight\clsCurrEduClsStu4CorrectBLEx.cs" />
+    <Compile Include="Class\UsersRight\clsQxRightBLEx.cs" />
+    <Compile Include="Class\UsersRight\clsQxRightRangeLevelBLEx.cs" />
+    <Compile Include="Class\UsersRight\clsQxRightTypeBLEx.cs" />
+    <Compile Include="Class\UsersRight\clsQxUserRoleRelationBLEx.cs" />
+    <Compile Include="Class\UsersRight\clsvQxUserRoleRelationBLEx.cs" />
+    <Compile Include="Class\VideoLib\clsVideoLibBLEx.cs" />
+    <Compile Include="Class\VideoLib\clsVideoLibTypeBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clsvzx_AnswerBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clsvzx_ConceptBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clsvzx_QuestionsBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clsvzx_SkillBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clsvzx_SocialRelationsBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clsvzx_TextReadBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clsvzx_TopicObjectiveBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clsvzx_ViewpointBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_AnswerBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_ConceptBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_FollowBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_GradeIdBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_QuestionsBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_ReadTypeBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_SkillBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_SocialRelationsBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_TeamMemberBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_TeammenberRelaBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_TextBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_TextReadBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_TextStatusBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_TextTypeBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_TopicObjectiveBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_UnitBLEx.cs" />
+    <Compile Include="Class\ZXCourseware\clszx_ViewpointBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clsvzx_CompositionBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clsvzx_GroupQuestionRelaBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clsvzx_GroupTextRelaBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clsvzx_PaperParagraphBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clsvzx_ResearchPlanBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clsvzx_SectionBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clsvzx_UserGroupBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_CompositionBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_GroupCompositionRelaBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_GroupQuestionRelaBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_GroupTextBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_GroupTextRelaBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_PaperParagraphBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_ReflectLogBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_ResearchPlanBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_SectionBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_TeacherTaskBLEx.cs" />
+    <Compile Include="Class\zxGroupText\clszx_UserGroupBLEx.cs" />
+    <Compile Include="Class\zxHistoricalVersion\clsSysCommentZxBLEx.cs" />
+    <Compile Include="Class\zxHistoricalVersion\clszx_ConceptVerBLEx.cs" />
+    <Compile Include="Class\zxHistoricalVersion\clszx_PaperParagraphVerBLEx.cs" />
+    <Compile Include="Class\zxHistoricalVersion\clszx_SkillVerBLEx.cs" />
+    <Compile Include="Class\zxHistoricalVersion\clszx_SocialRelationsVerBLEx.cs" />
+    <Compile Include="Class\zxHistoricalVersion\clszx_TopicObjectiveVerBLEx.cs" />
+    <Compile Include="Class\zxHistoricalVersion\clszx_ViewpointVerBLEx.cs" />
+    <Compile Include="Class\ZxParameter\clszx_ColorBLEx.cs" />
+    <Compile Include="Class\ZxParameter\clszx_LiteratureTypeBLEx.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="clsPubVar4BLEx4CommonTable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ExamLib_Base\ExamLib_Base.csproj">
+      <Project>{3ebfa5ee-a215-47fa-9a3c-cc419ffe5f67}</Project>
+      <Name>ExamLib_Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExamLib_Dal\ExamLibDal.csproj">
+      <Project>{859cc6c4-23be-46b7-b0a6-eed259aaaf3c}</Project>
+      <Name>ExamLibDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExamLib_Entity\ExamLibEntity.csproj">
+      <Project>{d2eb2243-81f1-4135-a440-a4fc558cd922}</Project>
+      <Name>ExamLibEntity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

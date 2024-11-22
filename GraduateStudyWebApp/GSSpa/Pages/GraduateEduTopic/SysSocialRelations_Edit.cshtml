@@ -1,0 +1,206 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+
+
+ /*
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ */
+function HideDialog() {
+  require(['jquery', 'bootstrap'], function($) {
+      $('#divEditRegion').modal('hide');
+  });
+}
+
+ /*
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ */
+function ShowDialog(pstrOp) {
+   strOp = pstrOp;
+   require(['jquery', 'bootstrap'], function($) {
+       if (strOp === "Add") {
+           $('#myModalLabel').html('添加记录');
+//SysSocialRelations_EditEx.GetMaxStrId('#txtSocialId');
+        }
+else if (strOp === "Update")
+{
+            $('#myModalLabel').html('修改记录');
+}
+else if (strOp === "Detail")
+{
+            $('#btnOKUpd').hide();
+            $('#myModalLabel').html('详细信息');
+}
+        $('#divEditRegion').modal('show');
+  });
+}
+</script>
+<div id="tabLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditRegion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 935px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabEdit" style="width:98%;" class="table table-bordered table-hover table td table-sm">
+                        <tr style="display:none;">
+                            <td>
+                                <Label id="lblSocialId" name="lblSocialId" class="col-form-label text-right" style="width:90px;">
+                                    社会Id
+                                </Label>
+                            </td>
+                            <td>
+                                <input id="txtSocialId" name="txtSocialId" class="form-control" style="width:150px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Label id="lblFullName" name="lblFullName" class="col-form-label text-right" style="width:90px;">
+                                    姓名
+                                </Label>
+                            </td>
+                            <td>
+                                <input id="txtFullName" name="txtFullName" class="form-control" style="width:150px;" />
+                            </td>
+                            <td>
+                                <Label id="lblNationality" name="lblNationality" class="col-form-label text-right" style="width:90px;">
+                                    国籍
+                                </Label>
+                            </td>
+                            <td>
+                                <input id="txtNationality" name="txtNationality" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <Label id="lblWorkUnit" name="lblWorkUnit" class="col-form-label text-right" style="width:90px;">
+                                    工作单位
+                                </Label>
+                            </td>
+                            <td>
+                                <input id="txtWorkUnit" name="txtWorkUnit" class="form-control" style="width:150px;" />
+                            </td>
+                            <td>
+                                <Label id="lblMajor" name="lblMajor" class="col-form-label text-right" style="width:90px;">
+                                    专业
+                                </Label>
+                            </td>
+                            <td>
+                                <input id="txtMajor" name="txtMajor" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                <Label id="lblLevelId" name="lblLevelId" class="col-form-label text-right" style="width:90px;">
+                                    级别Id
+                                </Label>
+                            </td>
+                            <td>
+                                <select id="ddlLevelId" name="ddlLevelId" class="form-control" style="width:150px;"></select>
+                            </td>
+                            <td ColSpan="2">
+                                <span class="form-control" style="width:150px;">
+                                    <input type="checkbox" id="chkIsSubmit" name="chkIsSubmit" Text="是否提交"><label for="chkIsSubmit">是否提交</label>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <Label id="lblAchievement" name="lblAchievement" class="col-form-label text-right" style="width:90px;">
+                                    成就
+                                </Label>
+                            </td>
+                            <td colspan="3">
+                                @*<input id="txtAchievement" name="txtAchievement" class="form-control" style="width:150px;" />*@
+                                <textarea id="txtAchievement" name="txtAchievement" class="form-control" style="width:500px;height:80px;"></textarea>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <Label id="lblDetailedDescription" name="lblDetailedDescription" class="col-form-label text-right" style="width:90px;">
+                                    详细说明
+                                </Label>
+                            </td>
+                            <td colspan="3">
+                                @*<input id="txtDetailedDescription" name="txtDetailedDescription" class="form-control" style="width:150px;" />*@
+                                <textarea id="txtDetailedDescription" name="txtDetailedDescription" class="form-control" style="width:500px;height:160px;"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblShareId" name="lblShareId" class="col-form-label text-right" style="width:90px;">
+                                    分享
+                                </Label>
+                            </td>
+                            <td class="ValueTD" colspan="3">
+                                <select id="ddlShareId" name="ddlShareId" class="form-control" style="width:200px;" />
+
+                            </td>
+
+                        </tr>
+                        @*<tr>
+            <td>
+                <Label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">
+                    修改人
+                </Label>
+            </td>
+            <td>
+                <input id="txtUpdUser" name="txtUpdUser" class="form-control" style="width:150px;" />
+            </td>
+            <td>
+                <Label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">
+                    修改日期
+                </Label>
+            </td>
+            <td>
+                <input id="txtUpdDate" name="txtUpdDate" class="form-control" style="width:150px;" />
+            </td>
+        </tr>*@
+                        <tr>
+
+                            <td>
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td colspan="3">
+                                <textarea id="txtMemo" name="txtMemo" class="form-control" style="width:500px;height:40px;"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btnOKUpd" type="button" class="btn btn-primary" onclick="mySubmit()">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>

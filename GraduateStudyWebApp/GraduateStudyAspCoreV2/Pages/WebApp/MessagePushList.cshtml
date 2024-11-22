@@ -1,0 +1,120 @@
+﻿@page
+@model ExamLibWebApp.Pages.WebApp.MessagePushListModel
+@{
+
+
+
+    Layout = null;
+
+    var strUrl_Session_SetString = Model.Url_Session_SetString;
+    var strUrl_Session_GetString = Model.Url_Session_GetString;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- meta使用viewport以确保页面可自由缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- 引入 jQuery Mobile 样式 -->
+    <link rel="stylesheet" href="../jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- 引入 jQuery 库 -->
+    <script src="../jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+    <!-- 引入 jQuery Mobile 库 -->
+    <script src="../jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Title</title>
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+
+
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link href="../css/indexs.css" rel="stylesheet" type="text/css">
+
+    <script>
+         var strWebRoot = "@Model.WebRoot";
+     var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+        /*
+          页面导入-在导入页面后运行的函数
+            (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_Page_Load)
+         */
+        window.onload = function () {
+            require(["../js/WebApp/MessagePushListEx.js"], function (MessagePushList) {
+
+                var objpage = new MessagePushList.MessagePushListEx();
+                objpage.Page_Load();
+                //var objPage = new taskinfo.Task_TSEx();
+                //objPage.Page_Load();
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <!--登陆页面-->
+    <div data-role="page" id="pageLogin">
+        <div data-role="header">
+            <h1 role="heading">习题试卷系统</h1>
+        </div>
+
+        @*<div data-role="main" style="width: 100%;height:auto;display: inline-block;border: 1px solid #CCC;border-bottom:1px dashed #CCC;background:#FFF;">*@
+            <div data-role="main" class="ui-content">
+
+
+            <ul id="PrjList" data-role="listview" data-inset="true">
+                @*<li data-role="divider">请选择课程</li>*@
+
+
+                @*<li class="ui-li-has-alt ui-first-child">
+                <a href="/WebApp/Indexs?PrjID=' + arrvUserRoleRelationObjLst[i].PrjID + '" rel="external" class="ui-btn">
+                    <h2>' + arrvUserRoleRelationObjLst[i].PrjName + '</h2>
+                    <p>' + arrvUserRoleRelationObjLst[i].RoleName + '</p>
+                </a>
+            </li>*@
+
+
+
+                @*<li class="ui-li-has-alt ui-first-child">
+                <a href="/Exam/ExamCore" rel="external" class="ui-btn">习题</a>
+
+            </li>
+            <li class="ui-li-has-alt ui-first-child">
+                <a href="/Paper/PaperCore" rel="external" class="ui-btn">试卷</a>
+
+            </li>*@
+
+
+
+            </ul>
+
+
+        </div>
+
+
+        <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a asp-page="/WebApp/Indexs" rel="external" data-icon="home" >首页</a></li>
+                    <li><a asp-page="/WebApp/MessagePushList" rel="external" data-icon="star" class="ui-btn-active ui-state-persist">消息</a></li>
+                    <li><a asp-page="/WebApp/User" rel="external" data-icon="user">我的</a></li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <input id="hidUserId" type="hidden" value="@Model.seUserId" />
+    <input id="hidOpType" type="hidden" />
+    <input id="hidKeyId" type="hidden" />
+    <input id="hidCurrPageIndex" type="hidden" value="1" />
+    <input id="hidSortvcc_CourseBy" type="hidden" value="" />
+
+    @*<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />*@
+</body>
+</html>
+

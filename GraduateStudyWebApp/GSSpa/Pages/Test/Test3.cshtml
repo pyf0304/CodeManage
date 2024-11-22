@@ -1,0 +1,127 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.Web.Test3Model
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>指定内容高亮</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/dist/css/bootstrap.css">
+
+</head>
+<body style="">
+
+    <div class="container">
+        <div class="row">
+            <div style="height: 100px;"></div>
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">指定内容高亮</div>
+                    <div class="panel-body">
+                        <div>
+                            <p class="text-primary">测试文本：</p>
+                            <div id="testHtml">
+                                <ul>
+                                    <li>姓名：lyl</li>
+                                    <li>工作岗位：WEB<span style="color:#ea0000;font-weight: bold;">软件</span>工程师</li>
+                                    <li>工作经验：10年</li>
+                                    <li>在校专业：<span style="color:#ea0000;font-weight: bold;">软件</span>工程(信息工程系)</li>
+                                    <li>知识技能：HTML5，CSS3，js，es6，Node.js，jQuery，Vue.js，<span style="color:#ea0000;font-weight: bold;">小程序</span>,Dcloud，APICloud，能手写响应式布局、弹性布局框架</li>
+                                    <li>在校所学科目：C，JAVA，C#，ASP.NET，MYSQL，SQL server，数据结构，<span style="color:#ea0000;font-weight: bold;">软件</span>测试，<span style="color:#ea0000;font-weight: bold;">软件</span>工程，<span style="color:#ea0000;font-weight: bold;">软件</span>架构，计算机操作<span style="color:#ea0000;font-weight: bold;">系统</span></li>
+                                    <li>掌握框架：Bootstrap，layui，Element UI</li>
+                                    <li>自我评价：具有良好的团队意识</li>
+                                    <li>联系QQ：77240613</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="text-primary">测试一下：</p>
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <input type="text" class="form-control" id="replaceVal" placeholder="请输入需要高亮的内容以 “|” 隔开" style="width:500px;">
+                                </div>
+                                <div class="col-xs-3">
+                                    <button type="button" class="btn btn-primary btn-block" id="replace">高亮一下</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer"></div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <button onclick="myClick()">鼠标单击</button>
+            <button ondblclick="myDBClick()">鼠标双击</button>
+            <button onmousedown="myMouseDown()" onmouseup="myMouseUp()">鼠标按下和抬起</button>
+            <button onmouseover="myMouseOver()" onmouseout="myMouseOut()">鼠标悬浮和离开</button>
+            <button onmousemove="myMouseMove()">鼠标移动</button>
+            <button onmouseenter="myMouseEnter()" onmouseleave="myMouseLeave()">鼠标进入和离开</button>
+            
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://www.17sucai.com/preview/1673365/2019-05-21/gl/js/highlight.js"></script>
+    <script>
+        function myClick() {
+            console.log("你单击了按钮！");
+        }
+        function myDBClick() {
+            console.log("你双击了按钮！");
+        }
+        function myMouseDown() {
+            console.log("鼠标按下了！");
+        }
+        function myMouseUp() {
+            console.log("鼠标抬起了！");
+        }
+        function myMouseOver() {
+            console.log("鼠标悬浮！");
+        }
+        function myMouseOut() {
+            console.log("鼠标离开！")
+        }
+        function myMouseMove() {
+            console.log("鼠标移动！")
+        }
+        function myMouseEnter() {
+            console.log("鼠标进入！")
+        }
+        function myMouseLeave() {
+            console.log("鼠标离开！")
+        }
+    </script>
+    <script type="text/javascript">
+        /* 保存初始测试文本内容 */
+        var oldStr = $("#testHtml").html();
+        /* 测试按钮点击 */
+        $("#replace").click(function () {
+            var val = $("#replaceVal").val();
+            if (!val) {
+                alert('请输入需要高亮的内容');
+                return;
+            }
+            /* 插件调用，返回 添加高亮效果 的字符串 */
+            var newStr = $.highlight(oldStr, {
+                color: '#ea0000',// 高度颜色，默认:#f00
+                weight: true,    // 是否加粗，默认:不加粗
+                keys: val        //需要高亮的值，必须的
+            });
+            $("#testHtml").html(newStr);
+
+        });
+        /* 执行测试按钮点击事件 */
+        $("#replace").click();
+    </script>
+
+
+</body>
+</html>

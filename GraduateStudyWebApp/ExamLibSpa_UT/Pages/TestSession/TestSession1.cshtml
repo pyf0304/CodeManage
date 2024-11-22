@@ -1,0 +1,135 @@
+﻿@page
+@model AGC.Pages.TestSession1Model
+@{
+    Layout = "~/Pages/Shared/_Layout_RequireJS.cshtml";
+
+    ViewData["Title"] = "TestSession1";
+    //存Session,pyf1,pyf2,pyf3
+    Model.SetSession("pyf1", "abc123456");
+    Model.SetSession2("pyf2", "abc123456");
+    Model.SetSession3("pyf3", "abc123456");
+    var strUrl_Session_SetString = Model.Url_Session_SetString;
+    var strUrl_Session_GetString = Model.Url_Session_GetString;
+
+}
+
+<h1>TestSession1</h1>
+
+
+<div>
+    <a href="/Session/SetString">点击存入session</a>
+    <input type="button" onclick="SetSession('pyf','abc123')" class="btn btn-outline-info" value="存Session-pyf" />
+
+    <span class="text-danger">Key:</span>  <span id="myKey" class="text-danger">key</span>
+    <span class="text-Info">Value:</span>    <span id="myValue" class="text-Info">value</span>
+    <p></p>
+    <p></p>
+    <span class="text-danger">通过本页面模型(PageModel)获取Session值:</span>
+    <p></p>
+    <span class="text-danger">Key:</span>  <span id="myKey" class="text-danger">pyf2</span>
+    <span class="text-Info">Value:</span>  <span class="text-info">@Model.GetSession2("pyf2")</span>
+    <div id="div1">
+
+    </div>
+    <div>
+        <ul class="nav">
+            <li class="nav-item"><a id="li1">111</a></li>
+            <li class="nav-item"><a id="li2">222</a></li>
+            <li class="nav-item"><a id="li3">333</a></li>
+        </ul>
+        <input type="button" onclick="HideLi_1('#li2')" class="btn btn-outline-info" value="隐藏Li_1" />
+        <input type="button" onclick="HideLi_2('#li2')" class="btn btn-outline-info" value="隐藏Li_2" />
+        <input type="button" onclick="HideLi_3('#li2')" class="btn btn-outline-info" value="隐藏Li_3" />
+        <input type="button" onclick="CreateUlLi()" class="btn btn-outline-info" value="建立UlLi" />
+
+    </div>
+    <div id="divTree">
+        <div id="divTreeContent"></div>
+        <div id="div2">
+            <input type="button" onclick="BindTree()" class="btn btn-outline-info" value="动态绑定树" />
+
+        </div>
+    </div>
+    <div id="divDropDownList">
+        <div id="divDdlContent"></div>
+        <div id="div2">
+            <input type="button" onclick="BindDdl()" class="btn btn-outline-info" value="动态绑定下拉框" />
+
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    //Js函数，用于界面的CRUD, 后备之用,可能后面派作用
+    var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+    function BindTree() {
+        //    alert("提交" + strOp);
+        require(["../js/TestSession/TestSession1.js"], function (TestSession1) {
+            TestSession1.TestSession1.BindTree();
+        });
+    }
+    function BindDdl() {
+        //    alert("提交" + strOp);
+        require(["../js/TestSession/TestSession1.js"], function (TestSession1) {
+            TestSession1.TestSession1.BindDdl();
+        });
+    }
+    function HideLi_1(strAnchor) {
+        var thisLi = $(strAnchor).parent();
+        console.log(thisLi);
+        thisLi.hide();
+        //thisLi.css("visibility", "hidden");
+        //thisLi.css("display", "none");
+
+    }
+    function HideLi_2(strAnchor) {
+        var thisLi = $(strAnchor).parent();
+        console.log(thisLi);
+        //thisLi.hide();
+        thisLi.css("visibility", "hidden");
+        //thisLi.css("display", "none");
+
+    }
+    function CreateUlLi() {
+        //    alert("提交" + strOp);
+        require(["../js/TestSession/TestSession1.js"], function (TestSession1) {
+            TestSession1.TestSession1.CreateUlLi();
+        });
+    }
+    function HideLi_3(strAnchor) {
+        var thisLi = $(strAnchor).parent();
+        console.log(thisLi);
+        //thisLi.hide();
+        //thisLi.css("visibility", "hidden");
+        thisLi.css("display", "none");
+
+    }
+    function SetSession(Key, Value) {
+
+        $.ajax({
+            url: strUrl_Session_SetString,
+            cache: false,
+            async: false,
+            type: 'get',
+            dataType: "json",
+            data: {
+                Key: Key,
+                Value: Value
+            },
+            success: function (data) {
+                //$('#myValue').val(text);
+                var strKey = data.key;
+                var strValue = data.value;
+
+                $('#myKey').html(strKey);
+                $('#myValue').html(strValue);
+                console.log(strKey + strValue);
+
+            }
+
+        });
+    }
+</script>

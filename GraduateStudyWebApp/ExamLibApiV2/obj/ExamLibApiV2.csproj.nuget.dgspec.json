@@ -1,0 +1,200 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\ExamLibApiV2.csproj": {}
+  },
+  "projects": {
+    "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\ExamLibApiV2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\ExamLibApiV2.csproj",
+        "projectName": "ExamLibApiV2",
+        "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\ExamLibApiV2.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLibApiV2\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj"
+              },
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Bll\\ExamLibBll.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Bll\\ExamLibBll.csproj"
+              },
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Dal\\ExamLibDal.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Dal\\ExamLibDal.csproj"
+              },
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "JWT": {
+              "target": "Package",
+              "version": "[10.1.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.Identity.Web": {
+              "target": "Package",
+              "version": "[2.19.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.6.2, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj",
+        "projectName": "ExamLib_Base",
+        "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Bll\\ExamLibBll.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Bll\\ExamLibBll.csproj",
+        "projectName": "ExamLibBll",
+        "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Bll\\ExamLibBll.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj"
+              },
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Dal\\ExamLibDal.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Dal\\ExamLibDal.csproj"
+              },
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Dal\\ExamLibDal.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Dal\\ExamLibDal.csproj",
+        "projectName": "ExamLibDal",
+        "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Dal\\ExamLibDal.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj"
+              },
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj": {
+      "restore": {
+        "projectUniqueName": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj",
+        "projectName": "ExamLibEntity",
+        "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Entity\\ExamLibEntity.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj": {
+                "projectPath": "E:\\OneDrive-personal\\OneDrive\\AspNetCore\\GraduateStudyWebApp\\ExamLib_Base\\ExamLib_Base.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    }
+  }
+}

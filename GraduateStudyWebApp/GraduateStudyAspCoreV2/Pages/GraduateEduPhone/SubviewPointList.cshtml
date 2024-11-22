@@ -1,0 +1,185 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduEx.SubviewPointListModel
+@{
+    //Layout = "~/Pages/Shared/_Layout_RequireJS.cshtml";
+    Layout = "~/Pages/Shared/_LayoutIndex.cshtml";
+    ViewData["Title"] = "子观点表维护";
+    ////操作Session样例，方法1：
+    ////Model.seUserId = "TestUserId";
+    //var strUserId_Value = Model.seUserId;
+    ////操作Session样例，方法2：
+    //Model.SetSession("UserId1", "TestUserId1");
+    //var strUserId1_Value = Model.GetSession("UserId1");
+    ////请参见页尾的隐形控件hidUserid和hidUserId1的使用。
+
+    var strUrl_Session_SetString = Model.Url_Session_SetString;
+    var strUrl_Session_GetString = Model.Url_Session_GetString;
+}
+@section Styles{
+    @*<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="../css/site.css" />*@
+    <link href="~/css/index.css" rel="stylesheet" type="text/css">
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+        <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+
+<script>
+
+       var strWebRoot = "@Model.WebRoot";
+     var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+    /*
+      页面导入-在导入页面后运行的函数
+        (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_Page_Load)
+     */
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetSubviewPointID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var str1;
+        str1 = Request['SubViewpointTypeId'];
+
+        if (str1 != null) {
+            $('#hidSubViewpointTypeId').val(str1);
+
+            require(["../js/GraduateEduEx/SubviewPointListEx.js"], function (subviewPoint) {
+
+                var objpage = new subviewPoint.SubviewPointListEx();
+                objpage.Page_Load();
+                //var objPage = new taskinfo.Task_TSEx();
+                //objPage.Page_Load();
+            });
+
+        }
+        else {
+            require(["../js/GraduateEduEx/SubviewPointListEx.js"], function (subviewPoint) {
+
+                var objpage = new subviewPoint.SubviewPointListEx();
+                objpage.Page_Load();
+               
+            });
+        }
+    }
+
+
+    window.onload = function () {
+
+        GetSubviewPointID();
+    }
+
+    /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_mySubmit)
+ */
+    function mySubmit(pstrOp) {
+        //    alert("提交" + strOp);
+        require(["../js/GraduateEduEx/SubviewPointListEx.js"], function (subviewPoint) {
+            var objPage = new subviewPoint.SubviewPointListEx();
+            objPage.btnOKUpd_Click();
+        });
+    }
+</script>
+
+<div data-role="page" id="pageOne">
+
+    <div data-role="header" data-position="fixed">
+        <a href="../GraduateEduEx/WapiSubviewPointTypeList" rel="external" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">上一页</a>
+
+        <h1>子观点详细</h1>
+        <a href="#pageAdd" class="ui-btn ui-btn-right ui-icon-bullets ui-btn-icon-left ui-corner-all">
+            添加
+        </a>
+    </div>
+
+    <div data-role="content" id="contents">
+        <div id="pageone" style="width: 100%;height:auto;display: inline-block;border: 1px solid #CCC;border-bottom:1px dashed #CCC;background:#FFF;">
+            <div style="width: 100%;height: 5%;padding:0px 0px 0px 20px;text-align:left;">
+            </div>
+
+            <ul id="SubviewPoint" data-role="listview" data-inset="true">
+                @*<li class="question_title">请选择类型</li>*@
+            </ul>
+
+
+        </div>
+
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a asp-page="/WebApp/Indexs" rel="external" data-icon="home" class="ui-btn-active ui-state-persist">首页</a></li>
+                <li><a asp-page="/WebApp/MessagePushList" rel="external" data-icon="star">消息</a></li>
+                <li><a asp-page="/WebApp/User" rel="external" data-icon="user">我的</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<div data-role="page" id="pageAdd">
+    <div data-role="header">
+        <a href="#pageOne" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">返回</a>
+        <h1>子观点添加</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <div style=" margin-top:20px; width:100%;">
+            <form method="post" action="demo_form.php">
+                <div class="ui-field-contain">
+                    <label for="info">详情内容：</label>
+                    <input type="text" id="txtSubViewpointContent" name="txtSubViewpointContent">
+                </div>
+                <div class="ui-field-contain">
+                    <label for="bday">备注：</label>
+                    <input type="text" id="txtMemo" name="txtMemo">
+
+                </div>
+
+
+                <div class="ui-field-contain">
+                    <button id="btnOKUpd" type="button" onclick="mySubmit()">提交</button>
+
+                </div>
+            </form>
+
+
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" value="@Model.GetSession("UserId")" />
+<input id="hidThesisId" type="hidden" value="@Model.GetSession("ThesisId")" />
+
+<input id="hidSubViewpointTypeId" type="hidden" value="@Model.GetSession("SubviewPointTypeId")" />
+@*<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />*@
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvSubViewpointBy" type="hidden" value="" />
+

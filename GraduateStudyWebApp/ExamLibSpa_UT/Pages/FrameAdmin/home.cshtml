@@ -1,0 +1,55 @@
+﻿@page
+@*@model homeModel*@
+@{
+    Layout = "~/Pages/Shared/_Layout_Empty.cshtml";
+
+    ViewData["Title"] = "TestSession1";
+    //存Session,pyf1,pyf2,pyf3
+
+}
+@section Styles{
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit|ie-comp|ie-stand" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta name="keywords" content="scclui框架" />
+<meta name="description" content="自动生成代码系统" />
+<title>首页--自动生成代码系统</title>
+
+<link rel="stylesheet" href="../common/css/sccl.css" />
+<link rel="stylesheet" type="text/css" href="../common/skin/qingxin/skin.css" id="layout-skin" />
+
+<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+<script src="../lib/jquery/dist/jquery.js"></script>
+<script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+<script src="../js/site.js" asp-append-version="true"></script>
+<script src="../lib/bootstrap/dist/js/popper.js"></script>
+@*<script src="../lib/require/require.js" data-main="../js/src/config"></script>*@
+<script>
+    function ChangePassword() {
+        var returnValue = window.open('../../Webform/UserManage/wfmChangePwd.aspx',
+            '修改口令',
+            'width=380px,height=220px,top=150px,left=350px,scrollbars=no,toolbar=no,menubar=no, scrollbars=no, resizable=no, location=no, status=no,titlebar=no,');
+    }
+
+
+    function SwitchPrj(strFunName, strMid) {
+        //if (event.keyCode == 13) {
+        //event.cancelBubble = true;
+        //event.returnValue = false;
+        document.all.FunName.value = strFunName;// "enter";
+        document.all.hidMid.value = strMid;
+
+        document.forms[0].submit();
+        //}
+    }
+</script>
+}
+<h5>用户登录</h5>
+<div style="text-align: center; color: Red; margin-top: 100px;">
+    <h2>欢迎进入上海泰泽自动生成代码系统</h2>
+</div>

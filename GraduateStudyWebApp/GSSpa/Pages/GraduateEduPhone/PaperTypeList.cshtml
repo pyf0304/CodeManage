@@ -1,0 +1,441 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduPhone.PaperTypeListModel
+@{
+    Layout = "~/Pages/Shared/_Layout_Empty.cshtml";
+    //Layout = null;
+    ViewData["Title"] = "论文";
+
+    var strUrl_Session_SetString = Model.Url_Session_SetString;
+    var strUrl_Session_GetString = Model.Url_Session_GetString;
+}
+@section Styles{
+    @*<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="../css/site.css" />*@
+    <link href="~/css/index.css" rel="stylesheet" type="text/css">
+
+
+
+    <link rel="stylesheet" href="~/css/phonepaperlist.css" />
+    <link rel="stylesheet" href="../css/Bootstrap-3.0.3.css" />
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+
+    <link rel="stylesheet" href="~/css/public.css" />
+
+
+}
+@section Scripts{
+
+    <!--tab选项卡-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap.min.js"></script>
+
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+
+<script>
+
+      var strWebRoot = "@Model.WebRoot";
+     var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+    /*
+       页面导入-在导入页面后运行的函数
+         (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_Page_Load)
+      */
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    } 
+    function GetThesisOpTypeID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var str1;
+        str1 = Request['OperationTypeId'];
+
+        if (str1 != null) {
+            $('#hidOperationType').val(str1);
+
+            require(["../js/GraduateEduPhone/PaperTypeListEx.js"], function (Thesis) {
+
+                var objpage = new Thesis.PaperTypeListEx();
+                objpage.Page_Load();
+                //var objPage = new taskinfo.Task_TSEx();
+                //objPage.Page_Load();
+            });
+
+        }
+        else {
+            require(["../js/GraduateEduPhone/PaperTypeListEx.js"], function (Thesis) {
+
+                var objpage = new Thesis.PaperTypeListEx();
+                objpage.Page_Load();
+
+            });
+        }
+    }
+
+
+    window.onload = function () {
+
+
+        require(["../js/GraduateEduPhone/PaperTypeListEx.js"], function (Paper) {
+
+            var objpage = new Paper.PaperTypeListEx();
+            objpage.Page_Load();
+
+        });
+       // GetThesisOpTypeID();
+    }
+
+    /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_mySubmit)
+ */
+    function mySubmit(pstrOp) {
+        //    alert("提交" + strOp);
+        //require(["../js/GraduateEduPhone/PaperTypeListEx.js"], function (Thesis) {
+        //    var objPage = new Thesis.PaperTypeListEx();
+        //    objPage.btnOKUpd_Click();
+        //});
+
+        doUpload();
+    }
+
+    //上传方法
+      function doUpload() {
+        var formData = new FormData($("#uploadForm")[0]);
+        $.ajax({
+             url: "@Url.Action("UploadFile", "testUploadPic")",
+            type: 'post',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                //成功
+                if (returndata.status == 0) {
+                    $("#hdnpic").val(returndata.fileName);
+
+                    require(["../js/GraduateEduPhone/PaperTypeListEx.js"], function (Thesis) {
+                        var objPage = new Thesis.PaperTypeListEx();
+                        objPage.btnOKUpd_Click();
+                    });
+                    // var aa = JSON.stringify(returndata);
+
+                    //alert(returndata.message);
+
+                }
+                else {
+
+                    alert('请选择正确文件!(in PaperTypeList.doUpload)')
+                }
+
+
+            },
+            error: function (returndata) {
+                alert(returndata);
+            }
+        });
+    }
+
+    /*
+ 所有论文
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnQuery_Click)
+*/
+    function liAllPaper_Click() {
+        require(["../js/GraduateEduPhone/PaperTypeListEx.js"], function (paper) {
+            $("#Text1").val("进入函数：liAllPaper_Click");
+            var objPage = new paper.PaperTypeListEx();
+            objPage.liAllPaper_Click();
+        });
+    }
+
+
+    /*
+本专业
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnQuery_Click)
+*/
+    function liMajor_Click() {
+        require(["../js/GraduateEduPhone/PaperTypeListEx.js"], function (paper) {
+            $("#Text1").val("进入函数：liMajor_Click");
+            var objPage = new paper.PaperTypeListEx();
+            objPage.liMajor_Click();
+        });
+    }
+
+    /*
+本专业方向
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnQuery_Click)
+*/
+    function liMajorDirection_Click() {
+        require(["../js/GraduateEduPhone/PaperTypeListEx.js"], function (paper) {
+            $("#Text1").val("进入函数：liMajorDirection_Click");
+            var objPage = new paper.PaperTypeListEx();
+            objPage.liMajorDirection_Click();
+        });
+    }
+
+</script>
+
+
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+<div data-role="page" id="pageOne">
+
+    <div data-role="header" data-position="fixed">
+        <a href="/GraduateStudyWebApp/WebApp/Indexs" rel="external" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">主页</a>
+
+        <h1>论文</h1>
+        @*<a href="#pageAdd" class="ui-btn ui-btn-right ui-icon-bullets ui-btn-icon-left ui-corner-all">
+                添加
+            </a>*@
+    </div>
+
+    <div data-role="content" id="contents">
+        <div id="divList" class="div_List">
+
+            <div style="height:100%;width:100%;background-color:#FFF;">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#AllPaper" data-toggle="tab" onclick="liAllPaper_Click()">
+                            全部论文
+                        </a>
+                    </li>
+                    <li><a href="#MyMajor" data-toggle="tab" onclick="liMajor_Click()">本专业论文</a></li>
+                    <li><a href="#MyDirection" data-toggle="tab" onclick="liMajorDirection_Click()">本方向论文</a></li>
+                    @*<li><a href="#ejb" data-toggle="tab">测试</a></li>*@
+
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active show" id="AllPaper" style="padding:5px;">
+                        <p>
+                            <div id="divDataLst" class="div_List">
+
+                            </div>
+                            <div id="divPager" class="pager" value="1">
+                                @*@Html.Partial("~/Pages/PubWebClass/pager.cshtml")*@
+                            </div>
+                        </p>
+                    </div>
+
+                    <div class="tab-pane fade" id="MyMajor">
+                        <p>
+                            <div id="divDataLstMajor" class="div_List">
+                            </div>
+
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="MyDirection">
+                        <p>
+                            <div id="divDataLstDirection" class="div_List">
+                            </div>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*<div id="pageone">
+
+                <div style="width: 100%;height: 5%;padding:0px 0px 0px 20px;text-align:left;">
+                </div>
+                <div id="maincate" class="maincate">
+                    <a href="#one" data-transition="pop">首页</a>
+                    <a href="#two" data-transition="pop">SuperMap</a>
+                    <a href="#three" data-transition="pop">三维GIS</a>
+
+
+                </div>
+
+            </div>*@
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a asp-page="/WebApp/Indexs" rel="external" data-icon="home" class="ui-btn-active ui-state-persist">首页</a></li>
+                <li><a asp-page="/WebApp/MessagePushList" rel="external" data-icon="star">消息</a></li>
+                <li><a asp-page="/WebApp/User" rel="external" data-icon="user">我的</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+</div>
+
+<input id="hdnpic" type="text" name="text" />
+<input id="hidOpType" type="hidden" />
+<input id="hidOperationType" type="hidden" value="@Model.GetSession("OperationType")" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvThesisBy" type="hidden" value="" />
+
+
+<input id="hidUserInfo" type="hidden" value="@Model.GetSession("objvUserRoleRelation")" />
+<input id="hidSortvXzMajorDirectionBy" type="hidden" value="" />
+<input id="hidSortvPaperBy" type="hidden" value="" />
+@*<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <!-- meta使用viewport以确保页面可自由缩放 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- 引入 jQuery Mobile 样式 -->
+        <link rel="stylesheet" href="../jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+        <!-- 引入 jQuery 库 -->
+        <script src="../jquery.mobile-1.4.5/jquery-1.11.1.min.js"></script>
+        <!-- 引入 jQuery Mobile 库 -->
+        <script src="../jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <title>Title</title>
+
+        <script src="../lib/jquery/dist/jquery.js"></script>
+        <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+        <script>
+             var strWebRoot = "@Model.WebRoot";
+         var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+        var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+        </script>
+
+        <style>
+
+
+            .maincate {
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                white-space: nowrap;
+                box-shadow: 0 1px 2px rgba(0,0,0,.1);
+                overflow-x: scroll;
+                overflow-y: hidden;
+                -webkit-backface-visibility: hidden;
+                -webkit-perspective: 1000px;
+                -webkit-overflow-scrolling: touch;
+                text-align: justify;
+                background: #f78361;
+                padding: 0px 5px;
+                box-sizing: border-box;
+            }
+
+                .maincate a {
+                    color: #fff;
+                    text-decoration: none;
+                    margin-right: 10px;
+                }
+
+                .maincate::-webkit-scrollbar {
+                    display: none;
+                }
+        </style>
+    </head>
+    <body>
+        <!--登陆页面-->
+        <div data-role="page" id="pageLogin">
+            <div data-role="header">
+                <h1 role="heading">研究生学习系统</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div id="maincate" class="maincate">
+                    <a href="#one">首页</a>
+                    <a href="#two">SuperMap</a>
+                    <a href="#three">三维GIS</a>
+                    @*<a href="#">移动GIS</a>
+                        <a href="#">云GIS</a>
+                        <a href="#">二三维一体化</a>
+                        <a href="#">大数据GIS</a>
+                </div>
+
+
+
+
+                @*<ul id="PrjList" data-role="listview" data-inset="true">
+                        <li data-role="divider">请选择论文模式</li>
+
+                        <li class="ui-li-has-alt ui-first-child">
+                            <a href="/GraduateStudyWebApp/GraduateEduPhone/PaperAllList" rel="external" class="ui-btn">全部论文</a>
+
+                        </li>
+                        <li class="ui-li-has-alt ui-first-child">
+                            <a href="/GraduateStudyWebApp/GraduateEduPhone/MajorPaperList" rel="external" class="ui-btn">本专业论文</a>
+
+                        </li>
+                        <li class="ui-li-has-alt ui-first-child">
+                            <a href="/GraduateStudyWebApp/GraduateEduPhone/DirectionPaperList" rel="external" class="ui-btn">本方向论文</a>
+
+                        </li>
+
+
+                    </ul>
+
+
+            </div>
+
+            <div data-role="footer" style="text-align: center" data-position="fixed">
+                <p>CopyRight &copy;泰泽教育</p>
+            </div>
+        </div>
+        <input id="hidUserId" type="hidden" value="@Model.seUserId" />
+        @*<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />
+    </body>
+    </html>
+
+
+    <div id="one">
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+    </div>
+    <div id="two">
+        正文2<br>
+        正文2<br>
+        正文2<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+    </div>
+    <div id="three">
+        正文3<br>
+        正文3<br>
+        正文3<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+        正文<br>
+    </div>*@

@@ -1,0 +1,210 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+
+
+    /*
+     隐藏对话框
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+    */
+    function HideDialog() {
+        require(['jquery', 'bootstrap'], function ($) {
+            $('#divEditRegion').modal('hide');
+        });
+    }
+
+    /*
+     显示对话框
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+    */
+    function ShowDialog(pstrOp) {
+        strOp = pstrOp;
+        require(['jquery', 'bootstrap'], function ($) {
+            if (strOp === "Add") {
+                $('#myModalLabel').html('添加记录');
+                //WA_qa_Paper_EditEx.GetMaxStrId('#txtqa_PaperId');
+            }
+            else if (strOp === "Update") {
+                $('#myModalLabel').html('修改记录');
+            }
+            else if (strOp === "Detail") {
+                $('#btnOKUpd').hide();
+                $('#myModalLabel').html('详细信息');
+            }
+            $('#divEditRegion').modal('show');
+        });
+    }
+
+    /*
+    确定选择论文数据
+   (AutoGCLib.WA_ViewScript_TS4CSharp:btnPaperRecordInTab_Click)
+   */
+
+    function btnPaperRecordInTab_Click(strKeyId) {
+        require(["../js/InteractManage/qa_PaperCRUDEx.js"], function (qa_paper) {
+            if (strKeyId == "") {
+                alert("请选择需要的记录！");
+                return;
+            }
+            //ShowDialogOne();
+            var objPage = new qa_paper.qa_PaperCRUDEx();
+            objPage.btnPaperRecordInTab_Click(strKeyId);
+        });
+    }
+
+    function btnPaperQuery_Click() {
+        require(["../js/InteractManage/qa_PaperCRUDEx.js"], function (qa_paper) {
+            var objPage = new qa_paper.qa_PaperCRUDEx();
+            objPage.btnPaperQuery_Click();
+        });
+    }
+
+
+    /*
+ 分页
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_IndexPage)
+*/
+    function IndexPageOne(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_PaperCRUDEx.js"], function (qa_paper) {
+            var objPage = new qa_paper.qa_PaperCRUDEx();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+    */
+    function JumpToPageOne() {
+        var intCurrPageIndex = $('#input_numberOne').val();
+        var intPageIndex = Number(intCurrPageIndex);
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_PaperCRUDEx.js"], function (qa_paper) {
+            var objPage = new qa_paper.qa_PaperCRUDEx();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+    /*
+ 修改记录
+(AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+*/
+    function PageNumOne(intPageIndex) {
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_PaperCRUDEx.js"], function (qa_paper) {
+            var objPage = new qa_paper.qa_PaperCRUDEx();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+    /*
+     修改记录
+    (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+    */
+    function PrevPageOne() {
+        var intCurrPageIndex = $('#hidCurrPageIndex2').val();
+        var intPageIndex = Number(intCurrPageIndex) - 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_PaperCRUDEx.js"], function (qa_paper) {
+            var objPage = new qa_paper.qa_PaperCRUDEx();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+    /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+ */
+    function NextPageOne() {
+        var intCurrPageIndex = $('#hidCurrPageIndex2').val();
+        var intPageIndex = Number(intCurrPageIndex) + 1;
+        console.log("跳转到" + intPageIndex + "页");
+        require(["../js/InteractManage/qa_PaperCRUDEx.js"], function (qa_paper) {
+            var objPage = new qa_paper.qa_PaperCRUDEx();
+            objPage.IndexPageOne(intPageIndex);
+        });
+    }
+
+</script>
+<div id="tabLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditRegion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="margin-left:100px;">
+            <div class="modal-content" style="width: 1600px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+
+                <div id="divQuery" class="div_query">
+                    <table id="tabQuery" name="tabQuery" style="width: 50%; " class="table table-bordered table-hover table td table-sm">
+                        <tr>
+
+                            <td>
+                                <input id="txtPaperTitle" name="txtPaperTitle" placeholder="论文标题" class="layui-input" style="width:200px;" />
+                            </td>
+                            <td class="ValueTD">
+                                <select id="ddlLiteratureTypeId" name="ddlLiteratureTypeId" class="form-control" style="width:180px;" />
+                            </td>
+                            <td>
+                                <select id="ddlUserId" name="ddlUserId" class="form-control" style="width:180px;" />
+
+                            </td>
+                            <td>
+                                <button class="layui-btn" lay-submit="" lay-filter="sreach" onclick="btnPaperQuery_Click()">
+                                    <i class="layui-icon">&#xe615;</i>
+                                </button>
+                            </td>
+                            <td class="NameTD">
+                                <Label id="lblShareId" name="lblShareId" class="col-form-label text-right" style="width:90px;color:red;">
+                                    请选择分享
+                                </Label>
+                            </td>
+                            <td class="ValueTD" colspan="3">
+                                <select id="ddlShareId" name="ddlShareId" class="form-control" style="width:200px;" />
+
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
+
+
+                <div class="modal-body">
+                    <div id="divList" class="div_List">
+                        <div id="divPaperDataLst" class="div_List">
+                        </div>
+                        <div id="divPager" class="pager" value="1">
+                     
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @*<button id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>*@
+                    @*<button id="btnOKUpd" type="button" class="btn btn-primary" onclick="mySubmit()">添加</button>*@
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+
+<input id="hidSortvPaperBy" type="hidden" />
+<input id="hidPaperId" type="hidden" />
+<input id="hidCurrPageIndex2" type="hidden" value="1" />

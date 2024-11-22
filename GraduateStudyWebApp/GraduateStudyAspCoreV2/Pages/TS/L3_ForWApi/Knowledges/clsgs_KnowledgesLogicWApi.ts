@@ -1,0 +1,3116 @@
+﻿
+ /**
+ * 类名:clsgs_KnowledgesLogicWApi
+ * 表名:gs_KnowledgesLogic(01120872)
+ * 版本:2023.03.10.1(服务器:WIN-SRV103-116)
+ * 日期:2023/03/15 23:43:52
+ * 生成者:pyf
+ * 生成服务器IP:
+ 工程名称:问卷调查(0112)
+ CM工程:研究生论文学习(变量首字母小写)-全部函数集
+ * 相关数据库:103.116.76.183,9433EduHigh_Jsie
+ * PrjDataBaseId:0170
+ 模块中文名:知识点相关(Knowledges)
+ * 框架-层名:WA_访问层(TS)(WA_Access)
+ * 编程语言:TypeScript
+ * 注意:1、需要数据底层(PubDataBase.dll)的版本:2019.03.07.01
+   *      2、需要公共函数层(TzPubFunction.dll)的版本:2017.12.21.01
+ **/
+
+/**
+ * 知识点逻辑(gs_KnowledgesLogic)
+ * (AutoGCLib.WA_Access4TypeScript:GeneCode)
+* Created by pyf on 2023年03月15日.
+* 注意:该类必须与调用界面处于同一个包，否则调用不成功!
+ **/
+import axios from "axios";
+import { enumComparisonOp } from "../../PubFun/enumComparisonOp.js";
+import { CacheHelper } from "../../PubFun/CacheHelper.js";
+import { clsgs_KnowledgesLogicEN } from "../../L0_Entity/Knowledges/clsgs_KnowledgesLogicEN.js";
+import { BindDdl_ObjLstInDiv, GetExceptionStr, GetObjKeys, myShowErrorMsg, ObjectAssign } from "../../PubFun/clsCommFunc4Web.js";
+import { clsSysPara4WebApi, GetWebApiUrl } from "../../PubConfig/clsSysPara4WebApi.js";
+import { stuTopPara } from "../../PubFun/stuTopPara.js";
+import { stuRangePara } from "../../PubFun/stuRangePara.js";
+import { stuPagerPara } from "../../PubFun/stuPagerPara.js";
+import { tzDataType } from "../../PubFun/clsString.js";
+import { Format, GetStrLen, IsNullOrEmpty } from "../../PubFun/clsString.js";
+
+ export const gs_KnowledgesLogic_Controller = "gs_KnowledgesLogicApi";
+ export const gs_KnowledgesLogic_ConstructorName = "gs_KnowledgesLogic";
+
+ /**
+ * 根据关键字获取相应记录的对象
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjByKeyIdAsync)
+ * @param lngmId:关键字
+ * @returns 对象
+ **/
+export async function gs_KnowledgesLogic_GetObjBymIdAsync(lngmId: number): Promise<clsgs_KnowledgesLogicEN|null>  
+{
+const strThisFuncName = "GetObjBymIdAsync";
+
+if (lngmId == 0)
+{
+  const strMsg = Format("参数:[lngmId]不能为空！(In clsgs_KnowledgesLogicWApi.GetObjBymIdAsync)");
+console.error(strMsg);
+ throw (strMsg);
+}
+const strAction = "GetObjBymId";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: {
+"lngmId": lngmId,
+}
+});
+const data = response.data;
+if (data.errorId == 0)
+{
+const returnObj = data.returnObj;
+if (returnObj == null)
+{
+return null;
+}
+//console.log(returnObj);
+const objgs_KnowledgesLogic = gs_KnowledgesLogic_GetObjFromJsonObj(returnObj);
+return objgs_KnowledgesLogic;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据关键字获取相关对象, 从缓存中获取.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjByKeyId_Cache)
+ * @param lngmId:所给的关键字
+ * @returns 对象
+*/
+export async function gs_KnowledgesLogic_GetObjBymId_Cache(lngmId:number,strCourseId:string, bolTryAsyncOnce: boolean = true) {
+const strThisFuncName = "GetObjBymId_Cache";
+
+if (lngmId == 0)
+{
+  const strMsg = Format("参数:[lngmId]不能为空！(In clsgs_KnowledgesLogicWApi.GetObjBymId_Cache)");
+console.error(strMsg);
+ throw (strMsg);
+}
+const arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId);
+try
+{
+const arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogicObjLst_Cache.filter(x => 
+ x.mId == lngmId );
+let objgs_KnowledgesLogic: clsgs_KnowledgesLogicEN;
+if (arrgs_KnowledgesLogic_Sel.length > 0)
+{
+objgs_KnowledgesLogic = arrgs_KnowledgesLogic_Sel[0];
+return objgs_KnowledgesLogic;
+}
+else
+{
+if (bolTryAsyncOnce == true)
+{
+const objgs_KnowledgesLogic_Const = await gs_KnowledgesLogic_GetObjBymIdAsync(lngmId);
+if (objgs_KnowledgesLogic_Const != null)
+{
+gs_KnowledgesLogic_ReFreshThisCache(strCourseId);
+return objgs_KnowledgesLogic_Const;
+}
+}
+return null;
+}
+}
+catch (e)
+{
+const strMsg = Format("错误:[{0}]. \n根据关键字:[{1}]获取相应的对象不成功!(in {2}.{3})", e, lngmId, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+}
+return null;
+}
+
+/**
+ * 根据关键字获取相关对象, 从localStorage缓存中获取.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjByKeyId_localStorage)
+ * @param lngmId:所给的关键字
+ * @returns 对象
+*/
+export async function gs_KnowledgesLogic_GetObjBymId_localStorage(lngmId: number) {
+const strThisFuncName = "GetObjBymId_localStorage";
+
+if (lngmId == 0)
+{
+  const strMsg = Format("参数:[lngmId]不能为空！(In clsgs_KnowledgesLogicWApi.GetObjBymId_localStorage)");
+console.error(strMsg);
+ throw (strMsg);
+}
+const strKey = Format("{0}_{1}", clsgs_KnowledgesLogicEN._CurrTabName, lngmId);
+if (strKey == "")
+{
+console.error("关键字为空！不正确");
+throw new Error("关键字为空！不正确");
+}
+if (Object.prototype.hasOwnProperty.call(localStorage, strKey))
+{
+//缓存存在，直接返回
+const strTempObj = localStorage.getItem(strKey) as string;
+const objgs_KnowledgesLogic_Cache: clsgs_KnowledgesLogicEN = JSON.parse(strTempObj);
+return objgs_KnowledgesLogic_Cache;
+}
+try
+{
+const objgs_KnowledgesLogic = await gs_KnowledgesLogic_GetObjBymIdAsync(lngmId);
+if (objgs_KnowledgesLogic != null)
+{
+localStorage.setItem(strKey, JSON.stringify(objgs_KnowledgesLogic));
+const strInfo = Format("Key:[${ strKey}]的缓存已经建立!");
+console.log(strInfo);
+return objgs_KnowledgesLogic;
+}
+return objgs_KnowledgesLogic;
+}
+catch (e)
+{
+const strMsg = Format("错误:[{0}]. \n根据关键字:[{1}]获取相应的对象不成功!(in {2}.{3})", e, lngmId, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+return;
+}
+}
+
+/**
+ * 修改在缓存对象列表中的对象, 与后台数据库无关.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_UpdateObjInLst_Cache)
+ * @param objgs_KnowledgesLogic:所给的对象
+ * @returns 对象
+*/
+export async function gs_KnowledgesLogic_UpdateObjInLst_Cache(objgs_KnowledgesLogic: clsgs_KnowledgesLogicEN,strCourseId: string) {
+const strThisFuncName = "UpdateObjInLst_Cache";
+try
+{
+const arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId);
+const obj = arrgs_KnowledgesLogicObjLst_Cache.find(x => x.courseKnowledgeId == objgs_KnowledgesLogic.courseKnowledgeId && x.knowledgeGraphId == objgs_KnowledgesLogic.knowledgeGraphId);
+if (obj != null)
+{
+objgs_KnowledgesLogic.mId = obj.mId;
+ObjectAssign( obj, objgs_KnowledgesLogic);
+}
+else
+{
+arrgs_KnowledgesLogicObjLst_Cache.push(objgs_KnowledgesLogic);
+}
+}
+catch (e) {
+const strMsg = Format("错误:[{0}]. \n在列表中修改对象不成功!(in {1}.{2})", e, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+}
+/*该表没有名称字段，不能生成此函数！*/
+
+/**
+ * 映射函数。根据表映射把输入字段值，映射成输出字段值
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_func)
+ * @param strInFldName:输入字段名
+ * @param strOutFldName:输出字段名
+ * @param strInValue:输入字段值
+ @param strCourseId:缓存的分类字段
+ * @returns 返回一个输出字段值
+*/
+export async function gs_KnowledgesLogic_func(strInFldName:string , strOutFldName:string , strInValue:string 
+, strCourseId_C: string)
+{
+//const strThisFuncName = "func";
+
+if (IsNullOrEmpty(strCourseId_C) == true)
+{
+  const strMsg = Format("参数:[strCourseId_C]不能为空！(In clsgs_KnowledgesLogicWApi.func)");
+console.error(strMsg);
+ throw (strMsg);
+}
+if (strCourseId_C.length != 8)
+{
+const strMsg = Format("缓存分类变量:[strCourseId_C]的长度:[{0}]不正确！(clsgs_KnowledgesLogicWApi.func)", strCourseId_C.length);
+console.error(strMsg);
+throw (strMsg);
+}
+
+if (strInFldName != clsgs_KnowledgesLogicEN.con_mId)
+{
+const strMsg = Format("输入字段名:[{0}]不正确!", strInFldName);
+console.error(strMsg);
+throw new Error(strMsg);
+}
+if (clsgs_KnowledgesLogicEN.AttributeName.indexOf(strOutFldName) == -1)
+{
+const strMsg = Format("输出字段名:[{0}]不正确，不在输出字段范围之内!({1})",
+strOutFldName, clsgs_KnowledgesLogicEN.AttributeName.join(','));
+console.error(strMsg);
+throw new Error(strMsg);
+}
+const lngmId = Number(strInValue);
+if (lngmId == 0)
+{
+return "";
+}
+const objgs_KnowledgesLogic = await gs_KnowledgesLogic_GetObjBymId_Cache(lngmId , strCourseId_C);
+if (objgs_KnowledgesLogic == null) return "";
+if (objgs_KnowledgesLogic.GetFldValue(strOutFldName) == null) return "";
+return objgs_KnowledgesLogic.GetFldValue(strOutFldName).toString();
+}
+
+/**
+ * 排序函数。根据关键字字段的值进行比较
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
+ * @param a:比较的第1个对象
+ * @param  b:比较的第1个对象
+ * @returns 返回两个对象比较的结果
+*/
+export function gs_KnowledgesLogic_SortFun_Defa(a:clsgs_KnowledgesLogicEN , b:clsgs_KnowledgesLogicEN): number 
+{
+const strThisFuncName = "SortFun_Defa";
+return a.mId-b.mId;
+}
+/**
+ * 排序函数。根据表对象中随机两个字段的值进行比较
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFun)
+ * @param  a:比较的第1个对象
+ * @param  b:比较的第1个对象
+ * @returns 返回两个对象比较的结果
+*/
+export function gs_KnowledgesLogic_SortFun_Defa_2Fld(a:clsgs_KnowledgesLogicEN , b:clsgs_KnowledgesLogicEN): number 
+{
+const strThisFuncName = "SortFun_Defa_2Fld";
+if (a.courseKnowledgeId == b.courseKnowledgeId) return a.courseKnowledgeTitle.localeCompare(b.courseKnowledgeTitle);
+else return a.courseKnowledgeId.localeCompare(b.courseKnowledgeId);
+}
+
+/**
+ * 排序函数。根据关键字字段的值进行比较
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_SortFunByKey)
+ * @param a:比较的第1个对象
+ * @param  b:比较的第1个对象
+ * @returns 返回两个对象比较的结果
+*/
+export function gs_KnowledgesLogic_SortFunByKey(strKey:string, AscOrDesc: string)
+{
+const strThisFuncName = "SortFunByKey";
+let strMsg ="";
+if (AscOrDesc == "Asc" || AscOrDesc == "")
+{
+switch (strKey)
+{
+case clsgs_KnowledgesLogicEN.con_mId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return a.mId-b.mId;
+}
+case clsgs_KnowledgesLogicEN.con_CourseKnowledgeId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return a.courseKnowledgeId.localeCompare(b.courseKnowledgeId);
+}
+case clsgs_KnowledgesLogicEN.con_CourseKnowledgeTitle:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (a.courseKnowledgeTitle == null) return -1;
+if (b.courseKnowledgeTitle == null) return 1;
+return a.courseKnowledgeTitle.localeCompare(b.courseKnowledgeTitle);
+}
+case clsgs_KnowledgesLogicEN.con_X_Position:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return a.x_Position-b.x_Position;
+}
+case clsgs_KnowledgesLogicEN.con_Y_Position:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return a.y_Position-b.y_Position;
+}
+case clsgs_KnowledgesLogicEN.con_KnowledgeGraphId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (a.knowledgeGraphId == null) return -1;
+if (b.knowledgeGraphId == null) return 1;
+return a.knowledgeGraphId.localeCompare(b.knowledgeGraphId);
+}
+case clsgs_KnowledgesLogicEN.con_NodeColor:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (a.nodeColor == null) return -1;
+if (b.nodeColor == null) return 1;
+return a.nodeColor.localeCompare(b.nodeColor);
+}
+case clsgs_KnowledgesLogicEN.con_LogicNodeId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (a.logicNodeId == null) return -1;
+if (b.logicNodeId == null) return 1;
+return a.logicNodeId.localeCompare(b.logicNodeId);
+}
+case clsgs_KnowledgesLogicEN.con_ClassName:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (a.className == null) return -1;
+if (b.className == null) return 1;
+return a.className.localeCompare(b.className);
+}
+case clsgs_KnowledgesLogicEN.con_CourseId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return a.courseId.localeCompare(b.courseId);
+}
+case clsgs_KnowledgesLogicEN.con_UpdDate:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (a.updDate == null) return -1;
+if (b.updDate == null) return 1;
+return a.updDate.localeCompare(b.updDate);
+}
+case clsgs_KnowledgesLogicEN.con_UpdUser:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (a.updUser == null) return -1;
+if (b.updUser == null) return 1;
+return a.updUser.localeCompare(b.updUser);
+}
+case clsgs_KnowledgesLogicEN.con_Memo:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (a.memo == null) return -1;
+if (b.memo == null) return 1;
+return a.memo.localeCompare(b.memo);
+}
+        default:
+strMsg = `字段名:[${strKey}]在表对象:[gs_KnowledgesLogic]中不存在！(in ${ gs_KnowledgesLogic_ConstructorName}.${ strThisFuncName})`;
+       console.error(strMsg);
+     break;
+ }
+ }
+  else
+ {
+switch (strKey)
+{
+case clsgs_KnowledgesLogicEN.con_mId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return b.mId-a.mId;
+}
+case clsgs_KnowledgesLogicEN.con_CourseKnowledgeId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return b.courseKnowledgeId.localeCompare(a.courseKnowledgeId);
+}
+case clsgs_KnowledgesLogicEN.con_CourseKnowledgeTitle:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (b.courseKnowledgeTitle == null) return -1;
+if (a.courseKnowledgeTitle == null) return 1;
+return b.courseKnowledgeTitle.localeCompare(a.courseKnowledgeTitle);
+}
+case clsgs_KnowledgesLogicEN.con_X_Position:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return b.x_Position-a.x_Position;
+}
+case clsgs_KnowledgesLogicEN.con_Y_Position:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return b.y_Position-a.y_Position;
+}
+case clsgs_KnowledgesLogicEN.con_KnowledgeGraphId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (b.knowledgeGraphId == null) return -1;
+if (a.knowledgeGraphId == null) return 1;
+return b.knowledgeGraphId.localeCompare(a.knowledgeGraphId);
+}
+case clsgs_KnowledgesLogicEN.con_NodeColor:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (b.nodeColor == null) return -1;
+if (a.nodeColor == null) return 1;
+return b.nodeColor.localeCompare(a.nodeColor);
+}
+case clsgs_KnowledgesLogicEN.con_LogicNodeId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (b.logicNodeId == null) return -1;
+if (a.logicNodeId == null) return 1;
+return b.logicNodeId.localeCompare(a.logicNodeId);
+}
+case clsgs_KnowledgesLogicEN.con_ClassName:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (b.className == null) return -1;
+if (a.className == null) return 1;
+return b.className.localeCompare(a.className);
+}
+case clsgs_KnowledgesLogicEN.con_CourseId:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+return b.courseId.localeCompare(a.courseId);
+}
+case clsgs_KnowledgesLogicEN.con_UpdDate:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (b.updDate == null) return -1;
+if (a.updDate == null) return 1;
+return b.updDate.localeCompare(a.updDate);
+}
+case clsgs_KnowledgesLogicEN.con_UpdUser:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (b.updUser == null) return -1;
+if (a.updUser == null) return 1;
+return b.updUser.localeCompare(a.updUser);
+}
+case clsgs_KnowledgesLogicEN.con_Memo:
+return (a: clsgs_KnowledgesLogicEN, b: clsgs_KnowledgesLogicEN) => {
+if (b.memo == null) return -1;
+if (a.memo == null) return 1;
+return b.memo.localeCompare(a.memo);
+}
+        default:
+strMsg = `字段名:[${strKey}]在表对象:[gs_KnowledgesLogic]中不存在！(in ${ gs_KnowledgesLogic_ConstructorName}.${ strThisFuncName})`;
+       console.error(strMsg);
+     break;
+ }
+ }
+}
+
+/**
+ * 过滤函数。根据关键字字段的值与给定值进行比较，返回是否相等
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_FilterFunByKey)
+ * @param strKey:比较的关键字段名称
+ * @param value:给定值
+ * @returns 返回对象的字段值是否等于给定值
+*/
+export async function gs_KnowledgesLogic_FilterFunByKey(strKey:string, value: any)
+{
+const strThisFuncName = "FilterFunByKey";
+let strMsg ="";
+switch (strKey)
+{
+case clsgs_KnowledgesLogicEN.con_mId:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.mId === value;
+}
+case clsgs_KnowledgesLogicEN.con_CourseKnowledgeId:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.courseKnowledgeId === value;
+}
+case clsgs_KnowledgesLogicEN.con_CourseKnowledgeTitle:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.courseKnowledgeTitle === value;
+}
+case clsgs_KnowledgesLogicEN.con_X_Position:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.x_Position === value;
+}
+case clsgs_KnowledgesLogicEN.con_Y_Position:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.y_Position === value;
+}
+case clsgs_KnowledgesLogicEN.con_KnowledgeGraphId:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.knowledgeGraphId === value;
+}
+case clsgs_KnowledgesLogicEN.con_NodeColor:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.nodeColor === value;
+}
+case clsgs_KnowledgesLogicEN.con_LogicNodeId:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.logicNodeId === value;
+}
+case clsgs_KnowledgesLogicEN.con_ClassName:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.className === value;
+}
+case clsgs_KnowledgesLogicEN.con_CourseId:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.courseId === value;
+}
+case clsgs_KnowledgesLogicEN.con_UpdDate:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.updDate === value;
+}
+case clsgs_KnowledgesLogicEN.con_UpdUser:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.updUser === value;
+}
+case clsgs_KnowledgesLogicEN.con_Memo:
+return (obj: clsgs_KnowledgesLogicEN) => {
+return obj.memo === value;
+}
+        default:
+strMsg = `字段名:[${strKey}]在表对象:[gs_KnowledgesLogic]中不存在！(in ${ gs_KnowledgesLogic_ConstructorName}.${ strThisFuncName})`;
+       console.error(strMsg);
+     break;
+ }
+}
+
+/**
+ * 映射函数。根据表映射把输入字段值，映射成输出字段值
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_funcKey)
+ * @param strInFldName:输入字段名
+ * @param strInValue:输入字段值
+ * @param strComparisonOp:比较操作符
+ @param strCourseId:缓存的分类字段
+ * @returns 返回一个关键字值列表
+*/
+export async function gs_KnowledgesLogic_funcKey(strInFldName:string, strInValue: any, strComparisonOp:string, strCourseId_C: string): Promise<Array<number>>
+{
+//const strThisFuncName = "funcKey";
+
+if (IsNullOrEmpty(strCourseId_C) == true)
+{
+  const strMsg = Format("参数:[strCourseId_C]不能为空！(In clsgs_KnowledgesLogicWApi.funcKey)");
+console.error(strMsg);
+ throw (strMsg);
+}
+if (strCourseId_C.length != 8)
+{
+const strMsg = Format("缓存分类变量:[strCourseId_C]的长度:[{0}]不正确！(clsgs_KnowledgesLogicWApi.funcKey)", strCourseId_C.length);
+console.error(strMsg);
+throw (strMsg);
+}
+
+if (strInFldName == clsgs_KnowledgesLogicEN.con_mId)
+{
+const strMsg = Format("输入字段名:[{0}]不正确, 不能为关键字段!", strInFldName);
+console.error(strMsg);
+throw new Error(strMsg);
+}
+if (Number(strInValue) == 0)
+{
+return [];
+}
+const arrgs_KnowledgesLogic = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId_C);
+if (arrgs_KnowledgesLogic == null) return [];
+let arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic;
+const strType = typeof(strInValue);
+switch (strType)
+{
+case "string":
+switch (strComparisonOp)
+{
+case enumComparisonOp.Equal_01: // " = "
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName).toString() == strInValue.toString());
+break;
+case enumComparisonOp.Like_03:
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName).toString().indexOf(strInValue.toString()) != -1);
+break;
+case enumComparisonOp.In_04:
+const arrValues = strInValue.split(',');
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => arrValues.indexOf(x.GetFldValue(strInFldName).toString()) != -1);
+break;
+}
+break;
+case "boolean":
+if (strInValue == null) return [];
+if (strComparisonOp == enumComparisonOp.Equal_01)
+{
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName) == strInValue);
+}
+break;
+case "number":
+if (Number(strInValue) == 0) return [];
+switch (strComparisonOp)
+{
+case enumComparisonOp.Equal_01:
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName) == strInValue);
+break;
+case enumComparisonOp.NotEqual_02:
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName) != strInValue);
+break;
+case enumComparisonOp.NotLessThan_05://" >= ":
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName) >= strInValue);
+break;
+case enumComparisonOp.NotGreaterThan_06://" <= ":
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName) <= strInValue);
+break;
+case enumComparisonOp.GreaterThan_07://" > ":
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName) > strInValue);
+break;
+case enumComparisonOp.LessThan_08://" < ":
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strInFldName) <= strInValue);
+break;
+}
+break;
+}
+if (arrgs_KnowledgesLogic_Sel.length == 0) return [];
+return arrgs_KnowledgesLogic_Sel.map(x=>x.mId);
+}
+
+ /**
+ * 根据条件获取满足条件的第一条记录
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetFirstIdAsync)
+ * @param strWhereCond:条件
+ * @returns 返回的第一条记录的关键字值
+ **/
+export async function gs_KnowledgesLogic_GetFirstIDAsync(strWhereCond: string): Promise<string>  
+{
+const strThisFuncName = "GetFirstIDAsync";
+const strAction = "GetFirstID";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "strWhereCond": strWhereCond}
+});
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnStr;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据条件获取相应的记录对象列表
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetFirstId)
+ * @param strWhereCond:条件
+ * @param cb:CallBack函数，用于显示正确结果数据
+ * @param errorCb:CallBack函数，用于显示错误信息
+ * @returns 返回的第一条记录的关键字值
+*/
+export async function gs_KnowledgesLogic_GetFirstID(strWhereCond: string, cb: (json: any) => void, errorCb: (json: any) => void) 
+{
+const strThisFuncName = "GetFirstID";
+const strAction = "GetFirstID";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "strWhereCond": strWhereCond}
+});
+const data = response.data;
+cb(data);
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 根据条件获取满足条件的第一条记录对象
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetFirstObjAsync)
+ * @param strWhereCond:条件
+ * @returns 第一条记录对象
+ **/
+export async function gs_KnowledgesLogic_GetFirstObjAsync(strWhereCond: string): Promise<clsgs_KnowledgesLogicEN|null>  
+{
+const strThisFuncName = "GetFirstObjAsync";
+const strAction = "GetFirstObj";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "strWhereCond": strWhereCond}
+});
+const data = response.data;
+if (data.errorId == 0)
+{
+const returnObj = data.returnObj;
+if (returnObj == null)
+{
+return null;
+}
+//console.log(returnObj);
+const objgs_KnowledgesLogic = gs_KnowledgesLogic_GetObjFromJsonObj(returnObj);
+return objgs_KnowledgesLogic;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 获取本地缓存中的对象列表，是整个表中的全部记录，也可是表中某缓存分类的全部记录.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_ClientCache)
+ * @returns 从本地缓存中获取的对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLst_ClientCache(strCourseId: string)
+{
+const strThisFuncName = "GetObjLst_ClientCache";
+//初始化列表缓存
+let strWhereCond = "1=1";
+if (IsNullOrEmpty(clsgs_KnowledgesLogicEN.WhereFormat) == false)
+{
+strWhereCond = Format(clsgs_KnowledgesLogicEN.WhereFormat, strCourseId);
+}
+else
+{
+strWhereCond = Format("CourseId='{0}'", strCourseId);
+}
+const strKey = Format("{0}_{1}", clsgs_KnowledgesLogicEN._CurrTabName, strCourseId);
+if (IsNullOrEmpty(clsgs_KnowledgesLogicEN.CacheAddiCondition) == false)
+{
+strWhereCond += Format(" and {0}", clsgs_KnowledgesLogicEN.CacheAddiCondition);
+}
+if (strKey == "")
+{
+console.error("关键字为空！不正确");
+throw new Error("关键字为空！不正确");
+}
+ if (CacheHelper.Exsits(strKey))
+{
+//缓存存在，直接返回
+const arrgs_KnowledgesLogicExObjLst_Cache: Array<clsgs_KnowledgesLogicEN> = CacheHelper.Get(strKey);
+const arrgs_KnowledgesLogicObjLst_T = gs_KnowledgesLogic_GetObjLstByJSONObjLst(arrgs_KnowledgesLogicExObjLst_Cache);
+return arrgs_KnowledgesLogicObjLst_T;
+}
+try
+{
+const arrgs_KnowledgesLogicExObjLst = await gs_KnowledgesLogic_GetObjLstAsync(strWhereCond);
+CacheHelper.Add(strKey, arrgs_KnowledgesLogicExObjLst);
+const strInfo = Format("[ClientCache]Key:[{0}]的缓存已经建立，对象列表数：{1}!", strKey, arrgs_KnowledgesLogicExObjLst.length);
+console.log(strInfo);
+return arrgs_KnowledgesLogicExObjLst;
+}
+catch (e)
+{
+const strMsg = Format("从本地缓存中获取所有对象列表出错. \n服务器错误：{0}.(in {1}.{2})", e, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+throw (strMsg);
+}
+}
+
+ /**
+ * 获取本地缓存中的对象列表，是整个表中的全部记录，也可是表中某缓存分类的全部记录.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_localStorage)
+ * @returns 从本地缓存中获取的对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLst_localStorage(strCourseId: string)
+{
+const strThisFuncName = "GetObjLst_localStorage";
+//初始化列表缓存
+let strWhereCond = "1=1";
+if (IsNullOrEmpty(clsgs_KnowledgesLogicEN.WhereFormat) == false)
+{
+strWhereCond = Format(clsgs_KnowledgesLogicEN.WhereFormat, strCourseId);
+}
+else
+{
+strWhereCond = Format("CourseId='{0}'", strCourseId);
+}
+const strKey = Format("{0}_{1}", clsgs_KnowledgesLogicEN._CurrTabName, strCourseId);
+if (IsNullOrEmpty(clsgs_KnowledgesLogicEN.CacheAddiCondition) == false)
+{
+strWhereCond += Format(" and {0}", clsgs_KnowledgesLogicEN.CacheAddiCondition);
+}
+if (strKey == "")
+{
+console.error("关键字为空！不正确");
+throw new Error("关键字为空！不正确");
+}
+ if (Object.prototype.hasOwnProperty.call(localStorage, strKey))
+{
+//缓存存在，直接返回
+const strTempObjLst:string = localStorage.getItem(strKey) as string;
+const arrgs_KnowledgesLogicExObjLst_Cache: Array<clsgs_KnowledgesLogicEN> = JSON.parse(strTempObjLst);
+const arrgs_KnowledgesLogicObjLst_T = gs_KnowledgesLogic_GetObjLstByJSONObjLst(arrgs_KnowledgesLogicExObjLst_Cache);
+return arrgs_KnowledgesLogicObjLst_T;
+}
+try
+{
+const arrgs_KnowledgesLogicExObjLst = await gs_KnowledgesLogic_GetObjLstAsync(strWhereCond);
+localStorage.setItem(strKey, JSON.stringify(arrgs_KnowledgesLogicExObjLst));
+const strInfo = Format("[localStorage]Key:[{0}]的缓存已经建立，对象列表数：{1}!", strKey, arrgs_KnowledgesLogicExObjLst.length);
+console.log(strInfo);
+return arrgs_KnowledgesLogicExObjLst;
+}
+catch (e)
+{
+const strMsg = Format("从本地缓存中获取所有对象列表出错. \n服务器错误：{0}.(in {1}.{2})", e, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+throw (strMsg);
+}
+}
+
+ /**
+ * 获取本地缓存中的对象列表，是整个表中的全部记录，也可是表中某缓存分类的全部记录.如果本地不存在就返回null，不会去访问WebApi获取数据。
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_localStorage_PureCache)
+ * @returns 从本地缓存中获取的对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLst_localStorage_PureCache(strCourseId: string)
+{
+const strThisFuncName = "GetObjLst_localStorage_PureCache";
+//初始化列表缓存
+let strWhereCond = "1=1";
+strWhereCond = Format("CourseId='{0}'", strCourseId);
+const strKey = Format("{0}_{1}", clsgs_KnowledgesLogicEN._CurrTabName, strCourseId);
+if (strKey == "")
+{
+console.error("关键字为空！不正确");
+throw new Error("关键字为空！不正确");
+}
+ if (Object.prototype.hasOwnProperty.call(localStorage, strKey))
+{
+//缓存存在，直接返回
+const strTempObjLst:string = localStorage.getItem(strKey) as string;
+const arrgs_KnowledgesLogicObjLst_Cache: Array<clsgs_KnowledgesLogicEN> = JSON.parse(strTempObjLst);
+return arrgs_KnowledgesLogicObjLst_Cache;
+}
+else return null;
+}
+
+ /**
+ * 根据条件获取相应的记录对象列表
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstAsync)
+ * @param strWhereCond:条件
+ * @returns 获取的相应对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLstAsync(strWhereCond: string): Promise<Array<clsgs_KnowledgesLogicEN>>  
+{
+const strThisFuncName = "GetObjLstAsync";
+const strAction = "GetObjLst";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "strWhereCond": strWhereCond}
+});
+const data = response.data;
+if (data.errorId == 0)
+{
+const returnObjLst = data.returnObjLst;
+if (returnObjLst == null)
+{
+const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strNullInfo);
+throw(strNullInfo);
+}
+//console.log(returnObjLst);
+const arrObjLst = gs_KnowledgesLogic_GetObjLstByJSONObjLst(returnObjLst);
+return (arrObjLst);
+}
+else
+{
+console.error(data.errorMsg);
+throw (data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 获取本地sessionStorage缓存中的对象列表，是整个表中的全部记录，也可是表中某缓存分类的全部记录.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage)
+ * @returns 从本地缓存中获取的对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLst_sessionStorage(strCourseId: string)
+{
+const strThisFuncName = "GetObjLst_sessionStorage";
+//初始化列表缓存
+let strWhereCond = "1=1";
+if (IsNullOrEmpty(clsgs_KnowledgesLogicEN.WhereFormat) == false)
+{
+strWhereCond = Format(clsgs_KnowledgesLogicEN.WhereFormat, strCourseId);
+}
+else
+{
+strWhereCond = Format("CourseId='{0}'", strCourseId);
+}
+const strKey = Format("{0}_{1}", clsgs_KnowledgesLogicEN._CurrTabName, strCourseId);
+if (IsNullOrEmpty(clsgs_KnowledgesLogicEN.CacheAddiCondition) == false)
+{
+strWhereCond += Format(" and {0}", clsgs_KnowledgesLogicEN.CacheAddiCondition);
+}
+if (strKey == "")
+{
+console.error("关键字为空！不正确");
+throw new Error("关键字为空！不正确");
+}
+ if (Object.prototype.hasOwnProperty.call(sessionStorage, strKey))
+{
+//缓存存在，直接返回
+const strTempObjLst:string = sessionStorage.getItem(strKey) as string;
+const arrgs_KnowledgesLogicExObjLst_Cache: Array<clsgs_KnowledgesLogicEN> = JSON.parse(strTempObjLst);
+const arrgs_KnowledgesLogicObjLst_T = gs_KnowledgesLogic_GetObjLstByJSONObjLst(arrgs_KnowledgesLogicExObjLst_Cache);
+return arrgs_KnowledgesLogicObjLst_T;
+}
+try
+{
+const arrgs_KnowledgesLogicExObjLst = await gs_KnowledgesLogic_GetObjLstAsync(strWhereCond);
+sessionStorage.setItem(strKey, JSON.stringify(arrgs_KnowledgesLogicExObjLst));
+const strInfo = Format("[sessionStorage]Key:[{0}]的缓存已经建立，对象列表数：{1}!", strKey, arrgs_KnowledgesLogicExObjLst.length);
+console.log(strInfo);
+return arrgs_KnowledgesLogicExObjLst;
+}
+catch (e)
+{
+const strMsg = Format("从缓存中获取所有对象列表出错. \n服务器错误：{0}.(in {1}.{2})", e, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+throw (strMsg);
+}
+}
+
+ /**
+ * 获取本地缓存中的对象列表，是整个表中的全部记录，也可是表中某缓存分类的全部记录.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_sessionStorage_PureCache)
+ * @returns 从本地缓存中获取的对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLst_sessionStorage_PureCache(strCourseId: string)
+{
+const strThisFuncName = "GetObjLst_sessionStorage_PureCache";
+//初始化列表缓存
+let strWhereCond = "1=1";
+strWhereCond = Format("CourseId='{0}'", strCourseId);
+const strKey = Format("{0}_{1}", clsgs_KnowledgesLogicEN._CurrTabName, strCourseId);
+if (strKey == "")
+{
+console.error("关键字为空！不正确");
+throw new Error("关键字为空！不正确");
+}
+ if (Object.prototype.hasOwnProperty.call(sessionStorage, strKey))
+{
+//缓存存在，直接返回
+const strTempObjLst:string = sessionStorage.getItem(strKey) as string;
+const arrgs_KnowledgesLogicObjLst_Cache: Array<clsgs_KnowledgesLogicEN> = JSON.parse(strTempObjLst);
+return arrgs_KnowledgesLogicObjLst_Cache;
+}
+else return null;
+}
+
+ /**
+ * 获取本地缓存中的对象列表，是整个表中的全部记录，也可是表中某缓存分类的全部记录.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_CacheAsync)
+ * @returns 从本地缓存中获取的对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLst_Cache(strCourseId: string): Promise<Array<clsgs_KnowledgesLogicEN>>
+{
+//const strThisFuncName = "GetObjLst_Cache";
+
+if (IsNullOrEmpty(strCourseId) == true)
+{
+const strMsg = Format("缓存分类变量:[CourseId]不能为空！(in clsgs_KnowledgesLogicWApi.gs_KnowledgesLogic_GetObjLst_Cache() )");
+console.error(strMsg);
+throw (strMsg);
+}
+if (strCourseId.length != 8)
+{
+const strMsg = Format("缓存分类变量:[strCourseId]的长度:[{0}]不正确！(in clsgs_KnowledgesLogicWApi.gs_KnowledgesLogic_GetObjLst_Cache() )", strCourseId.length);
+console.error(strMsg);
+throw (strMsg);
+}
+let arrgs_KnowledgesLogicObjLst_Cache;
+switch (clsgs_KnowledgesLogicEN.CacheModeId)
+{
+case "04"://sessionStorage
+arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_sessionStorage(strCourseId);
+break;
+case "03"://localStorage
+arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_localStorage(strCourseId);
+break;
+case "02"://ClientCache
+arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_ClientCache(strCourseId);
+break;
+default:
+arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_ClientCache(strCourseId);
+break;
+}
+const arrgs_KnowledgesLogicObjLst = gs_KnowledgesLogic_GetObjLstByJSONObjLst(arrgs_KnowledgesLogicObjLst_Cache);
+return arrgs_KnowledgesLogicObjLst_Cache;
+}
+
+ /**
+ * 获取本地缓存中的对象列表，是整个表中的全部记录，也可是表中某缓存分类的全部记录.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLst_PureCacheAsync)
+ * @returns 从本地缓存中获取的对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLst_PureCache(strCourseId: string)
+{
+//const strThisFuncName = "GetObjLst_PureCache";
+let arrgs_KnowledgesLogicObjLst_Cache;
+switch (clsgs_KnowledgesLogicEN.CacheModeId)
+{
+case "04"://sessionStorage
+arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_sessionStorage_PureCache(strCourseId);
+break;
+case "03"://localStorage
+arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_localStorage_PureCache(strCourseId);
+break;
+case "02"://ClientCache
+arrgs_KnowledgesLogicObjLst_Cache = null;
+break;
+default:
+arrgs_KnowledgesLogicObjLst_Cache = null;
+break;
+}
+return arrgs_KnowledgesLogicObjLst_Cache;
+}
+
+/**
+ * 根据条件对象, 从缓存的对象列表中获取子集.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetSubObjLst_Cache)
+ * @param objlngmId_Cond:条件对象
+ * @returns 对象列表子集
+*/
+export async function gs_KnowledgesLogic_GetSubObjLst_Cache(objgs_KnowledgesLogic_Cond: clsgs_KnowledgesLogicEN,strCourseId: string) {
+const strThisFuncName = "GetSubObjLst_Cache";
+const arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId);
+let arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogicObjLst_Cache;
+if (objgs_KnowledgesLogic_Cond.sf_FldComparisonOp == null || objgs_KnowledgesLogic_Cond.sf_FldComparisonOp == "") return arrgs_KnowledgesLogic_Sel;
+const dicFldComparisonOp: { [index: string]: string } = JSON.parse(objgs_KnowledgesLogic_Cond.sf_FldComparisonOp);
+//console.log("clsgs_KnowledgesLogicWApi->GetSubObjLst_Cache->dicFldComparisonOp:");
+//console.log(dicFldComparisonOp);
+try {
+const sstrKeys = GetObjKeys(objgs_KnowledgesLogic_Cond);
+//console.log(sstrKeys);
+for (const strKey of sstrKeys) {
+if (Object.prototype.hasOwnProperty.call(dicFldComparisonOp, strKey) == false) continue;
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) != null);
+const strComparisonOp = dicFldComparisonOp[strKey];
+const strValue = objgs_KnowledgesLogic_Cond.GetFldValue(strKey);
+const strType = typeof(strValue);
+switch (strType) {
+case "string":
+if (strValue == null) continue;
+if (strValue == "") continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString() == strValue.toString());
+}
+else if (strComparisonOp == "like") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().indexOf(strValue.toString()) != -1);
+}
+else if (strComparisonOp == "length greater") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length > Number(strValue.toString()));
+}
+else if (strComparisonOp == "length not greater") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length <= Number(strValue.toString()));
+}
+else if (strComparisonOp == "length not less") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length >= Number(strValue.toString()));
+}
+else if (strComparisonOp == "length less") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length < Number(strValue.toString()));
+}
+else if (strComparisonOp == "length equal") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length == Number(strValue.toString()));
+}
+break;
+case "boolean":
+if (strValue == null) continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) == strValue);
+}
+break;
+case "number":
+if (Number(strValue) == 0) continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) == strValue);
+}
+else if (strComparisonOp == ">=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) >= strValue);
+}
+else if (strComparisonOp == "<=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) <= strValue);
+}
+else if (strComparisonOp == ">") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) > strValue);
+}
+else if (strComparisonOp == "<") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) <= strValue);
+}
+break;
+}
+}
+return arrgs_KnowledgesLogic_Sel;
+}
+catch (e) {
+const strMsg = Format("错误:[{0}]. \n根据条件:[{1}]缓存对象列表中获取子集对象不成功!(in {2}.{3})", e, JSON.stringify( objgs_KnowledgesLogic_Cond), gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+throw new Error(strMsg);
+}
+return new Array<clsgs_KnowledgesLogicEN>();
+}
+
+ /**
+ * 根据关键字列表获取相关对象列表
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByKeyLstAsync)
+ * @param arrmId:关键字列表
+ * @returns 对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLstBymIdLstAsync(arrmId: Array<string>): Promise<Array<clsgs_KnowledgesLogicEN>>  
+{
+const strThisFuncName = "GetObjLstBymIdLstAsync";
+const strAction = "GetObjLstBymIdLst";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, arrmId);
+const data = response.data;
+if (data.errorId == 0)
+{
+const returnObjLst = data.returnObjLst;
+if (returnObjLst == null)
+{
+const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strNullInfo);
+throw(strNullInfo);
+}
+//console.log(returnObjLst);
+const arrObjLst = gs_KnowledgesLogic_GetObjLstByJSONObjLst(returnObjLst);
+return arrObjLst;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据关键字列表获取相关对象列表, 从缓存中获取.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByKeyLst_Cache)
+ * @param arrlngmIdLst:关键字列表
+ * @returns 对象列表
+*/
+export async function gs_KnowledgesLogic_GetObjLstBymIdLst_Cache(arrmIdLst: Array<number>,strCourseId: string) {
+const strThisFuncName = "GetObjLstBymIdLst_Cache";
+try
+{
+const arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId);
+const arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogicObjLst_Cache.filter(x => arrmIdLst.indexOf(x.mId)>-1);
+return arrgs_KnowledgesLogic_Sel;
+}
+catch (e)
+{
+const strMsg = Format("错误:[{0}]. \n根据关键字:[{1}]获取对象列表不成功!(in {2}.{3})", e, arrmIdLst.join(","), gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+throw new Error(strMsg);
+}
+}
+
+ /**
+ * 根据顶部条件获取相应的记录对象列表
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetTopObjLstAsync)
+ * @param objTopPara:获取顶部对象列表的参数对象
+ * @returns 获取的相应对象列表
+ **/
+export async function gs_KnowledgesLogic_GetTopObjLstAsync(objTopPara: stuTopPara): Promise<Array<clsgs_KnowledgesLogicEN>>  
+{
+const strThisFuncName = "GetTopObjLstAsync";
+const strAction = "GetTopObjLst";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, objTopPara);
+const data = response.data;
+if (data.errorId == 0)
+{
+const returnObjLst = data.returnObjLst;
+if (returnObjLst == null)
+{
+const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strNullInfo);
+throw(strNullInfo);
+}
+//console.log(returnObjLst);
+const arrObjLst = gs_KnowledgesLogic_GetObjLstByJSONObjLst(returnObjLst);
+return (arrObjLst);
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 根据范围条件获取相应的记录对象列表，获取某范围的记录
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByRangeAsync)
+ * @param objRangePara:根据范围获取对象列表的参数对象
+ * @returns 获取的相应记录对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLstByRangeAsync(objRangePara: stuRangePara): Promise<Array<clsgs_KnowledgesLogicEN>>  
+{
+const strThisFuncName = "GetObjLstByRangeAsync";
+const strAction = "GetObjLstByRange";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, objRangePara);
+const data = response.data;
+if (data.errorId == 0)
+{
+const returnObjLst = data.returnObjLst;
+if (returnObjLst == null)
+{
+const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strNullInfo);
+throw(strNullInfo);
+}
+//console.log(returnObjLst);
+const arrObjLst = gs_KnowledgesLogic_GetObjLstByJSONObjLst(returnObjLst);
+return arrObjLst;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据条件获取相应的记录对象列表
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByRange)
+ * @param intMinNum:最小记录号
+ * @param intMaxNum:最大记录号
+ * @param strWhereCond:给定条件
+ * @param strOrderBy:排序方式
+ * @param cb:CallBack函数，用于显示正确结果数据
+ * @param errorCb:CallBack函数，用于显示错误信息
+ * @returns 获取的相应记录对象列表
+*/
+export async function gs_KnowledgesLogic_GetObjLstByRange(intMinNum: number, intMaxNum: number, strWhereCond: string, strOrderBy:string="", cb: (json: any) => void, errorCb: (json: any) => void) 
+{
+const strThisFuncName = "GetObjLstByRange";
+const strAction = "GetObjLstByRange";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { 
+"intMinNum": intMinNum,
+"intMaxNum": intMaxNum,
+"strWhereCond": strWhereCond,
+"strOrderBy": strOrderBy,
+}
+});
+const data = response.data;
+cb(data);
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据分页条件从缓存中获取分页对象列表，只获取一页.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPager_Cache)
+ * @param objPagerPara:分页参数结构
+ * @returns 对象列表
+*/
+export async function gs_KnowledgesLogic_GetObjLstByPager_Cache(objPagerPara: stuPagerPara,strCourseId: string) {
+const strThisFuncName = "GetObjLstByPager_Cache";
+if (objPagerPara.pageIndex == 0) return new Array<clsgs_KnowledgesLogicEN>();
+const arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId);
+if (arrgs_KnowledgesLogicObjLst_Cache.length == 0) return arrgs_KnowledgesLogicObjLst_Cache;
+let arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogicObjLst_Cache;
+const obj_Cond = JSON.parse(objPagerPara.whereCond);
+const objgs_KnowledgesLogic_Cond = new clsgs_KnowledgesLogicEN();
+ObjectAssign(objgs_KnowledgesLogic_Cond, obj_Cond);
+let dicFldComparisonOp: { [index: string]: string } = {};
+if (obj_Cond.sf_FldComparisonOp != "")
+{
+dicFldComparisonOp = JSON.parse(obj_Cond.sf_FldComparisonOp);
+}
+//console.log("clsgs_KnowledgesLogicWApi->GetObjLstByPager_Cache->dicFldComparisonOp:");
+//console.log(dicFldComparisonOp);
+try {
+const sstrKeys = GetObjKeys(obj_Cond);
+//console.log(sstrKeys);
+for (const strKey of sstrKeys) {
+if (Object.prototype.hasOwnProperty.call(dicFldComparisonOp, strKey) == false) continue;
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) != null);
+const strComparisonOp = dicFldComparisonOp[strKey];
+const strValue = objgs_KnowledgesLogic_Cond.GetFldValue(strKey);
+const strType = typeof(strValue);
+switch (strType) {
+case "string":
+if (strValue == null) continue;
+if (strValue == "") continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString() == strValue.toString());
+}
+else if (strComparisonOp == "like") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().indexOf(strValue.toString()) != -1);
+}
+else if (strComparisonOp == "length greater") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length > Number(strValue.toString()));
+}
+else if (strComparisonOp == "length not greater") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length <= Number(strValue.toString()));
+}
+else if (strComparisonOp == "length not less") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length >= Number(strValue.toString()));
+}
+else if (strComparisonOp == "length less") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length < Number(strValue.toString()));
+}
+else if (strComparisonOp == "length equal") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length == Number(strValue.toString()));
+}
+else if (strComparisonOp == "in") {
+const arrValues = strValue.toString().split(',');
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => arrValues.indexOf(x.GetFldValue(strKey).toString()) != -1);
+}
+break;
+case "boolean":
+if (strValue == null) continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) == strValue);
+}
+break;
+case "number":
+if (Number(strValue) == 0) continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) == strValue);
+}
+else if (strComparisonOp == ">=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) >= strValue);
+}
+else if (strComparisonOp == "<=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) <= strValue);
+}
+else if (strComparisonOp == ">") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) > strValue);
+}
+else if (strComparisonOp == "<") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) <= strValue);
+}
+break;
+}
+}
+if (arrgs_KnowledgesLogic_Sel.length == 0) return arrgs_KnowledgesLogic_Sel;
+let intStart: number = objPagerPara.pageSize* (objPagerPara.pageIndex - 1);
+if (intStart <= 0) intStart = 0;
+const intEnd = intStart + objPagerPara.pageSize;
+if (objPagerPara.orderBy != null && objPagerPara.orderBy.length>0) {
+const sstrSplit: string[] = objPagerPara.orderBy.split(" ");
+let strSortType = "asc";
+const strSortFld = sstrSplit[0];
+if (sstrSplit.length > 1) strSortType = sstrSplit[1];
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.sort(gs_KnowledgesLogic_SortFunByKey(strSortFld, strSortType));
+}
+else {
+//如果排序字段名[OrderBy]为空，就调用排序函数
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.sort(objPagerPara.sortFun);
+}
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.slice(intStart, intEnd);     
+return arrgs_KnowledgesLogic_Sel;
+}
+catch (e) {
+const strMsg = Format("错误:[{0}]. \n根据条件:[{1}]获取分页对象列表不成功!(In {2}.{3})", e, objPagerPara.whereCond, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+throw new Error(strMsg);
+}
+return new Array<clsgs_KnowledgesLogicEN>();
+}
+
+ /**
+ * 根据分页条件获取相应的记录对象列表，只获取一页
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetObjLstByPagerAsync)
+ * @param objPagerPara:分页获取对象列表的参数对象
+ * @returns 获取的相应记录对象列表
+ **/
+export async function gs_KnowledgesLogic_GetObjLstByPagerAsync(objPagerPara: stuPagerPara): Promise<Array<clsgs_KnowledgesLogicEN>>  
+{
+const strThisFuncName = "GetObjLstByPagerAsync";
+if (objPagerPara.pageIndex == 0) return new Array<clsgs_KnowledgesLogicEN>();
+const strAction = "GetObjLstByPager";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, objPagerPara);
+const data = response.data;
+if (data.errorId == 0)
+{
+const returnObjLst = data.returnObjLst;
+if (returnObjLst == null)
+{
+const strNullInfo = Format("获取数据为null, 请注意!(in {0}.{1})", gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strNullInfo);
+throw(strNullInfo);
+}
+//console.log(returnObjLst);
+const arrObjLst = gs_KnowledgesLogic_GetObjLstByJSONObjLst(returnObjLst);
+return arrObjLst;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 调用WebApi来删除记录，根据关键字来删除记录
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_DelRecordAsync)
+ * @param lngmId:关键字
+ * @returns 获取删除的结果
+ **/
+export async function gs_KnowledgesLogic_DelRecordAsync(lngmId: number): Promise<number>  
+{
+const strThisFuncName = "DelRecordAsync";
+const strAction = "DelRecord";
+let strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+strUrl = Format("{0}/?Id={1}", strUrl, lngmId);
+try
+{
+const response = await axios.delete(strUrl);
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnInt;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 根据关键字列表删除记录
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_DelMultiRecordAsync)
+ * @param arrmId:关键字列表
+ * @returns 实际删除记录的个数
+ **/
+export async function gs_KnowledgesLogic_Delgs_KnowledgesLogicsAsync(arrmId: Array<string>): Promise<number> 
+{
+const strThisFuncName = "Delgs_KnowledgesLogicsAsync";
+const strAction = "Delgs_KnowledgesLogics";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, arrmId);
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnInt;
+}
+else
+{
+console.error(data.errorMsg);
+throw data.errorMsg;
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 根据条件删除记录
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_DelMultiRecordByCondAsync)
+ * @returns 实际删除记录的个数
+ **/
+export async function gs_KnowledgesLogic_Delgs_KnowledgesLogicsByCondAsync(strWhereCond: string): Promise<number> 
+{
+const strThisFuncName = "Delgs_KnowledgesLogicsByCondAsync";
+const strAction = "Delgs_KnowledgesLogicsByCond";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "strWhereCond": strWhereCond}
+});
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnInt;
+}
+else
+{
+console.error(data.errorMsg);
+throw (data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 调用WebApi来添加记录，数据传递使用JSON串
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewRecordAsync)
+ * @param objgs_KnowledgesLogicEN:需要添加的对象
+ * @returns 获取相应的记录的对象
+ **/
+export async function gs_KnowledgesLogic_AddNewRecordAsync(objgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN): Promise<boolean> 
+{
+const strThisFuncName = "AddNewRecordAsync";
+const strAction = "AddNewRecord";
+ //var strJSON = JSON.stringify(objgs_KnowledgesLogicEN);
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, objgs_KnowledgesLogicEN);
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnBool;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+/* 数据类型不是字符型，不可以最大关键字的方式添加记录。*/
+
+ /**
+ * 把表对象添加到数据库中,并且返回该记录的关键字(针对Identity关键字和自增关键字)
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewRecordWithReturnKeyAsync)
+ * @param objgs_KnowledgesLogicEN:需要添加的表对象
+ * @returns 返回新添加记录的关键字
+ **/
+export async function gs_KnowledgesLogic_AddNewRecordWithReturnKeyAsync(objgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN): Promise<string> 
+{
+const strThisFuncName = "AddNewRecordWithReturnKeyAsync";
+const strAction = "AddNewRecordWithReturnKey";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, objgs_KnowledgesLogicEN);
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnStr;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 把表对象添加到数据库中,并且返回该记录的关键字(针对Identity关键字)
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_AddNewRecordWithReturnKey)
+ * @param objgs_KnowledgesLogicEN:需要添加的表对象
+ * @param cb:CallBack函数，用于显示正确结果数据
+ * @param errorCb:CallBack函数，用于显示错误信息
+ * @returns 返回新添加记录的关键字
+*/
+export async function gs_KnowledgesLogic_AddNewRecordWithReturnKey(objgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN, cb: (json: any) => void, errorCb: (json: any) => void)
+{
+const strThisFuncName = "AddNewRecordWithReturnKey";
+const strAction = "AddNewRecordWithReturnKey";
+if (objgs_KnowledgesLogicEN.mId === null || objgs_KnowledgesLogicEN.mId === 0)
+{
+const strMsg = "需要的对象的关键字为空，不能添加!";
+console.error(strMsg);
+throw new Error(strMsg);
+}
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, objgs_KnowledgesLogicEN);
+const data = response.data;
+cb(data);
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 调用WebApi来修改记录，数据传递使用JSON串
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_UpdateRecordAsync)
+ * @param objgs_KnowledgesLogicEN:需要添加的对象
+ * @returns 获取修改是否成功？
+ **/
+export async function gs_KnowledgesLogic_UpdateRecordAsync(objgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN): Promise<boolean>  
+{
+const strThisFuncName = "UpdateRecordAsync";
+const strAction = "UpdateRecord";
+ if (objgs_KnowledgesLogicEN.sfUpdFldSetStr === undefined || objgs_KnowledgesLogicEN.sfUpdFldSetStr === null || objgs_KnowledgesLogicEN.sfUpdFldSetStr === "")
+{
+const strMsg = Format("对象(关键字: {0})的【修改字段集】为空，不能修改!", objgs_KnowledgesLogicEN.mId);
+ throw strMsg;
+ }
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.post(strUrl, objgs_KnowledgesLogicEN);
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnBool;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 根据条件来修改记录
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_UpdateWithConditionAsync)
+ * @param objgs_KnowledgesLogicEN:需要修改的对象
+ * @param strWhereCond:条件串
+ * @returns 返回的第一条记录的关键字值
+ **/
+export async function gs_KnowledgesLogic_UpdateWithConditionAsync(objgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN, strWhereCond: string ): Promise<boolean> 
+{
+const strThisFuncName = "UpdateWithConditionAsync";
+const strAction = "UpdateWithCondition";
+ if (objgs_KnowledgesLogicEN.sfUpdFldSetStr === undefined || objgs_KnowledgesLogicEN.sfUpdFldSetStr === null || objgs_KnowledgesLogicEN.sfUpdFldSetStr === "")
+{
+const strMsg = Format("对象(关键字: {0})的【修改字段集】为空，不能修改!", objgs_KnowledgesLogicEN.mId);
+ throw new Error(strMsg);
+ }
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+objgs_KnowledgesLogicEN.whereCond = strWhereCond;
+try
+{
+const response = await axios.post(strUrl, objgs_KnowledgesLogicEN);
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnBool;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据条件对象, 从缓存的对象列表中获取子集.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_IsExistRecord_Cache)
+ * @param objlngmId_Cond:条件对象
+ * @returns 对象列表子集
+*/
+export async function gs_KnowledgesLogic_IsExistRecord_Cache(objgs_KnowledgesLogic_Cond: clsgs_KnowledgesLogicEN,strCourseId: string) {
+const strThisFuncName = "IsExistRecord_Cache";
+const arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId);
+if (arrgs_KnowledgesLogicObjLst_Cache == null) return false;
+let arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogicObjLst_Cache;
+if (objgs_KnowledgesLogic_Cond.sf_FldComparisonOp == null || objgs_KnowledgesLogic_Cond.sf_FldComparisonOp == "") return arrgs_KnowledgesLogic_Sel.length>0?true:false;
+const dicFldComparisonOp: { [index: string]: string } = JSON.parse(objgs_KnowledgesLogic_Cond.sf_FldComparisonOp);
+//console.log("clsgs_KnowledgesLogicWApi->GetSubObjLst_Cache->dicFldComparisonOp:");
+//console.log(dicFldComparisonOp);
+try {
+const sstrKeys = GetObjKeys(objgs_KnowledgesLogic_Cond);
+//console.log(sstrKeys);
+for (const strKey of sstrKeys) {
+if (Object.prototype.hasOwnProperty.call(dicFldComparisonOp, strKey) == false) continue;
+const strComparisonOp = dicFldComparisonOp[strKey];
+const strValue = objgs_KnowledgesLogic_Cond.GetFldValue(strKey);
+const strType = typeof(strValue);
+switch (strType) {
+case "string":
+if (strValue == null) continue;
+if (strValue == "") continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString() == strValue.toString());
+}
+else if (strComparisonOp == "like") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().indexOf(strValue.toString()) != -1);
+}
+else if (strComparisonOp == "length greater") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length > Number(strValue.toString()));
+}
+else if (strComparisonOp == "length not greater") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length <= Number(strValue.toString()));
+}
+else if (strComparisonOp == "length not less") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length >= Number(strValue.toString()));
+}
+else if (strComparisonOp == "length less") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length < Number(strValue.toString()));
+}
+else if (strComparisonOp == "length equal") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length == Number(strValue.toString()));
+}
+break;
+case "boolean":
+if (strValue == null) continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) == strValue);
+}
+break;
+case "number":
+if (Number(strValue) == 0) continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) == strValue);
+}
+else if (strComparisonOp == ">=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) >= strValue);
+}
+else if (strComparisonOp == "<=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) <= strValue);
+}
+else if (strComparisonOp == ">") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) > strValue);
+}
+else if (strComparisonOp == "<") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) <= strValue);
+}
+break;
+}
+}
+if (arrgs_KnowledgesLogic_Sel.length > 0)
+{
+return true;
+}
+else
+{
+return false;
+}
+}
+catch (e) {
+const strMsg = Format("根据条件:[{0}]判断是否存在不成功!(in {1}.{2})", JSON.stringify( objgs_KnowledgesLogic_Cond), gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+throw new Error(strMsg);
+}
+return false;
+}
+
+ /**
+ * 根据条件获取是否存在相应的记录？
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_IsExistRecordAsync)
+ * @param strWhereCond:条件
+ * @returns 是否存在记录？
+ **/
+export async function gs_KnowledgesLogic_IsExistRecordAsync(strWhereCond: string): Promise<boolean>  
+{
+const strThisFuncName = "IsExistRecordAsync";
+const strAction = "IsExistRecord";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "strWhereCond": strWhereCond}
+});
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnBool;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据关键字判断是否存在记录
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_IsExist)
+ * @param lngmId:关键字
+ * @param cb:CallBack函数，用于显示正确结果数据
+ * @param errorCb:CallBack函数，用于显示错误信息
+ * @returns 是否存在?存在返回True
+*/
+export async function gs_KnowledgesLogic_IsExist(lngmId: number, cb: (json: any) => void, errorCb: (json: any) => void)
+{
+const strThisFuncName = "IsExist";
+//检测记录是否存在
+const strAction = "IsExist";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { 
+"mId": lngmId,
+}
+});
+const data = response.data;
+cb(data);
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据关键字判断是否存在记录, 从本地缓存中判断.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_IsExist_Cache)
+ * @param lngmId:所给的关键字
+ * @returns 对象
+*/
+export async function gs_KnowledgesLogic_IsExist_Cache(lngmId:number,strCourseId:string) {
+const strThisFuncName = "IsExist_Cache";
+const arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId);
+if (arrgs_KnowledgesLogicObjLst_Cache == null) return false;
+try
+{
+const arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogicObjLst_Cache.filter(x => x.mId == lngmId);
+if (arrgs_KnowledgesLogic_Sel.length > 0)
+{
+return true;
+}
+else
+{
+return false;
+}
+}
+catch (e)
+{
+const strMsg = Format("根据关键字:[{0}]判断是否存在不成功!(in {1}.{2})", lngmId, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+alert(strMsg);
+}
+return false;
+}
+
+ /**
+ * 根据关键字判断是否存在记录
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_IsExistAsync)
+ * @param lngmId:关键字
+ * @returns 是否存在?存在返回True
+ **/
+export async function gs_KnowledgesLogic_IsExistAsync(lngmId: number): Promise<boolean> 
+{
+const strThisFuncName = "IsExistAsync";
+//检测记录是否存在
+const strAction = "IsExist";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "lngmId": lngmId }
+});
+const data = response.data;
+if (data.errorId == 0)
+{
+return (data.returnBool);
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+ /**
+ * 获取某一条件的记录数
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetRecCountByCondAsync)
+ * @param strWhereCond:条件
+ * @returns 获取某一条件的记录数
+ **/
+export async function gs_KnowledgesLogic_GetRecCountByCondAsync(strWhereCond: string): Promise<number>  
+{
+const strThisFuncName = "GetRecCountByCondAsync";
+const strAction = "GetRecCountByCond";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "strWhereCond": strWhereCond}
+});
+const data = response.data;
+if (data.errorId == 0)
+{
+return data.returnInt;
+}
+else
+{
+console.error(data.errorMsg);
+throw(data.errorMsg);
+}
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 根据条件对象, 从缓存的对象列表中获取记录数.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetRecCountByCond_Cache)
+ * @param objgs_KnowledgesLogic_Cond:条件对象
+ * @returns 对象列表记录数
+*/
+export async function gs_KnowledgesLogic_GetRecCountByCond_Cache(objgs_KnowledgesLogic_Cond: clsgs_KnowledgesLogicEN,strCourseId: string) {
+const strThisFuncName = "GetRecCountByCond_Cache";
+const arrgs_KnowledgesLogicObjLst_Cache = await gs_KnowledgesLogic_GetObjLst_Cache(strCourseId);
+if (arrgs_KnowledgesLogicObjLst_Cache == null) return 0;
+let arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogicObjLst_Cache;
+if (objgs_KnowledgesLogic_Cond.sf_FldComparisonOp == null || objgs_KnowledgesLogic_Cond.sf_FldComparisonOp == "") return arrgs_KnowledgesLogic_Sel.length;
+const dicFldComparisonOp: { [index: string]: string } = JSON.parse(objgs_KnowledgesLogic_Cond.sf_FldComparisonOp);
+//console.log("clsgs_KnowledgesLogicWApi->GetSubObjLst_Cache->dicFldComparisonOp:");
+//console.log(dicFldComparisonOp);
+try {
+const sstrKeys = GetObjKeys(objgs_KnowledgesLogic_Cond);
+//console.log(sstrKeys);
+for (const strKey of sstrKeys) {
+if (Object.prototype.hasOwnProperty.call(dicFldComparisonOp, strKey) == false) continue;
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) != null);
+const strComparisonOp = dicFldComparisonOp[strKey];
+const strValue = objgs_KnowledgesLogic_Cond.GetFldValue(strKey);
+const strType = typeof(strValue);
+switch (strType) {
+case "string":
+if (strValue == null) continue;
+if (strValue == "") continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString() == strValue.toString());
+}
+else if (strComparisonOp == "like") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().indexOf(strValue.toString()) != -1);
+}
+else if (strComparisonOp == "length greater") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length > Number(strValue.toString()));
+}
+else if (strComparisonOp == "length not greater") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length <= Number(strValue.toString()));
+}
+else if (strComparisonOp == "length not less") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length >= Number(strValue.toString()));
+}
+else if (strComparisonOp == "length less") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length < Number(strValue.toString()));
+}
+else if (strComparisonOp == "length equal") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey).toString().length == Number(strValue.toString()));
+}
+else if (strComparisonOp == "in") {
+const arrValues = strValue.toString().split(',');
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => arrValues.indexOf(x.GetFldValue(strKey).toString()) != -1);
+}
+break;
+case "boolean":
+if (strValue == null) continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) == strValue);
+}
+break;
+case "number":
+if (Number(strValue) == 0) continue;
+if (strComparisonOp == "=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) == strValue);
+}
+else if (strComparisonOp == ">=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) >= strValue);
+}
+else if (strComparisonOp == "<=") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) <= strValue);
+}
+else if (strComparisonOp == ">") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) > strValue);
+}
+else if (strComparisonOp == "<") {
+arrgs_KnowledgesLogic_Sel = arrgs_KnowledgesLogic_Sel.filter(x => x.GetFldValue(strKey) <= strValue);
+}
+break;
+}
+}
+return arrgs_KnowledgesLogic_Sel.length;
+}
+catch (e) {
+const strMsg = Format("错误:[{0}]. \n根据条件:[{1}]从缓存对象列表中获取记录数不成功!(in {2}.{3})", e, JSON.stringify( objgs_KnowledgesLogic_Cond), gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strMsg);
+throw new Error(strMsg);
+}
+return 0;
+}
+/*该表的关键字类型不是字符型自增，不需要生成获取最大关键字函数！*/
+/*该表的关键字类型不是字符型带前缀自增，不需要生成获取最大关键字函数！*/
+
+/**
+ * 根据前缀获取当前表关键字值的最大值,再加1,避免重复
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetMaxStrIdByPrefix)
+ * @param mapParam:参数列表
+ * @param cb:CallBack函数，用于显示正确结果数据
+ * @param errorCb:CallBack函数，用于显示错误信息
+ * @returns 获取当前表关键字值的最大值
+*/
+export async function gs_KnowledgesLogic_GetMaxStrIdByPrefix(strPrefix: string, cb: (json: any) => void, errorCb: (json: any) => void) 
+{
+const strThisFuncName = "GetMaxStrIdByPrefix";
+const strAction = "GetMaxStrIdByPrefix";
+const strUrl = GetWebApiUrl(gs_KnowledgesLogic_Controller, strAction);
+try
+{
+const response = await axios.get(strUrl,
+{
+params: { "strPrefix": strPrefix}
+});
+const data = response.data;
+cb(data);
+} catch (error: any) {
+console.error(error);
+if (error.statusText == undefined)
+{
+throw error;
+}
+if (error.statusText == "error")
+{
+const strInfo = Format("网络错误！访问地址:{0}不成功！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else if (error.statusText == "Not Found")
+{
+const strInfo = Format("网络错误！访问地址:{0}可能不存在！(in {1}.{2})", strUrl, gs_KnowledgesLogic_ConstructorName, strThisFuncName);
+console.error(strInfo);
+throw(strInfo);
+}
+else
+{
+throw(error.statusText);
+}
+}
+}
+
+/**
+ * 获取WebApi的地址
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_GetWebApiUrl)
+ * @returns 返回当前文件中Web服务的地址
+*/
+export function gs_KnowledgesLogic_GetWebApiUrl(strController: string, strAction: string): string {
+const strThisFuncName = "GetWebApiUrl";
+let strServiceUrl:string;
+let strCurrIPAddressAndPort = "";
+if (clsSysPara4WebApi.bolIsLocalHost == false)
+{
+strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort;
+}
+else
+{
+strCurrIPAddressAndPort = clsSysPara4WebApi.CurrIPAddressAndPort_Local;
+}
+if (IsNullOrEmpty(clsSysPara4WebApi.CurrPrx) == true)
+{
+strServiceUrl = Format("{0}/{1}/{2}", strCurrIPAddressAndPort, strController, strAction);
+}
+else
+{
+strServiceUrl = Format("{0}/{1}/{2}/{3}", strCurrIPAddressAndPort, clsSysPara4WebApi.CurrPrx, strController, strAction);
+}
+return strServiceUrl;
+}
+
+ /**
+ * 刷新缓存.把当前表的缓存以及该表相关视图的缓存清空.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_ReFreshCache)
+ **/
+export function gs_KnowledgesLogic_ReFreshCache(strCourseId: string):void
+{
+const strThisFuncName = "ReFreshCache";
+
+if (IsNullOrEmpty(strCourseId) == true)
+{
+  const strMsg = Format("参数:[strCourseId]不能为空！(In clsgs_KnowledgesLogicWApi.clsgs_KnowledgesLogicWApi.ReFreshCache)");
+console.error(strMsg);
+ throw (strMsg);
+}
+if (strCourseId.length != 8)
+{
+const strMsg = Format("缓存分类变量:[strCourseId]的长度:[{0}]不正确！(clsgs_KnowledgesLogicWApi.clsgs_KnowledgesLogicWApi.ReFreshCache)", strCourseId.length);
+console.error(strMsg);
+throw (strMsg);
+}
+
+ const strMsg:string = Format("刷新缓存成功！");
+console.trace(strMsg);
+// 静态的对象列表,用于清空相关缓存,针对记录较少,作为参数表可以使用
+const strKey = Format("{0}_{1}", clsgs_KnowledgesLogicEN._CurrTabName, strCourseId);
+switch (clsgs_KnowledgesLogicEN.CacheModeId)
+{
+case "04"://sessionStorage
+sessionStorage.removeItem(strKey);
+break;
+case "03"://localStorage
+localStorage.removeItem(strKey);
+break;
+case "02"://ClientCache
+CacheHelper.Remove(strKey);
+break;
+default:
+CacheHelper.Remove(strKey);
+break;
+}
+}
+
+ /**
+ * 刷新本类中的缓存.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4WA_Ts_ReFreshThisCache)
+ **/
+export function gs_KnowledgesLogic_ReFreshThisCache(strCourseId: string):void
+{
+const strThisFuncName = "ReFreshThisCache";
+if (clsSysPara4WebApi.spSetRefreshCacheOn == true)
+{
+const strKey = Format("{0}_{1}", clsgs_KnowledgesLogicEN._CurrTabName, strCourseId);
+switch (clsgs_KnowledgesLogicEN.CacheModeId)
+{
+case "04"://sessionStorage
+sessionStorage.removeItem(strKey);
+break;
+case "03"://localStorage
+localStorage.removeItem(strKey);
+break;
+case "02"://ClientCache
+CacheHelper.Remove(strKey);
+break;
+default:
+CacheHelper.Remove(strKey);
+break;
+}
+const strMsg = Format("刷新缓存成功！");
+console.trace(strMsg);
+}
+else
+{
+const strMsg = Format("刷新缓存已经关闭。");
+console.trace(strMsg);
+}
+}
+/* 该表的下拉框功能没有设置，不需要生成下拉框绑定函数。*/
+
+/**
+ * 检查对象字段值是否合法,1)检查是否可空;2)检查字段值长度是否超长,如果出错就抛出错误.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_CheckPropertyNew)
+*/
+export function gs_KnowledgesLogic_CheckPropertyNew(pobjgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN)
+{
+//检查字段非空， 即数据表要求非常非空的字段，不能为空！
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeId) === true 
+ || pobjgs_KnowledgesLogicEN.courseKnowledgeId.toString()  ===  "0" )
+{
+ throw new Error("(errid:Watl000058)字段[知识点Id]不能为空(In 知识点逻辑)!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseId) === true 
+ || pobjgs_KnowledgesLogicEN.courseId.toString()  ===  "0" )
+{
+ throw new Error("(errid:Watl000058)字段[课程Id]不能为空(In 知识点逻辑)!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+//检查字段长度， 若字符型字段长度超出规定的长度，即非法！
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeId) == false && GetStrLen(pobjgs_KnowledgesLogicEN.courseKnowledgeId) > 8)
+{
+ throw new Error("(errid:Watl000059)字段[知识点Id(courseKnowledgeId)]的长度不能超过8(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.courseKnowledgeId)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle) == false && GetStrLen(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle) > 100)
+{
+ throw new Error("(errid:Watl000059)字段[知识点标题(courseKnowledgeTitle)]的长度不能超过100(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.knowledgeGraphId) == false && GetStrLen(pobjgs_KnowledgesLogicEN.knowledgeGraphId) > 10)
+{
+ throw new Error("(errid:Watl000059)字段[知识点图Id(knowledgeGraphId)]的长度不能超过10(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.knowledgeGraphId)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.nodeColor) == false && GetStrLen(pobjgs_KnowledgesLogicEN.nodeColor) > 50)
+{
+ throw new Error("(errid:Watl000059)字段[结点颜色(nodeColor)]的长度不能超过50(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.nodeColor)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.logicNodeId) == false && GetStrLen(pobjgs_KnowledgesLogicEN.logicNodeId) > 20)
+{
+ throw new Error("(errid:Watl000059)字段[逻辑节点Id(logicNodeId)]的长度不能超过20(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.logicNodeId)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.className) == false && GetStrLen(pobjgs_KnowledgesLogicEN.className) > 100)
+{
+ throw new Error("(errid:Watl000059)字段[样式名称(className)]的长度不能超过100(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.className)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseId) == false && GetStrLen(pobjgs_KnowledgesLogicEN.courseId) > 8)
+{
+ throw new Error("(errid:Watl000059)字段[课程Id(courseId)]的长度不能超过8(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.courseId)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.updDate) == false && GetStrLen(pobjgs_KnowledgesLogicEN.updDate) > 20)
+{
+ throw new Error("(errid:Watl000059)字段[修改日期(updDate)]的长度不能超过20(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.updDate)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.updUser) == false && GetStrLen(pobjgs_KnowledgesLogicEN.updUser) > 20)
+{
+ throw new Error("(errid:Watl000059)字段[修改人(updUser)]的长度不能超过20(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.updUser)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.memo) == false && GetStrLen(pobjgs_KnowledgesLogicEN.memo) > 1000)
+{
+ throw new Error("(errid:Watl000059)字段[备注(memo)]的长度不能超过1000(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.memo)(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+//检查字段的数据类型是否正确
+if (null != pobjgs_KnowledgesLogicEN.mId && undefined !== pobjgs_KnowledgesLogicEN.mId && tzDataType.isNumber(pobjgs_KnowledgesLogicEN.mId) === false)
+{
+ throw new Error("(errid:Watl000060)字段[mId(mId)]的值:[$(pobjgs_KnowledgesLogicEN.mId)], 非法，应该为数值型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeId) == false && undefined !== pobjgs_KnowledgesLogicEN.courseKnowledgeId && tzDataType.isString(pobjgs_KnowledgesLogicEN.courseKnowledgeId) === false)
+{
+ throw new Error("(errid:Watl000060)字段[知识点Id(courseKnowledgeId)]的值:[$(pobjgs_KnowledgesLogicEN.courseKnowledgeId)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle) == false && undefined !== pobjgs_KnowledgesLogicEN.courseKnowledgeTitle && tzDataType.isString(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle) === false)
+{
+ throw new Error("(errid:Watl000060)字段[知识点标题(courseKnowledgeTitle)]的值:[$(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (null != pobjgs_KnowledgesLogicEN.x_Position && undefined !== pobjgs_KnowledgesLogicEN.x_Position && tzDataType.isNumber(pobjgs_KnowledgesLogicEN.x_Position) === false)
+{
+ throw new Error("(errid:Watl000060)字段[X_坐标(x_Position)]的值:[$(pobjgs_KnowledgesLogicEN.x_Position)], 非法，应该为数值型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (null != pobjgs_KnowledgesLogicEN.y_Position && undefined !== pobjgs_KnowledgesLogicEN.y_Position && tzDataType.isNumber(pobjgs_KnowledgesLogicEN.y_Position) === false)
+{
+ throw new Error("(errid:Watl000060)字段[Y_坐标(y_Position)]的值:[$(pobjgs_KnowledgesLogicEN.y_Position)], 非法，应该为数值型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.knowledgeGraphId) == false && undefined !== pobjgs_KnowledgesLogicEN.knowledgeGraphId && tzDataType.isString(pobjgs_KnowledgesLogicEN.knowledgeGraphId) === false)
+{
+ throw new Error("(errid:Watl000060)字段[知识点图Id(knowledgeGraphId)]的值:[$(pobjgs_KnowledgesLogicEN.knowledgeGraphId)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.nodeColor) == false && undefined !== pobjgs_KnowledgesLogicEN.nodeColor && tzDataType.isString(pobjgs_KnowledgesLogicEN.nodeColor) === false)
+{
+ throw new Error("(errid:Watl000060)字段[结点颜色(nodeColor)]的值:[$(pobjgs_KnowledgesLogicEN.nodeColor)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.logicNodeId) == false && undefined !== pobjgs_KnowledgesLogicEN.logicNodeId && tzDataType.isString(pobjgs_KnowledgesLogicEN.logicNodeId) === false)
+{
+ throw new Error("(errid:Watl000060)字段[逻辑节点Id(logicNodeId)]的值:[$(pobjgs_KnowledgesLogicEN.logicNodeId)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.className) == false && undefined !== pobjgs_KnowledgesLogicEN.className && tzDataType.isString(pobjgs_KnowledgesLogicEN.className) === false)
+{
+ throw new Error("(errid:Watl000060)字段[样式名称(className)]的值:[$(pobjgs_KnowledgesLogicEN.className)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseId) == false && undefined !== pobjgs_KnowledgesLogicEN.courseId && tzDataType.isString(pobjgs_KnowledgesLogicEN.courseId) === false)
+{
+ throw new Error("(errid:Watl000060)字段[课程Id(courseId)]的值:[$(pobjgs_KnowledgesLogicEN.courseId)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.updDate) == false && undefined !== pobjgs_KnowledgesLogicEN.updDate && tzDataType.isString(pobjgs_KnowledgesLogicEN.updDate) === false)
+{
+ throw new Error("(errid:Watl000060)字段[修改日期(updDate)]的值:[$(pobjgs_KnowledgesLogicEN.updDate)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.updUser) == false && undefined !== pobjgs_KnowledgesLogicEN.updUser && tzDataType.isString(pobjgs_KnowledgesLogicEN.updUser) === false)
+{
+ throw new Error("(errid:Watl000060)字段[修改人(updUser)]的值:[$(pobjgs_KnowledgesLogicEN.updUser)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.memo) == false && undefined !== pobjgs_KnowledgesLogicEN.memo && tzDataType.isString(pobjgs_KnowledgesLogicEN.memo) === false)
+{
+ throw new Error("(errid:Watl000060)字段[备注(memo)]的值:[$(pobjgs_KnowledgesLogicEN.memo)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckPropertyNew)");
+}
+//检查外键， 作为外键应该和主键的字段长度是一样的， 若不一样，即非法！
+
+//设置说明该对象已经检查过了，后面不需要再检查，即非法！
+ pobjgs_KnowledgesLogicEN.SetIsCheckProperty(true);
+}
+/**
+ * 专业针对修改记录,检查对象字段值是否合法,1)检查字段值长度是否超长,如果出错就抛出错误.
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_CheckPropertyNew)
+*/
+export function gs_KnowledgesLogic_CheckProperty4Update (pobjgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN)
+{
+//检查字段长度， 若字符型字段长度超出规定的长度，即非法！
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeId) == false && GetStrLen(pobjgs_KnowledgesLogicEN.courseKnowledgeId) > 8)
+{
+ throw new Error("(errid:Watl000062)字段[知识点Id(courseKnowledgeId)]的长度不能超过8(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.courseKnowledgeId)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle) == false && GetStrLen(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle) > 100)
+{
+ throw new Error("(errid:Watl000062)字段[知识点标题(courseKnowledgeTitle)]的长度不能超过100(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.knowledgeGraphId) == false && GetStrLen(pobjgs_KnowledgesLogicEN.knowledgeGraphId) > 10)
+{
+ throw new Error("(errid:Watl000062)字段[知识点图Id(knowledgeGraphId)]的长度不能超过10(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.knowledgeGraphId)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.nodeColor) == false && GetStrLen(pobjgs_KnowledgesLogicEN.nodeColor) > 50)
+{
+ throw new Error("(errid:Watl000062)字段[结点颜色(nodeColor)]的长度不能超过50(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.nodeColor)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.logicNodeId) == false && GetStrLen(pobjgs_KnowledgesLogicEN.logicNodeId) > 20)
+{
+ throw new Error("(errid:Watl000062)字段[逻辑节点Id(logicNodeId)]的长度不能超过20(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.logicNodeId)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.className) == false && GetStrLen(pobjgs_KnowledgesLogicEN.className) > 100)
+{
+ throw new Error("(errid:Watl000062)字段[样式名称(className)]的长度不能超过100(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.className)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseId) == false && GetStrLen(pobjgs_KnowledgesLogicEN.courseId) > 8)
+{
+ throw new Error("(errid:Watl000062)字段[课程Id(courseId)]的长度不能超过8(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.courseId)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.updDate) == false && GetStrLen(pobjgs_KnowledgesLogicEN.updDate) > 20)
+{
+ throw new Error("(errid:Watl000062)字段[修改日期(updDate)]的长度不能超过20(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.updDate)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.updUser) == false && GetStrLen(pobjgs_KnowledgesLogicEN.updUser) > 20)
+{
+ throw new Error("(errid:Watl000062)字段[修改人(updUser)]的长度不能超过20(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.updUser)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.memo) == false && GetStrLen(pobjgs_KnowledgesLogicEN.memo) > 1000)
+{
+ throw new Error("(errid:Watl000062)字段[备注(memo)]的长度不能超过1000(In 知识点逻辑(gs_KnowledgesLogic))!值:$(pobjgs_KnowledgesLogicEN.memo)(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+//检查字段的数据类型是否正确
+if (null != pobjgs_KnowledgesLogicEN.mId && undefined !== pobjgs_KnowledgesLogicEN.mId && tzDataType.isNumber(pobjgs_KnowledgesLogicEN.mId) === false)
+{
+ throw new Error("(errid:Watl000063)字段[mId(mId)]的值:[$(pobjgs_KnowledgesLogicEN.mId)], 非法，应该为数值型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeId) == false && undefined !== pobjgs_KnowledgesLogicEN.courseKnowledgeId && tzDataType.isString(pobjgs_KnowledgesLogicEN.courseKnowledgeId) === false)
+{
+ throw new Error("(errid:Watl000063)字段[知识点Id(courseKnowledgeId)]的值:[$(pobjgs_KnowledgesLogicEN.courseKnowledgeId)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle) == false && undefined !== pobjgs_KnowledgesLogicEN.courseKnowledgeTitle && tzDataType.isString(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle) === false)
+{
+ throw new Error("(errid:Watl000063)字段[知识点标题(courseKnowledgeTitle)]的值:[$(pobjgs_KnowledgesLogicEN.courseKnowledgeTitle)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (null != pobjgs_KnowledgesLogicEN.x_Position && undefined !== pobjgs_KnowledgesLogicEN.x_Position && tzDataType.isNumber(pobjgs_KnowledgesLogicEN.x_Position) === false)
+{
+ throw new Error("(errid:Watl000063)字段[X_坐标(x_Position)]的值:[$(pobjgs_KnowledgesLogicEN.x_Position)], 非法，应该为数值型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (null != pobjgs_KnowledgesLogicEN.y_Position && undefined !== pobjgs_KnowledgesLogicEN.y_Position && tzDataType.isNumber(pobjgs_KnowledgesLogicEN.y_Position) === false)
+{
+ throw new Error("(errid:Watl000063)字段[Y_坐标(y_Position)]的值:[$(pobjgs_KnowledgesLogicEN.y_Position)], 非法，应该为数值型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.knowledgeGraphId) == false && undefined !== pobjgs_KnowledgesLogicEN.knowledgeGraphId && tzDataType.isString(pobjgs_KnowledgesLogicEN.knowledgeGraphId) === false)
+{
+ throw new Error("(errid:Watl000063)字段[知识点图Id(knowledgeGraphId)]的值:[$(pobjgs_KnowledgesLogicEN.knowledgeGraphId)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.nodeColor) == false && undefined !== pobjgs_KnowledgesLogicEN.nodeColor && tzDataType.isString(pobjgs_KnowledgesLogicEN.nodeColor) === false)
+{
+ throw new Error("(errid:Watl000063)字段[结点颜色(nodeColor)]的值:[$(pobjgs_KnowledgesLogicEN.nodeColor)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.logicNodeId) == false && undefined !== pobjgs_KnowledgesLogicEN.logicNodeId && tzDataType.isString(pobjgs_KnowledgesLogicEN.logicNodeId) === false)
+{
+ throw new Error("(errid:Watl000063)字段[逻辑节点Id(logicNodeId)]的值:[$(pobjgs_KnowledgesLogicEN.logicNodeId)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.className) == false && undefined !== pobjgs_KnowledgesLogicEN.className && tzDataType.isString(pobjgs_KnowledgesLogicEN.className) === false)
+{
+ throw new Error("(errid:Watl000063)字段[样式名称(className)]的值:[$(pobjgs_KnowledgesLogicEN.className)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.courseId) == false && undefined !== pobjgs_KnowledgesLogicEN.courseId && tzDataType.isString(pobjgs_KnowledgesLogicEN.courseId) === false)
+{
+ throw new Error("(errid:Watl000063)字段[课程Id(courseId)]的值:[$(pobjgs_KnowledgesLogicEN.courseId)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.updDate) == false && undefined !== pobjgs_KnowledgesLogicEN.updDate && tzDataType.isString(pobjgs_KnowledgesLogicEN.updDate) === false)
+{
+ throw new Error("(errid:Watl000063)字段[修改日期(updDate)]的值:[$(pobjgs_KnowledgesLogicEN.updDate)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.updUser) == false && undefined !== pobjgs_KnowledgesLogicEN.updUser && tzDataType.isString(pobjgs_KnowledgesLogicEN.updUser) === false)
+{
+ throw new Error("(errid:Watl000063)字段[修改人(updUser)]的值:[$(pobjgs_KnowledgesLogicEN.updUser)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+if (IsNullOrEmpty(pobjgs_KnowledgesLogicEN.memo) == false && undefined !== pobjgs_KnowledgesLogicEN.memo && tzDataType.isString(pobjgs_KnowledgesLogicEN.memo) === false)
+{
+ throw new Error("(errid:Watl000063)字段[备注(memo)]的值:[$(pobjgs_KnowledgesLogicEN.memo)], 非法，应该为字符型(In 知识点逻辑(gs_KnowledgesLogic))!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+//检查主键是否为Null或者空！
+if (null === pobjgs_KnowledgesLogicEN.mId 
+ || pobjgs_KnowledgesLogicEN.mId != null && pobjgs_KnowledgesLogicEN.mId.toString()  ===  "")
+{
+ throw new Error("(errid:Watl000064)字段[mId]不能为空(In 知识点逻辑)!(clsgs_KnowledgesLogicBL:CheckProperty4Update)");
+}
+//检查外键， 作为外键应该和主键的字段长度是一样的， 若不一样，即非法！
+
+ pobjgs_KnowledgesLogicEN.SetIsCheckProperty(true);
+}
+
+/**
+ * 把一个对象转化为一个JSON串
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getJSONStrByRecObj)
+ * @param strJSON:需要转化的JSON串
+ * @returns 返回一个生成的对象
+*/
+export function gs_KnowledgesLogic_GetJSONStrByObj (pobjgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN): string
+{
+const strThisFuncName = "GetJSONStrByObj";
+pobjgs_KnowledgesLogicEN.sfUpdFldSetStr = pobjgs_KnowledgesLogicEN.updFldString;
+let strJson = "";
+try
+{
+strJson = JSON.stringify(pobjgs_KnowledgesLogicEN);
+}
+catch(objException)
+{
+const strEx = GetExceptionStr(objException);
+myShowErrorMsg(strEx);
+}
+if (strJson == undefined) return "";
+else return strJson;
+}
+
+/**
+ * 把一个JSON串转化为一个对象列表
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONStr)
+ * @param strJSON:需要转化的JSON串
+ * @returns 返回一个生成的对象列表
+*/
+export function gs_KnowledgesLogic_GetObjLstByJSONStr (strJSON: string): Array<clsgs_KnowledgesLogicEN>
+{
+const strThisFuncName = "GetObjLstByJSONStr";
+let arrgs_KnowledgesLogicObjLst = new Array<clsgs_KnowledgesLogicEN>();
+if (strJSON === "")
+{
+return arrgs_KnowledgesLogicObjLst;
+}
+try
+{
+arrgs_KnowledgesLogicObjLst = JSON.parse(strJSON);
+}
+catch(objException)
+{
+return arrgs_KnowledgesLogicObjLst;
+}
+return arrgs_KnowledgesLogicObjLst;
+}
+
+/**
+ * 把一个JSON对象列表转化为一个实体对象列表
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getObjLstByJSONObjLst)
+ * @param arrgs_KnowledgesLogicObjLstS:需要转化的JSON对象列表
+ * @returns 返回一个生成的对象列表
+*/
+export function gs_KnowledgesLogic_GetObjLstByJSONObjLst (arrgs_KnowledgesLogicObjLstS: Array<clsgs_KnowledgesLogicEN>): Array<clsgs_KnowledgesLogicEN>
+{
+const strThisFuncName = "GetObjLstByJSONObjLst";
+const arrgs_KnowledgesLogicObjLst = new Array<clsgs_KnowledgesLogicEN>();
+for (const objInFor of arrgs_KnowledgesLogicObjLstS) {
+const obj1 = gs_KnowledgesLogic_GetObjFromJsonObj(objInFor);
+if (obj1 == null) continue;
+arrgs_KnowledgesLogicObjLst.push(obj1);
+}
+return arrgs_KnowledgesLogicObjLst;
+}
+
+/**
+ * 把一个JSON串转化为一个对象
+ * 作者:pyf
+ * 日期:2023-03-15
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_getRecObjByJSONStr)
+ * @param strJSON:需要转化的JSON串
+ * @returns 返回一个生成的对象
+*/
+export function gs_KnowledgesLogic_GetObjByJSONStr (strJSON: string): clsgs_KnowledgesLogicEN
+{
+const strThisFuncName = "GetObjByJSONStr";
+let pobjgs_KnowledgesLogicEN = new clsgs_KnowledgesLogicEN();
+if (strJSON === "")
+{
+return pobjgs_KnowledgesLogicEN;
+}
+try
+{
+pobjgs_KnowledgesLogicEN = JSON.parse(strJSON);
+}
+catch(objException)
+{
+return pobjgs_KnowledgesLogicEN;
+}
+return pobjgs_KnowledgesLogicEN;
+}
+
+/**
+ * 根据条件对象中的字段内容组合成一个条件串
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_CombineConditionByCondObj)
+ * @returns 条件串(strWhereCond)
+*/
+export function gs_KnowledgesLogic_GetCombineCondition(objgs_KnowledgesLogic_Cond: clsgs_KnowledgesLogicEN ):string
+{
+const strThisFuncName = "GetCombineCondition";
+//使条件串的初值为"1 = 1",以便在该串的后面用"and "添加其他条件,
+//例如 1 = 1 && UserName = '张三'
+let strWhereCond = " 1 = 1 ";
+//如果该条件控件的内容不为空,就组成一个条件并添加到总条件串中。
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_mId) == true)
+{
+const strComparisonOp_mId:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_mId];
+strWhereCond += Format(" And {0} {2} {1}", clsgs_KnowledgesLogicEN.con_mId, objgs_KnowledgesLogic_Cond.mId, strComparisonOp_mId);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_CourseKnowledgeId) == true)
+{
+const strComparisonOp_CourseKnowledgeId:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_CourseKnowledgeId];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_CourseKnowledgeId, objgs_KnowledgesLogic_Cond.courseKnowledgeId, strComparisonOp_CourseKnowledgeId);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_CourseKnowledgeTitle) == true)
+{
+const strComparisonOp_CourseKnowledgeTitle:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_CourseKnowledgeTitle];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_CourseKnowledgeTitle, objgs_KnowledgesLogic_Cond.courseKnowledgeTitle, strComparisonOp_CourseKnowledgeTitle);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_X_Position) == true)
+{
+const strComparisonOp_X_Position:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_X_Position];
+strWhereCond += Format(" And {0} {2} {1}", clsgs_KnowledgesLogicEN.con_X_Position, objgs_KnowledgesLogic_Cond.x_Position, strComparisonOp_X_Position);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_Y_Position) == true)
+{
+const strComparisonOp_Y_Position:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_Y_Position];
+strWhereCond += Format(" And {0} {2} {1}", clsgs_KnowledgesLogicEN.con_Y_Position, objgs_KnowledgesLogic_Cond.y_Position, strComparisonOp_Y_Position);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_KnowledgeGraphId) == true)
+{
+const strComparisonOp_KnowledgeGraphId:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_KnowledgeGraphId];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_KnowledgeGraphId, objgs_KnowledgesLogic_Cond.knowledgeGraphId, strComparisonOp_KnowledgeGraphId);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_NodeColor) == true)
+{
+const strComparisonOp_NodeColor:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_NodeColor];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_NodeColor, objgs_KnowledgesLogic_Cond.nodeColor, strComparisonOp_NodeColor);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_LogicNodeId) == true)
+{
+const strComparisonOp_LogicNodeId:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_LogicNodeId];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_LogicNodeId, objgs_KnowledgesLogic_Cond.logicNodeId, strComparisonOp_LogicNodeId);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_ClassName) == true)
+{
+const strComparisonOp_ClassName:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_ClassName];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_ClassName, objgs_KnowledgesLogic_Cond.className, strComparisonOp_ClassName);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_CourseId) == true)
+{
+const strComparisonOp_CourseId:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_CourseId];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_CourseId, objgs_KnowledgesLogic_Cond.courseId, strComparisonOp_CourseId);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_UpdDate) == true)
+{
+const strComparisonOp_UpdDate:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_UpdDate];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_UpdDate, objgs_KnowledgesLogic_Cond.updDate, strComparisonOp_UpdDate);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_UpdUser) == true)
+{
+const strComparisonOp_UpdUser:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_UpdUser];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_UpdUser, objgs_KnowledgesLogic_Cond.updUser, strComparisonOp_UpdUser);
+}
+if (Object.prototype.hasOwnProperty.call(objgs_KnowledgesLogic_Cond.dicFldComparisonOp, clsgs_KnowledgesLogicEN.con_Memo) == true)
+{
+const strComparisonOp_Memo:string = objgs_KnowledgesLogic_Cond.dicFldComparisonOp[clsgs_KnowledgesLogicEN.con_Memo];
+strWhereCond += Format(" And {0} {2} '{1}'", clsgs_KnowledgesLogicEN.con_Memo, objgs_KnowledgesLogic_Cond.memo, strComparisonOp_Memo);
+}
+ return strWhereCond;
+}
+
+ /**
+ *获取唯一性条件串(Uniqueness)--gs_KnowledgesLogic(知识点逻辑),根据唯一约束条件来生成
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_GetUniquenessConditionString)
+ * @param strCourseKnowledgeId: 知识点Id(要求唯一的字段)
+ * @param strKnowledgeGraphId: 知识点图Id(要求唯一的字段)
+ * @returns 条件串(strWhereCond)
+ **/
+export function gs_KnowledgesLogic_GetUniCondStr_CourseKnowledgeId_KnowledgeGraphId(objgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN ):string
+{
+let strWhereCond = " 1 = 1 ";
+ strWhereCond +=  Format(" and CourseKnowledgeId = '{0}'", objgs_KnowledgesLogicEN.courseKnowledgeId);
+ strWhereCond +=  Format(" and KnowledgeGraphId = '{0}'", objgs_KnowledgesLogicEN.knowledgeGraphId);
+ return strWhereCond;
+}
+
+ /**
+ *获取唯一性条件串(Uniqueness)--gs_KnowledgesLogic(知识点逻辑),根据唯一约束条件来生成
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_GetUniquenessConditionString4Update)
+ * @param strCourseKnowledgeId: 知识点Id(要求唯一的字段)
+ * @param strKnowledgeGraphId: 知识点图Id(要求唯一的字段)
+ * @returns 条件串(strWhereCond)
+ **/
+export function gs_KnowledgesLogic_GetUniCondStr4Update_CourseKnowledgeId_KnowledgeGraphId(objgs_KnowledgesLogicEN: clsgs_KnowledgesLogicEN ):string
+{
+let strWhereCond = " 1 = 1 ";
+ strWhereCond += Format(" and mId <> '{0}'", objgs_KnowledgesLogicEN.mId);
+ strWhereCond +=  Format(" and CourseKnowledgeId = '{0}'", objgs_KnowledgesLogicEN.courseKnowledgeId);
+ strWhereCond +=  Format(" and KnowledgeGraphId = '{0}'", objgs_KnowledgesLogicEN.knowledgeGraphId);
+ return strWhereCond;
+}
+
+/**
+ * 把同一个类的对象,复制到另一个对象
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_CopyObjTo)
+ * @param objgs_KnowledgesLogicENS:源对象
+ * @param objgs_KnowledgesLogicENT:目标对象
+*/
+export function gs_KnowledgesLogic_CopyObjTo(objgs_KnowledgesLogicENS: clsgs_KnowledgesLogicEN , objgs_KnowledgesLogicENT: clsgs_KnowledgesLogicEN ): void 
+{
+objgs_KnowledgesLogicENT.mId = objgs_KnowledgesLogicENS.mId; //mId
+objgs_KnowledgesLogicENT.courseKnowledgeId = objgs_KnowledgesLogicENS.courseKnowledgeId; //知识点Id
+objgs_KnowledgesLogicENT.courseKnowledgeTitle = objgs_KnowledgesLogicENS.courseKnowledgeTitle; //知识点标题
+objgs_KnowledgesLogicENT.x_Position = objgs_KnowledgesLogicENS.x_Position; //X_坐标
+objgs_KnowledgesLogicENT.y_Position = objgs_KnowledgesLogicENS.y_Position; //Y_坐标
+objgs_KnowledgesLogicENT.knowledgeGraphId = objgs_KnowledgesLogicENS.knowledgeGraphId; //知识点图Id
+objgs_KnowledgesLogicENT.nodeColor = objgs_KnowledgesLogicENS.nodeColor; //结点颜色
+objgs_KnowledgesLogicENT.logicNodeId = objgs_KnowledgesLogicENS.logicNodeId; //逻辑节点Id
+objgs_KnowledgesLogicENT.className = objgs_KnowledgesLogicENS.className; //样式名称
+objgs_KnowledgesLogicENT.courseId = objgs_KnowledgesLogicENS.courseId; //课程Id
+objgs_KnowledgesLogicENT.updDate = objgs_KnowledgesLogicENS.updDate; //修改日期
+objgs_KnowledgesLogicENT.updUser = objgs_KnowledgesLogicENS.updUser; //修改人
+objgs_KnowledgesLogicENT.memo = objgs_KnowledgesLogicENS.memo; //备注
+objgs_KnowledgesLogicENT.sfUpdFldSetStr = objgs_KnowledgesLogicENS.updFldString; //sfUpdFldSetStr
+}
+
+/**
+ * 把一个JSON的对象,复制到另一个实体对象
+ * (AutoGCLib.WA_Access4TypeScript:Gen_4BL_Ts_GetObjFromJsonObj)
+ * @param objgs_KnowledgesLogicENS:源对象
+ * @param objgs_KnowledgesLogicENT:目标对象
+*/
+export function gs_KnowledgesLogic_GetObjFromJsonObj(objgs_KnowledgesLogicENS: clsgs_KnowledgesLogicEN): clsgs_KnowledgesLogicEN 
+{
+ const objgs_KnowledgesLogicENT: clsgs_KnowledgesLogicEN = new clsgs_KnowledgesLogicEN();
+ObjectAssign(objgs_KnowledgesLogicENT, objgs_KnowledgesLogicENS);
+ return objgs_KnowledgesLogicENT;
+}

@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+   <MvcRazorCompileOnPublish>false</MvcRazorCompileOnPublish>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <TypeScriptToolsVersion>3.9</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\SystemSet\**" />
+    <Compile Remove="Pages\TS\L0_Entity\MenuManage_GP\**" />
+    <Compile Remove="Pages\TS\L3_ForWApiEx\PrjMenus\**" />
+    <Compile Remove="Pages\UserManage\**" />
+    <Content Remove="Pages\SystemSet\**" />
+    <Content Remove="Pages\TS\L0_Entity\MenuManage_GP\**" />
+    <Content Remove="Pages\TS\L3_ForWApiEx\PrjMenus\**" />
+    <Content Remove="Pages\UserManage\**" />
+    <EmbeddedResource Remove="Pages\SystemSet\**" />
+    <EmbeddedResource Remove="Pages\TS\L0_Entity\MenuManage_GP\**" />
+    <EmbeddedResource Remove="Pages\TS\L3_ForWApiEx\PrjMenus\**" />
+    <EmbeddedResource Remove="Pages\UserManage\**" />
+    <None Remove="Pages\SystemSet\**" />
+    <None Remove="Pages\TS\L0_Entity\MenuManage_GP\**" />
+    <None Remove="Pages\TS\L3_ForWApiEx\PrjMenus\**" />
+    <None Remove="Pages\UserManage\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\FrameAdmin\indexBak.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\TestSession\TestSession1.ts" />
+    <None Remove="Pages\TS\L3_ForWApiEx\PrjMenus_GP\clsvQxRoleMenusEx2WApi.ts" />
+    <None Remove="Pages\TS\L3_ForWApiEx\PrjMenus_GP\clsvQxRoleMenusEx3WApi.ts" />
+    <None Remove="Pages\TS\L3_ForWApi\SystemSet\clsvQxRoleMenusEx4WApi.ts" />
+    <None Remove="Pages\TS\PubFun\stuRoleMenuByRoleIdsPara.ts" />
+    <None Remove="Pages\TS\PubFun\stuRoleMenuPara.ts" />
+    <None Remove="Pages\TS\PubFun\stuTopPara.ts" />
+    <None Remove="Pages\TS\PubFun\tzDictionary.ts" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="bootstrap" Version="4.4.1" />
+    <PackageReference Include="jquery.TypeScript.DefinitelyTyped" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+    <PackageReference Include="popper.js" Version="1.16.1" />
+    <PackageReference Include="q.TypeScript.DefinitelyTyped" Version="0.9.7" />
+    <PackageReference Include="RequireJS" Version="2.3.6" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Pages\Test\" />
+    <Folder Include="Pages\TS4GP\L3_ForWApi\BaseInfo\" />
+    <Folder Include="Pages\TS4GP\L3_ForWApi\UserManage\" />
+    <Folder Include="Pages\TS\L2_BLL\GraduateEduPaper\" />
+    <Folder Include="wwwroot\js\TS\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="Pages\FrameAdmin\indexBak.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Pages\TestSession\TestSession1.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApiEx\PrjMenus_GP\clsvQxRoleMenusEx3WApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\L3_ForWApiEx\PrjMenus_GP\clsvQxRoleMenusEx2WApi.ts" />
+    <TypeScriptCompile Include="Pages\TS\PubFun\stuRoleMenuByRoleIdsPara.ts" />
+    <TypeScriptCompile Include="Pages\TS\PubFun\stuRoleMenuPara.ts" />
+    <TypeScriptCompile Include="Pages\TS\PubFun\stuTopPara.ts" />
+    <TypeScriptCompile Include="Pages\TS\PubFun\tzDictionary.ts" />
+  </ItemGroup>
+
+</Project>

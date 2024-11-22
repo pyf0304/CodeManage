@@ -1,0 +1,758 @@
+﻿@page
+@model ExamLib.Pages.QxUsers_QUDI_TSModel
+@{
+    Layout = "~/Pages/Shared/_Layout_PC.cshtml";
+    ViewData["Title"] = "QxUsers维护";
+    //操作Session样例，方法1：
+    //Model.seUserId = "TestUserId";
+    var strUserId_Value = Model.seUserId;
+    //操作Session样例，方法2：
+    Model.SetSession("UserId1", "TestUserId1");
+    var strUserId1_Value = Model.GetSession("UserId1");
+    //请参见页尾的隐形控件hidUserid和hidUserId1的使用。
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+
+var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+var strCurrPrjId = "@Model.CurrPrjId";
+
+ /*
+  添加新记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnAddNewRecord_Click)
+ */
+function btnAddNewRecord_Click() {
+   require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+ShowDialog('Add');
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.btnAddNewRecord_Click();
+});
+}
+
+ /*
+  删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnDelRecord_Click)
+ */
+function btnDelRecord_Click() {
+   require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(qxusers, commonfunc) {
+var arrKeyIds = commonfunc.clsCommonFunc4Web.GetCheckedKeyIds();
+if (arrKeyIds.length == 0)
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.btnDelRecord_Click();
+});
+}
+
+
+ /*
+  在数据表里删除记录的事件函数
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnDelRecordInTab_Click)
+ */
+function btnDelRecordInTab_Click(strKeyId) {
+   require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+if (strKeyId == "")
+{
+alert("请选择需要删除的记录！");
+return;
+}
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.btnDelRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  查询记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnQuery_Click)
+ */
+function btnQuery_Click()
+{
+   require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+$("#Text1").val("进入函数：btnQuery_Click");
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.btnQuery_Click();
+});
+}
+
+
+
+
+ /*
+  在数据表里修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_btnUpdateRecordInTab_Click)
+ */
+function btnUpdateRecordInTab_Click(strKeyId) {
+   require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+    if (strKeyId == "")
+{
+alert("请选择需要修改的记录！");
+return;
+}
+ShowDialog('Update');
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+  objPage.btnUpdateRecordInTab_Click(strKeyId);
+});
+}
+
+
+ /*
+  单击数据列表中每行首列的复选框所引发的事件
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ChkClick)
+ */
+function ChkClick(myThis)
+{
+require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js", "../js/TS/PubFun/clsCommonFunc4Web.js"], function(qxusers, commonfunc) {
+var strId = myThis.id;
+var strKey = strId.substring(3);
+var arrKeys = commonfunc.arrSelectedKeys;
+if (myThis.checked == true) {
+if (arrKeys.indexOf(strKey) < 0)
+{
+arrKeys.push(strKey);
+}
+}
+else {
+var index = arrKeys.indexOf(strKey);
+if (index > -1)
+{
+arrKeys.splice(index, 1);
+}
+}
+var sstrKey = "";
+for (let strK of arrKeys)
+{
+sstrKey += `${ strK},`;
+}
+$('#spanResult').html(sstrKey);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ExpandDiv)
+ */
+         function ExpandDiv(divName) {
+//基于RequireJS来调用tzPubFun.ts中的函数OnlyShowDiv。
+require(["../js/TS/PubFun/tzPubFun"], function (pubfun) {
+      pubfun.OnlyShowDiv(divName, "function", "content");
+});
+}
+
+ /*
+  获取数据列表中的所选记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_GetAllCkechedKeys)
+ */
+function GetAllCkechedKeys(tabName)
+{
+var arrKeys = tabName.getElementsByTagName('chkInTab');
+alert(arrKeys.length.toString());
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_IndexPage)
+ */
+function IndexPage(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_JumpToPage)
+ */
+function JumpToPage()
+{
+var intCurrPageIndex = $('#input_number').val();
+var intPageIndex = Number(intCurrPageIndex);
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_mySubmit)
+ */
+function mySubmit(pstrOp) {
+//    alert("提交" + strOp);
+   require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+           objPage.btnOKUpd_Click();
+    });
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_NextPage)
+ */
+function NextPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) + 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  页面导入-在导入页面后运行的函数
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_Page_Load)
+ */
+window.onload = function() {
+   require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.Page_Load();
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PageNum)
+ */
+function PageNum(intPageIndex)
+{
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_PrevPage)
+ */
+function PrevPage()
+{
+var intCurrPageIndex = $('#hidCurrPageIndex').val();
+var intPageIndex = Number(intCurrPageIndex) - 1;
+console.log("跳转到" + intPageIndex + "页");
+require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.IndexPage(intPageIndex);
+});
+}
+
+ /*
+  全选数据列表中的所有记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_SetAllCkechedKeys)
+ */
+function SetAllCkechedKeys(tabName)
+{
+var thisChk = event.target;
+require(["../js/TS/PubFun/clsCommonFunc4Web.js"], function (commonfunc) {
+console.log(tabName);
+console.log(thisChk);
+commonfunc.clsCommonFunc4Web.SetAllCkechedKeys(tabName, thisChk);
+});
+}
+
+ /*
+  显示对话框
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_ShowDialog)
+ */
+function ShowDialog(pstrOp) {
+   strOp = pstrOp;
+   require(['jquery', 'bootstrap'], function($) {
+       if (strOp === "Add") {
+           $('#myModalLabel').html('添加记录');
+//QxUsers_QUDI_TSEx.GetMaxStrId('#txtUserId');
+        }
+else if (strOp === "Update")
+{
+            $('#myModalLabel').html('修改记录');
+}
+else if (strOp === "Detail")
+{
+            $('#btnOKUpd').hide();
+            $('#myModalLabel').html('详细信息');
+}
+        $('#divEditRegion').modal('show');
+  });
+}
+
+ /*
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_HideDialog)
+ */
+function HideDialog() {
+  require(['jquery', 'bootstrap'], function($) {
+      $('#divEditRegion').modal('hide');
+  });
+}
+
+ /*
+  修改记录
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_SortBy)
+ */
+function SortBy(strFldName)
+{
+console.log("按：" + strFldName + "排序");
+require(["../js/BaseInfo/QxUsers_QUDI_TSEx.js"], function(qxusers) {
+var objPage = new qxusers.QxUsers_QUDI_TSEx();
+objPage.SortBy(strFldName);
+});
+}
+
+
+</script>
+<div id="tabLayout" class="tab_layout">
+    @*-- 标题层 --*@
+
+    @*<div style="position: relative; width: 648px; height: 37px; left: 0px; top: 0px;">
+            <Label id="lblViewTitle" name="lblViewTitle" class="h5">
+                QxUsersCRUD
+            </Label>
+            <Label id="lblMsg_List" name="lblMsg_List" class="text-warning" style="width:250px;">
+            </Label>
+        </div>*@
+    <div class="x-nav">
+        <span class="layui-breadcrumb">
+            <a href="">首页</a>
+            <a href="">用户管理</a>
+            <a>
+                <cite>统一平台用户</cite>
+            </a>
+            <Label id="lblMsg_List" name="lblMsg_List"></Label>
+        </span>
+        <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+        </a>
+    </div>
+    @*-- 查询层 --*@
+
+    <div id="divQuery" class="div_query">
+        <table id="tabQuery" name="tabQuery" style="width: 70%; " class="table table-bordered table-hover table td table-sm">
+            <tr>
+                <td>
+                    <Label id="lblUserId_q" name="lblUserId_q" class="col-form-label text-right" style="width:80px;width:90px;">
+                        用户ID
+                    </Label>
+                </td>
+                <td>
+                    <input id="txtUserId_q" name="txtUserId_q" class="form-control" style="width:200px;" />
+                </td>
+                <td>
+                    <Label id="lblUserName_q" name="lblUserName_q" class="col-form-label text-right" style="width:80px;width:90px;">
+                        用户名
+                    </Label>
+                </td>
+                <td>
+                    <input id="txtUserName_q" name="txtUserName_q" class="form-control" style="width:200px;" />
+                </td>
+                <td>
+                    <button type="submit" id="btnQuery" name="btnQuery" class="btn btn-outline-warning text-nowrap" onclick="btnQuery_Click()">查询</button>
+                </td>
+                <td>
+                    <button type="submit" id="btnExportExcel" name="btnExportExcel" class="btn btn-outline-warning text-nowrap" onclick="btnExportExcel_Click()">导出Excel</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    @*-- 功能区 --*@
+
+    <div id="divFunction" class="table table-bordered table-hover">
+        <ul class="nav">
+            <li class="nav-item">
+                <Label id="lblQxUsersList" name="lblQxUsersList" class="col-form-label text-info" style="width:250px;">
+                    QxUsers列表
+                </Label>
+            </li>
+            <li class="nav-item ml-3">
+                <button id="btnAddNewRecord" name="btnAddNewRecord" class="btn btn-outline-info text-nowrap" onclick="btnAddNewRecord_Click()">添加</button>
+            </li>
+            <li class="nav-item ml-3">
+                <button id="btnUpdateRecord" name="btnUpdateRecord" class="btn btn-outline-info text-nowrap" onclick="btnUpdateRecord_Click()">修改</button>
+            </li>
+            <li class="nav-item ml-3">
+                <button id="btnDelRecord" name="btnDelRecord" class="btn btn-outline-info text-nowrap" onclick="btnDelRecord_Click()">删除</button>
+            </li>
+        </ul>
+    </div>
+    @*-- 列表层 --*@
+    <div id="divList" class="div_List">
+        <div id="divDataLst" class="div_List">
+        </div>
+        <div id="divPager" class="pager" value="1">
+           
+        </div>
+    </div>
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditRegion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 800px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabwucQxUsers" name="tabwucQxUsers" style="width: 600px; padding: 1px; border:0px" class="table table-bordered table-hover">
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblUserId" name="lblUserId" class="col-form-label text-right" style="width:90px;">
+                                    用户ID
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtUserId" name="txtUserId" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblUserName" name="lblUserName" class="col-form-label text-right" style="width:90px;">
+                                    用户名
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtUserName" name="txtUserName" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblDepartmentId" name="lblDepartmentId" class="col-form-label text-right" style="width:90px;">
+                                    部门Id
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <select id="ddlDepartmentId" name="ddlDepartmentId" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblid_XzCollege" name="lblid_XzCollege" class="col-form-label text-right" style="width:90px;">
+                                    学院流水号
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <select id="ddlid_XzCollege" name="ddlid_XzCollege" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblUserStateId" name="lblUserStateId" class="col-form-label text-right" style="width:90px;">
+                                    用户状态Id
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtUserStateId" name="txtUserStateId" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblid_GradeBase" name="lblid_GradeBase" class="col-form-label text-right" style="width:90px;">
+                                    年级流水号
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <select id="ddlid_GradeBase" name="ddlid_GradeBase" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblCard_State" name="lblCard_State" class="col-form-label text-right" style="width:90px;">
+                                    Card_State
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtCard_State" name="txtCard_State" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD"></td>
+                            <td class="ValueTD">
+                                <span class="form-control" style="width:200px;">
+                                    <input type="checkbox" id="chkIsLeaved" name="chkIsLeaved" Text="IsLeaved"><label for="chkIsLeaved">IsLeaved</label>
+                                </span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblCardNo" name="lblCardNo" class="col-form-label text-right" style="width:90px;">
+                                    卡号
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtCardNo" name="txtCardNo" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblBeginYearMonth" name="lblBeginYearMonth" class="col-form-label text-right" style="width:90px;">
+                                    开始年月
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtBeginYearMonth" name="txtBeginYearMonth" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblEndYearMonth" name="lblEndYearMonth" class="col-form-label text-right" style="width:90px;">
+                                    结束年月
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtEndYearMonth" name="txtEndYearMonth" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblOptUser" name="lblOptUser" class="col-form-label text-right" style="width:90px;">
+                                    OptUser
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtOptUser" name="txtOptUser" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblOptDate" name="lblOptDate" class="col-form-label text-right" style="width:90px;">
+                                    OptDate
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtOptDate" name="txtOptDate" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtMemo" name="txtMemo" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblPassword" name="lblPassword" class="col-form-label text-right" style="width:90px;">
+                                    Password
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtPassword" name="txtPassword" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD"></td>
+                            <td class="ValueTD">
+                                <span class="form-control" style="width:200px;">
+                                    <input type="checkbox" id="chkIsGpUser" name="chkIsGpUser" Text="是否Gp用户"><label for="chkIsGpUser">是否Gp用户</label>
+                                </span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblSchoolID1" name="lblSchoolID1" class="col-form-label text-right" style="width:90px;">
+                                    学校编号
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtSchoolID1" name="txtSchoolID1" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblAvatarsPicture" name="lblAvatarsPicture" class="col-form-label text-right" style="width:90px;">
+                                    AvatarsPicture
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtAvatarsPicture" name="txtAvatarsPicture" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblEmail" name="lblEmail" class="col-form-label text-right" style="width:90px;">
+                                    电子邮箱
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtEmail" name="txtEmail" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblPhoneNumber" name="lblPhoneNumber" class="col-form-label text-right" style="width:90px;">
+                                    PhoneNumber
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtPhoneNumber" name="txtPhoneNumber" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblEffectiveDate" name="lblEffectiveDate" class="col-form-label text-right" style="width:90px;">
+                                    EffectiveDate
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtEffectiveDate" name="txtEffectiveDate" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblEffitiveBeginDate" name="lblEffitiveBeginDate" class="col-form-label text-right" style="width:90px;">
+                                    EffitiveBeginDate
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtEffitiveBeginDate" name="txtEffitiveBeginDate" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblEffitiveEndDate" name="lblEffitiveEndDate" class="col-form-label text-right" style="width:90px;">
+                                    EffitiveEndDate
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtEffitiveEndDate" name="txtEffitiveEndDate" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblid_College" name="lblid_College" class="col-form-label text-right" style="width:90px;">
+                                    学院流水号
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtid_College" name="txtid_College" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblStuTeacherID" name="lblStuTeacherID" class="col-form-label text-right" style="width:90px;">
+                                    学工号
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <input id="txtStuTeacherID" name="txtStuTeacherID" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD">
+                                <Label id="lblIdentityID" name="lblIdentityID" class="col-form-label text-right" style="width:90px;">
+                                    身份编号
+                                </Label>
+                            </td>
+                            <td class="ValueTD">
+                                <select id="ddlIdentityID" name="ddlIdentityID" class="form-control" style="width:200px;" />
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="NameTD"></td>
+                            <td class="ValueTD">
+                                <span class="form-control" style="width:200px;">
+                                    <input type="checkbox" id="chkIsArchive" name="chkIsArchive" Text="IsArchive"><label for="chkIsArchive">IsArchive</label>
+                                </span>
+                            </td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btnOKUpd" type="button" class="btn btn-primary" onclick="mySubmit()">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+@*<input id="hidUserId" type="hidden" value="@Model.seUserId" />*@
+<input id="hidUserId1" type="hidden" value="@strUserId1_Value" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortQxUsersBy" type="hidden" value="" />
+
+<input id="hidUserInfo" type="hidden" value="@Model.GetSession("objvUserRoleRelation")" />
+<input id="hidUserId" type="hidden" />

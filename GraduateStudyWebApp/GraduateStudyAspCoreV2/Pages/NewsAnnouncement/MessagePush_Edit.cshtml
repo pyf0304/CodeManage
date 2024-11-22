@@ -1,0 +1,153 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /**
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ **/
+function btnMessagePush_Edit_Click(strCommandName, strKeyId) {
+   require(["../js/NewsAnnouncement/MessagePush_EditEx.js"], function(messagepush) {
+messagepush.MessagePush_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+    </script>
+<div id = "divEditLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_MessagePush" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_MessagePush" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_MessagePush">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr id="trMessagePushNumber">
+<td class="text-right">
+<label id="lblMessagePushId" name="lblMessagePushId" class="col-form-label text-right" style="width:90px;">消息Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMessagePushId" name="txtMessagePushId" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblMessagePushNumber" name="lblMessagePushNumber" class="col-form-label text-right" style="width:90px;">消息编号
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMessagePushNumber" name="txtMessagePushNumber" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trMessageContent">
+<td class="text-right">
+<label id="lblMessageTitle" name="lblMessageTitle" class="col-form-label text-right" style="width:90px;">消息标题
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMessageTitle" name="txtMessageTitle" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblMessageContent" name="lblMessageContent" class="col-form-label text-right" style="width:90px;">消息内容
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMessageContent" name="txtMessageContent" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trMessageTypeId">
+<td class="text-right">
+<label id="lblReceivePeople" name="lblReceivePeople" class="col-form-label text-right" style="width:90px;">接收人员
+</label>
+</td>
+<td class="text-left">
+<input  id="txtReceivePeople" name="txtReceivePeople" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblMessageTypeId" name="lblMessageTypeId" class="col-form-label text-right" style="width:90px;">消息类型Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMessageTypeId" name="txtMessageTypeId" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trIsReceive">
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsAllpush" name="chkIsAllpush" Text = "是否全体推送"  ><label for="chkIsAllpush">是否全体推送</label></span>
+</td>
+<td class="text-left" ColSpan=2>
+<span class="form-control-sm"  style="width:150px;">
+<input type="checkbox"  id="chkIsReceive" name="chkIsReceive" Text = "是否接收"  ><label for="chkIsReceive">是否接收</label></span>
+</td>
+</tr>
+<tr id="trMemo">
+<td class="text-right">
+<label id="lblClientVersionTypeId" name="lblClientVersionTypeId" class="col-form-label text-right" style="width:90px;">客户端版本类型Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtClientVersionTypeId" name="txtClientVersionTypeId" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMemo" name="txtMemo" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_MessagePush" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_MessagePush" type="button" class="btn btn-primary" onclick="btnMessagePush_Edit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

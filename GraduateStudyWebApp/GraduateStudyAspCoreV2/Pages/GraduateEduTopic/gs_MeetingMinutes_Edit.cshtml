@@ -1,0 +1,147 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    @*<script src="../lib/bootstrap/dist/js/popper.js"></script>*@
+    @*<script type='text/javascript' src='~/textboxio/textboxio.js'></script>*@
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+
+<script>
+
+    ////从编辑器内获取内容到控件
+    //function getTextboxio() {
+    //    var editors = textboxio.get('#txtMeetingContent');
+    //    var editor = editors[0];
+    //    $("#txtMeetingContent").val(editor.content.get());
+    //}
+    /*
+     按钮单击,用于调用Js函数中btnEdit_Click
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+    */
+    function btnEdit_Click(strCommandName, strKeyId) {
+
+        
+
+        require(["../js/GraduateEduTopic/gs_MeetingMinutes_EditEx.js"], function (gs_meetingminutes) {
+            gs_meetingminutes.gs_MeetingMinutes_EditEx.btnEdit_Click(strCommandName, strKeyId);
+        });
+    }
+
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+
+    //function setTextboxio() {
+    //    var editors1 = $("#txtMeetingContent").val();
+    //    var editors = textboxio.get('#txtMeetingContent');
+    //    var editor = editors[0];
+    //    editor.content.set(editors1);
+    //}
+    ////所有用户自定义的JS函数建议都放在这里
+    //function instantiateTextbox() {
+    //    textboxio.replaceAll('textarea', {
+    //        paste: {
+    //            style: 'clean'
+    //        },
+    //        css: {
+    //            stylesheets: ['../textboxio/example.css']
+    //        }
+    //    });
+    //};
+</script>
+<div id="divEditLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditDialog_gs_MeetingMinutes" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_gs_MeetingMinutes" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 830px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lblDialogTitle_gs_MeetingMinutes">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+
+                    <table id="tabEdit" style="width:800px" class="table table-bordered table-hover table td table-sm">
+                        <tr id="trTopicId" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblMeetingId" name="lblMeetingId" class="col-form-label text-right" style="width:90px;">
+                                    会议Id
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtMeetingId" name="txtMeetingId" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblTopicId" name="lblTopicId" class="col-form-label text-right" style="width:90px;">
+                                    主题编号
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <select id="ddlTopicId" name="ddlTopicId" class="form-control" style="width:150px;"></select>
+                            </td>
+                            <td class="text-left" style="display:none;">
+                                <span class="form-control" style="width:150px;">
+                                    <input type="checkbox" id="chkIsSubmit" name="chkIsSubmit" Text="是否提交"><label for="chkIsSubmit">是否提交</label>
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-left" style="">
+                                <input id="txtMeetingDate" name="txtMeetingDate" placeholder="会议日期" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-left">
+                                <input id="txtParticipants" name="txtParticipants" placeholder="参会者，请用逗号隔开" class="form-control" style="width:400px;" />
+                            </td>
+                        </tr>
+                        <tr id="trMeetingContent">
+
+                            <td class="text-left" colspan="2">
+                                <textarea id="txtMeetingContent" name="txtMeetingContent" placeholder="请输入会议纪要" class="form-control" style="width:100%;height:200px;" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="text-left" colspan="2">
+                                <input id="txtMemo" name="txtMemo" placeholder="备注" class="form-control" style="width:550px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel_gs_MeetingMinutes" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btnSubmit_gs_MeetingMinutes" type="button" class="btn btn-primary" onclick="btnEdit_Click('Submit')">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+
+</div>

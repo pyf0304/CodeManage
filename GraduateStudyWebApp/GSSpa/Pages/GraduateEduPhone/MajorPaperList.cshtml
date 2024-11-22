@@ -1,0 +1,224 @@
+﻿@page
+@model GraduateStudyWebApp.Pages.GraduateEduPhone.MajorPaperListModel
+@{
+    Layout = "~/Pages/Shared/_Layout_Empty.cshtml";
+    //Layout = null;
+    ViewData["Title"] = "专业论文";
+
+    var strUrl_Session_SetString = Model.Url_Session_SetString;
+    var strUrl_Session_GetString = Model.Url_Session_GetString;
+}
+@section Styles{
+    @*<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="../css/site.css" />*@
+    <link href="~/css/index.css" rel="stylesheet" type="text/css">
+
+
+
+    <link rel="stylesheet" href="~/css/phonepaperlist.css" />
+    <link rel="stylesheet" href="../css/Bootstrap-3.0.3.css" />
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+
+    <link rel="stylesheet" href="~/lib/Xadmin/css/font.css">
+    <link rel="stylesheet" href="~/lib/Xadmin/css/xadmin.css">
+
+    <script src="~/lib/Xadmin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="~/lib/Xadmin/js/xadmin.js"></script>
+
+    <link rel="stylesheet" href="~/css/public.css" />
+}
+@section Scripts{
+
+
+    <!--tab选项卡-->
+    @*<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>*@
+
+
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    @*<script src="../js/site.js" asp-append-version="true"></script>*@
+    @*<script src="../lib/bootstrap/dist/js/popper.js"></script>*@
+
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+    @*<script src="../lib/jquery.min.js"></script>*@
+    @*<script src="../lib/jquery-form.js"></script>*@
+}
+
+<script>
+
+      var strWebRoot = "@Model.WebRoot";
+     var strUrl_Session_SetString = "@Model.Url_Session_SetString";
+    var strUrl_Session_GetString = "@Model.Url_Session_GetString";
+
+    /*
+       页面导入-在导入页面后运行的函数
+         (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_Page_Load)
+      */
+
+    function GetRequest() {
+        var url = location.search; //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+    }
+    function GetThesisOpTypeID() {
+        var Request = new Object();
+        Request = GetRequest();
+        var str1;
+        str1 = Request['OperationTypeId'];
+
+        if (str1 != null) {
+            $('#hidOperationType').val(str1);
+
+            require(["../js/GraduateEduPhone/MajorPaperListEx.js"], function (Thesis) {
+
+                var objpage = new Thesis.MajorPaperListEx();
+                objpage.Page_Load();
+                //var objPage = new taskinfo.Task_TSEx();
+                //objPage.Page_Load();
+            });
+
+        }
+        else {
+            require(["../js/GraduateEduPhone/MajorPaperListEx.js"], function (Thesis) {
+
+                var objpage = new Thesis.MajorPaperListEx();
+                objpage.Page_Load();
+
+            });
+        }
+    }
+
+
+    window.onload = function () {
+
+
+        require(["../js/GraduateEduPhone/MajorPaperListEx.js"], function (Paper) {
+
+            var objpage = new Paper.MajorPaperListEx();
+            objpage.Page_Load();
+
+        });
+       // GetThesisOpTypeID();
+    }
+
+    /*
+  提交编辑
+ (AutoGCLib.WA_ViewScript_TS4CSharp:Gen_WApi_JS_mySubmit)
+ */
+    function mySubmit(pstrOp) {
+        //    alert("提交" + strOp);
+        //require(["../js/GraduateEduPhone/MajorPaperListEx.js"], function (Thesis) {
+        //    var objPage = new Thesis.MajorPaperListEx();
+        //    objPage.btnOKUpd_Click();
+        //});
+
+        doUpload();
+    }
+
+    //上传方法
+      function doUpload() {
+        var formData = new FormData($("#uploadForm")[0]);
+        $.ajax({
+             url: "@Url.Action("UploadFile", "testUploadPic")",
+            type: 'post',
+            data: formData,
+            async: false,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (returndata) {
+                //成功
+                if (returndata.status == 0) {
+                    $("#hdnpic").val(returndata.fileName);
+
+                    require(["../js/GraduateEduPhone/MajorPaperListEx.js"], function (Thesis) {
+                        var objPage = new Thesis.MajorPaperListEx();
+                        objPage.btnOKUpd_Click();
+                    });
+                    // var aa = JSON.stringify(returndata);
+
+                    //alert(returndata.message);
+
+                }
+                else {
+
+                    alert('请选择正确文件!(in MajorPaperList.doUpload)')
+                }
+
+
+            },
+            error: function (returndata) {
+                alert(returndata);
+            }
+        });
+    }
+
+
+</script>
+
+
+<div id="divLoading" class="loading">
+    <img src="~/images/CirclePoint.gif" />
+</div>
+<div data-role="page" id="pageOne">
+
+    <div data-role="header" data-position="fixed">
+        <a href="/GraduateStudyWebApp/WebApp/Indexs" rel="external" class="ui-btn ui-btn-left ui-icon-carat-l ui-btn-icon-left ui-corner-all">主页</a>
+
+        <h1>论文</h1>
+        @*<a href="#pageAdd" class="ui-btn ui-btn-right ui-icon-bullets ui-btn-icon-left ui-corner-all">
+                添加
+            </a>*@
+    </div>
+
+    <div data-role="content" id="contents">
+        <div id="pageone">
+
+            <div style="width: 100%;height: 5%;padding:0px 0px 0px 20px;text-align:left;">
+            </div>
+            <div id="divDataLstMajor" class="div_List">
+            </div>
+            @*<ul id="thesis" data-role="listview" data-inset="true">
+                    <li class="question_title">请选择论文</li>
+                </ul>*@
+
+
+        </div>
+
+    </div>
+
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a asp-page="/WebApp/Indexs" rel="external" data-icon="home" class="ui-btn-active ui-state-persist">首页</a></li>
+                <li><a asp-page="/WebApp/MessagePushList" rel="external" data-icon="star">消息</a></li>
+                <li><a asp-page="/WebApp/User" rel="external" data-icon="user">我的</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+<input id="hdnpic" type="text" name="text" />
+<input id="hidOpType" type="hidden" />
+<input id="hidOperationType" type="hidden" value="@Model.GetSession("OperationType")" />
+<input id="hidKeyId" type="hidden" />
+<input id="hidUserId" type="hidden" />
+<input id="hidCurrPageIndex" type="hidden" value="1" />
+<input id="hidSortvThesisBy" type="hidden" value="" />
+
+
+<input id="hidUserInfo" type="hidden" value="@Model.GetSession("objvUserRoleRelation")" />
+<input id="hidSortvXzMajorDirectionBy" type="hidden" value="" />
+<input id="hidSortvPaperBy" type="hidden" value="" />

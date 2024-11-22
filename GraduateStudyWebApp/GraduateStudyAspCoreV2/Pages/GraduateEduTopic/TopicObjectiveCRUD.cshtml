@@ -1,0 +1,162 @@
+﻿
+@page
+@{
+Layout = "~/Pages/Shared/_Layout_RequireJS.cshtml";
+ViewData["Title"] = "主题客观表维护";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon" />
+}
+@section Scripts{
+    <script src = "~/lib/xlsx.core.min.js" type = "text/javascript" ></script>
+    <script src = "~/lib/xlsx.full.min.js" type = "text/javascript" ></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+<script>
+
+ /**
+  按钮单击,用于调用Js函数中btn_Click
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_btn_Click)
+ **/
+function btn_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduTopic/TopicObjectiveCRUDEx.js"], function(topicobjective) {
+topicobjective.TopicObjectiveCRUDEx.btn_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  页面导入-在导入页面后运行的函数
+ (AutoGCLib.WA_ViewScript_TS4Html:Gen_WApi_JS_Page_Load)
+ **/
+window.onload = function() {
+   require(["../js/GraduateEduTopic/TopicObjectiveCRUDEx.js"], function(topicobjective) {
+const objPage = new topicobjective.TopicObjectiveCRUDEx();
+objPage.Page_Load();
+});
+}
+</script>
+<script>
+// 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
+function sheet2blob(sheet, sheetName)
+{
+sheetName = sheetName || 'sheet1';
+const workbook = {
+SheetNames: [sheetName],
+Sheets: {}
+}
+workbook.Sheets[sheetName] = sheet;
+// 生成excel的配置项
+const wopts = {
+bookType: 'xlsx', // 要生成的文件类型
+bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+type: 'binary'
+}
+const wbout = XLSX.write(workbook, wopts);
+const blob = new Blob([s2ab(wbout)], { type: "application/octet-stream" });
+// 字符串转ArrayBuffer
+function s2ab(s)
+{
+const buf = new ArrayBuffer(s.length);
+const view = new Uint8Array(buf);
+for (let i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+return buf;
+}
+return blob;
+}
+@*/**
+* 通用的打开下载对话框方法，没有测试过具体兼容性
+* @param url 下载地址，也可以是一个blob对象，必选
+* @param saveName 保存文件名，可选
+*/*@
+function openDownloadDialog(url, saveName)
+{
+if (typeof url == 'object' && url instanceof Blob) {
+url = URL.createObjectURL(url); // 创建blob地址
+}
+const aLink = document.createElement('a');
+aLink.href = url;
+aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+const event;
+if (window.MouseEvent) event = new MouseEvent('click');
+else {
+event = document.createEvent('MouseEvents');
+event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+}
+aLink.dispatchEvent(event);
+}
+//所有用户自定义的JS函数建议都放在这里
+function exportSpecialExcel_pyf(arrData, strFileName)
+{
+const sheet = XLSX.utils.aoa_to_sheet(arrData);
+    openDownloadDialog(sheet2blob(sheet), strFileName);
+}
+</script>
+<div id = "divLayout" class = "div_layout" 
+>
+@*-- 标题层 --*@
+
+<div style="position: relative; width: 648px; height: 37px; left: 0px; top: 0px;">
+<label id="lblViewTitle" name="lblViewTitle" class="h5">主题客观表CRUD
+</label>
+<label id="lblMsg_List" name="lblMsg_List" class="text-warning" style="width:250px;">
+</label>
+</div>
+@*-- 查询层 --*@
+
+<div id = "divQuery" class = "div_query"> 
+<table id="tabEdit" style="width:800px" class="table table-bordered table-hover table td table-sm">
+<tr >
+<td class="text-right">
+<label id="lblObjectiveName_q" name="lblObjectiveName_q" class="col-form-label text-right" style="width:90px;">客观名称
+</label>
+</td>
+<td class="text-left">
+<input  id="txtObjectiveName_q" name="txtObjectiveName_q" class="form-control-sm" style="width:200px;"/>
+</td>
+</tr>
+</table>
+</div>
+@*-- 功能区 --*@
+
+<div id="divFunction" class="table table-bordered table-hover">
+<ul class="nav">
+<li class="nav-item">
+<label id="lblTopicObjectiveList" name="lblTopicObjectiveList" class="col-form-label text-info" style="width:250px;">主题客观表列表
+</label>
+</li>
+<li class="nav-item ml-3">
+<button  id="btnQuery" name="btnQuery" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Query')">查询</button>
+</li>
+<li class="nav-item ml-3">
+<button  id="btnCreateWithMaxId" name="btnCreateWithMaxId" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('CreateWithMaxId')">添加</button>
+</li>
+<li class="nav-item ml-3">
+<button  id="btnUpdate" name="btnUpdate" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Update')">修改</button>
+</li>
+<li class="nav-item ml-3">
+<button  id="btnDelete" name="btnDelete" class="btn btn-outline-info btn-sm text-nowrap" onclick="btn_Click('Delete')">删除</button>
+</li>
+<li class="nav-item ml-3">
+<button  id="btnExportExcel" name="btnExportExcel" class="btn btn-outline-warning btn-sm text-nowrap" onclick="btn_Click('ExportExcel')">导出Excel</button>
+</li>
+</ul>
+</div>
+@*-- 列表层 --*@
+<div id="divList" class="div_List">
+<div id="divDataLst" class="div_List">
+</div>
+<div id="divPager" class="pager">
+</div>
+</div>
+@*-- 编辑层 --*@
+<div id="divEdit" value="1"></div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

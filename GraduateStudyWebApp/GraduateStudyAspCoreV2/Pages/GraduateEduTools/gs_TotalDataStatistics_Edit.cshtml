@@ -1,0 +1,159 @@
+﻿
+@page
+@{
+Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+//所有用户自定义的JS函数建议都放在这里
+
+
+</script>
+     <script>    
+
+ /**
+  按钮单击,用于调用Js函数中btnEdit_Click
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+ **/
+function btngs_TotalDataStatistics_Edit_Click(strCommandName, strKeyId) {
+   require(["../js/GraduateEduTools/gs_TotalDataStatistics_EditEx.js"], function(gs_totaldatastatistics) {
+gs_totaldatastatistics.gs_TotalDataStatistics_EditEx.btnEdit_Click(strCommandName, strKeyId);
+});
+}
+
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+    </script>
+<div id = "divEditLayout" class = "tab_layout" 
+>
+@*-- 编辑层 --*@
+
+ <div class="modal fade" id="divEditDialog_gs_TotalDataStatistics" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_gs_TotalDataStatistics" aria-hidden="true">
+ <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content" style="width: 635px;">
+ <div class="modal-header">
+ <h4 class="modal-title" id="lblDialogTitle_gs_TotalDataStatistics">模态框（Modal）标题</h4>
+ <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+ </div>
+ <div class="modal-body">
+<table id="tabEdit" style="width:600px" class="table table-bordered table-hover table td table-sm">
+<tr id="trTotalDataTypeId">
+<td class="text-right">
+<label id="lblid_CurrEduCls" name="lblid_CurrEduCls" class="col-form-label text-right" style="width:90px;">当前教学班流水号
+</label>
+</td>
+<td class="text-left">
+<select id="ddlid_CurrEduCls" name="ddlid_CurrEduCls" class="form-control-sm" style="width:150px;"></select>
+</td>
+<td class="text-right">
+<label id="lblTotalDataTypeId" name="lblTotalDataTypeId" class="col-form-label text-right" style="width:90px;">总数据类型Id
+</label>
+</td>
+<td class="text-left">
+<input  id="txtTotalDataTypeId" name="txtTotalDataTypeId" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trDataUser">
+<td class="text-right">
+<label id="lblTableKey" name="lblTableKey" class="col-form-label text-right" style="width:90px;">表主键
+</label>
+</td>
+<td class="text-left">
+<input  id="txtTableKey" name="txtTableKey" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblDataUser" name="lblDataUser" class="col-form-label text-right" style="width:90px;">数据用户
+</label>
+</td>
+<td class="text-left">
+<input  id="txtDataUser" name="txtDataUser" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trMonth">
+<td class="text-right">
+<label id="lblDataAddDate" name="lblDataAddDate" class="col-form-label text-right" style="width:90px;">数据添加日期
+</label>
+</td>
+<td class="text-left">
+<input  id="txtDataAddDate" name="txtDataAddDate" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblMonth" name="lblMonth" class="col-form-label text-right" style="width:90px;">月
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMonth" name="txtMonth" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trUpdDate">
+<td class="text-right">
+<label id="lblWeek" name="lblWeek" class="col-form-label text-right" style="width:90px;">周
+</label>
+</td>
+<td class="text-left">
+<input  id="txtWeek" name="txtWeek" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">修改日期
+</label>
+</td>
+<td class="text-left">
+<input  id="txtUpdDate" name="txtUpdDate" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+<tr id="trMemo">
+<td class="text-right">
+<label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">修改人
+</label>
+</td>
+<td class="text-left">
+<input  id="txtUpdUser" name="txtUpdUser" class="form-control-sm" style="width:150px;"/>
+</td>
+<td class="text-right">
+<label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">备注
+</label>
+</td>
+<td class="text-left">
+<input  id="txtMemo" name="txtMemo" class="form-control-sm" style="width:150px;"/>
+</td>
+</tr>
+</table>
+ </div>
+ <div class="modal-footer">
+ <button  id="btnCancel_gs_TotalDataStatistics" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button  id="btnSubmit_gs_TotalDataStatistics" type="button" class="btn btn-primary" onclick="btngs_TotalDataStatistics_Edit_Click('Submit')">添加</button>
+ </div>
+ </div>
+ <!-- /.modal-content -->
+ </div>
+ <!-- /.modal -->
+ </div>
+<input id="hidOpType" type="hidden" />
+<input id="hidKeyId" type="hidden" />
+</div>

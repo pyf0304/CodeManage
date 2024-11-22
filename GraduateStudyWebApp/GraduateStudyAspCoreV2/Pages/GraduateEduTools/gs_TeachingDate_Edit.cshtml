@@ -1,0 +1,193 @@
+﻿
+@page
+@{
+    Layout = "";
+}
+@section Styles{
+    <link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../css/site.css" />
+}
+@section Scripts{
+    <script src="../lib/jquery/dist/jquery.js"></script>
+    <script src="../lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/site.js" asp-append-version="true"></script>
+    <script src="../lib/bootstrap/dist/js/popper.js"></script>
+    <script src="../lib/require/require.js" data-main="../js/src/config"></script>
+}
+<script>
+    //所有用户自定义的JS函数建议都放在这里
+    layui.use(['laydate', 'form'],
+        function () {
+            var laydate = layui.laydate;
+
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#txtStartDate' //指定元素
+            });
+
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#txtEndDate' //指定元素
+            });
+        });
+
+</script>
+<script>
+
+
+    function getWeek(dateString) {
+        var dateArray = dateString.split("-");
+        date = new Date(dateArray[0], parseInt(dateArray[1] - 1), dateArray[2]);
+        return "周" + "日一二三四五六".charAt(date.getDay());
+    };
+
+    /*
+     按钮单击,用于调用Js函数中btnEdit_Click
+    (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_btnEdit_Click)
+    */
+    function btnEdit_Click(strCommandName, strKeyId) {
+
+        var weekStart = getWeek($("#txtStartDate").val());
+        var weekEnd = getWeek($("#txtEndDate").val());
+        if ($("#txtStartDate").val() == "") {
+
+            layer.msg('请选择开始日期!', {
+                icon: 3,
+                time: 1000
+            });
+
+        }
+        else if (weekStart != "周日") {
+             
+            layer.msg('请选择周日的开始日期!', {
+                icon: 3,
+                time: 1500
+            });
+        }
+        else if ($("#txtEndDate").val() == "") {
+            layer.msg('请选择结束日期!', {
+                icon: 3,
+                time: 1000
+            });
+        }
+        else if (weekEnd != "周六") {
+            layer.msg('请选择周六的结束日期!', {
+                icon: 3,
+                time: 1500
+            });
+
+        }
+        else {
+
+
+            require(["../js/GraduateEduTools/gs_TeachingDate_EditEx.js"], function (gs_teachingdate) {
+                //var objPage_Edit = new gs_teachingdate.gs_TeachingDate_EditEx();
+                gs_teachingdate.gs_TeachingDate_EditEx.btnEdit_Click(strCommandName, strKeyId);
+            });
+        }
+    }
+
+   
+ /**
+  显示对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_ShowDialog)
+ **/
+function ShowDialog(strDialogName) {
+   require(['jquery', 'bootstrap'], function($) {
+ $(strDialogName).modal('show');
+  });
+}
+
+ /**
+  隐藏对话框
+ (AutoGCLib.WA_ViewScript_Edit_TS4Html:Gen_WApi_JS_HideDialog)
+ **/
+function HideDialog(strDialogName) {
+  require(['jquery', 'bootstrap'], function($) {
+      $(strDialogName).modal('hide');
+  });
+}
+   
+</script>
+<div id="divEditLayout" class="tab_layout">
+    @*-- 编辑层 --*@
+
+    <div class="modal fade" id="divEditDialog_gs_TeachingDate" tabindex="-1" role="dialog" aria-labelledby="lblDialogTitle_gs_TeachingDate" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: 835px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="lblDialogTitle_gs_TeachingDate">模态框（Modal）标题</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabEdit" style="width:800px" class="table table-bordered table-hover table td table-sm">
+                        <tr id="trid_CurrEduCls" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblid_CurrEduCls" name="lblid_CurrEduCls" class="col-form-label text-right" style="width:90px;">
+                                    当前教学班流水号
+                                </Label>
+                            </td>
+                            <td class="text-left" ColSpan=5>
+                                <input id="txtid_CurrEduCls" name="txtid_CurrEduCls" class="form-control" style="width:350px;" />
+                            </td>
+                        </tr>
+                        <tr id="trEndDate">
+                            <td class="text-right">
+                                <Label id="lblStartDate" name="lblStartDate" class="col-form-label text-right" style="width:90px;">
+                                    开始日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtStartDate" name="txtStartDate" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblEndDate" name="lblEndDate" class="col-form-label text-right" style="width:90px;">
+                                    截止日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtEndDate" name="txtEndDate" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trUpdUser" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblUpdDate" name="lblUpdDate" class="col-form-label text-right" style="width:90px;">
+                                    修改日期
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdDate" name="txtUpdDate" class="form-control" style="width:150px;" />
+                            </td>
+                            <td class="text-right">
+                                <Label id="lblUpdUser" name="lblUpdUser" class="col-form-label text-right" style="width:90px;">
+                                    修改人
+                                </Label>
+                            </td>
+                            <td class="text-left">
+                                <input id="txtUpdUser" name="txtUpdUser" class="form-control" style="width:150px;" />
+                            </td>
+                        </tr>
+                        <tr id="trMemo" style="display:none;">
+                            <td class="text-right">
+                                <Label id="lblMemo" name="lblMemo" class="col-form-label text-right" style="width:90px;">
+                                    备注
+                                </Label>
+                            </td>
+                            <td class="text-left" ColSpan=5>
+                                <input id="txtMemo" name="txtMemo" class="form-control" style="width:500px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCancel_gs_TeachingDate" type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button id="btnSubmit_gs_TeachingDate" type="button" class="btn btn-primary" onclick="btnEdit_Click('Submit')">添加</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>
+<!-- 存放教学班日期主键 -->
+<input id="hidgs_DateId" type="hidden" />
